@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>High Tech Academy — Приём в школу</title>
+  <meta name="description" content="Современная школа High Tech Academy в Алматы. Поступление, ключевые преимущества, результаты учеников и форма заявки на обучение." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#hero" class="logo">
+        <span class="logo-block logo-block--yellow"></span>
+        <span class="logo-block logo-block--green"></span>
+        <span class="logo-block logo-block--orange"></span>
+        <span class="logo-text" data-i18n="header_logo"></span>
+      </a>
+      <nav class="nav">
+        <button class="nav-toggle" aria-label="Открыть меню">
+          <span></span>
+          <span></span>
+        </button>
+        <div class="lang-switch" aria-label="Выбор языка">
+          <button type="button" class="lang-btn is-active" data-lang="ru">RU</button>
+          <button type="button" class="lang-btn" data-lang="kz">KZ</button>
+          <button type="button" class="lang-btn" data-lang="en">EN</button>
+        </div>
+        <ul class="nav-list">
+          <li><a href="#about" data-i18n="nav_about"></a></li>
+          <li><a href="#numbers" data-i18n="nav_numbers"></a></li>
+          <li><a href="#benefits" data-i18n="nav_benefits"></a></li>
+          <li><a href="#dates" data-i18n="nav_dates"></a></li>
+          <li><a href="#gallery" data-i18n="nav_gallery"></a></li>
+          <li><a href="#apply" data-i18n="nav_apply"></a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section id="hero" class="hero section">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <p class="eyebrow" data-i18n="hero_eyebrow"></p>
+          <h1 data-i18n="hero_title"></h1>
+          <p class="hero-subtitle" data-i18n="hero_subtitle"></p>
+          <div class="hero-actions">
+            <a href="#apply" class="btn btn-primary" data-i18n="hero_primary_cta"></a>
+            <button class="btn btn-ghost" data-scroll-to="#numbers" data-i18n="hero_secondary_cta"></button>
+          </div>
+          <div class="hero-tags">
+            <span class="tag tag--yellow" data-i18n="tag_steam"></span>
+            <span class="tag tag--green" data-i18n="tag_project_learning"></span>
+            <span class="tag tag--orange" data-i18n="tag_international"></span>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="tetris-grid">
+            <div class="tetris-block tetris-block--l"></div>
+            <div class="tetris-block tetris-block--z"></div>
+            <div class="tetris-block tetris-block--square"></div>
+            <div class="tetris-block tetris-block--line"></div>
+          </div>
+          <div class="hero-card">
+            <p class="hero-card-title" data-i18n="hero_card_title"></p>
+            <p class="hero-card-text" data-i18n="hero_card_text"></p>
+            <p class="hero-card-date" id="next-open-day" data-i18n="hero_open_day_label"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="section section--alt reveal">
+      <div class="container section-header">
+        <h2 data-i18n="about_title"></h2>
+        <p data-i18n="about_subtitle"></p>
+      </div>
+      <div class="container about-grid">
+        <article class="card">
+          <h3 data-i18n="about_item1_title"></h3>
+          <p data-i18n="about_item1_text"></p>
+        </article>
+        <article class="card">
+          <h3 data-i18n="about_item2_title"></h3>
+          <p data-i18n="about_item2_text"></p>
+        </article>
+        <article class="card">
+          <h3 data-i18n="about_item3_title"></h3>
+          <p data-i18n="about_item3_text"></p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Numbers / Stats -->
+    <section id="numbers" class="section reveal">
+      <div class="container section-header">
+        <h2 data-i18n="numbers_title"></h2>
+        <p data-i18n="numbers_subtitle"></p>
+      </div>
+      <div class="container numbers-grid">
+        <div class="stat-card">
+          <p class="stat-value" data-target="450">0</p>
+          <p class="stat-label" data-i18n="stat1_label"></p>
+        </div>
+        <div class="stat-card">
+          <p class="stat-value" data-target="92">0</p>
+          <p class="stat-label" data-i18n="stat2_label"></p>
+        </div>
+        <div class="stat-card">
+          <p class="stat-value" data-target="35">0</p>
+          <p class="stat-label" data-i18n="stat3_label"></p>
+        </div>
+        <div class="stat-card">
+          <p class="stat-value" data-target="70">0</p>
+          <p class="stat-label" data-i18n="stat4_label"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Benefits -->
+    <section id="benefits" class="section section--alt reveal">
+      <div class="container section-header">
+        <h2 data-i18n="benefits_title"></h2>
+        <p data-i18n="benefits_subtitle"></p>
+      </div>
+      <div class="container benefits-grid">
+        <article class="benefit">
+          <div class="benefit-icon benefit-icon--yellow"></div>
+          <div class="benefit-body">
+            <h3 data-i18n="benefit1_title"></h3>
+            <p data-i18n="benefit1_text"></p>
+          </div>
+        </article>
+        <article class="benefit">
+          <div class="benefit-icon benefit-icon--green"></div>
+          <div class="benefit-body">
+            <h3 data-i18n="benefit2_title"></h3>
+            <p data-i18n="benefit2_text"></p>
+          </div>
+        </article>
+        <article class="benefit">
+          <div class="benefit-icon benefit-icon--orange"></div>
+          <div class="benefit-body">
+            <h3 data-i18n="benefit3_title"></h3>
+            <p data-i18n="benefit3_text"></p>
+          </div>
+        </article>
+        <article class="benefit">
+          <div class="benefit-icon benefit-icon--yellow"></div>
+          <div class="benefit-body">
+            <h3 data-i18n="benefit4_title"></h3>
+            <p data-i18n="benefit4_text"></p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Important dates -->
+    <section id="dates" class="section reveal">
+      <div class="container section-header">
+        <h2 data-i18n="dates_title"></h2>
+        <p data-i18n="dates_subtitle"></p>
+      </div>
+      <div class="container dates-grid" id="dates-list">
+        <!-- Карточки дат будут сгенерированы JS -->
+      </div>
+    </section>
+
+    <!-- Gallery / Visual -->
+    <section id="gallery" class="section section--alt reveal">
+      <div class="container section-header">
+        <h2 data-i18n="gallery_title"></h2>
+        <p data-i18n="gallery_subtitle"></p>
+      </div>
+      <div class="container gallery-grid">
+        <div class="gallery-item gallery-item--large">
+          <div class="gallery-placeholder">
+            <span data-i18n="gallery_main"></span>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-placeholder gallery-placeholder--yellow">
+            <span data-i18n="gallery_labs"></span>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-placeholder gallery-placeholder--green">
+            <span data-i18n="gallery_play"></span>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-placeholder gallery-placeholder--orange">
+            <span data-i18n="gallery_projects"></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Apply form -->
+    <section id="apply" class="section reveal">
+      <div class="container section-header">
+        <h2 data-i18n="apply_title"></h2>
+        <p data-i18n="apply_subtitle"></p>
+      </div>
+      <div class="container form-wrapper">
+        <form class="apply-form" id="apply-form" novalidate>
+          <div class="form-field">
+            <label for="parent-name" data-i18n="label_parent_name"></label>
+            <input
+              type="text"
+              id="parent-name"
+              name="parentName"
+              required
+              data-i18n-placeholder="placeholder_parent_name"
+            />
+            <p class="field-error" data-for="parent-name"></p>
+          </div>
+          <div class="form-field">
+            <label for="child-age" data-i18n="label_child_age"></label>
+            <input
+              type="number"
+              id="child-age"
+              name="childAge"
+              min="3"
+              max="18"
+              required
+              data-i18n-placeholder="placeholder_child_age"
+            />
+            <p class="field-error" data-for="child-age"></p>
+          </div>
+          <div class="form-field">
+            <label for="phone" data-i18n="label_phone"></label>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              required
+              data-i18n-placeholder="placeholder_phone"
+            />
+            <p class="field-error" data-for="phone"></p>
+          </div>
+          <div class="form-field">
+            <label for="format" data-i18n="label_format"></label>
+            <select id="format" name="format">
+              <option value="primary" data-i18n-option="option_primary"></option>
+              <option value="middle" data-i18n-option="option_middle"></option>
+              <option value="high" data-i18n-option="option_high"></option>
+              <option value="unsure" data-i18n-option="option_unsure"></option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block" data-i18n="apply_submit"></button>
+          <p class="form-note" data-i18n="apply_note"></p>
+          <p class="form-success" id="form-success" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <p class="footer-brand" data-i18n="footer_brand"></p>
+        <p class="footer-text" data-i18n="footer_desc"></p>
+      </div>
+      <div>
+        <p class="footer-heading" data-i18n="footer_contacts_title"></p>
+        <p class="footer-text" data-i18n="footer_city"></p>
+        <p class="footer-text">
+          <span data-i18n="footer_phone_label"></span>
+          <a href="tel:+7727XXXXXXX">+7 (727) XXX‑XX‑XX</a>
+        </p>
+        <p class="footer-text">
+          <span data-i18n="footer_email_label"></span>
+          <a href="mailto:admissions@hta.kz">admissions@hta.kz</a>
+        </p>
+      </div>
+      <div>
+        <p class="footer-heading" data-i18n="footer_nav_title"></p>
+        <ul class="footer-links">
+          <li><a href="#about" data-i18n="footer_nav_about"></a></li>
+          <li><a href="#numbers" data-i18n="footer_nav_numbers"></a></li>
+          <li><a href="#dates" data-i18n="footer_nav_dates"></a></li>
+          <li><a href="#apply" data-i18n="footer_nav_apply"></a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>
+        <span data-i18n="footer_rights_prefix"></span>
+        <span id="year"></span>
+        <span data-i18n="footer_rights_suffix"></span>
+      </p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
