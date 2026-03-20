@@ -11,9 +11,7 @@
   <header class="site-header">
     <div class="container header-inner">
       <a href="#hero" class="logo">
-        <span class="logo-block logo-block--yellow"></span>
-        <span class="logo-block logo-block--green"></span>
-        <span class="logo-block logo-block--orange"></span>
+        <img src="./images/logo.png" alt="High Tech Academy Logo">
         <span class="logo-text" data-i18n="header_logo"></span>
       </a>
       <nav class="nav">
@@ -46,15 +44,6 @@
           <p class="eyebrow" data-i18n="hero_eyebrow"></p>
           <h1 data-i18n="hero_title"></h1>
           <p class="hero-subtitle" data-i18n="hero_subtitle"></p>
-          <div class="hero-actions">
-            <a href="#apply" class="btn btn-primary" data-i18n="hero_primary_cta"></a>
-            <button class="btn btn-ghost" data-scroll-to="#numbers" data-i18n="hero_secondary_cta"></button>
-          </div>
-          <div class="hero-tags">
-            <span class="tag tag--yellow" data-i18n="tag_steam"></span>
-            <span class="tag tag--green" data-i18n="tag_project_learning"></span>
-            <span class="tag tag--orange" data-i18n="tag_international"></span>
-          </div>
         </div>
         <div class="hero-visual">
           <div class="tetris-grid">
@@ -295,6 +284,52 @@
       </p>
     </div>
   </footer>
+
+  <!-- Floating CTA + Modal -->
+  <button
+    type="button"
+    id="floating-consult-cta"
+    class="floating-cta btn btn-primary"
+    data-i18n="modal_trigger"
+  ></button>
+
+  <div class="consult-modal-backdrop" id="consult-modal-backdrop" aria-hidden="true">
+    <div class="consult-modal-window" role="dialog" aria-modal="true" aria-labelledby="consult-modal-title">
+      <button type="button" class="consult-modal-close" id="consult-modal-close" aria-label="Закрыть">
+        &times;
+      </button>
+      <h3 class="consult-modal-title" id="consult-modal-title" data-i18n="modal_title"></h3>
+
+      <form class="consult-modal-form" id="consult-modal-form" novalidate>
+        <div class="form-field">
+          <label for="consult-name" data-i18n="label_parent_name"></label>
+          <input
+            type="text"
+            id="consult-name"
+            name="name"
+            required
+            data-i18n-placeholder="placeholder_parent_name"
+          />
+          <p class="field-error" data-for="consult-name"></p>
+        </div>
+
+        <div class="form-field">
+          <label for="consult-phone" data-i18n="label_phone"></label>
+          <input
+            type="tel"
+            id="consult-phone"
+            name="phone"
+            required
+            data-i18n-placeholder="placeholder_phone"
+          />
+          <p class="field-error" data-for="consult-phone"></p>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block" data-i18n="modal_submit"></button>
+        <p class="form-success" id="consult-modal-success" aria-live="polite"></p>
+      </form>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>

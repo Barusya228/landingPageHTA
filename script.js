@@ -122,6 +122,11 @@ const translations = {
     footer_nav_apply: "Заявка",
     footer_rights_prefix: "©",
     footer_rights_suffix: " High Tech Academy. Все права защищены.",
+
+    modal_trigger: "Записаться на консультацию",
+    modal_title: "Записаться на консультацию",
+    modal_submit: "Отправить",
+    modal_success_message: "Спасибо, мы свяжемся с вами",
   },
   kz: {},
   en: {},
@@ -450,6 +455,136 @@ document.addEventListener("DOMContentLoaded", () => {
       form.reset();
     });
   }
+
+  // --- Component: Modal window ---
+  const ConsultationModal = (() => {
+    const backdrop = document.getElementById("consult-modal-backdrop");
+    const closeBtn = document.getElementById("consult-modal-close");
+    const modalForm = document.getElementById("consult-modal-form");
+    const successEl = document.getElementById("consult-modal-success");
+    const nameInput = document.getElementById("consult-name");
+    const phoneInput = document.getElementById("consult-phone");
+
+    if (!backdrop || !modalForm) {
+      return { open: () => {}, close: () => {} };
+    }
+
+    let isOpen = false;
+    let lastFocusedEl = null;
+    let scrollOverflowBackup = "";
+
+    const setFieldError = (id, message) => {
+      const errorEl = backdrop.querySelector(`.field-error[data-for="${id}"]`);
+      if (errorEl) errorEl.textContent = message;
+    };
+
+    const clearFieldErrors = () => {
+      backdrop.querySelectorAll(".field-error").forEach((el) => {
+        el.textContent = "";
+      });
+    };
+
+    const lockScroll = () => {
+      scrollOverflowBackup = document.body.style.overflow || "";
+      document.body.style.overflow = "hidden";
+    };
+
+    const unlockScroll = () => {
+      document.body.style.overflow = scrollOverflowBackup;
+      scrollOverflowBackup = "";
+    };
+
+    const open = (triggerEl) => {
+      if (isOpen) return;
+      isOpen = true;
+      lastFocusedEl = triggerEl || document.activeElement;
+
+      if (successEl) successEl.textContent = "";
+      clearFieldErrors();
+
+      lockScroll();
+      backdrop.classList.add("is-open");
+      backdrop.setAttribute("aria-hidden", "false");
+
+      window.setTimeout(() => {
+        if (nameInput) nameInput.focus();
+      }, 70);
+    };
+
+    const close = () => {
+      if (!isOpen) return;
+      isOpen = false;
+
+      backdrop.classList.remove("is-open");
+      backdrop.setAttribute("aria-hidden", "true");
+      unlockScroll();
+
+      if (lastFocusedEl && lastFocusedEl.focus) {
+        lastFocusedEl.focus();
+      }
+    };
+
+    backdrop.addEventListener("click", (event) => {
+      if (!isOpen) return;
+      if (event.target === backdrop) close();
+    });
+
+    if (closeBtn) {
+      closeBtn.addEventListener("click", () => close());
+    }
+
+    document.addEventListener("keydown", (event) => {
+      if (!isOpen) return;
+      if (event.key === "Escape") close();
+    });
+
+    modalForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      clearFieldErrors();
+      if (successEl) successEl.textContent = "";
+
+      const t = translations[currentLanguage] || translations.ru;
+      let hasError = false;
+
+      const nameVal = nameInput ? nameInput.value.trim() : "";
+      const phoneVal = phoneInput ? phoneInput.value.trim() : "";
+
+      if (!nameVal) {
+        setFieldError("consult-name", t.error_parent_name_required);
+        hasError = true;
+      }
+
+      // Минимальная проверка: не пустой
+      if (!phoneVal) {
+        setFieldError("consult-phone", t.error_phone_required);
+        hasError = true;
+      }
+
+      if (hasError) return;
+
+      if (successEl) successEl.textContent = t.modal_success_message;
+
+      // Если backend не подключен:
+      // eslint-disable-next-line no-console
+      console.log("Consultation request:", {
+        name: nameVal,
+        phone: phoneVal,
+        lang: currentLanguage,
+      });
+
+      modalForm.reset();
+    });
+
+    return { open, close };
+  })();
+
+  // --- Component: Floating button ---
+  (() => {
+    const btn = document.getElementById("floating-consult-cta");
+    if (!btn) return;
+    btn.addEventListener("click", () => ConsultationModal.open(btn));
+  })();
+
   setLanguage(currentLanguage);
 });
 
