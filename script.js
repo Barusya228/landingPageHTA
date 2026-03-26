@@ -1,305 +1,450 @@
-const translations = {
-  ru: {
-    header_logo: "High Tech Academy",
-    nav_about: "О школе",
-    nav_numbers: "Цифры",
-    nav_benefits: "Преимущества",
-    nav_dates: "Важные даты",
-    nav_gallery: "Галерея",
-    nav_apply: "Записаться",
+/**
+ * Landing page — данные и логика (без backend).
+ * Контент меняется через объекты ниже, без правок разметки секций.
+ */
 
-    hero_eyebrow: "Приём 2026 открыт",
-    hero_title: "Современная школа в стиле технологий и творчества",
-    hero_subtitle:
-      "High Tech Academy — школа, где тетрис-геометрия встречается с высоким уровнем образования. Помогаем детям мыслить критически, работать в команде и создавать свои проекты.",
-    hero_primary_cta: "Записаться на консультацию",
-    hero_secondary_cta: "Посмотреть результаты",
-    tag_steam: "STEAM",
-    tag_project_learning: "Проектное обучение",
-    tag_international: "Международные стандарты",
-    hero_card_title: "Открытый урок",
-    hero_card_text: "Приходите познакомиться со школой и учителями в живую.",
-    hero_open_day_label: "Ближайшая дата:",
+const ASSET_HERO = "./images/DSC01536.jpg";
 
-    about_title: "О школе High Tech Academy",
-    about_subtitle:
-      "Мы объединяем международную программу, современные технологии и атмосферу игры, чтобы дети учились с интересом.",
-    about_item1_title: "Проектный формат",
-    about_item1_text:
-      "Ученики работают в командах над реальными задачами: от научных экспериментов до IT‑проектов и стартап-идей.",
-    about_item2_title: "Технологии в обучении",
-    about_item2_text:
-      "Используем современные цифровые инструменты, чтобы обучение было наглядным, интерактивным и близким к миру технологий.",
-    about_item3_title: "Сообщество",
-    about_item3_text:
-      "Школа — это не только уроки, но и клубы, мероприятия, хакатоны и тёплое сообщество родителей и учителей.",
+const pageData = {
+  whyHtaCards: [
+    {
+      id: "love",
+      title: "Love School",
+      stat: "82%",
+      accent: "yellow",
+      detail:
+        "Высокий уровень вовлечённости и отношения к школе: ученики чувствуют себя частью сообщества HTA.",
+    },
+    {
+      id: "skills",
+      title: "Критические навыки",
+      stat: "",
+      accent: "green",
+      detail:
+        "Развиваем критическое мышление, коммуникацию, сотрудничество и самостоятельность — навыки для реальной жизни.",
+    },
+    {
+      id: "mbacc",
+      title: "Minerva Baccalaureate (MBacc)",
+      stat: "",
+      accent: "orange",
+      detail:
+        "Современная академическая программа с международным признанием и фокусом на проектное обучение.",
+    },
+  ],
 
-    numbers_title: "Цифры и результаты",
-    numbers_subtitle:
-      "Ключевые показатели, которые показывают качество обучения в High Tech Academy.",
-    stat1_label: "учеников в сообществе HTA",
-    stat2_label: "% выпускников поступают в зарубежные вузы",
-    stat3_label: "педагогов и менторов с международным опытом",
-    stat4_label: "% обучения построено вокруг проектов и практики",
+  whyHtaResearchQuote:
+    "Исследования показывают: чувство принадлежности к школе связано с мотивацией, вовлечённостью и учебными результатами учеников.",
 
-    benefits_title: "Почему семьи выбирают High Tech Academy",
-    benefits_subtitle:
-      "Современный подход к образованию, который готовит детей к реальной жизни, а не только к экзаменам.",
-    benefit1_title: "Индивидуальная траектория",
-    benefit1_text:
-      "Разрабатываем персональный маршрут развития: сильные стороны ребёнка становятся основой для роста.",
-    benefit2_title: "Безопасная и поддерживающая среда",
-    benefit2_text:
-      "Малые классы, тьюторы и психологическая поддержка помогают детям чувствовать себя уверенно.",
-    benefit3_title: "Междисциплинарный подход",
-    benefit3_text:
-      "Интегрируем математику, науку, искусство и технологии в единые проекты, как это устроено в современном мире.",
-    benefit4_title: "Партнёрство с родителями",
-    benefit4_text:
-      "Прозрачная коммуникация, регулярная обратная связь и совместные мероприятия для семей.",
+  whyHtaStudentQuotes: [
+    {
+      text: "Здесь нас учат думать, а не зубрить — мне нравится работать над проектами.",
+      name: "Арман",
+      grade: "10 класс",
+    },
+    {
+      text: "Учителя поддерживают и дают свободу выбирать направление развития.",
+      name: "Сабина",
+      grade: "8 класс",
+    },
+    {
+      text: "Много возможностей для дебатов, олимпиад и внеурочной жизни.",
+      name: "Данияр",
+      grade: "11 класс",
+    },
+  ],
 
-    dates_title: "Важные даты набора",
-    dates_subtitle:
-      "Эти даты легко изменить в коде — достаточно обновить данные в script.js.",
-    dates_pill_label: "Набор 2026",
-    date1_name: "Заявка на поступление",
-    date1_meta: "1 марта — 30 апреля 2026",
-    date1_note:
-      "Оставьте онлайн‑заявку, чтобы забронировать место на собеседовании.",
-    date2_name: "Дни открытых дверей",
-    date2_meta: "ежемесячно, по субботам",
-    date2_note:
-      "Познакомьтесь с кампусом, учителями и программой обучения.",
-    date3_name: "Старт учебного года",
-    date3_meta: "1 сентября 2026",
-    date3_note:
-      "Торжественная линейка, знакомство с классами и командами.",
+  uniqueFeatures: [
+    {
+      title: "Проекты из реальной жизни",
+      image: ASSET_HERO,
+      description: "Ученики решают задачи из практики: от социальных инициатив до технологических прототипов.",
+    },
+    {
+      title: "Курс предпринимательства",
+      image: ASSET_HERO,
+      description: "Бизнес-модели, питчи, работа в командах и знакомство с основами стартапов.",
+    },
+    {
+      title: "Курс архитектуры и дизайна",
+      image: ASSET_HERO,
+      description: "Пространство, эстетика и проектирование — от эскиза до презентации идеи.",
+    },
+    {
+      title: "Sports & Arts",
+      image: ASSET_HERO,
+      description: "Спорт и искусство как часть баланса: команды, выступления и творческие студии.",
+    },
+    {
+      title: "Дебаты",
+      image: ASSET_HERO,
+      description: "Аргументация, публичные выступления и участие в турнирах между школами.",
+    },
+    {
+      title: "STEM и робототехника",
+      image: ASSET_HERO,
+      description: "Инженерное мышление, программирование и командные соревнования.",
+    },
+  ],
 
-    gallery_title: "Пространство, которое вдохновляет",
-    gallery_subtitle:
-      "Интерьеры в стиле тетриса, зоны для сотрудничества и спокойные пространства для концентрации.",
-    gallery_main: "Учебные пространства",
-    gallery_labs: "STEAM‑лаборатории",
-    gallery_play: "Игровые зоны",
-    gallery_projects: "Проектные мастерские",
+  lifeAtHtaImages: [ASSET_HERO, ASSET_HERO, ASSET_HERO, ASSET_HERO, ASSET_HERO, ASSET_HERO],
 
-    apply_title: "Оставьте заявку",
-    apply_subtitle:
-      "Мы свяжемся с вами, расскажем о программе и поможем выбрать формат обучения.",
-    label_parent_name: "Имя родителя",
-    placeholder_parent_name: "Например, Алина",
-    label_child_age: "Возраст ребёнка",
-    placeholder_child_age: "Например, 10",
-    label_phone: "Телефон",
-    placeholder_phone: "+7 (___) ___‑__‑__",
-    label_format: "Интересующий формат",
-    option_primary: "Начальная школа",
-    option_middle: "Средняя школа",
-    option_high: "Старшая школа",
-    option_unsure: "Пока не определились",
-    apply_submit: "Отправить заявку",
-    apply_note:
-      "Нажимая на кнопку, вы соглашаетесь с обработкой персональных данных.",
-    success_message:
-      "Спасибо! Заявка отправлена. Мы свяжемся с вами в рабочее время.",
-    error_parent_name_required: "Пожалуйста, укажите ваше имя.",
-    error_child_age_required: "Укажите возраст ребёнка.",
-    error_child_age_range: "Возраст должен быть от 3 до 18 лет.",
-    error_phone_required: "Пожалуйста, укажите телефон.",
-    error_phone_invalid: "Проверьте корректность номера телефона.",
+  achievements: [
+    {
+      image: ASSET_HERO,
+      caption: "Команда HTA Goats в финале турнира по дебатам среди международных школ",
+    },
+    {
+      image: ASSET_HERO,
+      caption: "2 место на международном научном форуме Shoqan Ecology senior",
+    },
+    {
+      image: ASSET_HERO,
+      caption: "Победа в OyLab start up competition",
+    },
+  ],
 
-    footer_brand: "High Tech Academy",
-    footer_desc:
-      "Современная школа в Алматы, объединяющая технологии, творчество и сильное академическое образование.",
-    footer_contacts_title: "Контакты",
-    footer_city: "г. Алматы, Казахстан",
-    footer_phone_label: "Телефон: ",
-    footer_email_label: "Email: ",
-    footer_nav_title: "Навигация",
-    footer_nav_about: "О школе",
-    footer_nav_numbers: "Результаты",
-    footer_nav_dates: "Даты набора",
-    footer_nav_apply: "Заявка",
-    footer_rights_prefix: "©",
-    footer_rights_suffix: " High Tech Academy. Все права защищены.",
+  companies: [
+    { name: "Компания A", logo: null },
+    { name: "Компания B", logo: null },
+    { name: "Компания C", logo: null },
+    { name: "Компания D", logo: null },
+    { name: "Компания E", logo: null },
+    { name: "Компания F", logo: null },
+  ],
 
-    modal_trigger: "Записаться на консультацию",
-    modal_title: "Записаться на консультацию",
-    modal_submit: "Отправить",
-    modal_success_message: "Спасибо, мы свяжемся с вами",
+  videoTestimonials: [
+    {
+      title: "Родитель, 7 класс",
+      thumb: ASSET_HERO,
+      embedUrl: null,
+      placeholderHtml:
+        "<p style='margin:0;padding:1rem'>Видео будет здесь. Подключите iframe или файл позже.</p>",
+    },
+    {
+      title: "Выпускник 2024",
+      thumb: ASSET_HERO,
+      embedUrl: null,
+      placeholderHtml:
+        "<p style='margin:0;padding:1rem'>Заглушка: отзыв выпускника.</p>",
+    },
+    {
+      title: "Семья из 9 класса",
+      thumb: ASSET_HERO,
+      embedUrl: null,
+      placeholderHtml:
+        "<p style='margin:0;padding:1rem'>Заглушка: отзыв родителей.</p>",
+    },
+  ],
+
+  openDay: {
+    dateLine: "Апрель 2026 — дата уточняется",
   },
-  kz: {},
-  en: {},
 };
 
-// Заглушки: временно копируем русский текст для kz и en
-translations.kz = { ...translations.ru };
-translations.en = { ...translations.ru };
+/* --- Рендер: Why HTA --- */
+function renderWhyHta() {
+  const wrap = document.getElementById("why-hta-cards");
+  const detailEl = document.getElementById("why-hta-detail");
+  const detailText = document.getElementById("why-hta-detail-text");
+  const quoteEl = document.getElementById("why-hta-research-quote");
+  if (!wrap || !detailEl || !detailText || !quoteEl) return;
 
-const DATE_KEYS = [
-  { id: "date1", accent: "primary" },
-  { id: "date2", accent: "green" },
-  { id: "date3", accent: "orange" },
-];
+  quoteEl.textContent = pageData.whyHtaResearchQuote;
 
-let currentLanguage = "ru";
+  let selectedId = pageData.whyHtaCards[0]?.id;
 
-const getLocaleForLang = (lang) => {
-  if (lang === "kz") return "kk-KZ";
-  if (lang === "en") return "en-US";
-  return "ru-RU";
-};
-
-const formatOpenDay = (lang) => {
-  const openDayDate = new Date("2026-04-12");
-  const formatter = new Intl.DateTimeFormat(getLocaleForLang(lang), {
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-  });
-  return formatter.format(openDayDate);
-};
-
-const renderDates = (lang) => {
-  const datesList = document.getElementById("dates-list");
-  if (!datesList) return;
-
-  const t = translations[lang] || translations.ru;
-  datesList.innerHTML = "";
-
-  DATE_KEYS.forEach((item, index) => {
-    const card = document.createElement("article");
-    card.className = "date-card";
-
-    const pill = document.createElement("div");
-    pill.className = "date-pill";
-
-    const dot = document.createElement("span");
-    dot.className = "date-pill-dot";
-    if (item.accent === "orange") {
-      dot.style.background = "#ff8a3c";
-    }
-    if (item.accent === "primary") {
-      dot.style.background = "#ffd93b";
-    }
-
-    const pillText = document.createElement("span");
-    pillText.textContent = t.dates_pill_label;
-
-    pill.appendChild(dot);
-    pill.appendChild(pillText);
-
-    const nameEl = document.createElement("p");
-    nameEl.className = "date-name";
-    nameEl.textContent = t[`${item.id}_name`];
-
-    const metaEl = document.createElement("p");
-    metaEl.className = "date-meta";
-    metaEl.textContent = t[`${item.id}_meta`];
-
-    const noteEl = document.createElement("p");
-    noteEl.className = "date-note";
-    noteEl.textContent = t[`${item.id}_note`];
-
-    card.appendChild(pill);
-    card.appendChild(nameEl);
-    card.appendChild(metaEl);
-    card.appendChild(noteEl);
-
-    datesList.appendChild(card);
-  });
-};
-
-const applyTranslations = (lang) => {
-  const t = translations[lang] || translations.ru;
-
-  document.querySelectorAll("[data-i18n]").forEach((el) => {
-    const key = el.getAttribute("data-i18n");
-    if (!key) return;
-    const value = t[key];
-    if (typeof value === "string") {
-      el.textContent = value;
-    }
-  });
-
-  document.querySelectorAll("[data-i18n-placeholder]").forEach((el) => {
-    const key = el.getAttribute("data-i18n-placeholder");
-    if (!key) return;
-    const value = t[key];
-    if (typeof value === "string") {
-      el.setAttribute("placeholder", value);
-    }
-  });
-
-  document.querySelectorAll("[data-i18n-option]").forEach((el) => {
-    const key = el.getAttribute("data-i18n-option");
-    if (!key) return;
-    const value = t[key];
-    if (typeof value === "string") {
-      el.textContent = value;
-    }
-  });
-
-  // Дата открытого урока
-  const openDayEl = document.getElementById("next-open-day");
-  if (openDayEl) {
-    openDayEl.textContent = `${t.hero_open_day_label} ${formatOpenDay(lang)}`;
-  }
-
-  // Заголовок документа можно при желании тоже локализовать
-};
-
-const setLanguage = (lang) => {
-  if (!translations[lang]) {
-    lang = "ru";
-  }
-  currentLanguage = lang;
-  localStorage.setItem("hta_lang", lang);
-
-  const html = document.documentElement;
-  if (html) {
-    html.setAttribute("lang", lang === "kz" ? "kk" : lang);
-  }
-
-  document.querySelectorAll(".lang-btn").forEach((btn) => {
-    const btnLang = btn.getAttribute("data-lang");
-    if (btnLang === lang) {
-      btn.classList.add("is-active");
-    } else {
-      btn.classList.remove("is-active");
-    }
-  });
-
-  applyTranslations(lang);
-  renderDates(lang);
-};
-
-document.addEventListener("DOMContentLoaded", () => {
-  const storedLang = localStorage.getItem("hta_lang");
-  if (storedLang && translations[storedLang]) {
-    currentLanguage = storedLang;
-  } else {
-    currentLanguage = "ru";
-  }
-
-  const yearEl = document.getElementById("year");
-  if (yearEl) {
-    yearEl.textContent = new Date().getFullYear().toString();
-  }
-
-  const navToggle = document.querySelector(".nav-toggle");
-  const navList = document.querySelector(".nav-list");
-  if (navToggle && navList) {
-    navToggle.addEventListener("click", () => {
-      navToggle.classList.toggle("is-open");
-      navList.classList.toggle("is-open");
+  const showDetail = (id) => {
+    const card = pageData.whyHtaCards.find((c) => c.id === id);
+    if (!card) return;
+    selectedId = id;
+    detailText.textContent = card.detail;
+    detailEl.hidden = false;
+    wrap.querySelectorAll(".why-card").forEach((btn) => {
+      btn.classList.toggle("is-active", btn.dataset.id === id);
     });
+  };
 
-    navList.addEventListener("click", (event) => {
-      const target = event.target;
-      if (target instanceof HTMLElement && target.tagName === "A") {
-        navToggle.classList.remove("is-open");
-        navList.classList.remove("is-open");
+  pageData.whyHtaCards.forEach((card) => {
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = `why-card why-card--${card.accent}`;
+    btn.dataset.id = card.id;
+    btn.innerHTML = `
+      <h3 class="why-card-title">${escapeHtml(card.title)}</h3>
+      ${card.stat ? `<p class="why-card-stat">${escapeHtml(card.stat)}</p>` : ""}
+    `;
+    btn.addEventListener("click", () => showDetail(card.id));
+    wrap.appendChild(btn);
+  });
+
+  showDetail(selectedId);
+}
+
+function escapeHtml(str) {
+  const div = document.createElement("div");
+  div.textContent = str;
+  return div.innerHTML;
+}
+
+/* --- Карусель отзывов учеников --- */
+function initStudentCarousel() {
+  const track = document.getElementById("student-carousel-track");
+  const prev = document.getElementById("student-carousel-prev");
+  const next = document.getElementById("student-carousel-next");
+  if (!track || !prev || !next) return;
+
+  const items = pageData.whyHtaStudentQuotes;
+  let index = 0;
+
+  const render = () => {
+    const q = items[index];
+    track.innerHTML = `
+      <div class="student-quote-card">
+        <p class="student-quote-text">«${escapeHtml(q.text)}»</p>
+        <p class="student-quote-meta">${escapeHtml(q.name)} · ${escapeHtml(q.grade)}</p>
+      </div>
+    `;
+  };
+
+  prev.addEventListener("click", () => {
+    index = (index - 1 + items.length) % items.length;
+    render();
+  });
+  next.addEventListener("click", () => {
+    index = (index + 1) % items.length;
+    render();
+  });
+  render();
+}
+
+/* --- Unique features --- */
+function renderUniqueFeatures() {
+  const grid = document.getElementById("features-grid");
+  if (!grid) return;
+  const isCoarse = window.matchMedia("(hover: none), (pointer: coarse)").matches;
+
+  pageData.uniqueFeatures.forEach((item, i) => {
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "feature-card";
+    btn.setAttribute("aria-expanded", "false");
+    btn.innerHTML = `
+      <img src="${item.image}" alt="" loading="lazy" />
+      <div class="feature-card-title-wrap">
+        <p class="feature-card-title">${escapeHtml(item.title)}</p>
+      </div>
+      <p class="feature-short">${escapeHtml(item.description)}</p>
+      <div class="card-overlay" aria-hidden="true">
+        <p class="card-overlay-text">${escapeHtml(item.description)}</p>
+      </div>
+    `;
+
+    if (isCoarse) {
+      btn.addEventListener("click", () => {
+        const open = !btn.classList.contains("is-expanded");
+        grid.querySelectorAll(".feature-card.is-expanded").forEach((el) => {
+          if (el !== btn) {
+            el.classList.remove("is-expanded");
+            el.setAttribute("aria-expanded", "false");
+          }
+        });
+        btn.classList.toggle("is-expanded", open);
+        btn.setAttribute("aria-expanded", open ? "true" : "false");
+      });
+    }
+    grid.appendChild(btn);
+  });
+}
+
+/* --- Marquee Life --- */
+function renderLifeMarquee() {
+  const row1 = document.getElementById("marquee-row-1");
+  const row2 = document.getElementById("marquee-row-2");
+  if (!row1 || !row2) return;
+
+  const imgs = pageData.lifeAtHtaImages;
+  const duplicate = [...imgs, ...imgs];
+
+  const buildRow = (container) => {
+    duplicate.forEach((src) => {
+      const img = document.createElement("img");
+      img.src = src;
+      img.alt = "";
+      img.loading = "lazy";
+      container.appendChild(img);
+    });
+  };
+
+  buildRow(row1);
+  buildRow(row2);
+}
+
+/* --- Achievements --- */
+function renderAchievements() {
+  const grid = document.getElementById("achievements-grid");
+  if (!grid) return;
+  pageData.achievements.forEach((a) => {
+    const article = document.createElement("article");
+    article.className = "achievement-card";
+    article.innerHTML = `
+      <img src="${a.image}" alt="" loading="lazy" />
+      <p>${escapeHtml(a.caption)}</p>
+    `;
+    grid.appendChild(article);
+  });
+}
+
+/* --- Companies --- */
+function renderCompanies() {
+  const wrap = document.getElementById("companies-logos");
+  if (!wrap) return;
+  pageData.companies.forEach((c) => {
+    const div = document.createElement("div");
+    div.className = "company-logo";
+    if (c.logo) {
+      div.innerHTML = `<img src="${c.logo}" alt="${escapeHtml(c.name)}" />`;
+    } else {
+      div.innerHTML = `<span>${escapeHtml(c.name)}</span>`;
+    }
+    wrap.appendChild(div);
+  });
+}
+
+/* --- Video testimonials + modal --- */
+let videoSlideIndex = 0;
+
+function renderVideoSlides() {
+  const track = document.getElementById("video-carousel-track");
+  if (!track) return;
+  track.innerHTML = "";
+  pageData.videoTestimonials.forEach((v, i) => {
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "video-card";
+    btn.dataset.index = String(i);
+    btn.innerHTML = `
+      <img src="${v.thumb}" alt="" loading="lazy" />
+      <div class="video-card-play"><span>▶</span></div>
+      <div class="video-card-caption">${escapeHtml(v.title)}</div>
+    `;
+    btn.addEventListener("click", () => openVideoModal(i));
+    track.appendChild(btn);
+  });
+}
+
+function openVideoModal(index) {
+  const backdrop = document.getElementById("video-modal-backdrop");
+  const body = document.getElementById("video-modal-body");
+  const title = document.getElementById("video-modal-title");
+  if (!backdrop || !body || !title) return;
+
+  const v = pageData.videoTestimonials[index];
+  title.textContent = v.title;
+  if (v.embedUrl) {
+    body.innerHTML = `<iframe src="${escapeHtml(v.embedUrl)}" title="${escapeHtml(v.title)}" allowfullscreen></iframe>`;
+  } else {
+    body.innerHTML = v.placeholderHtml || "<p>Контент скоро появится.</p>";
+  }
+  backdrop.classList.add("is-open");
+  backdrop.setAttribute("aria-hidden", "false");
+  document.body.style.overflow = "hidden";
+}
+
+function closeVideoModal() {
+  const backdrop = document.getElementById("video-modal-backdrop");
+  const body = document.getElementById("video-modal-body");
+  if (!backdrop) return;
+  backdrop.classList.remove("is-open");
+  backdrop.setAttribute("aria-hidden", "true");
+  document.body.style.overflow = "";
+  if (body) body.innerHTML = "";
+}
+
+function initVideoCarousel() {
+  const prev = document.getElementById("video-carousel-prev");
+  const next = document.getElementById("video-carousel-next");
+  const track = document.getElementById("video-carousel-track");
+  if (!prev || !next || !track) return;
+
+  const total = pageData.videoTestimonials.length;
+
+  const updateMobileSlide = () => {
+    const cards = track.querySelectorAll(".video-card");
+    cards.forEach((card, i) => {
+      card.style.display = i === videoSlideIndex ? "" : "none";
+    });
+  };
+
+  const mq = window.matchMedia("(max-width: 992px)");
+
+  const go = (delta) => {
+    if (!mq.matches) return;
+    videoSlideIndex = (videoSlideIndex + delta + total) % total;
+    updateMobileSlide();
+  };
+
+  prev.addEventListener("click", () => go(-1));
+  next.addEventListener("click", () => go(1));
+
+  const applyLayout = () => {
+    const cards = track.querySelectorAll(".video-card");
+    if (mq.matches) {
+      track.style.display = "block";
+      updateMobileSlide();
+    } else {
+      track.style.display = "";
+      cards.forEach((card) => {
+        card.style.display = "";
+      });
+    }
+  };
+  mq.addEventListener("change", applyLayout);
+  applyLayout();
+}
+
+/* --- Hero form --- */
+function initHeroForm() {
+  const form = document.getElementById("hero-lead-form");
+  if (!(form instanceof HTMLFormElement)) return;
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const fd = new FormData(form);
+    const data = Object.fromEntries(fd.entries());
+    console.log("Hero lead form:", data);
+    form.reset();
+  });
+}
+
+/* --- Open day CTA --- */
+function initOpenDay() {
+  const dateEl = document.getElementById("open-day-date");
+  if (dateEl) dateEl.textContent = pageData.openDay.dateLine;
+
+  const btn = document.getElementById("open-day-btn-register");
+  if (btn) {
+    btn.addEventListener("click", () => {
+      document.getElementById("hero")?.scrollIntoView({ behavior: "smooth" });
+    });
+  }
+}
+
+/* --- Header: burger + lang (визуально) --- */
+function initHeader() {
+  const toggle = document.querySelector(".nav-toggle");
+  const list = document.getElementById("nav-list");
+  if (toggle && list) {
+    toggle.addEventListener("click", () => {
+      const open = list.classList.toggle("is-open");
+      toggle.classList.toggle("is-open", open);
+      toggle.setAttribute("aria-expanded", open ? "true" : "false");
+    });
+    list.addEventListener("click", (e) => {
+      const t = e.target;
+      if (t instanceof HTMLElement && t.closest("a")) {
+        list.classList.remove("is-open");
+        toggle.classList.remove("is-open");
+        toggle.setAttribute("aria-expanded", "false");
       }
     });
   }
@@ -307,284 +452,107 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll(".lang-btn").forEach((btn) => {
     btn.addEventListener("click", () => {
       const lang = btn.getAttribute("data-lang");
-      if (!lang) return;
-      setLanguage(lang);
+      document.querySelectorAll(".lang-btn").forEach((b) => b.classList.remove("is-active"));
+      btn.classList.add("is-active");
+      document.documentElement.setAttribute("lang", lang === "kz" ? "kk" : lang || "ru");
+      localStorage.setItem("hta_lang", lang || "ru");
     });
   });
 
-  document.querySelectorAll("[data-scroll-to]").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const targetId = btn.getAttribute("data-scroll-to");
-      if (!targetId) return;
-      const target = document.querySelector(targetId);
-      if (target) {
-        target.scrollIntoView({ behavior: "smooth", block: "start" });
-      }
+  const saved = localStorage.getItem("hta_lang");
+  if (saved) {
+    document.querySelectorAll(".lang-btn").forEach((b) => {
+      b.classList.toggle("is-active", b.getAttribute("data-lang") === saved);
     });
+    document.documentElement.setAttribute("lang", saved === "kz" ? "kk" : saved);
+  }
+}
+
+/* --- Floating + consult modal --- */
+function initConsultModal() {
+  const backdrop = document.getElementById("consult-modal-backdrop");
+  const closeBtn = document.getElementById("consult-modal-close");
+  const form = document.getElementById("consult-modal-form");
+  const floatBtn = document.getElementById("floating-consult-cta");
+  const success = document.getElementById("consult-modal-success");
+
+  const open = () => {
+    backdrop?.classList.add("is-open");
+    backdrop?.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+  };
+  const close = () => {
+    backdrop?.classList.remove("is-open");
+    backdrop?.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+    if (success) success.textContent = "";
+  };
+
+  floatBtn?.addEventListener("click", open);
+  closeBtn?.addEventListener("click", close);
+  backdrop?.addEventListener("click", (e) => {
+    if (e.target === backdrop) close();
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      close();
+      closeVideoModal();
+    }
   });
 
-  const observer = new IntersectionObserver(
+  form?.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const fd = new FormData(form);
+    console.log("Consult modal:", Object.fromEntries(fd.entries()));
+    if (success) success.textContent = "Спасибо, мы свяжемся с вами";
+    form.reset();
+  });
+}
+
+/* --- Reveal on scroll --- */
+function initReveal() {
+  const obs = new IntersectionObserver(
     (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible");
-          observer.unobserve(entry.target);
+      entries.forEach((en) => {
+        if (en.isIntersecting) {
+          en.target.classList.add("is-visible");
+          obs.unobserve(en.target);
         }
       });
     },
-    {
-      threshold: 0.18,
-    }
+    { threshold: 0.12 }
   );
+  document.querySelectorAll(".reveal").forEach((el) => obs.observe(el));
+}
 
-  document.querySelectorAll(".reveal").forEach((section) => {
-    observer.observe(section);
+/* --- Year --- */
+function setYear() {
+  const y = document.getElementById("year");
+  if (y) y.textContent = String(new Date().getFullYear());
+}
+
+/* --- Video modal close --- */
+function initVideoModalChrome() {
+  document.getElementById("video-modal-close")?.addEventListener("click", closeVideoModal);
+  document.getElementById("video-modal-backdrop")?.addEventListener("click", (e) => {
+    if (e.target === e.currentTarget) closeVideoModal();
   });
+}
 
-  const statCards = document.querySelectorAll(".stat-value[data-target]");
-  const animateStats = () => {
-    statCards.forEach((valueEl) => {
-      const target = Number(valueEl.getAttribute("data-target") || "0");
-      const hasPlus = target >= 100;
-      const duration = 900;
-      const startTime = performance.now();
-
-      const step = (now) => {
-        const progress = Math.min((now - startTime) / duration, 1);
-        const eased = 1 - Math.pow(1 - progress, 3);
-        const current = Math.floor(target * eased);
-        valueEl.textContent = hasPlus ? `${current}+` : `${current}`;
-        if (progress < 1) {
-          requestAnimationFrame(step);
-        }
-      };
-
-      requestAnimationFrame(step);
-    });
-  };
-
-  const numbersSection = document.getElementById("numbers");
-  if (numbersSection) {
-    const statsObserver = new IntersectionObserver(
-      (entries, obs) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            animateStats();
-            obs.disconnect();
-          }
-        });
-      },
-      { threshold: 0.35 }
-    );
-    statsObserver.observe(numbersSection);
-  } else {
-    animateStats();
-  }
-
-  const form = document.getElementById("apply-form");
-  const successMessage = document.getElementById("form-success");
-
-  const setFieldError = (id, message) => {
-    const errorEl = document.querySelector(`.field-error[data-for="${id}"]`);
-    if (errorEl) {
-      errorEl.textContent = message;
-    }
-  };
-
-  const clearFieldErrors = () => {
-    document.querySelectorAll(".field-error").forEach((el) => {
-      el.textContent = "";
-    });
-  };
-
-  const validatePhone = (value) => {
-    const cleaned = value.replace(/[\s()-]/g, "");
-    return cleaned.length >= 10;
-  };
-
-  if (form instanceof HTMLFormElement) {
-    form.addEventListener("submit", (event) => {
-      event.preventDefault();
-      clearFieldErrors();
-      if (successMessage) successMessage.textContent = "";
-
-      const t = translations[currentLanguage] || translations.ru;
-
-      const parentNameInput = document.getElementById("parent-name");
-      const childAgeInput = document.getElementById("child-age");
-      const phoneInput = document.getElementById("phone");
-
-      let hasError = false;
-
-      if (parentNameInput instanceof HTMLInputElement) {
-        if (!parentNameInput.value.trim()) {
-          setFieldError("parent-name", t.error_parent_name_required);
-          hasError = true;
-        }
-      }
-
-      if (childAgeInput instanceof HTMLInputElement) {
-        const age = Number(childAgeInput.value);
-        if (!age) {
-          setFieldError("child-age", t.error_child_age_required);
-          hasError = true;
-        } else if (age < 3 || age > 18) {
-          setFieldError("child-age", t.error_child_age_range);
-          hasError = true;
-        }
-      }
-
-      if (phoneInput instanceof HTMLInputElement) {
-        if (!phoneInput.value.trim()) {
-          setFieldError("phone", t.error_phone_required);
-          hasError = true;
-        } else if (!validatePhone(phoneInput.value)) {
-          setFieldError("phone", t.error_phone_invalid);
-          hasError = true;
-        }
-      }
-
-      if (hasError) {
-        return;
-      }
-
-      if (successMessage) {
-        successMessage.textContent = t.success_message;
-      }
-
-      form.reset();
-    });
-  }
-
-  // --- Component: Modal window ---
-  const ConsultationModal = (() => {
-    const backdrop = document.getElementById("consult-modal-backdrop");
-    const closeBtn = document.getElementById("consult-modal-close");
-    const modalForm = document.getElementById("consult-modal-form");
-    const successEl = document.getElementById("consult-modal-success");
-    const nameInput = document.getElementById("consult-name");
-    const phoneInput = document.getElementById("consult-phone");
-
-    if (!backdrop || !modalForm) {
-      return { open: () => {}, close: () => {} };
-    }
-
-    let isOpen = false;
-    let lastFocusedEl = null;
-    let scrollOverflowBackup = "";
-
-    const setFieldError = (id, message) => {
-      const errorEl = backdrop.querySelector(`.field-error[data-for="${id}"]`);
-      if (errorEl) errorEl.textContent = message;
-    };
-
-    const clearFieldErrors = () => {
-      backdrop.querySelectorAll(".field-error").forEach((el) => {
-        el.textContent = "";
-      });
-    };
-
-    const lockScroll = () => {
-      scrollOverflowBackup = document.body.style.overflow || "";
-      document.body.style.overflow = "hidden";
-    };
-
-    const unlockScroll = () => {
-      document.body.style.overflow = scrollOverflowBackup;
-      scrollOverflowBackup = "";
-    };
-
-    const open = (triggerEl) => {
-      if (isOpen) return;
-      isOpen = true;
-      lastFocusedEl = triggerEl || document.activeElement;
-
-      if (successEl) successEl.textContent = "";
-      clearFieldErrors();
-
-      lockScroll();
-      backdrop.classList.add("is-open");
-      backdrop.setAttribute("aria-hidden", "false");
-
-      window.setTimeout(() => {
-        if (nameInput) nameInput.focus();
-      }, 70);
-    };
-
-    const close = () => {
-      if (!isOpen) return;
-      isOpen = false;
-
-      backdrop.classList.remove("is-open");
-      backdrop.setAttribute("aria-hidden", "true");
-      unlockScroll();
-
-      if (lastFocusedEl && lastFocusedEl.focus) {
-        lastFocusedEl.focus();
-      }
-    };
-
-    backdrop.addEventListener("click", (event) => {
-      if (!isOpen) return;
-      if (event.target === backdrop) close();
-    });
-
-    if (closeBtn) {
-      closeBtn.addEventListener("click", () => close());
-    }
-
-    document.addEventListener("keydown", (event) => {
-      if (!isOpen) return;
-      if (event.key === "Escape") close();
-    });
-
-    modalForm.addEventListener("submit", (event) => {
-      event.preventDefault();
-      clearFieldErrors();
-      if (successEl) successEl.textContent = "";
-
-      const t = translations[currentLanguage] || translations.ru;
-      let hasError = false;
-
-      const nameVal = nameInput ? nameInput.value.trim() : "";
-      const phoneVal = phoneInput ? phoneInput.value.trim() : "";
-
-      if (!nameVal) {
-        setFieldError("consult-name", t.error_parent_name_required);
-        hasError = true;
-      }
-
-      // Минимальная проверка: не пустой
-      if (!phoneVal) {
-        setFieldError("consult-phone", t.error_phone_required);
-        hasError = true;
-      }
-
-      if (hasError) return;
-
-      if (successEl) successEl.textContent = t.modal_success_message;
-
-      // Если backend не подключен:
-      // eslint-disable-next-line no-console
-      console.log("Consultation request:", {
-        name: nameVal,
-        phone: phoneVal,
-        lang: currentLanguage,
-      });
-
-      modalForm.reset();
-    });
-
-    return { open, close };
-  })();
-
-  // --- Component: Floating button ---
-  (() => {
-    const btn = document.getElementById("floating-consult-cta");
-    if (!btn) return;
-    btn.addEventListener("click", () => ConsultationModal.open(btn));
-  })();
-
-  setLanguage(currentLanguage);
+document.addEventListener("DOMContentLoaded", () => {
+  setYear();
+  initHeader();
+  renderWhyHta();
+  initStudentCarousel();
+  renderUniqueFeatures();
+  renderLifeMarquee();
+  renderAchievements();
+  renderCompanies();
+  renderVideoSlides();
+  initVideoCarousel();
+  initVideoModalChrome();
+  initHeroForm();
+  initOpenDay();
+  initConsultModal();
+  initReveal();
 });
-
