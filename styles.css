@@ -232,6 +232,7 @@ button {
 .hero-bg {
   position: absolute;
   inset: 0;
+  /* Фон задаётся в script.js (PHOTO_HERO = первый файл из ALL_PHOTOS) */
   background-image: url("./images/DSC01536.jpg");
   background-size: cover;
   background-position: center;

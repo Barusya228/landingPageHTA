@@ -3,7 +3,56 @@
  * Контент меняется через объекты ниже, без правок разметки секций.
  */
 
-const ASSET_HERO = "./images/DSC01536.jpg";
+/** Все JPG из папки images (38 шт.), по имени файла */
+const ALL_PHOTOS = [
+  "./images/DSC01536.jpg",
+  "./images/DSC01737.jpg",
+  "./images/DSC02025.jpg",
+  "./images/DSC03788.jpg",
+  "./images/DSC03794.jpg",
+  "./images/DSC03804.jpg",
+  "./images/DSC03812.jpg",
+  "./images/DSC03835.jpg",
+  "./images/DSC03884.jpg",
+  "./images/DSC03897.jpg",
+  "./images/DSC04357.jpg",
+  "./images/DSC05011.jpg",
+  "./images/DSC05691.jpg",
+  "./images/DSC05891.jpg",
+  "./images/DSC06134.jpg",
+  "./images/DSC06150.jpg",
+  "./images/DSC06356.jpg",
+  "./images/DSC06368.jpg",
+  "./images/DSC06425.jpg",
+  "./images/DSC06426.jpg",
+  "./images/DSC06531.jpg",
+  "./images/DSC06532.jpg",
+  "./images/DSC06533.jpg",
+  "./images/DSC06534.jpg",
+  "./images/DSC06536.jpg",
+  "./images/DSC06537.jpg",
+  "./images/DSC06547.jpg",
+  "./images/DSC06549.jpg",
+  "./images/DSC06765.jpg",
+  "./images/DSC06766.jpg",
+  "./images/DSC06773.jpg",
+  "./images/DSC06965.jpg",
+  "./images/DSC06984.jpg",
+  "./images/DSC07159.jpg",
+  "./images/DSC07181.jpg",
+  "./images/DSC07200.jpg",
+  "./images/DSC07246.jpg",
+  "./images/DSC07259.jpg",
+];
+
+const ASSET_LOGO = "./images/logo.png";
+
+/** Распределение: 1 hero + 6 фич + 3 достижения + 3 превью видео + 25 в жизни школы = 38 */
+const PHOTO_HERO = ALL_PHOTOS[0];
+const PHOTO_FEATURES = ALL_PHOTOS.slice(1, 7);
+const PHOTO_ACHIEVEMENTS = ALL_PHOTOS.slice(7, 10);
+const PHOTO_VIDEO_THUMBS = ALL_PHOTOS.slice(10, 13);
+const PHOTO_LIFE = ALL_PHOTOS.slice(13);
 
 const pageData = {
   whyHtaCards: [
@@ -57,80 +106,81 @@ const pageData = {
   uniqueFeatures: [
     {
       title: "Проекты из реальной жизни",
-      image: ASSET_HERO,
+      image: PHOTO_FEATURES[0],
       description: "Ученики решают задачи из практики: от социальных инициатив до технологических прототипов.",
     },
     {
       title: "Курс предпринимательства",
-      image: ASSET_HERO,
+      image: PHOTO_FEATURES[1],
       description: "Бизнес-модели, питчи, работа в командах и знакомство с основами стартапов.",
     },
     {
       title: "Курс архитектуры и дизайна",
-      image: ASSET_HERO,
+      image: PHOTO_FEATURES[2],
       description: "Пространство, эстетика и проектирование — от эскиза до презентации идеи.",
     },
     {
       title: "Sports & Arts",
-      image: ASSET_HERO,
+      image: PHOTO_FEATURES[3],
       description: "Спорт и искусство как часть баланса: команды, выступления и творческие студии.",
     },
     {
       title: "Дебаты",
-      image: ASSET_HERO,
+      image: PHOTO_FEATURES[4],
       description: "Аргументация, публичные выступления и участие в турнирах между школами.",
     },
     {
       title: "STEM и робототехника",
-      image: ASSET_HERO,
+      image: PHOTO_FEATURES[5],
       description: "Инженерное мышление, программирование и командные соревнования.",
     },
   ],
 
-  lifeAtHtaImages: [ASSET_HERO, ASSET_HERO, ASSET_HERO, ASSET_HERO, ASSET_HERO, ASSET_HERO],
+  lifeAtHtaImages: PHOTO_LIFE,
 
   achievements: [
     {
-      image: ASSET_HERO,
+      image: PHOTO_ACHIEVEMENTS[0],
       caption: "Команда HTA Goats в финале турнира по дебатам среди международных школ",
     },
     {
-      image: ASSET_HERO,
+      image: PHOTO_ACHIEVEMENTS[1],
       caption: "2 место на международном научном форуме Shoqan Ecology senior",
     },
     {
-      image: ASSET_HERO,
+      image: PHOTO_ACHIEVEMENTS[2],
       caption: "Победа в OyLab start up competition",
     },
   ],
 
+  /** Логотип школы для блока партнёров (файл logo.png из images) */
   companies: [
-    { name: "Компания A", logo: null },
-    { name: "Компания B", logo: null },
-    { name: "Компания C", logo: null },
-    { name: "Компания D", logo: null },
-    { name: "Компания E", logo: null },
-    { name: "Компания F", logo: null },
+    { name: "Партнёр 1", logo: ASSET_LOGO },
+    { name: "Партнёр 2", logo: ASSET_LOGO },
+    { name: "Партнёр 3", logo: ASSET_LOGO },
+    { name: "Партнёр 4", logo: ASSET_LOGO },
+    { name: "Партнёр 5", logo: ASSET_LOGO },
+    { name: "Партнёр 6", logo: ASSET_LOGO },
   ],
 
   videoTestimonials: [
     {
       title: "Родитель, 7 класс",
-      thumb: ASSET_HERO,
+      thumb: PHOTO_VIDEO_THUMBS[0],
       embedUrl: null,
       placeholderHtml:
         "<p style='margin:0;padding:1rem'>Видео будет здесь. Подключите iframe или файл позже.</p>",
     },
     {
       title: "Выпускник 2024",
-      thumb: ASSET_HERO,
+      thumb: PHOTO_VIDEO_THUMBS[1],
       embedUrl: null,
       placeholderHtml:
         "<p style='margin:0;padding:1rem'>Заглушка: отзыв выпускника.</p>",
     },
     {
       title: "Семья из 9 класса",
-      thumb: ASSET_HERO,
+      thumb: PHOTO_VIDEO_THUMBS[2],
       embedUrl: null,
       placeholderHtml:
         "<p style='margin:0;padding:1rem'>Заглушка: отзыв родителей.</p>",
@@ -257,17 +307,19 @@ function renderUniqueFeatures() {
   });
 }
 
-/* --- Marquee Life --- */
+/* --- Marquee Life (все кадры из PHOTO_LIFE; второй ряд — в обратном порядке) --- */
 function renderLifeMarquee() {
   const row1 = document.getElementById("marquee-row-1");
   const row2 = document.getElementById("marquee-row-2");
   if (!row1 || !row2) return;
 
   const imgs = pageData.lifeAtHtaImages;
-  const duplicate = [...imgs, ...imgs];
+  const forward = [...imgs, ...imgs];
+  const reversed = [...imgs].reverse();
+  const backward = [...reversed, ...reversed];
 
-  const buildRow = (container) => {
-    duplicate.forEach((src) => {
+  const buildRow = (container, sources) => {
+    sources.forEach((src) => {
       const img = document.createElement("img");
       img.src = src;
       img.alt = "";
@@ -276,8 +328,8 @@ function renderLifeMarquee() {
     });
   };
 
-  buildRow(row1);
-  buildRow(row2);
+  buildRow(row1, forward);
+  buildRow(row2, backward);
 }
 
 /* --- Achievements --- */
@@ -539,8 +591,16 @@ function initVideoModalChrome() {
   });
 }
 
+function initHeroBackground() {
+  const bg = document.querySelector(".hero-bg");
+  if (bg) {
+    bg.style.backgroundImage = `url("${PHOTO_HERO}")`;
+  }
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   setYear();
+  initHeroBackground();
   initHeader();
   renderWhyHta();
   initStudentCarousel();
