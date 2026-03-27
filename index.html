@@ -14,7 +14,7 @@
   <header class="site-header">
     <div class="container header-inner">
       <a href="#hero" class="logo">
-        <img src="./images/logo.png" alt="HTA Logo" width="40" height="40" />
+        <img src="./images/logo.png" alt="HTA Logo" width="56" height="56" />
         <span class="logo-text">High Tech Academy</span>
       </a>
       <nav class="nav" aria-label="Основная навигация">
@@ -39,15 +39,17 @@
   </header>
 
   <main>
-    <section id="hero" class="hero section" aria-labelledby="hero-title">
-      <div class="hero-bg" aria-hidden="true"></div>
+    <section id="hero" class="hero" aria-labelledby="hero-title">
       <div class="hero-overlay" aria-hidden="true"></div>
-      <div class="container hero-layout">
-        <div class="hero-main">
-          <h1 id="hero-title" class="hero-title">Международная школа с аккредитацией CIS</h1>
-          <p class="hero-lead">Готовим к жизни, а не к тестам</p>
-          <button type="button" class="btn btn-open-day-primary open-modal">Записаться</button>
-        </div>
+
+      <div class="hero-content">
+        <h1 id="hero-title">Международная школа<br />с аккредитацией CIS</h1>
+        <p>Готовим к жизни, а не к тестам</p>
+      </div>
+
+      <div class="hero-video">
+        <button type="button" class="video-button" aria-label="Смотреть видео о школе">▶</button>
+        <span>Какая школа HTA?</span>
       </div>
     </section>
 
@@ -206,7 +208,7 @@
       <div class="container footer-grid">
         <div class="footer-brand-block">
           <a href="#hero" class="logo logo--footer">
-            <img src="./images/logo.png" alt="" width="36" height="36" />
+            <img src="./images/logo.png" alt="" width="52" height="52" />
             <span>High Tech Academy</span>
           </a>
           <p class="footer-tagline">Международная школа в Алматы</p>
@@ -229,9 +231,11 @@
         <div class="footer-social">
           <p><strong>Соцсети</strong></p>
           <ul class="social-list">
-            <li><a href="#" aria-label="Instagram">Instagram</a></li>
-            <li><a href="#" aria-label="Facebook">Facebook</a></li>
-            <li><a href="#" aria-label="YouTube">YouTube</a></li>
+            <li><a href="https://www.instagram.com/hta.kz" target="_blank" rel="noopener noreferrer" aria-label="Instagram">Instagram</a></li>
+            <li><a href="https://www.facebook.com/HighTechAcademyKZ/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">Facebook</a></li>
+            <li><a href="https://www.youtube.com/channel/UCAAhNxRHrwwhFYMT9qIJ7AA/featured" target="_blank" rel="noopener noreferrer" aria-label="YouTube">YouTube</a></li>
+            <li><a href="https://www.tiktok.com/@high.tech.academy1" target="_blank" rel="noopener noreferrer" aria-label="TikTok">TikTok</a></li>
+            <li><a href="https://www.linkedin.com/company/high-tech-academy-almaty/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">LinkedIn</a></li>
           </ul>
         </div>
       </div>
@@ -245,16 +249,16 @@
 
   <div class="modal-form" id="applicationModal" aria-hidden="true">
     <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="application-modal-title">
-      <h2 id="application-modal-title">Оставить заявку</h2>
-      <p>Заполните форму — мы свяжемся с вами и ответим на вопросы.</p>
+      <h2 id="application-modal-title">Расскажите нам о себе</h2>
+      <p>Заполните форму — мы свяжемся с вами в течении рабочего дня.</p>
 
       <form class="hero-form" id="hero-lead-form" novalidate>
         <div class="form-row">
-          <label class="visually-hidden" for="modal-parent-name">Имя фамилия</label>
+          <label class="visually-hidden" for="modal-parent-name">ФИО ребенка *</label>
           <input id="modal-parent-name" name="parentName" type="text" required placeholder="Имя фамилия" />
         </div>
         <div class="form-row">
-          <label class="visually-hidden" for="modal-student-name">Имя ученика</label>
+          <label class="visually-hidden" for="modal-student-name">ФИО родителя *</label>
           <input id="modal-student-name" name="studentName" type="text" required placeholder="Имя ученика" />
         </div>
         <div class="form-row">

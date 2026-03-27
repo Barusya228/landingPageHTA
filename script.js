@@ -54,6 +54,11 @@ const PHOTO_ACHIEVEMENTS = ALL_PHOTOS.slice(7, 10);
 const PHOTO_VIDEO_THUMBS = ALL_PHOTOS.slice(10, 13);
 const PHOTO_LIFE = ALL_PHOTOS.slice(13);
 const LIFE_MARQUEE_MAX = 14;
+const INSTAGRAM_REEL_PERMALINKS = [
+  "https://www.instagram.com/reel/DWEMEoODe7q/?utm_source=ig_embed&utm_campaign=loading",
+  "https://www.instagram.com/reel/DPvMWytD2eB/?utm_source=ig_embed&utm_campaign=loading",
+  "https://www.instagram.com/reel/DKhFaLBNlh-/?utm_source=ig_embed&utm_campaign=loading",
+];
 
 const pageData = {
   uniqueFeatures: [
@@ -121,22 +126,19 @@ const pageData = {
       title: "Родитель, 7 класс",
       thumb: PHOTO_VIDEO_THUMBS[0],
       embedUrl: null,
-      placeholderHtml:
-        "<p style='margin:0;padding:1rem'>Видео будет здесь. Подключите iframe или файл позже.</p>",
+      instagramPermalink: INSTAGRAM_REEL_PERMALINKS[0],
     },
     {
       title: "Выпускник 2024",
       thumb: PHOTO_VIDEO_THUMBS[1],
       embedUrl: null,
-      placeholderHtml:
-        "<p style='margin:0;padding:1rem'>Заглушка: отзыв выпускника.</p>",
+      instagramPermalink: INSTAGRAM_REEL_PERMALINKS[1],
     },
     {
       title: "Семья из 9 класса",
       thumb: PHOTO_VIDEO_THUMBS[2],
       embedUrl: null,
-      placeholderHtml:
-        "<p style='margin:0;padding:1rem'>Заглушка: отзыв родителей.</p>",
+      instagramPermalink: INSTAGRAM_REEL_PERMALINKS[2],
     },
   ],
 
@@ -335,6 +337,29 @@ function renderVideoSlides() {
   });
 }
 
+function ensureInstagramEmbedScript() {
+  if (window.instgrm?.Embeds) return;
+  if (document.querySelector('script[src="https://www.instagram.com/embed.js"]')) return;
+  const script = document.createElement("script");
+  script.async = true;
+  script.src = "https://www.instagram.com/embed.js";
+  document.body.appendChild(script);
+}
+
+function renderInstagramEmbed(container, permalink) {
+  container.innerHTML = `
+    <blockquote
+      class="instagram-media"
+      data-instgrm-captioned
+      data-instgrm-permalink="${escapeHtml(permalink)}"
+      data-instgrm-version="14"
+      style="background:#FFF;border:0;border-radius:3px;box-shadow:0 0 1px 0 rgba(0,0,0,.5),0 1px 10px 0 rgba(0,0,0,.15);margin:1px auto;max-width:540px;min-width:326px;padding:0;width:calc(100% - 2px);"
+    ></blockquote>
+  `;
+  ensureInstagramEmbedScript();
+  window.instgrm?.Embeds?.process();
+}
+
 function openVideoModal(index) {
   const backdrop = document.getElementById("video-modal-backdrop");
   const body = document.getElementById("video-modal-body");
@@ -343,7 +368,9 @@ function openVideoModal(index) {
 
   const v = pageData.videoTestimonials[index];
   title.textContent = v.title;
-  if (v.embedUrl) {
+  if (v.instagramPermalink) {
+    renderInstagramEmbed(body, v.instagramPermalink);
+  } else if (v.embedUrl) {
     body.innerHTML = `<iframe src="${escapeHtml(v.embedUrl)}" title="${escapeHtml(v.title)}" allowfullscreen></iframe>`;
   } else {
     body.innerHTML = v.placeholderHtml || "<p>Контент скоро появится.</p>";
@@ -565,9 +592,9 @@ function initVideoModalChrome() {
 }
 
 function initHeroBackground() {
-  const bg = document.querySelector(".hero-bg");
-  if (bg) {
-    bg.style.backgroundImage = `url("${PHOTO_HERO}")`;
+  const hero = document.getElementById("hero");
+  if (hero) {
+    hero.style.backgroundImage = `url("${PHOTO_HERO}")`;
   }
 }
 
