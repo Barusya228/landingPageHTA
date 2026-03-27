@@ -46,66 +46,86 @@
         <div class="hero-main">
           <h1 id="hero-title" class="hero-title">Международная школа с аккредитацией CIS</h1>
           <p class="hero-lead">Готовим к жизни, а не к тестам</p>
+          <button type="button" class="btn btn-open-day-primary open-modal">Записаться</button>
         </div>
-        <aside class="hero-form-panel" aria-label="Заявка">
-          <div class="hero-form-inner">
-            <h2 class="hero-form-title">Оставить заявку</h2>
-            <p class="hero-form-intro">Заполните форму — мы свяжемся с вами и ответим на вопросы.</p>
-            <form class="hero-form" id="hero-lead-form" novalidate>
-              <div class="form-row">
-                <label class="visually-hidden" for="hf-parent">Имя фамилия</label>
-                <input id="hf-parent" name="parentName" type="text" required placeholder="Имя фамилия" />
-              </div>
-              <div class="form-row">
-                <label class="visually-hidden" for="hf-student">Имя ученика</label>
-                <input id="hf-student" name="studentName" type="text" required placeholder="Имя ученика" />
-              </div>
-              <div class="form-row">
-                <label class="visually-hidden" for="hf-phone">Номер телефона</label>
-                <input id="hf-phone" name="phone" type="tel" required placeholder="Номер телефона" />
-              </div>
-              <div class="form-row">
-                <label class="visually-hidden" for="hf-grade">Класс поступления</label>
-                <input id="hf-grade" name="grade" type="text" required placeholder="Класс поступления" />
-              </div>
-              <div class="form-row">
-                <label class="visually-hidden" for="hf-school">Текущая школа</label>
-                <input id="hf-school" name="currentSchool" type="text" placeholder="Текущая школа" />
-              </div>
-              <div class="form-row">
-                <label class="visually-hidden" for="hf-variant">Вариант</label>
-                <select id="hf-variant" name="variant" required>
-                  <option value="">Выберите вариант</option>
-                  <option value="visit">Визит в школу</option>
-                  <option value="online">Онлайн-консультация</option>
-                  <option value="docs">Вопросы по документам</option>
-                </select>
-              </div>
-              <div class="form-row">
-                <label class="visually-hidden" for="hf-comment">Комментарий</label>
-                <textarea id="hf-comment" name="comment" rows="3" placeholder="Комментарий"></textarea>
-              </div>
-              <button type="submit" class="btn btn-hero-submit">Отправить</button>
-            </form>
-          </div>
-        </aside>
       </div>
     </section>
 
     <section id="why-hta" class="why-hta section reveal" aria-labelledby="why-hta-title">
-      <div class="container">
-        <h2 id="why-hta-title" class="section-title">Почему HTA</h2>
-        <div class="why-hta-cards" id="why-hta-cards"></div>
-        <div class="why-hta-detail" id="why-hta-detail" hidden>
-          <p class="why-hta-detail-text" id="why-hta-detail-text"></p>
+      <h2 id="why-hta-title">Почему HTA</h2>
+
+      <div class="why-hta-cards">
+        <div
+          class="why-card green"
+          id="love-school"
+          role="button"
+          tabindex="0"
+          aria-haspopup="dialog"
+          aria-controls="love-popup"
+          aria-expanded="false"
+        >
+          <div class="card-title">Love School</div>
+          <div class="card-number">82%</div>
+          <div class="card-text">Опрос учеников, март 2026, 4-11 классы</div>
         </div>
-        <blockquote class="why-hta-quote" id="why-hta-research-quote"></blockquote>
-        <div class="why-hta-students">
-          <h3 class="why-hta-subtitle">Отзывы учеников</h3>
-          <div class="student-carousel">
-            <button type="button" class="carousel-btn carousel-btn--prev" id="student-carousel-prev" aria-label="Предыдущий отзыв">‹</button>
-            <div class="student-carousel-track" id="student-carousel-track"></div>
-            <button type="button" class="carousel-btn carousel-btn--next" id="student-carousel-next" aria-label="Следующий отзыв">›</button>
+
+        <div class="why-card yellow">
+          <div class="card-title">Критические навыки</div>
+          <div class="card-text">необходимые в эпоху ИИ</div>
+        </div>
+
+        <div class="why-card orange">
+          <div class="card-title">Minerva Baccalaureate (MBacc)</div>
+          <div class="card-text">Программа повышенной академической сложности</div>
+        </div>
+      </div>
+
+      <div class="why-popup-backdrop" id="love-popup-backdrop" aria-hidden="true"></div>
+
+      <div class="why-popup" id="love-popup" role="dialog" aria-modal="true" aria-labelledby="love-popup-title" aria-hidden="true">
+        <div class="popup-content">
+          <button type="button" class="why-popup-close" id="love-popup-close" aria-label="Закрыть">&times;</button>
+          <h3 id="love-popup-title">Исследование Love School</h3>
+          <p>Здесь будет описание исследования и карусель отзывов учеников.</p>
+        </div>
+      </div>
+
+      <div class="container why-hta-extra">
+        <div class="research-quote">
+          <p>
+            «Исследования показывают, что чувство принадлежности к школе позитивно связано с академической мотивацией,
+            вовлечённостью и результатами учеников школы»
+          </p>
+          <span class="quote-author">(Korpershoek et al., 2019, Research Papers in Education)</span>
+        </div>
+
+        <div class="students-section">
+          <h3>Что говорят ученики о школе</h3>
+
+          <div class="students-slider-wrapper">
+            <button type="button" class="slider-btn left" aria-label="Предыдущие отзывы">‹</button>
+
+            <div class="students-slider" id="studentsSlider">
+              <div class="student-card green">
+                <div class="student-name">Сурая</div>
+                <div class="student-class">7 класс</div>
+                <p>«Я чувствую себя тут комфортно, у меня здесь много друзей и добрые учителя»</p>
+              </div>
+
+              <div class="student-card yellow">
+                <div class="student-name">Вадим</div>
+                <div class="student-class">9 класс</div>
+                <p>«Мне нравится, что каждый ученик получает индивидуальный подход от учителей»</p>
+              </div>
+
+              <div class="student-card orange">
+                <div class="student-name">Алтай</div>
+                <div class="student-class">7 класс</div>
+                <p>«Здесь всегда есть поддержка»</p>
+              </div>
+            </div>
+
+            <button type="button" class="slider-btn right" aria-label="Следующие отзывы">›</button>
           </div>
         </div>
       </div>
@@ -123,10 +143,10 @@
         <h2 id="life-title" class="section-title">Жизнь в HTA</h2>
       </div>
       <div class="marquee marquee--forward" aria-hidden="true">
-        <div class="marquee-inner" id="marquee-row-1"></div>
+        <div class="marquee-inner life-row-left" id="marquee-row-1"></div>
       </div>
       <div class="marquee marquee--reverse" aria-hidden="true">
-        <div class="marquee-inner" id="marquee-row-2"></div>
+        <div class="marquee-inner life-row-right" id="marquee-row-2"></div>
       </div>
     </section>
 
@@ -168,7 +188,7 @@
           <p class="open-day-subtitle">Познакомьтесь со школой, учителями и атмосферой HTA — мы расскажем о программе и ответим на вопросы.</p>
           <p class="open-day-date-pill" id="open-day-date">Апрель 2026 — дата уточняется</p>
           <div class="open-day-actions">
-            <button type="button" class="btn btn-open-day-primary" id="open-day-btn-register">Записаться на день открытых дверей</button>
+            <button type="button" class="btn btn-open-day-primary open-modal" id="open-day-btn-register">Записаться на день открытых дверей</button>
             <a href="#hero" class="btn btn-open-day-secondary">Оставить заявку на приём</a>
           </div>
         </div>
@@ -221,7 +241,52 @@
     </div>
   </footer>
 
-  <button type="button" id="floating-consult-cta" class="floating-cta">Записаться</button>
+  <button type="button" id="floating-consult-cta" class="floating-cta open-modal">Записаться</button>
+
+  <div class="modal-form" id="applicationModal" aria-hidden="true">
+    <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="application-modal-title">
+      <h2 id="application-modal-title">Оставить заявку</h2>
+      <p>Заполните форму — мы свяжемся с вами и ответим на вопросы.</p>
+
+      <form class="hero-form" id="hero-lead-form" novalidate>
+        <div class="form-row">
+          <label class="visually-hidden" for="modal-parent-name">Имя фамилия</label>
+          <input id="modal-parent-name" name="parentName" type="text" required placeholder="Имя фамилия" />
+        </div>
+        <div class="form-row">
+          <label class="visually-hidden" for="modal-student-name">Имя ученика</label>
+          <input id="modal-student-name" name="studentName" type="text" required placeholder="Имя ученика" />
+        </div>
+        <div class="form-row">
+          <label class="visually-hidden" for="modal-phone">Номер телефона</label>
+          <input id="modal-phone" name="phone" type="tel" required placeholder="Номер телефона" />
+        </div>
+        <div class="form-row">
+          <label class="visually-hidden" for="modal-grade">Класс поступления</label>
+          <input id="modal-grade" name="grade" type="text" required placeholder="Класс поступления" />
+        </div>
+        <div class="form-row">
+          <label class="visually-hidden" for="modal-school">Текущая школа</label>
+          <input id="modal-school" name="currentSchool" type="text" placeholder="Текущая школа" />
+        </div>
+        <div class="form-row">
+          <label class="visually-hidden" for="modal-variant">Вариант</label>
+          <select id="modal-variant" name="variant" required>
+            <option value="">Выберите вариант</option>
+            <option value="consultation">Консультация</option>
+            <option value="tour">Экскурсия</option>
+            <option value="trial-day">Пробный день</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label class="visually-hidden" for="modal-comment">Комментарий</label>
+          <textarea id="modal-comment" name="comment" rows="3" placeholder="Комментарий"></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn">Отправить</button>
+      </form>
+    </div>
+  </div>
 
   <div class="video-modal-backdrop" id="video-modal-backdrop" aria-hidden="true">
     <div class="video-modal" role="dialog" aria-modal="true" aria-labelledby="video-modal-title">

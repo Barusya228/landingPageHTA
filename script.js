@@ -53,56 +53,9 @@ const PHOTO_FEATURES = ALL_PHOTOS.slice(1, 7);
 const PHOTO_ACHIEVEMENTS = ALL_PHOTOS.slice(7, 10);
 const PHOTO_VIDEO_THUMBS = ALL_PHOTOS.slice(10, 13);
 const PHOTO_LIFE = ALL_PHOTOS.slice(13);
+const LIFE_MARQUEE_MAX = 14;
 
 const pageData = {
-  whyHtaCards: [
-    {
-      id: "love",
-      title: "Love School",
-      stat: "82%",
-      accent: "yellow",
-      detail:
-        "Высокий уровень вовлечённости и отношения к школе: ученики чувствуют себя частью сообщества HTA.",
-    },
-    {
-      id: "skills",
-      title: "Критические навыки",
-      stat: "",
-      accent: "green",
-      detail:
-        "Развиваем критическое мышление, коммуникацию, сотрудничество и самостоятельность — навыки для реальной жизни.",
-    },
-    {
-      id: "mbacc",
-      title: "Minerva Baccalaureate (MBacc)",
-      stat: "",
-      accent: "orange",
-      detail:
-        "Современная академическая программа с международным признанием и фокусом на проектное обучение.",
-    },
-  ],
-
-  whyHtaResearchQuote:
-    "Исследования показывают: чувство принадлежности к школе связано с мотивацией, вовлечённостью и учебными результатами учеников.",
-
-  whyHtaStudentQuotes: [
-    {
-      text: "Здесь нас учат думать, а не зубрить — мне нравится работать над проектами.",
-      name: "Арман",
-      grade: "10 класс",
-    },
-    {
-      text: "Учителя поддерживают и дают свободу выбирать направление развития.",
-      name: "Сабина",
-      grade: "8 класс",
-    },
-    {
-      text: "Много возможностей для дебатов, олимпиад и внеурочной жизни.",
-      name: "Данияр",
-      grade: "11 класс",
-    },
-  ],
-
   uniqueFeatures: [
     {
       title: "Проекты из реальной жизни",
@@ -136,7 +89,7 @@ const pageData = {
     },
   ],
 
-  lifeAtHtaImages: PHOTO_LIFE,
+  lifeAtHtaImages: PHOTO_LIFE.slice(0, LIFE_MARQUEE_MAX),
 
   achievements: [
     {
@@ -192,80 +145,77 @@ const pageData = {
   },
 };
 
-/* --- Рендер: Why HTA --- */
-function renderWhyHta() {
-  const wrap = document.getElementById("why-hta-cards");
-  const detailEl = document.getElementById("why-hta-detail");
-  const detailText = document.getElementById("why-hta-detail-text");
-  const quoteEl = document.getElementById("why-hta-research-quote");
-  if (!wrap || !detailEl || !detailText || !quoteEl) return;
+/* --- Why HTA: popup Love School + слайдер отзывов --- */
+function initStudentsSlider() {
+  const slider = document.getElementById("studentsSlider");
+  const section = document.querySelector(".students-section");
+  if (!slider || !section) return;
+  const btnRight = section.querySelector(".slider-btn.right");
+  const btnLeft = section.querySelector(".slider-btn.left");
+  btnRight?.addEventListener("click", () => {
+    slider.scrollBy({ left: 300, behavior: "smooth" });
+  });
+  btnLeft?.addEventListener("click", () => {
+    slider.scrollBy({ left: -300, behavior: "smooth" });
+  });
+}
 
-  quoteEl.textContent = pageData.whyHtaResearchQuote;
+function initLoveSchoolPopup() {
+  const loveCard = document.getElementById("love-school");
+  const popup = document.getElementById("love-popup");
+  const backdrop = document.getElementById("love-popup-backdrop");
+  const closeBtn = document.getElementById("love-popup-close");
+  if (!loveCard || !popup || !backdrop) return;
 
-  let selectedId = pageData.whyHtaCards[0]?.id;
+  let scrollLock = "";
 
-  const showDetail = (id) => {
-    const card = pageData.whyHtaCards.find((c) => c.id === id);
-    if (!card) return;
-    selectedId = id;
-    detailText.textContent = card.detail;
-    detailEl.hidden = false;
-    wrap.querySelectorAll(".why-card").forEach((btn) => {
-      btn.classList.toggle("is-active", btn.dataset.id === id);
-    });
+  const open = () => {
+    popup.classList.add("is-active");
+    backdrop.classList.add("is-active");
+    popup.setAttribute("aria-hidden", "false");
+    backdrop.setAttribute("aria-hidden", "false");
+    loveCard.setAttribute("aria-expanded", "true");
+    scrollLock = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
   };
 
-  pageData.whyHtaCards.forEach((card) => {
-    const btn = document.createElement("button");
-    btn.type = "button";
-    btn.className = `why-card why-card--${card.accent}`;
-    btn.dataset.id = card.id;
-    btn.innerHTML = `
-      <h3 class="why-card-title">${escapeHtml(card.title)}</h3>
-      ${card.stat ? `<p class="why-card-stat">${escapeHtml(card.stat)}</p>` : ""}
-    `;
-    btn.addEventListener("click", () => showDetail(card.id));
-    wrap.appendChild(btn);
+  const close = () => {
+    popup.classList.remove("is-active");
+    backdrop.classList.remove("is-active");
+    popup.setAttribute("aria-hidden", "true");
+    backdrop.setAttribute("aria-hidden", "true");
+    loveCard.setAttribute("aria-expanded", "false");
+    document.body.style.overflow = scrollLock;
+  };
+
+  loveCard.addEventListener("click", (e) => {
+    e.stopPropagation();
+    open();
   });
 
-  showDetail(selectedId);
+  loveCard.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      open();
+    }
+  });
+
+  backdrop.addEventListener("click", () => close());
+
+  closeBtn?.addEventListener("click", (e) => {
+    e.stopPropagation();
+    close();
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && popup.classList.contains("is-active")) close();
+  });
 }
 
 function escapeHtml(str) {
   const div = document.createElement("div");
   div.textContent = str;
   return div.innerHTML;
-}
-
-/* --- Карусель отзывов учеников --- */
-function initStudentCarousel() {
-  const track = document.getElementById("student-carousel-track");
-  const prev = document.getElementById("student-carousel-prev");
-  const next = document.getElementById("student-carousel-next");
-  if (!track || !prev || !next) return;
-
-  const items = pageData.whyHtaStudentQuotes;
-  let index = 0;
-
-  const render = () => {
-    const q = items[index];
-    track.innerHTML = `
-      <div class="student-quote-card">
-        <p class="student-quote-text">«${escapeHtml(q.text)}»</p>
-        <p class="student-quote-meta">${escapeHtml(q.name)} · ${escapeHtml(q.grade)}</p>
-      </div>
-    `;
-  };
-
-  prev.addEventListener("click", () => {
-    index = (index - 1 + items.length) % items.length;
-    render();
-  });
-  next.addEventListener("click", () => {
-    index = (index + 1) % items.length;
-    render();
-  });
-  render();
 }
 
 /* --- Unique features --- */
@@ -465,6 +415,43 @@ function initHeroForm() {
     const data = Object.fromEntries(fd.entries());
     console.log("Hero lead form:", data);
     form.reset();
+    const modal = document.getElementById("applicationModal");
+    modal?.classList.remove("active");
+    modal?.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+  });
+}
+
+/* --- Application modal --- */
+function initApplicationModal() {
+  const openBtns = document.querySelectorAll(".open-modal");
+  const modal = document.getElementById("applicationModal");
+  if (!modal) return;
+
+  const open = () => {
+    modal.classList.add("active");
+    modal.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+  };
+
+  const close = () => {
+    modal.classList.remove("active");
+    modal.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+  };
+
+  openBtns.forEach((btn) => {
+    btn.addEventListener("click", open);
+  });
+
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) close();
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && modal.classList.contains("active")) {
+      close();
+    }
   });
 }
 
@@ -472,13 +459,6 @@ function initHeroForm() {
 function initOpenDay() {
   const dateEl = document.getElementById("open-day-date");
   if (dateEl) dateEl.textContent = pageData.openDay.dateLine;
-
-  const btn = document.getElementById("open-day-btn-register");
-  if (btn) {
-    btn.addEventListener("click", () => {
-      document.getElementById("hero")?.scrollIntoView({ behavior: "smooth" });
-    });
-  }
 }
 
 /* --- Header: burger + lang (визуально) --- */
@@ -525,14 +505,8 @@ function initConsultModal() {
   const backdrop = document.getElementById("consult-modal-backdrop");
   const closeBtn = document.getElementById("consult-modal-close");
   const form = document.getElementById("consult-modal-form");
-  const floatBtn = document.getElementById("floating-consult-cta");
   const success = document.getElementById("consult-modal-success");
 
-  const open = () => {
-    backdrop?.classList.add("is-open");
-    backdrop?.setAttribute("aria-hidden", "false");
-    document.body.style.overflow = "hidden";
-  };
   const close = () => {
     backdrop?.classList.remove("is-open");
     backdrop?.setAttribute("aria-hidden", "true");
@@ -540,7 +514,6 @@ function initConsultModal() {
     if (success) success.textContent = "";
   };
 
-  floatBtn?.addEventListener("click", open);
   closeBtn?.addEventListener("click", close);
   backdrop?.addEventListener("click", (e) => {
     if (e.target === backdrop) close();
@@ -602,8 +575,9 @@ document.addEventListener("DOMContentLoaded", () => {
   setYear();
   initHeroBackground();
   initHeader();
-  renderWhyHta();
-  initStudentCarousel();
+  initLoveSchoolPopup();
+  initStudentsSlider();
+  initApplicationModal();
   renderUniqueFeatures();
   renderLifeMarquee();
   renderAchievements();
