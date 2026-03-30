@@ -14,7 +14,7 @@
   <header class="site-header">
     <div class="container header-inner">
       <a href="#hero" class="logo">
-        <img src="./images/logo.png" alt="HTA Logo" width="56" height="56" />
+        <img src="./images/logo.png" alt="HTA Logo" width="56" height="56" loading="lazy" />
         <span class="logo-text">High Tech Academy</span>
       </a>
       <nav class="nav" aria-label="Основная навигация">
@@ -191,7 +191,6 @@
           <p class="open-day-date-pill" id="open-day-date">Апрель 2026 — дата уточняется</p>
           <div class="open-day-actions">
             <button type="button" class="btn btn-open-day-primary open-modal" id="open-day-btn-register">Записаться на день открытых дверей</button>
-            <a href="#hero" class="btn btn-open-day-secondary">Оставить заявку на приём</a>
           </div>
         </div>
       </div>
@@ -208,7 +207,7 @@
       <div class="container footer-grid">
         <div class="footer-brand-block">
           <a href="#hero" class="logo logo--footer">
-            <img src="./images/logo.png" alt="" width="52" height="52" />
+            <img src="./images/logo.png" alt="" width="52" height="52" loading="lazy" />
             <span>High Tech Academy</span>
           </a>
           <p class="footer-tagline">Международная школа в Алматы</p>
@@ -245,9 +244,19 @@
     </div>
   </footer>
 
-  <button type="button" id="floating-consult-cta" class="floating-cta open-modal">Записаться</button>
+  <!-- <button
+    type="button"
+    id="floating-consult-cta"
+    class="floating-cta b24-web-form-popup-btn-32"
+    data-b24-form="click/32/3816ef"
+  >
+    Записаться
+  </button> -->
 
-  <div class="modal-form" id="applicationModal" aria-hidden="true">
+  <div class="b24-fixed-btn">
+    <script data-b24-form="click/32/3816ef" data-skip-moving="true">(function(w,d,u){var s=d.createElement('script');s.async=true;s.src=u+'?'+(Date.now()/180000|0);var h=d.getElementsByTagName('script')[0];h.parentNode.insertBefore(s,h);})(window,document,'https://cdn-ru.bitrix24.kz/b18109524/crm/form/loader_32.js');</script>
+  </div>
+  <!-- <div class="modal-form" id="applicationModal" aria-hidden="true">
     <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="application-modal-title">
       <h2 id="application-modal-title">Расскажите нам о себе</h2>
       <p>Заполните форму — мы свяжемся с вами в течении рабочего дня.</p>
@@ -290,7 +299,7 @@
         <button type="submit" class="submit-btn">Отправить</button>
       </form>
     </div>
-  </div>
+  </div> -->
 
   <div class="video-modal-backdrop" id="video-modal-backdrop" aria-hidden="true">
     <div class="video-modal" role="dialog" aria-modal="true" aria-labelledby="video-modal-title">
@@ -319,6 +328,6 @@
     </div>
   </div>
 
-  <script src="script.js"></script>
+  <script src="script.js" defer></script>
 </body>
 </html>

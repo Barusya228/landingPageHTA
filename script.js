@@ -225,6 +225,7 @@ function renderUniqueFeatures() {
   const grid = document.getElementById("features-grid");
   if (!grid) return;
   const isCoarse = window.matchMedia("(hover: none), (pointer: coarse)").matches;
+  const fragment = document.createDocumentFragment();
 
   pageData.uniqueFeatures.forEach((item, i) => {
     const btn = document.createElement("button");
@@ -255,8 +256,9 @@ function renderUniqueFeatures() {
         btn.setAttribute("aria-expanded", open ? "true" : "false");
       });
     }
-    grid.appendChild(btn);
+    fragment.appendChild(btn);
   });
+  grid.appendChild(fragment);
 }
 
 /* --- Marquee Life (все кадры из PHOTO_LIFE; второй ряд — в обратном порядке) --- */
@@ -271,13 +273,15 @@ function renderLifeMarquee() {
   const backward = [...reversed, ...reversed];
 
   const buildRow = (container, sources) => {
+    const fragment = document.createDocumentFragment();
     sources.forEach((src) => {
       const img = document.createElement("img");
       img.src = src;
       img.alt = "";
       img.loading = "lazy";
-      container.appendChild(img);
+      fragment.appendChild(img);
     });
+    container.appendChild(fragment);
   };
 
   buildRow(row1, forward);
@@ -288,21 +292,24 @@ function renderLifeMarquee() {
 function renderAchievements() {
   const grid = document.getElementById("achievements-grid");
   if (!grid) return;
+  const fragment = document.createDocumentFragment();
   pageData.achievements.forEach((a) => {
     const article = document.createElement("article");
     article.className = "achievement-card";
     article.innerHTML = `
-      <img src="${a.image}" alt="" loading="lazy" />
+      <img src="${a.image}" alt="" loading="lazy" decoding="async" />
       <p>${escapeHtml(a.caption)}</p>
     `;
-    grid.appendChild(article);
+    fragment.appendChild(article);
   });
+  grid.appendChild(fragment);
 }
 
 /* --- Companies --- */
 function renderCompanies() {
   const wrap = document.getElementById("companies-logos");
   if (!wrap) return;
+  const fragment = document.createDocumentFragment();
   pageData.companies.forEach((c) => {
     const div = document.createElement("div");
     div.className = "company-logo";
@@ -311,8 +318,9 @@ function renderCompanies() {
     } else {
       div.innerHTML = `<span>${escapeHtml(c.name)}</span>`;
     }
-    wrap.appendChild(div);
+    fragment.appendChild(div);
   });
+  wrap.appendChild(fragment);
 }
 
 /* --- Video testimonials + modal --- */
@@ -322,19 +330,21 @@ function renderVideoSlides() {
   const track = document.getElementById("video-carousel-track");
   if (!track) return;
   track.innerHTML = "";
+  const fragment = document.createDocumentFragment();
   pageData.videoTestimonials.forEach((v, i) => {
     const btn = document.createElement("button");
     btn.type = "button";
     btn.className = "video-card";
     btn.dataset.index = String(i);
     btn.innerHTML = `
-      <img src="${v.thumb}" alt="" loading="lazy" />
+      <img src="${v.thumb}" alt="" loading="lazy" decoding="async" />
       <div class="video-card-play"><span>▶</span></div>
       <div class="video-card-caption">${escapeHtml(v.title)}</div>
     `;
     btn.addEventListener("click", () => openVideoModal(i));
-    track.appendChild(btn);
+    fragment.appendChild(btn);
   });
+  track.appendChild(fragment);
 }
 
 function ensureInstagramEmbedScript() {
@@ -439,8 +449,7 @@ function initHeroForm() {
   form.addEventListener("submit", (e) => {
     e.preventDefault();
     const fd = new FormData(form);
-    const data = Object.fromEntries(fd.entries());
-    console.log("Hero lead form:", data);
+    void Object.fromEntries(fd.entries());
     form.reset();
     const modal = document.getElementById("applicationModal");
     modal?.classList.remove("active");
@@ -508,10 +517,11 @@ function initHeader() {
     });
   }
 
-  document.querySelectorAll(".lang-btn").forEach((btn) => {
+  const langButtons = document.querySelectorAll(".lang-btn");
+  langButtons.forEach((btn) => {
     btn.addEventListener("click", () => {
       const lang = btn.getAttribute("data-lang");
-      document.querySelectorAll(".lang-btn").forEach((b) => b.classList.remove("is-active"));
+      langButtons.forEach((b) => b.classList.remove("is-active"));
       btn.classList.add("is-active");
       document.documentElement.setAttribute("lang", lang === "kz" ? "kk" : lang || "ru");
       localStorage.setItem("hta_lang", lang || "ru");
@@ -520,7 +530,7 @@ function initHeader() {
 
   const saved = localStorage.getItem("hta_lang");
   if (saved) {
-    document.querySelectorAll(".lang-btn").forEach((b) => {
+    langButtons.forEach((b) => {
       b.classList.toggle("is-active", b.getAttribute("data-lang") === saved);
     });
     document.documentElement.setAttribute("lang", saved === "kz" ? "kk" : saved);
@@ -555,7 +565,7 @@ function initConsultModal() {
   form?.addEventListener("submit", (e) => {
     e.preventDefault();
     const fd = new FormData(form);
-    console.log("Consult modal:", Object.fromEntries(fd.entries()));
+    void Object.fromEntries(fd.entries());
     if (success) success.textContent = "Спасибо, мы свяжемся с вами";
     form.reset();
   });

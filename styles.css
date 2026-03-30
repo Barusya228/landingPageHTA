@@ -1307,6 +1307,13 @@ main {
   transform: translateY(-2px) scale(1.02);
 }
 
+.b24-fixed-btn {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 80;
+}
+
 /* Application modal */
 .modal-form {
   position: fixed;
