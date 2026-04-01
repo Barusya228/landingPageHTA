@@ -3,56 +3,113 @@
  * Контент меняется через объекты ниже, без правок разметки секций.
  */
 
-/** Все JPG из папки images (38 шт.), по имени файла */
-const ALL_PHOTOS = [
-  "./images/DSC01536.jpg",
-  "./images/DSC01737.jpg",
-  "./images/DSC02025.jpg",
-  "./images/DSC03788.jpg",
-  "./images/DSC03794.jpg",
-  "./images/DSC03804.jpg",
-  "./images/DSC03812.jpg",
-  "./images/DSC03835.jpg",
-  "./images/DSC03884.jpg",
-  "./images/DSC03897.jpg",
-  "./images/DSC04357.jpg",
-  "./images/DSC05011.jpg",
-  "./images/DSC05691.jpg",
-  "./images/DSC05891.jpg",
-  "./images/DSC06134.jpg",
-  "./images/DSC06150.jpg",
-  "./images/DSC06356.jpg",
-  "./images/DSC06368.jpg",
-  "./images/DSC06425.jpg",
-  "./images/DSC06426.jpg",
-  "./images/DSC06531.jpg",
-  "./images/DSC06532.jpg",
-  "./images/DSC06533.jpg",
-  "./images/DSC06534.jpg",
-  "./images/DSC06536.jpg",
-  "./images/DSC06537.jpg",
-  "./images/DSC06547.jpg",
-  "./images/DSC06549.jpg",
-  "./images/DSC06765.jpg",
-  "./images/DSC06766.jpg",
-  "./images/DSC06773.jpg",
-  "./images/DSC06965.jpg",
-  "./images/DSC06984.jpg",
-  "./images/DSC07159.jpg",
-  "./images/DSC07181.jpg",
-  "./images/DSC07200.jpg",
-  "./images/DSC07246.jpg",
-  "./images/DSC07259.jpg",
-];
+/**
+ * Архитектура ассетов по папкам секций:
+ * ./images/Банер/
+ * ./images/Что делает нас уникальными/
+ * ./images/Достижения наших учеников/
+ * ./images/Что говорят родители/
+ * ./images/Жизнь в HTA/
+ */
+const IMAGE_DIRS = {
+  hero: "./images/Банер",
+  features: "./images/Что делает нас уникальными",
+  achievements: "./images/Достижения наших учеников",
+  video: "./images/Что говорят родители",
+  life: "./images/Жизнь в HTA",
+};
 
-const ASSET_LOGO = "./images/logo.png";
+function fromDir(dir, fileName) {
+  return `${IMAGE_DIRS[dir]}/${fileName}`;
+}
 
-/** Распределение: 1 hero + 6 фич + 3 достижения + 3 превью видео + 25 в жизни школы = 38 */
-const PHOTO_HERO = ALL_PHOTOS[0];
-const PHOTO_FEATURES = ALL_PHOTOS.slice(1, 7);
-const PHOTO_ACHIEVEMENTS = ALL_PHOTOS.slice(7, 10);
-const PHOTO_VIDEO_THUMBS = ALL_PHOTOS.slice(10, 13);
-const PHOTO_LIFE = ALL_PHOTOS.slice(13);
+function fromDirList(dir, fileNames) {
+  return fileNames.map((fileName) => fromDir(dir, fileName));
+}
+
+const COMPANY_LOGO_1 = "./logo/logo-arbuz.png";
+const COMPANY_LOGO_2 = "./logo/Frame-824631.png";
+const COMPANY_LOGO_3 = "./logo/logo-kazbeef.jpg";
+const COMPANY_LOGO_4 = "./logo/logo-shinlain.png";
+const COMPANY_LOGO_5 = "./logo/logo-not-hta.svg";
+const COMPANY_LOGO_6 = "./logo/l6ghb57yon3kcs6f1iucm5klma1mq985.svg";
+
+/** Файлы задаются внутри своей папки секции (без общего массива и slice) */
+const PHOTO_HERO = fromDir("hero", "главная.jpg");
+const PHOTO_FEATURES = fromDirList("features", [
+  "Проекты из реальной жизни.jpg",
+  "Предпринимательство.jpg",
+  "Архитектура и дизайн.jpg",
+  "Sports & Arts.jpg",
+  "Дебаты.jpg",
+  "STEM и робототехника.jpg",
+]);
+const PHOTO_ACHIEVEMENTS = fromDirList("achievements", [
+  "1.jpg",
+  "2.jpg",
+  "3.jpg",
+]);
+const PHOTO_VIDEO_THUMBS = fromDirList("video", [
+  "1.jpg",
+  "2.jpg",
+  "3.jpg",
+]);
+const PHOTO_LIFE = fromDirList("life", [
+  "1.jpg",
+  "2.jpg",
+  "3.jpg",
+  "4.jpg",
+  "5.jpg",
+  "6.jpg",
+  "7.jpg",
+  "8.jpg",
+  "9.jpg",
+  "10.jpg",
+  "11.jpg",
+  "12.jpg",
+  "13.jpg",
+  "14.jpg",
+  "15.jpg",
+  "16.jpg",
+  "17.jpg",
+  "18.jpg",
+  "19.jpg",
+  "20.jpg",
+  "21.jpg",
+  "22.jpg",
+  "23.jpg",
+  "24.jpg",
+  "25.jpg",
+  "26.jpg",
+  "27.jpg",
+  "28.jpg",
+  "29.jpg",
+  "30.jpg",
+  "31.jpg",
+  "32.jpg",
+  "33.jpg",
+  "34.jpg",
+  "35.jpg",
+  "36.jpg",
+  "37.jpg",
+  "38.jpg",
+  "39.jpg",
+  "40.jpg",
+  "41.jpg",
+  "42.jpg",
+  "43.jpg",
+  "44.jpg",
+  "45.jpg",
+  "46.jpg",
+  "47.jpg",
+  "48.jpg",
+  "49.jpg",
+  "50.jpg",
+  "51.jpg",
+  "52.jpg",
+  "53.jpg",
+  "54.jpg",
+]);
 const LIFE_MARQUEE_MAX = 14;
 const INSTAGRAM_REEL_PERMALINKS = [
   "https://www.instagram.com/reel/DWEMEoODe7q/?utm_source=ig_embed&utm_campaign=loading",
@@ -111,14 +168,14 @@ const pageData = {
     },
   ],
 
-  /** Логотип школы для блока партнёров (файл logo.png из images) */
+  /** Логотипы компаний для секции "Наши ученики предлагали решения..." */
   companies: [
-    { name: "Партнёр 1", logo: ASSET_LOGO },
-    { name: "Партнёр 2", logo: ASSET_LOGO },
-    { name: "Партнёр 3", logo: ASSET_LOGO },
-    { name: "Партнёр 4", logo: ASSET_LOGO },
-    { name: "Партнёр 5", logo: ASSET_LOGO },
-    { name: "Партнёр 6", logo: ASSET_LOGO },
+    { name: "Компания 1", logo: COMPANY_LOGO_1 },
+    { name: "Компания 2", logo: COMPANY_LOGO_2 },
+    { name: "Компания 3", logo: COMPANY_LOGO_3 },
+    { name: "Компания 4", logo: COMPANY_LOGO_4 },
+    { name: "Компания 5", logo: COMPANY_LOGO_5 },
+    { name: "Компания 6", logo: COMPANY_LOGO_6 },
   ],
 
   videoTestimonials: [

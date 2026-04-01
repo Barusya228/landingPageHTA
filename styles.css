@@ -933,26 +933,31 @@ main {
 
 .companies-logos {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(160px, 1fr));
   gap: 1rem 1.25rem;
   align-items: center;
+  justify-items: center;
 }
 
 .company-logo {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0.75rem;
-  background: var(--color-bg);
+  width: 100%;
+  max-width: 180px;
+  height: 100px;
+  padding: 12px;
+  background: var(--color-white);
   border-radius: var(--radius-md);
-  min-height: 64px;
 }
 
 .company-logo img {
-  max-height: 40px;
-  width: auto;
-  max-width: 100%;
+  width: 100%;
+  height: 100%;
+  max-width: 156px;
+  max-height: 76px;
   object-fit: contain;
+  object-position: center;
 }
 
 .company-logo span {
@@ -1494,6 +1499,13 @@ main {
 
   .companies-logos {
     grid-template-columns: repeat(2, 1fr);
+    gap: 0.85rem;
+  }
+
+  .company-logo {
+    max-width: 170px;
+    height: 92px;
+    padding: 10px;
   }
 
   .footer-grid {
