@@ -140,7 +140,7 @@ main {
 .logo--footer img {
   width: 52px;
   height: 52px;
-  filter: brightness(0) invert(1);
+  object-fit: contain;
 }
 
 .nav {
