@@ -433,6 +433,8 @@ function openVideoModal(index) {
   const title = document.getElementById("video-modal-title");
   if (!backdrop || !body || !title) return;
 
+  closeHeroVideoModal();
+
   const v = pageData.videoTestimonials[index];
   title.textContent = v.title;
   if (v.instagramPermalink) {
@@ -616,6 +618,7 @@ function initConsultModal() {
     if (e.key === "Escape") {
       close();
       closeVideoModal();
+      closeHeroVideoModal();
     }
   });
 
@@ -665,9 +668,56 @@ function initHeroBackground() {
   }
 }
 
+function getHeroTeachersVideo() {
+  const el = document.getElementById("hero-teachers-video");
+  return el instanceof HTMLVideoElement ? el : null;
+}
+
+function closeHeroVideoModal() {
+  const backdrop = document.getElementById("hero-video-modal-backdrop");
+  const video = getHeroTeachersVideo();
+  if (video) {
+    video.pause();
+    video.currentTime = 0;
+  }
+  if (!backdrop) return;
+  backdrop.classList.remove("is-open");
+  backdrop.setAttribute("aria-hidden", "true");
+  document.body.style.overflow = "";
+}
+
+function openHeroVideoModal() {
+  const backdrop = document.getElementById("hero-video-modal-backdrop");
+  if (!backdrop) return;
+  closeVideoModal();
+  backdrop.classList.add("is-open");
+  backdrop.setAttribute("aria-hidden", "false");
+  document.body.style.overflow = "hidden";
+  const video = getHeroTeachersVideo();
+  if (video) {
+    void video.play().catch(() => {});
+  }
+  document.getElementById("hero-video-modal-close")?.focus();
+}
+
+function initHeroVideoModal() {
+  const playBtn = document.querySelector(".hero-video .video-button");
+  const backdrop = document.getElementById("hero-video-modal-backdrop");
+  const closeBtn = document.getElementById("hero-video-modal-close");
+  playBtn?.addEventListener("click", (e) => {
+    e.preventDefault();
+    openHeroVideoModal();
+  });
+  closeBtn?.addEventListener("click", () => closeHeroVideoModal());
+  backdrop?.addEventListener("click", (e) => {
+    if (e.target === backdrop) closeHeroVideoModal();
+  });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   setYear();
   initHeroBackground();
+  initHeroVideoModal();
   initHeader();
   initLoveSchoolPopup();
   initStudentsSlider();

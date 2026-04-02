@@ -19,7 +19,7 @@
       </a>
       <nav class="nav" aria-label="Основная навигация">
         <button type="button" class="nav-toggle" aria-label="Открыть меню" aria-expanded="false">
-          <span></span>
+          <span></span> 
           <span></span>
         </button>
         <ul class="nav-list" id="nav-list">
@@ -69,16 +69,52 @@
           <div class="card-title">Love School</div>
           <div class="card-number">82%</div>
           <div class="card-text">Опрос учеников, март 2026, 4-11 классы</div>
+          <div class="why-card-hover-overlay" aria-hidden="true">
+            <div class="why-card-hover-scroll">
+              <p class="why-card-hover-text">
+                Невозможно заставить ребенка развиваться,<br />
+                можно только создать для этого условия.
+              </p>
+              <p class="why-card-hover-text why-card-hover-text--tagline">
+                Интерес. Безопасность. Смысл.<br />
+                С этого начинается обучение.
+              </p>
+            </div>
+          </div>
         </div>
 
         <div class="why-card yellow">
           <div class="card-title">Критические навыки</div>
           <div class="card-text">необходимые в эпоху ИИ</div>
+          <div class="why-card-hover-overlay" aria-hidden="true">
+            <div class="why-card-hover-scroll">
+              <p class="why-card-hover-text">
+                Невозможно заставить ребенка развиваться,<br />
+                можно только создать для этого условия.
+              </p>
+            </div>
+          </div>
         </div>
 
         <div class="why-card orange">
           <div class="card-title">Minerva Baccalaureate (MBacc)</div>
           <div class="card-text">Программа повышенной академической сложности</div>
+          <div class="why-card-hover-overlay" aria-hidden="true">
+            <div class="why-card-hover-scroll">
+              <p class="why-card-hover-text">
+                Minerva Baccalaureate — международная программа старшей школы от Minerva Project.<br /><br />
+                Программа MBacc построена по логике университета: через обсуждение, анализ и применение знаний.
+                Ученики учатся аргументировать, работать с реальными задачами и развивать ключевые компетенции.<br /><br />
+                Занятия в формате перевернутого класса (flipped classroom): теорию изучают самостоятельно, на уроках —
+                обсуждение вместо лекций. Вместо одного «правильного» ответа — анализ и аргументация. Вместо сухой
+                теории — практика на реальных кейсах.<br /><br />
+                По окончании выпускники получают два диплома и готовность к обучению в университете и в жизни.
+              </p>
+              <p class="why-card-hover-text why-card-hover-text--tagline">
+                Университетская глубина — уже в школе.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -306,6 +342,32 @@
       <button type="button" class="video-modal-close" id="video-modal-close" aria-label="Закрыть">&times;</button>
       <h3 class="video-modal-title" id="video-modal-title">Видео</h3>
       <div class="video-modal-body" id="video-modal-body"></div>
+    </div>
+  </div>
+
+  <div class="hero-video-modal-backdrop" id="hero-video-modal-backdrop" aria-hidden="true">
+    <div
+      class="hero-video-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="hero-video-modal-title"
+    >
+      <button type="button" class="hero-video-modal-close" id="hero-video-modal-close" aria-label="Закрыть">
+        &times;
+      </button>
+      <h3 class="hero-video-modal-title" id="hero-video-modal-title">Какая школа HTA?</h3>
+      <div class="hero-video-modal-body">
+        <video
+          id="hero-teachers-video"
+          class="hero-teachers-video"
+          src="./images/Видео/teachers.mp4"
+          controls
+          playsinline
+          preload="metadata"
+        >
+          Ваш браузер не поддерживает воспроизведение видео.
+        </video>
+      </div>
     </div>
   </div>
 

@@ -396,15 +396,97 @@ main {
 }
 
 .why-card {
+  position: relative;
+  overflow: hidden;
   width: 360px;
   height: 250px;
   border-radius: 20px;
   padding: 28px;
   color: #fff;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
   box-sizing: border-box;
+}
+
+.why-card-hover-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  box-sizing: border-box;
+  background: rgba(15, 24, 48, 0.78);
+  color: #fff;
+  text-align: center;
+  border-radius: inherit;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+}
+
+.why-card-hover-scroll {
+  flex: 1 1 auto;
+  min-height: 0;
+  width: 100%;
+  max-height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  box-sizing: border-box;
+  padding: 1rem 0.65rem 1rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  gap: 0.5rem;
+  pointer-events: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.45) rgba(255, 255, 255, 0.08);
+}
+
+.why-card-hover-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+
+.why-card-hover-scroll::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 999px;
+}
+
+.why-card-hover-scroll::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.38);
+  border-radius: 999px;
+}
+
+.why-card-hover-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.55);
+}
+
+.why-card:hover .why-card-hover-overlay,
+.why-card:focus-visible .why-card-hover-overlay {
+  opacity: 1;
+}
+
+.why-card-hover-text {
+  margin: 0;
+  max-width: 28ch;
+  font-size: clamp(0.8125rem, 2.1vw, 1rem);
+  font-weight: 500;
+  line-height: 1.45;
+  text-align: left;
+}
+
+.why-card-hover-text--tagline {
+  margin-top: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
 }
 
 #love-school {
@@ -1118,6 +1200,80 @@ main {
   margin: 0 auto !important;
   width: min(420px, 100%) !important;
   min-width: 0 !important;
+}
+
+/* Hero intro video modal (teachers.mp4) */
+.hero-video-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 210;
+  background: rgba(15, 24, 48, 0.72);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+.hero-video-modal-backdrop.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.hero-video-modal {
+  position: relative;
+  width: min(960px, 100%);
+  max-height: 90vh;
+  overflow: auto;
+  background: var(--color-white);
+  border-radius: var(--radius-xl);
+  padding: 1.5rem;
+  transform: scale(0.96);
+  transition: transform 0.25s ease;
+  box-shadow: 0 24px 60px rgba(15, 24, 48, 0.25);
+}
+
+.hero-video-modal-backdrop.is-open .hero-video-modal {
+  transform: scale(1);
+}
+
+.hero-video-modal-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(15, 24, 48, 0.12);
+  border-radius: 50%;
+  background: var(--color-white);
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.hero-video-modal-title {
+  margin: 0 48px 1rem 0;
+  font-size: 1.25rem;
+  color: var(--color-text);
+}
+
+.hero-video-modal-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #000;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.hero-teachers-video {
+  display: block;
+  width: 100%;
+  max-height: min(70vh, 720px);
+  object-fit: contain;
+  background: #000;
 }
 
 /* === Open day CTA === */
