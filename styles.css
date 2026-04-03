@@ -284,25 +284,64 @@ main {
   align-items: center;
 }
 
-.video-button {
-  width: 80px;
-  height: 80px;
-  border: none;
-  background: #1f2a44;
+.hero-video-preview {
+  width: 260px;
+  max-width: min(72vw, 320px);
+  aspect-ratio: 16 / 10;
   border-radius: 20px;
+  background-color: #1f2a44;
+  background-image: url("./images/Видео/HD_Teachers.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--color-orange);
-  font-size: 30px;
-  cursor: pointer;
   box-shadow: 0 10px 28px rgba(0, 0, 0, 0.28);
-  transition: transform var(--transition), background var(--transition);
+  overflow: hidden;
+  position: relative;
+}
+
+.hero-video-preview::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 24, 48, 0.18);
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+.video-button {
+  position: relative;
+  z-index: 1;
+  width: 80px;
+  height: 80px;
+  border: none;
+  background: transparent;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  color: var(--color-orange);
+  font-size: 36px;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: none;
+  transition: transform var(--transition), filter var(--transition);
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.45));
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
 }
 
 .video-button:hover {
-  transform: translateY(-2px);
-  background: #28395e;
+  transform: scale(1.06);
+  background: transparent;
+  filter: drop-shadow(0 3px 12px rgba(0, 0, 0, 0.55));
+}
+
+.video-button:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.9);
+  outline-offset: 4px;
 }
 
 .hero-video span {
@@ -312,6 +351,7 @@ main {
   background: rgba(0, 0, 0, 0.5);
   font-size: 14px;
   font-weight: 500;
+  cursor: pointer;
 }
 
 .hero-form .form-row {
@@ -440,12 +480,13 @@ main {
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
   box-sizing: border-box;
-  padding: 1rem 0.65rem 1rem 1rem;
+  padding: 1rem 0.85rem 1rem 1rem;
   display: flex;
   flex-direction: column;
-  align-items: stretch;
-  justify-content: flex-start;
+  align-items: center;
+  justify-content: safe center;
   gap: 0.5rem;
+  text-align: left;
   pointer-events: auto;
   scrollbar-width: thin;
   scrollbar-color: rgba(255, 255, 255, 0.45) rgba(255, 255, 255, 0.08);
@@ -477,6 +518,7 @@ main {
 .why-card-hover-text {
   margin: 0;
   max-width: 28ch;
+  width: min(100%, 28ch);
   font-size: clamp(0.8125rem, 2.1vw, 1rem);
   font-weight: 500;
   line-height: 1.45;
@@ -545,7 +587,7 @@ main {
 }
 
 .research-quote p {
-  font-size: 34px;
+  font-size: 26px;
   line-height: 1.6;
   margin: 0 0 10px;
 }
@@ -640,14 +682,17 @@ main {
 
 .student-card.green {
   border-top: 8px solid #95c11f;
+  background: #95c11f;
 }
 
 .student-card.yellow {
   border-top: 8px solid #f2b705;
+  background: #f2b705;
 }
 
 .student-card.orange {
   border-top: 8px solid #e86a2f;
+  background: #e86a2f;
 }
 
 .slider-btn {
@@ -1268,11 +1313,12 @@ main {
   overflow: hidden;
 }
 
-.hero-teachers-video {
+.hero-youtube-embed {
   display: block;
   width: 100%;
   max-height: min(70vh, 720px);
-  object-fit: contain;
+  aspect-ratio: 16 / 9;
+  border: 0;
   background: #000;
 }
 
@@ -1730,6 +1776,11 @@ main {
     top: 80px;
   }
 
+  .hero-video-preview {
+    width: 220px;
+    max-width: 78vw;
+  }
+
   .video-button {
     width: 60px;
     height: 60px;
@@ -1834,7 +1885,7 @@ main {
   }
 
   .slider-btn {
-    display: none;
+    display: inline-flex;
   }
 }
 

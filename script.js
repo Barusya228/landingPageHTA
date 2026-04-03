@@ -53,6 +53,7 @@ const PHOTO_VIDEO_THUMBS = fromDirList("video", [
   "1.jpg",
   "2.jpg",
   "3.jpg",
+  "HD_Teschers.jpg",
 ]);
 const PHOTO_LIFE = fromDirList("life", [
   "1.jpg",
@@ -180,19 +181,19 @@ const pageData = {
 
   videoTestimonials: [
     {
-      title: "Родитель, 7 класс",
+      title: "Куда поступают выпускники HTA?",
       thumb: PHOTO_VIDEO_THUMBS[0],
       embedUrl: null,
       instagramPermalink: INSTAGRAM_REEL_PERMALINKS[0],
     },
     {
-      title: "Выпускник 2024",
+      title: "Что говорят партнеры?",
       thumb: PHOTO_VIDEO_THUMBS[1],
       embedUrl: null,
       instagramPermalink: INSTAGRAM_REEL_PERMALINKS[1],
     },
     {
-      title: "Семья из 9 класса",
+      title: "Чему учатся дети во время проектов?",
       thumb: PHOTO_VIDEO_THUMBS[2],
       embedUrl: null,
       instagramPermalink: INSTAGRAM_REEL_PERMALINKS[2],
@@ -403,6 +404,26 @@ function renderVideoSlides() {
   });
   track.appendChild(fragment);
 }
+
+function openVideo(videoId) {
+  const modal = document.getElementById("video-modal");
+  const frame = document.getElementById("video-frame");
+
+  frame.src = `https://www.youtube.com/embed/D-Ktmq9T94s?si=mYV-oAS-3Bx1lrVM`;
+  modal.style.display = "flex";
+}
+
+// кнопка на главном экране
+document.querySelector(".video-button").addEventListener("click", function () {
+  const videoId = this.dataset.video;
+  openVideo(videoId);
+});
+
+// закрытие
+document.querySelector(".video-modal-close").addEventListener("click", function () {
+  document.getElementById("video-modal").style.display = "none";
+  document.getElementById("video-frame").src = "";
+});
 
 function ensureInstagramEmbedScript() {
   if (window.instgrm?.Embeds) return;
@@ -668,17 +689,29 @@ function initHeroBackground() {
   }
 }
 
-function getHeroTeachersVideo() {
-  const el = document.getElementById("hero-teachers-video");
-  return el instanceof HTMLVideoElement ? el : null;
+/** ID ролика; в embed не используем параметр si= из «поделиться» — он вызывает Error 153 в плеере */
+const HERO_YOUTUBE_VIDEO_ID = "D-Ktmq9T94s";
+
+function buildHeroYoutubeEmbedSrc() {
+  const params = new URLSearchParams({
+    autoplay: "1",
+    rel: "0",
+    modestbranding: "1",
+    playsinline: "1",
+  });
+  return `https://www.youtube.com/embed/${HERO_YOUTUBE_VIDEO_ID}?${params.toString()}`;
+}
+
+function getHeroYoutubeIframe() {
+  const el = document.getElementById("hero-youtube-embed");
+  return el instanceof HTMLIFrameElement ? el : null;
 }
 
 function closeHeroVideoModal() {
   const backdrop = document.getElementById("hero-video-modal-backdrop");
-  const video = getHeroTeachersVideo();
-  if (video) {
-    video.pause();
-    video.currentTime = 0;
+  const iframe = getHeroYoutubeIframe();
+  if (iframe) {
+    iframe.src = "about:blank";
   }
   if (!backdrop) return;
   backdrop.classList.remove("is-open");
@@ -693,21 +726,24 @@ function openHeroVideoModal() {
   backdrop.classList.add("is-open");
   backdrop.setAttribute("aria-hidden", "false");
   document.body.style.overflow = "hidden";
-  const video = getHeroTeachersVideo();
-  if (video) {
-    void video.play().catch(() => {});
+  const iframe = getHeroYoutubeIframe();
+  if (iframe) {
+    iframe.src = buildHeroYoutubeEmbedSrc();
   }
   document.getElementById("hero-video-modal-close")?.focus();
 }
 
 function initHeroVideoModal() {
   const playBtn = document.querySelector(".hero-video .video-button");
+  const label = document.querySelector(".hero-video span");
   const backdrop = document.getElementById("hero-video-modal-backdrop");
   const closeBtn = document.getElementById("hero-video-modal-close");
-  playBtn?.addEventListener("click", (e) => {
+  const open = (e) => {
     e.preventDefault();
     openHeroVideoModal();
-  });
+  };
+  playBtn?.addEventListener("click", open);
+  label?.addEventListener("click", open);
   closeBtn?.addEventListener("click", () => closeHeroVideoModal());
   backdrop?.addEventListener("click", (e) => {
     if (e.target === backdrop) closeHeroVideoModal();

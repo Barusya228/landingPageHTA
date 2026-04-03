@@ -48,7 +48,9 @@
       </div>
 
       <div class="hero-video">
-        <button type="button" class="video-button" aria-label="Смотреть видео о школе">▶</button>
+        <div class="hero-video-preview">
+          <button type="button" class="video-button" aria-label="Смотреть видео о школе">▶</button>
+        </div>
         <span>Какая школа HTA?</span>
       </div>
     </section>
@@ -193,7 +195,7 @@
         <h2 id="achievements-title" class="section-title">Достижения наших учеников</h2>
         <div class="achievements-grid" id="achievements-grid"></div>
         <div class="achievements-cta">
-          <a href="https://hta.kz/" class="btn btn-outline" target="_blank" rel="noopener noreferrer">Смотреть все</a>
+          <a href="" class="btn btn-outline" target="_blank" rel="noopener noreferrer">Смотреть все</a>
         </div>
       </div>
     </section>
@@ -214,6 +216,53 @@
           <button type="button" class="carousel-btn carousel-btn--prev" id="video-carousel-prev" aria-label="Предыдущее видео">‹</button>
           <div class="video-carousel-track" id="video-carousel-track"></div>
           <button type="button" class="carousel-btn carousel-btn--next" id="video-carousel-next" aria-label="Следующее видео">›</button>
+        </div>
+      </div>
+      <div class="students-section">
+        <h3>Идеи, которые вдохновили нас на создание HTA</h3>
+
+        <div class="students-slider-wrapper">
+          <button type="button" class="slider-btn left" aria-label="Предыдущие отзывы">‹</button>
+
+          <div class="students-slider" id="studentsSlider">
+            <div class="student-card green">
+              <div class="student-name">Сурая</div>
+              <div class="student-class">7 класс</div>
+              <p>«Я чувствую себя тут комфортно, у меня здесь много друзей и добрые учителя»</p>
+            </div>
+
+            <div class="student-card yellow">
+              <div class="student-name">Вадим</div>
+              <div class="student-class">9 класс</div>
+              <p>«Мне нравится, что каждый ученик получает индивидуальный подход от учителей»</p>
+            </div>
+
+            <div class="student-card orange">
+              <div class="student-name">Алтай</div>
+              <div class="student-class">7 класс</div>
+              <p>«Здесь всегда есть поддержка»</p>
+            </div>
+
+            <div class="student-card green">
+              <div class="student-name">Алия</div>
+              <div class="student-class">8 класс</div>
+              <p>«Мне нравится, что на уроках можно задавать вопросы и спорить, а не просто слушать»</p>
+            </div>
+
+            <div class="student-card yellow">
+              <div class="student-name">Мади</div>
+              <div class="student-class">6 класс</div>
+              <p>«Проекты помогают понимать, как знания применяются в реальной жизни»</p>
+            </div>
+
+            <div class="student-card orange">
+              <div class="student-name">Диана</div>
+              <div class="student-class">10 класс</div>
+              <p>«Я чувствую поддержку от учителей, когда пробую себя в новых направлениях»</p>
+            </div>
+          </div>
+
+          <button type="button" class="slider-btn right" aria-label="Следующие отзывы">›</button>
         </div>
       </div>
     </section>
@@ -288,7 +337,6 @@
   >
     Записаться
   </button> -->
-
   <div class="b24-fixed-btn">
     <script data-b24-form="click/32/3816ef" data-skip-moving="true">(function(w,d,u){var s=d.createElement('script');s.async=true;s.src=u+'?'+(Date.now()/180000|0);var h=d.getElementsByTagName('script')[0];h.parentNode.insertBefore(s,h);})(window,document,'https://cdn-ru.bitrix24.kz/b18109524/crm/form/loader_32.js');</script>
   </div>
@@ -357,16 +405,15 @@
       </button>
       <h3 class="hero-video-modal-title" id="hero-video-modal-title">Какая школа HTA?</h3>
       <div class="hero-video-modal-body">
-        <video
-          id="hero-teachers-video"
-          class="hero-teachers-video"
-          src="./images/Видео/teachers.mp4"
-          controls
-          playsinline
-          preload="metadata"
-        >
-          Ваш браузер не поддерживает воспроизведение видео.
-        </video>
+        <iframe
+          id="hero-youtube-embed"
+          class="hero-youtube-embed"
+          title="Какая школа HTA?"
+          src="about:blank"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
+          allowfullscreen
+        ></iframe>
       </div>
     </div>
   </div>
