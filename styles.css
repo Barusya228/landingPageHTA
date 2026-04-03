@@ -74,7 +74,7 @@ button {
 }
 
 .section {
-  padding: clamp(48px, 6vw, 88px) 0;
+  padding: clamp(36px, 4.5vw, 64px) 0;
 }
 
 .section-title {
@@ -581,7 +581,7 @@ main {
 /* Цитата исследования */
 .research-quote {
   max-width: 1400px;
-  margin: 60px auto;
+  margin: 36px auto;
   text-align: center;
   color: #3a4a5a;
 }
@@ -603,7 +603,7 @@ main {
   border: 1.5px solid #b7d34b;
   border-radius: 14px;
   padding: 14px 56px 20px;
-  margin: 40px auto 0;
+  margin: 28px auto 0;
   max-width: 1280px;
   text-align: center;
   background: #fff;
@@ -925,13 +925,14 @@ main {
   contain: content;
 }
 
-/* Анимация только через transform (GPU), медленный цикл */
 .life-row-left,
 .life-row-right {
   will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
-  animation-duration: 75s;
+  animation-duration: 220s;
 }
 
 .life-row-left {
@@ -1042,9 +1043,9 @@ main {
 .companies-panel {
   display: grid;
   grid-template-columns: 1fr 1.2fr;
-  gap: 2rem;
+  gap: 2.5rem;
   align-items: center;
-  padding: 2rem 2.25rem;
+  padding: clamp(2.5rem, 4vw, 4rem) 2.25rem;
   background: var(--color-white);
   border: 2px solid var(--color-accent-border);
   border-radius: var(--radius-xl);
@@ -1061,7 +1062,7 @@ main {
 .companies-logos {
   display: grid;
   grid-template-columns: repeat(3, minmax(160px, 1fr));
-  gap: 1rem 1.25rem;
+  gap: 1.5rem 1.25rem;
   align-items: center;
   justify-items: center;
 }
@@ -1072,7 +1073,7 @@ main {
   justify-content: center;
   width: 100%;
   max-width: 180px;
-  height: 100px;
+  height: 120px;
   padding: 12px;
   background: var(--color-white);
   border-radius: var(--radius-md);
@@ -1097,6 +1098,89 @@ main {
 /* === Testimonials video === */
 .testimonials {
   background: var(--color-bg);
+}
+
+.ideas-hta {
+  background: var(--color-bg);
+}
+
+/* Три цитаты под «Идеи HTA» — вне рамки слайдера: серый фон, цветная обводка */
+.ideas-hta-quotes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(16px, 2.5vw, 28px);
+  max-width: 1180px;
+  margin: clamp(8px, 2vw, 20px) auto 0;
+  align-items: stretch;
+}
+
+.ideas-quote-card {
+  background: #e8eaed;
+  border-radius: 14px;
+  border: 3px solid;
+  padding: clamp(22px, 3vw, 32px) clamp(18px, 2.5vw, 26px) clamp(20px, 2.5vw, 28px);
+  min-height: 360px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  box-shadow: 0 6px 20px rgba(15, 24, 48, 0.08);
+}
+
+.ideas-quote-card--green {
+  border-color: #95c11f;
+}
+
+.ideas-quote-card--yellow {
+  border-color: #f2b705;
+}
+
+.ideas-quote-card--orange {
+  border-color: #e86a2f;
+}
+
+.ideas-quote-card__header {
+  font-size: clamp(1.1rem, 2vw, 1.35rem);
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: clamp(14px, 2vw, 22px);
+  line-height: 1.25;
+}
+
+.ideas-quote-card__class {
+  font-weight: 600;
+  color: #4a5568;
+}
+
+.ideas-quote-card__text {
+  margin: 0;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(1rem, 1.35vw, 1.12rem);
+  line-height: 1.45;
+  color: #2d3748;
+}
+
+/* Скелет круглой аватарки; внутрь добавьте <img class="ideas-quote-card__avatar-img" src="..." alt="..." /> */
+.ideas-quote-card__avatar {
+  width: 80px;
+  height: 80px;
+  margin: clamp(18px, 2.5vw, 26px) auto 0;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: linear-gradient(160deg, #d1d5db 0%, #aeb4bf 100%);
+  border: 3px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 4px 12px rgba(15, 24, 48, 0.12);
+  overflow: hidden;
+}
+
+.ideas-quote-card__avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
 }
 
 .video-carousel {
@@ -1324,7 +1408,7 @@ main {
 
 /* === Open day CTA === */
 .open-day {
-  padding-bottom: clamp(56px, 8vw, 96px);
+  padding-bottom: clamp(40px, 5vw, 64px);
 }
 
 .open-day-inner {
@@ -1824,7 +1908,7 @@ main {
 
   .life-row-left,
   .life-row-right {
-    animation-duration: 110s;
+    animation-duration: 280s;
   }
 
   .open-day-actions {
@@ -1845,7 +1929,7 @@ main {
   }
 
   .research-quote {
-    margin: 40px auto;
+    margin: 24px auto;
     padding: 0 8px;
   }
 
@@ -1887,11 +1971,25 @@ main {
   .slider-btn {
     display: inline-flex;
   }
+
+  .ideas-hta-quotes {
+    grid-template-columns: 1fr;
+    max-width: 420px;
+  }
+
+  .ideas-quote-card {
+    min-height: 260px;
+  }
+
+  .ideas-quote-card__avatar {
+    width: 72px;
+    height: 72px;
+  }
 }
 
 @media (max-width: 576px) {
   .section {
-    padding: 40px 0;
+    padding: 28px 0;
   }
 
   .video-carousel {

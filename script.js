@@ -205,18 +205,19 @@ const pageData = {
   },
 };
 
-/* --- Why HTA: popup Love School + слайдер отзывов --- */
+/* --- Why HTA: popup Love School + горизонтальные слайдеры карточек --- */
 function initStudentsSlider() {
-  const slider = document.getElementById("studentsSlider");
-  const section = document.querySelector(".students-section");
-  if (!slider || !section) return;
-  const btnRight = section.querySelector(".slider-btn.right");
-  const btnLeft = section.querySelector(".slider-btn.left");
-  btnRight?.addEventListener("click", () => {
-    slider.scrollBy({ left: 300, behavior: "smooth" });
-  });
-  btnLeft?.addEventListener("click", () => {
-    slider.scrollBy({ left: -300, behavior: "smooth" });
+  document.querySelectorAll(".students-slider-wrapper").forEach((wrapper) => {
+    const slider = wrapper.querySelector(".students-slider");
+    if (!slider) return;
+    const btnRight = wrapper.querySelector(".slider-btn.right");
+    const btnLeft = wrapper.querySelector(".slider-btn.left");
+    btnRight?.addEventListener("click", () => {
+      slider.scrollBy({ left: 300, behavior: "smooth" });
+    });
+    btnLeft?.addEventListener("click", () => {
+      slider.scrollBy({ left: -300, behavior: "smooth" });
+    });
   });
 }
 
@@ -326,9 +327,12 @@ function renderLifeMarquee() {
   if (!row1 || !row2) return;
 
   const imgs = pageData.lifeAtHtaImages;
-  const forward = [...imgs, ...imgs];
-  const reversed = [...imgs].reverse();
-  const backward = [...reversed, ...reversed];
+  const half = Math.ceil(imgs.length / 2);
+  const imgsRow1 = imgs.slice(0, half);
+  const imgsRow2 = imgs.slice(half);
+
+  const forward = [...imgsRow1, ...imgsRow1];
+  const backward = [...imgsRow2, ...imgsRow2];
 
   const buildRow = (container, sources) => {
     const fragment = document.createDocumentFragment();
