@@ -11,30 +11,43 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header class="site-header">
+  <header class="site-header header">
     <div class="container header-inner">
-      <a href="#hero" class="logo">
-        <img src="./logo/logo_square.png" alt="HTA Logo" width="56" height="56" loading="lazy" />
-        <span class="logo-text">High Tech Academy</span>
-      </a>
-      <nav class="nav" aria-label="Основная навигация">
+      <div class="header-left">
+        <div class="header-social-icons" role="navigation" aria-label="Соцсети в шапке">
+          <a href="https://www.instagram.com/hta.kz" class="header-social-icon" target="_blank" rel="noopener noreferrer" aria-label="Instagram"></a>
+          <a href="https://www.facebook.com/HighTechAcademyKZ/" class="header-social-icon" target="_blank" rel="noopener noreferrer" aria-label="Facebook"></a>
+          <a href="https://www.youtube.com/channel/UCAAhNxRHrwwhFYMT9qIJ7AA/featured" class="header-social-icon" target="_blank" rel="noopener noreferrer" aria-label="YouTube"></a>
+        </div>
+      </div>
+      <div class="header-center">
+        <a href="#hero" class="header-brand">
+          <img src="./logo/logo_square.png" alt="HTA Logo" class="header-brand-img" width="40" height="40" loading="lazy" />
+          <span class="header-brand-text">High Tech Academy</span>
+        </a>
+      </div>
+      <div class="header-actions">
         <button type="button" class="nav-toggle" aria-label="Открыть меню" aria-expanded="false">
-          <span></span> 
+          <span></span>
           <span></span>
         </button>
-        <ul class="nav-list" id="nav-list">
-          <li><a href="#hero">Главная</a></li>
-          <li><a href="#why-hta">О нас</a></li>
-          <li><a href="#achievements">Достижения</a></li>
-          <li><a href="#testimonials">Отзывы</a></li>
-          <li><a href="#open-day">День открытых дверей</a></li>
-        </ul>
-        <div class="lang-switch" role="group" aria-label="Язык">
-          <button type="button" class="lang-btn is-active" data-lang="ru">RU</button>
-          <button type="button" class="lang-btn" data-lang="kz">KZ</button>
-          <button type="button" class="lang-btn" data-lang="en">EN</button>
-        </div>
-      </nav>
+        <nav class="nav header-nav" aria-label="Основная навигация">
+          <ul class="nav-list" id="nav-list">
+            <li><a href="#hero">Главная</a></li>
+            <li><a href="#why-hta">О нас</a></li>
+            <li><a href="#achievements">Достижения</a></li>
+            <li><a href="#testimonials">Отзывы</a></li>
+            <li><a href="#open-day">День открытых дверей</a></li>
+            <li class="nav-lang-item">
+              <div class="lang-switch language-switcher" role="group" aria-label="Язык">
+                <button type="button" class="lang-btn is-active" data-lang="ru">RU</button>
+                <button type="button" class="lang-btn" data-lang="kz">KZ</button>
+                <button type="button" class="lang-btn" data-lang="en">EN</button>
+              </div>
+            </li>
+          </ul>
+        </nav>
+      </div>
     </div>
   </header>
 
@@ -43,7 +56,7 @@
       <div class="hero-overlay" aria-hidden="true"></div>
 
       <div class="hero-content">
-        <h1 id="hero-title">Международная школа<br />с аккредитацией CIS</h1>
+        <h1 id="hero-title">Международная школа<br /> с аккредитацией CIS</h1>
         <p>Готовим к жизни, а не к тестам</p>
       </div>
 
@@ -133,8 +146,8 @@
       <div class="container why-hta-extra">
         <div class="research-quote">
           <p>
-            «Исследования показывают, что чувство принадлежности к школе позитивно связано с академической мотивацией,
-            вовлечённостью и результатами учеников школы»
+            Исследования показывают, что чувство принадлежности к школе позитивно связано с академической мотивацией,
+            вовлечённостью и результатами учеников школы
           </p>
           <span class="quote-author">(Korpershoek et al., 2019, Research Papers in Education)</span>
         </div>
@@ -173,7 +186,7 @@
 
     <section id="unique-features" class="unique-features section reveal" aria-labelledby="unique-title">
       <div class="container">
-        <h2 id="unique-title" class="section-title">Что делает нас уникальными</h2>
+        <h2 id="unique-title" class="section-title">Что делает HTA уникальной школой</h2>
         <div class="features-grid" id="features-grid"></div>
       </div>
     </section>
@@ -270,49 +283,44 @@
     </section>
   </main>
 
-  <footer class="site-footer">
+  <footer class="site-footer footer">
     <div class="footer-top">
       <div class="container">
         <a href="https://hta.kz/" class="footer-more-link" target="_blank" rel="noopener noreferrer">Узнать больше о школе</a>
       </div>
     </div>
     <div class="footer-main">
-      <div class="container footer-grid">
-        <div class="footer-brand-block">
-          <a href="#hero" class="logo logo--footer">
-            <img src="./logo/logo_square.png" alt="" width="52" height="52" loading="lazy" />
-            <span>High Tech Academy</span>
-          </a>
-          <p class="footer-tagline">Международная школа в Алматы</p>
-        </div>
-        <nav class="footer-nav" aria-label="Навигация в подвале">
-          <ul>
-            <li><a href="#hero">Главная</a></li>
-            <li><a href="#why-hta">О нас</a></li>
-            <li><a href="#achievements">Достижения</a></li>
-            <li><a href="#testimonials">Отзывы</a></li>
-            <li><a href="#open-day">День открытых дверей</a></li>
-          </ul>
+      <div class="container footer-stack">
+        <nav class="footer-links footer-links--policies" aria-label="Документы и сервисы">
+          <a href="https://hta.kz/school_policies/" target="_blank" rel="noopener noreferrer">Политики школы</a>
+          <a href="https://hta.kz/admissions/" target="_blank" rel="noopener noreferrer">Поступление</a>
+          <a href="https://hta.kz/faq/" target="_blank" rel="noopener noreferrer">FAQ</a>
+          <a href="https://hta.kz/vacancies/" target="_blank" rel="noopener noreferrer">Вакансии</a>
+          <a href="https://hta.kz/payment_methods/" target="_blank" rel="noopener noreferrer">Способы оплаты</a>
         </nav>
-        <div class="footer-contacts">
-          <p><strong>Контакты</strong></p>
-          <p>г. Алматы, Казахстан</p>
-          <p><a href="tel:+77270000000">+7 (727) 000-00-00</a></p>
-          <p><a href="mailto:info@hta.kz">info@hta.kz</a></p>
+        <div class="footer-logo">
+          <a href="#hero" class="logo logo--footer">
+            <img src="./logo/HTA_SISU.webp" alt="" width="208" loading="lazy" />
+          </a>
         </div>
-        <div class="footer-social">
-          <p><strong>Соцсети</strong></p>
-          <ul class="social-list">
-            <li><a href="https://www.instagram.com/hta.kz" target="_blank" rel="noopener noreferrer" aria-label="Instagram">Instagram</a></li>
-            <li><a href="https://www.facebook.com/HighTechAcademyKZ/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">Facebook</a></li>
-            <li><a href="https://www.youtube.com/channel/UCAAhNxRHrwwhFYMT9qIJ7AA/featured" target="_blank" rel="noopener noreferrer" aria-label="YouTube">YouTube</a></li>
-            <li><a href="https://www.tiktok.com/@high.tech.academy1" target="_blank" rel="noopener noreferrer" aria-label="TikTok">TikTok</a></li>
-            <li><a href="https://www.linkedin.com/company/high-tech-academy-almaty/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">LinkedIn</a></li>
-          </ul>
+        <div class="footer-info">
+          <p>© 2024 Все права защищены ТОО "Школа 21 века".</p>
+          <p class="footer-info-line">
+            <a href="mailto:info@hta.kz">info@hta.kz</a><span class="footer-info-sep">, </span><a href="tel:+77717471771">+7 (771) 747-17-71</a>
+          </p>
         </div>
-      </div>
-      <div class="container footer-bottom">
-        <p>© <span id="year"></span> High Tech Academy</p>
+        <div class="footer-meta">
+        </div>
+        <!-- <div class="footer-social-block">
+          <p class="footer-social-title"><strong>Соцсети</strong></p>
+          <nav class="footer-links footer-links--social" aria-label="Соцсети">
+            <a href="https://www.instagram.com/hta.kz" target="_blank" rel="noopener noreferrer">Instagram</a>
+            <a href="https://www.facebook.com/HighTechAcademyKZ/" target="_blank" rel="noopener noreferrer">Facebook</a>
+            <a href="https://www.youtube.com/channel/UCAAhNxRHrwwhFYMT9qIJ7AA/featured" target="_blank" rel="noopener noreferrer">YouTube</a>
+            <a href="https://www.tiktok.com/@high.tech.academy1" target="_blank" rel="noopener noreferrer">TikTok</a>
+            <a href="https://www.linkedin.com/company/high-tech-academy-almaty/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          </nav>
+        </div> -->
       </div>
     </div>
   </footer>

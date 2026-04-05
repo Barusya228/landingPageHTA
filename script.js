@@ -27,12 +27,17 @@ function fromDirList(dir, fileNames) {
   return fileNames.map((fileName) => fromDir(dir, fileName));
 }
 
+/** Путь к WebP-версии того же файла в папке «Жизнь в HTA» (рядом с .jpg/.png). */
+function lifeImageWebpSrc(fallbackSrc) {
+  return String(fallbackSrc).replace(/\.(jpe?g|png)$/i, ".webp");
+}
+
 const COMPANY_LOGO_1 = "./logo/logo-arbuz.png";
 const COMPANY_LOGO_2 = "./logo/Frame-824631.png";
 const COMPANY_LOGO_3 = "./logo/logo-kazbeef.jpg";
 const COMPANY_LOGO_4 = "./logo/logo-shinlain.png";
 const COMPANY_LOGO_5 = "./logo/logo-not-hta.svg";
-const COMPANY_LOGO_6 = "./logo/l6ghb57yon3kcs6f1iucm5klma1mq985.svg";
+const COMPANY_LOGO_6 = "./logo/logo-compass.jpg";
 
 /** Файлы задаются внутри своей папки секции (без общего массива и slice) */
 const PHOTO_HERO = fromDir("hero", "главная.jpg");
@@ -55,63 +60,31 @@ const PHOTO_VIDEO_THUMBS = fromDirList("video", [
   "3.jpg",
   "HD_Teschers.jpg",
 ]);
+/** Галерея «Жизнь в HTA»: 22 кадра (верх/низ ленты делятся в renderLifeMarquee) */
 const PHOTO_LIFE = fromDirList("life", [
-  "1.jpg",
-  "2.jpg",
-  "3.jpg",
-  "4.jpg",
-  "5.jpg",
-  "6.jpg",
-  "7.jpg",
-  "8.jpg",
-  "9.jpg",
-  "10.jpg",
-  "11.jpg",
-  "12.jpg",
-  "13.jpg",
-  "14.jpg",
-  "15.jpg",
-  "16.jpg",
-  "17.jpg",
-  "18.jpg",
-  "19.jpg",
-  "20.jpg",
-  "21.jpg",
-  "22.jpg",
-  "23.jpg",
-  "24.jpg",
-  "25.jpg",
-  "26.jpg",
-  "27.jpg",
-  "28.jpg",
-  "29.jpg",
-  "30.jpg",
-  "31.jpg",
-  "32.jpg",
-  "33.jpg",
-  "34.jpg",
-  "35.jpg",
-  "36.jpg",
-  "37.jpg",
-  "38.jpg",
-  "39.jpg",
-  "40.jpg",
-  "41.jpg",
-  "42.jpg",
-  "43.jpg",
-  "44.jpg",
-  "45.jpg",
-  "46.jpg",
-  "47.jpg",
-  "48.jpg",
-  "49.jpg",
-  "50.jpg",
-  "51.jpg",
-  "52.jpg",
-  "53.jpg",
-  "54.jpg",
+  "1.webp",
+  "2.webp",
+  "3.webp",
+  "4.webp",
+  "5.webp",
+  "6.webp",
+  "7.webp",
+  "8.webp",
+  "9.webp",
+  "10.webp",
+  "11.webp",
+  "12.webp",
+  "13.webp",
+  "14.webp",
+  "15.webp",
+  "16.webp",
+  "17.webp",
+  "18.webp",
+  "19.webp",
+  "20.webp",
+  "21.webp",
+  "22.webp",
 ]);
-const LIFE_MARQUEE_MAX = 14;
 const INSTAGRAM_REEL_PERMALINKS = [
   "https://www.instagram.com/reel/DWEMEoODe7q/?utm_source=ig_embed&utm_campaign=loading",
   "https://www.instagram.com/reel/DPvMWytD2eB/?utm_source=ig_embed&utm_campaign=loading",
@@ -152,7 +125,7 @@ const pageData = {
     },
   ],
 
-  lifeAtHtaImages: PHOTO_LIFE.slice(0, LIFE_MARQUEE_MAX),
+  lifeAtHtaImages: PHOTO_LIFE,
 
   achievements: [
     {
@@ -320,7 +293,38 @@ function renderUniqueFeatures() {
   grid.appendChild(fragment);
 }
 
-/* --- Marquee Life (все кадры из PHOTO_LIFE; второй ряд — в обратном порядке) --- */
+/**
+ * Одна лента «Жизнь в HTA»: бесконечный цикл через дублирование массива.
+ * WebP через <picture> + fallback на исходный JPG/PNG.
+ */
+function renderLifeRow(trackElement, photosArray) {
+  const loopPhotos = [...photosArray, ...photosArray];
+  const fragment = document.createDocumentFragment();
+
+  loopPhotos.forEach((photo) => {
+    const picture = document.createElement("picture");
+
+    const sourceWebp = document.createElement("source");
+    sourceWebp.srcset = lifeImageWebpSrc(photo);
+    sourceWebp.type = "image/webp";
+
+    const img = document.createElement("img");
+    img.src = photo;
+    img.alt = "";
+    img.width = 280;
+    img.height = 180;
+    img.loading = "lazy";
+    img.decoding = "async";
+    img.className = "life-photo";
+
+    picture.appendChild(sourceWebp);
+    picture.appendChild(img);
+    fragment.appendChild(picture);
+  });
+
+  trackElement.appendChild(fragment);
+}
+
 function renderLifeMarquee() {
   const row1 = document.getElementById("marquee-row-1");
   const row2 = document.getElementById("marquee-row-2");
@@ -331,23 +335,8 @@ function renderLifeMarquee() {
   const imgsRow1 = imgs.slice(0, half);
   const imgsRow2 = imgs.slice(half);
 
-  const forward = [...imgsRow1, ...imgsRow1];
-  const backward = [...imgsRow2, ...imgsRow2];
-
-  const buildRow = (container, sources) => {
-    const fragment = document.createDocumentFragment();
-    sources.forEach((src) => {
-      const img = document.createElement("img");
-      img.src = src;
-      img.alt = "";
-      img.loading = "lazy";
-      fragment.appendChild(img);
-    });
-    container.appendChild(fragment);
-  };
-
-  buildRow(row1, forward);
-  buildRow(row2, backward);
+  renderLifeRow(row1, imgsRow1);
+  renderLifeRow(row2, imgsRow2);
 }
 
 /* --- Achievements --- */
