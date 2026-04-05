@@ -138,11 +138,9 @@ main {
 }
 
 .logo--footer img {
-  width: 208px;
-  height: auto;
-  max-width: 100%;
+  width: 52px;
+  height: 52px;
   object-fit: contain;
-  display: block;
 }
 
 .nav {
@@ -231,6 +229,26 @@ main {
   background: var(--color-white);
   color: var(--color-text);
   box-shadow: 0 1px 4px rgba(15, 24, 48, 0.1);
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo {
+  height: 40px;
+  width: auto;
+}
+
+.logo-text {
+  font-size: 16px;
+  white-space: nowrap;
+}
+
+.language-switcher {
+  display: none;
 }
 
 /* === Hero === */
@@ -1511,6 +1529,7 @@ main {
 }
 
 /* === Footer === */
+/* === Footer === */
 .footer-top {
   background: var(--color-white);
   padding: 1rem 0;
@@ -1528,159 +1547,70 @@ main {
 .footer-main {
   background: #0c1224;
   color: rgba(255, 255, 255, 0.85);
-  padding: clamp(2rem, 5vw, 2.75rem) 20px clamp(2rem, 4vw, 2.5rem);
+  padding: 2.5rem 0 1.5rem;
 }
 
-.footer-stack {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  gap: clamp(1.25rem, 3vw, 1.85rem);
-  max-width: 56rem;
-  margin: 0 auto;
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr 1fr;
+  gap: 2rem;
 }
 
-.footer-links {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 0.65rem clamp(1rem, 3vw, 2.25rem);
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.footer-links a {
-  color: rgba(255, 255, 255, 0.92);
-  font-weight: 600;
-  font-size: 0.9375rem;
-  text-decoration: none;
-  line-height: 1.45;
-  transition:
-    opacity var(--transition),
-    color var(--transition),
-    text-decoration-color var(--transition);
-}
-
-.footer-links a:hover,
-.footer-links a:focus-visible {
-  opacity: 1;
+.footer-brand-block .logo {
   color: #fff;
-  text-decoration: underline;
-  text-underline-offset: 4px;
-  text-decoration-color: rgba(255, 255, 255, 0.55);
-}
-
-.footer-links--policies {
-  gap: 0.65rem clamp(1.25rem, 4vw, 2.75rem);
-}
-
-.footer-links--nav a {
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.78);
-}
-
-.footer-links--social a {
-  font-weight: 500;
-  font-size: 0.875rem;
-  color: rgba(255, 255, 255, 0.78);
-}
-
-.footer-meta {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.65rem;
-  max-width: 24rem;
 }
 
 .footer-tagline {
-  margin: 0;
+  margin: 0.5rem 0 0;
   font-size: 0.875rem;
-  opacity: 0.88;
+  opacity: 0.8;
 }
 
-.footer-contacts {
+.footer-nav ul {
+  list-style: none;
   margin: 0;
+  padding: 0;
 }
 
-.footer-contacts p {
-  margin: 0.2rem 0;
+.footer-nav a {
+  display: block;
+  padding: 0.25rem 0;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.9375rem;
+}
+
+.footer-nav a:hover {
+  color: #fff;
+}
+
+.footer-contacts p,
+.footer-social p {
+  margin: 0 0 0.35rem;
   font-size: 0.9375rem;
 }
 
 .footer-contacts a {
   color: var(--color-orange);
-  text-decoration: none;
 }
 
-.footer-contacts a:hover,
-.footer-contacts a:focus-visible {
-  text-decoration: underline;
-  text-underline-offset: 2px;
-}
-
-.footer-social-block {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.footer-social-title {
+.social-list {
+  list-style: none;
   margin: 0;
-  font-size: 0.9375rem;
-  color: rgba(255, 255, 255, 0.88);
+  padding: 0;
 }
 
-.footer-logo {
-  margin: 0.15rem 0;
+.social-list a {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.875rem;
 }
 
-.footer-logo .logo {
-  color: #fff;
-  justify-content: center;
-}
-
-.footer-logo .logo--footer {
-  gap: 0;
-}
-
-.footer-info {
-  opacity: 0.82;
-  font-size: 14px;
-  line-height: 1.55;
-  max-width: 28rem;
-}
-
-.footer-info p {
-  margin: 0.35rem 0;
-}
-
-.footer-info-line {
-  margin-top: 0.15rem;
-}
-
-.footer-info a {
-  color: rgba(255, 255, 255, 0.92);
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  text-decoration-color: rgba(255, 255, 255, 0.35);
-}
-
-.footer-info a:hover,
-.footer-info a:focus-visible {
-  text-decoration-color: rgba(255, 255, 255, 0.65);
-  color: #fff;
-}
-
-.footer-info + .footer-links--nav {
-  padding-top: 0.35rem;
-  margin-top: 0.15rem;
+.footer-bottom {
+  margin-top: 2rem;
+  padding-top: 1.25rem;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+  font-size: 0.8125rem;
+  opacity: 0.7;
 }
 
 /* Floating CTA */

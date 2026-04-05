@@ -50,8 +50,8 @@ const PHOTO_FEATURES = fromDirList("features", [
   "STEM и робототехника.jpg",
 ]);
 const PHOTO_ACHIEVEMENTS = fromDirList("achievements", [
-  "1.jpg",
-  "2.jpg",
+  "1.jfif",
+  "2.webp",
   "3.jpg",
 ]);
 const PHOTO_VIDEO_THUMBS = fromDirList("video", [
@@ -96,7 +96,7 @@ const pageData = {
     {
       title: "Проекты из реальной жизни",
       image: PHOTO_FEATURES[0],
-      description: "Ученики решают задачи из практики: от социальных инициатив до технологических прототипов.",
+      description: "Наши ученики работают с задачами реальных компаний: исследуют, спорят, ошибаются — и защищают свои решения перед практиками, которые решают такие задачи каждый день. Не оценка от учителя. Обратная связь от людей из индустрии. И получают не оценки, а честную обратную связь. Так формируется понимание, что ошибки - это часть роста.",
     },
     {
       title: "Курс предпринимательства",
@@ -222,17 +222,18 @@ function initLoveSchoolPopup() {
     document.body.style.overflow = scrollLock;
   };
 
-  loveCard.addEventListener("click", (e) => {
-    e.stopPropagation();
-    open();
-  });
+  // Убраны обработчики клика и клавиатуры для отключения открытия модального окна
+  // loveCard.addEventListener("click", (e) => {
+  //   e.stopPropagation();
+  //   open();
+  // });
 
-  loveCard.addEventListener("keydown", (e) => {
-    if (e.key === "Enter" || e.key === " ") {
-      e.preventDefault();
-      open();
-    }
-  });
+  // loveCard.addEventListener("keydown", (e) => {
+  //   if (e.key === "Enter" || e.key === " ") {
+  //     e.preventDefault();
+  //     open();
+  //   }
+  // });
 
   backdrop.addEventListener("click", () => close());
 
