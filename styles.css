@@ -625,31 +625,34 @@ main {
 
 /* Блок отзывов учеников */
 .students-section {
-  border: 1.5px solid #b7d34b;
-  border-radius: 14px;
-  padding: 14px 56px 20px;
+  border: 1.5px solid #bfd24d;
+  border-radius: 22px;
+  padding: 18px 56px 28px;
   margin: 28px auto 0;
-  max-width: 1280px;
+  max-width: 1180px;
   text-align: center;
   background: #fff;
+  box-shadow: 0 10px 26px rgba(15, 24, 48, 0.04);
 }
 
 .students-section h3 {
-  margin: 0 0 16px;
-  font-size: 38px;
+  margin: 0 0 22px;
+  font-size: clamp(2rem, 3vw, 2.55rem);
   font-weight: 700;
-  color: var(--color-text);
+  letter-spacing: -0.02em;
+  color: #19325f;
 }
 
 .students-slider-wrapper {
   position: relative;
   display: flex;
   align-items: stretch;
+  gap: 16px;
 }
 
 .students-slider {
   display: flex;
-  gap: 18px;
+  gap: 28px;
   flex: 1;
   min-width: 0;
   overflow-x: auto;
@@ -671,86 +674,107 @@ main {
 
 .student-card {
   flex: 0 0 auto;
-  width: calc((100% - 36px) / 3);
-  min-width: 260px;
+  width: calc((100% - 56px) / 3);
+  min-width: 250px;
   max-width: 100%;
-  background: #fff;
-  border: 1px solid #d7d7d7;
-  border-radius: 10px;
-  padding: 12px 14px 14px;
+  background: #ffffff;
+  border: 1px solid rgba(15, 24, 48, 0.12);
+  border-radius: 16px;
+  padding: 20px 16px 18px;
   text-align: left;
-  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.22);
+  box-shadow: 0 1px 6px rgba(15, 24, 48, 0.08);
+  position: relative;
+}
+
+.student-card.green,
+.student-card.yellow,
+.student-card.orange {
+  background: #ffffff;
 }
 
 .student-card p {
   margin: 0;
-  font-size: 1.05rem;
-  line-height: 1.35;
-  color: #fff;
+  font-size: 0.98rem;
+  line-height: 1.45;
+  color: #2f3a50;
 }
 
 .student-name {
-  font-weight: 700;
+  font-weight: 500;
   margin-bottom: 2px;
-  color: #fff;
-  font-size: 1.35rem;
+  color: #2e3a4d;
+  font-size: 1.18rem;
   line-height: 1.1;
-  text-align: center;
+  text-align: right;
 }
 
 .student-class {
-  font-size: 1.05rem;
-  margin-bottom: 12px;
-  color: rgba(255, 255, 255, 0.92);
-  text-align: center;
+  font-size: 0.95rem;
+  margin-bottom: 20px;
+  color: #3d4657;
+  text-align: right;
+  position: relative;
 }
 
-.student-card.green {
-  border-top: 8px solid #95c11f;
-  background: #95c11f;
+.student-class::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 4px;
+  margin: 18px auto 0;
+  border-radius: 999px;
+  background: rgba(15, 24, 48, 0.12);
 }
 
-.student-card.yellow {
-  border-top: 8px solid #f2b705;
-  background: #f2b705;
-}
-
+.student-card.green,
+.student-card.yellow,
 .student-card.orange {
-  border-top: 8px solid #e86a2f;
-  background: #e86a2f;
+  border-top: none;
+}
+
+.student-card.green .student-class::after {
+  background: #9bc813;
+}
+
+.student-card.yellow .student-class::after {
+  background: #f0b400;
+}
+
+.student-card.orange .student-class::after {
+  background: #eb6b2b;
 }
 
 .slider-btn {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 42px;
-  height: 42px;
+  width: 52px;
+  height: 52px;
   flex-shrink: 0;
   border: none;
   background: transparent;
-  font-size: 58px;
+  font-size: 78px;
   font-weight: 300;
   line-height: 1;
   cursor: pointer;
-  color: #b3b3b3;
+  color: rgba(102, 108, 118, 0.55);
   padding: 0;
   border-radius: 50%;
-  transition: background 0.2s ease, color 0.2s ease;
+  transition: color 0.2s ease, transform 0.2s ease;
   z-index: 2;
 }
 
 .slider-btn.left {
-  left: -44px;
+  left: -52px;
 }
 
 .slider-btn.right {
-  right: -44px;
+  right: -52px;
 }
 
 .slider-btn:hover {
-  background: rgba(15, 24, 48, 0.04);
-  color: #8f8f8f;
+  color: rgba(25, 50, 95, 0.78);
+  transform: translateY(-50%) scale(1.04);
 }
 
 .slider-btn:focus-visible {
@@ -984,8 +1008,8 @@ main {
 
 .marquee .life-photo {
   display: block;
-  width: 280px;
-  height: 180px;
+  width: 320px;
+  height: 200px;
   max-width: none;
   object-fit: cover;
   border-radius: var(--radius-lg);
@@ -1178,13 +1202,38 @@ main {
   font-size: clamp(1.1rem, 2vw, 1.35rem);
   font-weight: 700;
   color: var(--color-text);
-  margin-bottom: clamp(14px, 2vw, 22px);
+  margin-bottom: 0.25rem;
   line-height: 1.25;
 }
 
 .ideas-quote-card__class {
   font-weight: 600;
   color: #4a5568;
+  margin-bottom: clamp(18px, 2vw, 24px);
+  position: relative;
+}
+
+.ideas-quote-card__class::after {
+  content: "";
+  display: block;
+  width: 60%;
+  max-width: 140px;
+  height: 3px;
+  margin: 0.75rem auto 0;
+  border-radius: 999px;
+  background: rgba(15, 24, 48, 0.14);
+}
+
+.ideas-quote-card--green .ideas-quote-card__class::after {
+  background: #95c11f;
+}
+
+.ideas-quote-card--yellow .ideas-quote-card__class::after {
+  background: #f2b705;
+}
+
+.ideas-quote-card--orange .ideas-quote-card__class::after {
+  background: #e86a2f;
 }
 
 .ideas-quote-card__text {
@@ -2103,12 +2152,13 @@ main {
 
   .students-section {
     margin: 20px auto;
-    padding: 16px 12px;
+    padding: 18px 14px 20px;
+    border-radius: 18px;
   }
 
   .students-section h3 {
     font-size: clamp(22px, 5vw, 30px);
-    margin-bottom: 12px;
+    margin-bottom: 16px;
   }
 
   .students-slider-wrapper {
@@ -2118,20 +2168,20 @@ main {
   .students-slider {
     overflow-x: auto;
     width: 100%;
-    gap: 12px;
+    gap: 14px;
   }
 
   .student-card {
     min-width: 250px;
-    padding: 14px;
+    padding: 18px 14px 16px;
   }
 
   .student-name {
-    font-size: 1.1rem;
+    font-size: 1.05rem;
   }
 
   .student-card p {
-    font-size: 0.95rem;
+    font-size: 0.92rem;
   }
 
   .slider-btn {

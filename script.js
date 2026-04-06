@@ -92,6 +92,9 @@ const INSTAGRAM_REEL_PERMALINKS = [
   "https://www.instagram.com/reel/DWEMEoODe7q/?utm_source=ig_embed&utm_campaign=loading",
   "https://www.instagram.com/reel/DPvMWytD2eB/?utm_source=ig_embed&utm_campaign=loading",
   "https://www.instagram.com/reel/DKhFaLBNlh-/?utm_source=ig_embed&utm_campaign=loading",
+  "https://www.instagram.com/reel/DNfGpn5tFW5/?utm_source=ig_embed&utm_campaign=loading",
+  "https://www.instagram.com/reel/DWEMEoODe7q/?utm_source=ig_embed&utm_campaign=loading",
+
 ];
 
 const pageData = {
@@ -177,14 +180,14 @@ const pageData = {
     {
       title: "Видео 4",
       thumb: PHOTO_VIDEO_THUMBS[3],
-      embedUrl: "https://www.youtube.com/embed/D-Ktmq9T94s?si=mYV-oAS-3Bx1lrVM",
-      instagramPermalink: null,
+      embedUrl: null,
+      instagramPermalink: INSTAGRAM_REEL_PERMALINKS[3],
     },
     {
       title: "Видео 5",
       thumb: PHOTO_VIDEO_THUMBS[4],
-      embedUrl: "https://www.youtube.com/embed/D-Ktmq9T94s?si=mYV-oAS-3Bx1lrVM",
-      instagramPermalink: null,
+      embedUrl: null,
+      instagramPermalink: INSTAGRAM_REEL_PERMALINKS[4],
     },
     {
       title: "Видео 6",
