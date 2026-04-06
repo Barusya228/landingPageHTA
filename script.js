@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Landing page — данные и логика (без backend).
  * Контент меняется через объекты ниже, без правок разметки секций.
  */
@@ -58,6 +58,9 @@ const PHOTO_VIDEO_THUMBS = fromDirList("video", [
   "1.jpg",
   "2.jpg",
   "3.jpg",
+  "4.jpg",
+  "5.jpg",
+  "6.jpg",
   "HD_Teschers.jpg",
 ]);
 /** Галерея «Жизнь в HTA»: 22 кадра (верх/низ ленты делятся в renderLifeMarquee) */
@@ -170,6 +173,42 @@ const pageData = {
       thumb: PHOTO_VIDEO_THUMBS[2],
       embedUrl: null,
       instagramPermalink: INSTAGRAM_REEL_PERMALINKS[2],
+    },
+    {
+      title: "Видео 4",
+      thumb: PHOTO_VIDEO_THUMBS[3],
+      embedUrl: "https://www.youtube.com/embed/D-Ktmq9T94s?si=mYV-oAS-3Bx1lrVM",
+      instagramPermalink: null,
+    },
+    {
+      title: "Видео 5",
+      thumb: PHOTO_VIDEO_THUMBS[4],
+      embedUrl: "https://www.youtube.com/embed/D-Ktmq9T94s?si=mYV-oAS-3Bx1lrVM",
+      instagramPermalink: null,
+    },
+    {
+      title: "Видео 6",
+      thumb: PHOTO_VIDEO_THUMBS[5],
+      embedUrl: "https://www.youtube.com/embed/D-Ktmq9T94s?si=mYV-oAS-3Bx1lrVM",
+      instagramPermalink: null,
+    },
+    {
+      title: "Видео 7",
+      thumb: PHOTO_VIDEO_THUMBS[6],
+      embedUrl: "https://www.youtube.com/embed/D-Ktmq9T94s?si=mYV-oAS-3Bx1lrVM",
+      instagramPermalink: null,
+    },
+    {
+      title: "Видео 8",
+      thumb: PHOTO_VIDEO_THUMBS[7],
+      embedUrl: "https://www.youtube.com/embed/D-Ktmq9T94s?si=mYV-oAS-3Bx1lrVM",
+      instagramPermalink: null,
+    },
+    {
+      title: "Видео 9",
+      thumb: PHOTO_VIDEO_THUMBS[8],
+      embedUrl: "https://www.youtube.com/embed/D-Ktmq9T94s?si=mYV-oAS-3Bx1lrVM",
+      instagramPermalink: null,
     },
   ],
 
@@ -378,25 +417,39 @@ function renderCompanies() {
 /* --- Video testimonials + modal --- */
 let videoSlideIndex = 0;
 
-function renderVideoSlides() {
+function createVideoSlide(video, originalIndex) {
+  const btn = document.createElement("button");
+  btn.type = "button";
+  btn.className = "video-card";
+  btn.dataset.index = String(originalIndex);
+  btn.innerHTML = `
+    <img src="${video.thumb}" alt="" loading="lazy" decoding="async" />
+    <div class="video-card-play"><span>▶</span></div>
+    <div class="video-card-caption">${escapeHtml(video.title)}</div>
+  `;
+  btn.addEventListener("click", () => openVideoModal(originalIndex));
+  return btn;
+}
+
+function renderVideoSlides(
+  slides = pageData.videoTestimonials.map((video, originalIndex) => ({
+    video,
+    originalIndex,
+  }))
+) {
   const track = document.getElementById("video-carousel-track");
-  if (!track) return;
+  if (!track) return null;
   track.innerHTML = "";
-  const fragment = document.createDocumentFragment();
-  pageData.videoTestimonials.forEach((v, i) => {
-    const btn = document.createElement("button");
-    btn.type = "button";
-    btn.className = "video-card";
-    btn.dataset.index = String(i);
-    btn.innerHTML = `
-      <img src="${v.thumb}" alt="" loading="lazy" decoding="async" />
-      <div class="video-card-play"><span>▶</span></div>
-      <div class="video-card-caption">${escapeHtml(v.title)}</div>
-    `;
-    btn.addEventListener("click", () => openVideoModal(i));
-    fragment.appendChild(btn);
+
+  const strip = document.createElement("div");
+  strip.className = "video-carousel-strip";
+
+  slides.forEach(({ video, originalIndex }) => {
+    strip.appendChild(createVideoSlide(video, originalIndex));
   });
-  track.appendChild(fragment);
+
+  track.appendChild(strip);
+  return strip;
 }
 
 function openVideo(videoId) {
@@ -481,39 +534,114 @@ function initVideoCarousel() {
   if (!prev || !next || !track) return;
 
   const total = pageData.videoTestimonials.length;
+  const mq = window.matchMedia("(max-width: 992px)");
+  let visibleCount = mq.matches ? 1 : 3;
+  let strip = null;
+  let currentTrackIndex = 0;
+  let isAnimating = false;
 
-  const updateMobileSlide = () => {
-    const cards = track.querySelectorAll(".video-card");
-    cards.forEach((card, i) => {
-      card.style.display = i === videoSlideIndex ? "" : "none";
+  const updateVisibleCount = () => {
+    visibleCount = mq.matches ? 1 : 3;
+    track.style.setProperty("--video-visible-count", String(visibleCount));
+  };
+
+  const getSlidesForTrack = () => {
+    const originals = pageData.videoTestimonials.map((video, originalIndex) => ({
+      video,
+      originalIndex,
+    }));
+
+    if (total <= visibleCount) {
+      return originals;
+    }
+
+    return [
+      ...originals.slice(-visibleCount),
+      ...originals,
+      ...originals.slice(0, visibleCount),
+    ];
+  };
+
+  const getStepSize = () => {
+    const card = strip?.querySelector(".video-card");
+    if (!(card instanceof HTMLElement) || !strip) return 0;
+
+    const styles = window.getComputedStyle(strip);
+    const gap = parseFloat(styles.columnGap || styles.gap || "0");
+    return card.getBoundingClientRect().width + (Number.isFinite(gap) ? gap : 0);
+  };
+
+  const setTrackPosition = (index, animate) => {
+    if (!strip) return;
+
+    strip.style.transition = animate
+      ? "transform 560ms cubic-bezier(0.22, 1, 0.36, 1)"
+      : "none";
+    strip.style.transform = `translate3d(-${getStepSize() * index}px, 0, 0)`;
+  };
+
+  const syncControls = () => {
+    const shouldShowControls = total > visibleCount;
+    prev.style.visibility = shouldShowControls ? "visible" : "hidden";
+    next.style.visibility = shouldShowControls ? "visible" : "hidden";
+  };
+
+  const handleTransitionEnd = (event) => {
+    if (!strip || event.target !== strip || event.propertyName !== "transform") return;
+
+    if (currentTrackIndex >= total + visibleCount) {
+      currentTrackIndex -= total;
+      setTrackPosition(currentTrackIndex, false);
+    } else if (currentTrackIndex < visibleCount) {
+      currentTrackIndex += total;
+      setTrackPosition(currentTrackIndex, false);
+    }
+
+    isAnimating = false;
+  };
+
+  const rebuildTrack = () => {
+    updateVisibleCount();
+    strip = renderVideoSlides(getSlidesForTrack());
+    if (!strip) return;
+
+    strip.addEventListener("transitionend", handleTransitionEnd);
+
+    videoSlideIndex = total > 0 ? ((videoSlideIndex % total) + total) % total : 0;
+    currentTrackIndex = total > visibleCount ? videoSlideIndex + visibleCount : 0;
+    syncControls();
+
+    requestAnimationFrame(() => {
+      setTrackPosition(currentTrackIndex, false);
     });
   };
 
-  const mq = window.matchMedia("(max-width: 992px)");
-
   const go = (delta) => {
-    if (!mq.matches) return;
+    if (isAnimating || total <= visibleCount) {
+      return;
+    }
+
     videoSlideIndex = (videoSlideIndex + delta + total) % total;
-    updateMobileSlide();
+    currentTrackIndex += delta;
+    isAnimating = true;
+    setTrackPosition(currentTrackIndex, true);
   };
 
   prev.addEventListener("click", () => go(-1));
   next.addEventListener("click", () => go(1));
 
   const applyLayout = () => {
-    const cards = track.querySelectorAll(".video-card");
-    if (mq.matches) {
-      track.style.display = "block";
-      updateMobileSlide();
-    } else {
-      track.style.display = "";
-      cards.forEach((card) => {
-        card.style.display = "";
-      });
-    }
+    isAnimating = false;
+    rebuildTrack();
   };
+
   mq.addEventListener("change", applyLayout);
-  applyLayout();
+  window.addEventListener("resize", () => {
+    if (!strip) return;
+    setTrackPosition(currentTrackIndex, false);
+  });
+
+  rebuildTrack();
 }
 
 /* --- Hero form --- */
@@ -756,7 +884,6 @@ document.addEventListener("DOMContentLoaded", () => {
   renderLifeMarquee();
   renderAchievements();
   renderCompanies();
-  renderVideoSlides();
   initVideoCarousel();
   initVideoModalChrome();
   initHeroForm();
