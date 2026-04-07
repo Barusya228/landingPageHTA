@@ -234,7 +234,8 @@ main {
 .header-left {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 15px;
+  flex-wrap: wrap;
 }
 
 .logo {
@@ -243,13 +244,73 @@ main {
   width: auto;
 }
 
+.logo-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  min-width: 0;
+}
+
 .logo-text {
   font-size: 16px;
   white-space: nowrap;
 }
 
+.header-social-links {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.header-social-link {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  min-height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  flex-shrink: 0;
+  opacity: 0.6;
+  transition: opacity 0.2s ease;
+}
+
+.header-social-link::before {
+  content: attr(aria-label);
+  display: block;
+  width: 1px;
+  height: 1px;
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+.header-social-link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  filter: brightness(0) saturate(100%);
+}
+
+.header-social-link--instagram::after { background-image: url('./images/icons/instagram.svg'); }
+.header-social-link--facebook::after { background-image: url('./images/icons/facebook.svg'); }
+.header-social-link--youtube::after { background-image: url('./images/icons/youtube.svg'); }
+.header-social-link--tiktok::after { background-image: url('./images/icons/tiktok.svg'); }
+.header-social-link--linkedin::after { background-image: url('./images/icons/linkedin.svg'); }
+
+.header-social-link:hover,
+.header-social-link:focus-visible {
+  opacity: 1;
+}
+
 .language-switcher {
-  display: none;
+  display: flex;
 }
 
 /* === Hero === */
@@ -881,7 +942,6 @@ main {
   position: relative;
   border-radius: var(--radius-lg);
   overflow: hidden;
-  min-height: 220px;
   background: #ddd;
   border: none;
   padding: 0;
@@ -891,10 +951,19 @@ main {
   width: 100%;
 }
 
+.feature-card:nth-child(-n+3) {
+  aspect-ratio: 4 / 3;
+  min-height: 220px;
+}
+
+.feature-card:nth-child(n+4) {
+  aspect-ratio: 3 / 4;
+  min-height: 320px;
+}
+
 .feature-card img {
   width: 100%;
   height: 100%;
-  min-height: 220px;
   object-fit: cover;
 }
 
@@ -1080,6 +1149,42 @@ main {
 
 .achievements-cta {
   text-align: center;
+}
+
+.achievements-more {
+  display: none;
+  margin-top: 1.5rem;
+  max-width: 1120px;
+  margin-inline: auto;
+  text-align: left;
+  padding: 0 1rem;
+}
+
+.achievements-more.achievements-more--visible {
+  display: block;
+}
+
+.achievements-more[hidden] {
+  display: none;
+}
+
+.achievements-more__section {
+  margin-bottom: 1.5rem;
+}
+
+.achievements-more__section h3 {
+  margin: 0 0 0.75rem;
+  font-size: 1.1rem;
+}
+
+.achievements-more__section ul {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.achievements-more__section li {
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
 }
 
 .btn-outline {

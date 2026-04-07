@@ -41,14 +41,6 @@ const COMPANY_LOGO_6 = "./logo/logo-compass.jpg";
 
 /** Файлы задаются внутри своей папки секции (без общего массива и slice) */
 const PHOTO_HERO = fromDir("hero", "главная.jpg");
-const PHOTO_FEATURES = fromDirList("features", [
-  "Проекты из реальной жизни.jpg",
-  "Предпринимательство.jpg",
-  "Архитектура и дизайн.jpg",
-  "Sports & Arts.jpg",
-  "Дебаты.jpg",
-  "STEM и робототехника.jpg",
-]);
 const PHOTO_ACHIEVEMENTS = fromDirList("achievements", [
   "1.jfif",
   "2.webp",
@@ -92,45 +84,11 @@ const INSTAGRAM_REEL_PERMALINKS = [
   "https://www.instagram.com/reel/DWEMEoODe7q/?utm_source=ig_embed&utm_campaign=loading",
   "https://www.instagram.com/reel/DPvMWytD2eB/?utm_source=ig_embed&utm_campaign=loading",
   "https://www.instagram.com/reel/DKhFaLBNlh-/?utm_source=ig_embed&utm_campaign=loading",
+  "https://www.instagram.com/reel/DRRKiOFCK-7/?utm_source=ig_embed&utm_campaign=loading",
   "https://www.instagram.com/reel/DNfGpn5tFW5/?utm_source=ig_embed&utm_campaign=loading",
-  "https://www.instagram.com/reel/DWEMEoODe7q/?utm_source=ig_embed&utm_campaign=loading",
-
 ];
 
 const pageData = {
-  uniqueFeatures: [
-    {
-      title: "Проекты из реальной жизни",
-      image: PHOTO_FEATURES[0],
-      description: "Наши ученики работают с задачами реальных компаний: исследуют, спорят, ошибаются — и защищают свои решения перед практиками, которые решают такие задачи каждый день. Не оценка от учителя. Обратная связь от людей из индустрии. И получают не оценки, а честную обратную связь. Так формируется понимание, что ошибки - это часть роста.",
-    },
-    {
-      title: "Курс предпринимательства",
-      image: PHOTO_FEATURES[1],
-      description: "Бизнес-модели, питчи, работа в командах и знакомство с основами стартапов.",
-    },
-    {
-      title: "Курс архитектуры и дизайна",
-      image: PHOTO_FEATURES[2],
-      description: "Пространство, эстетика и проектирование — от эскиза до презентации идеи.",
-    },
-    {
-      title: "Sports & Arts",
-      image: PHOTO_FEATURES[3],
-      description: "Спорт и искусство как часть баланса: команды, выступления и творческие студии.",
-    },
-    {
-      title: "Дебаты",
-      image: PHOTO_FEATURES[4],
-      description: "Аргументация, публичные выступления и участие в турнирах между школами.",
-    },
-    {
-      title: "STEM и робототехника",
-      image: PHOTO_FEATURES[5],
-      description: "Инженерное мышление, программирование и командные соревнования.",
-    },
-  ],
-
   lifeAtHtaImages: PHOTO_LIFE,
 
   achievements: [
@@ -178,7 +136,7 @@ const pageData = {
       instagramPermalink: INSTAGRAM_REEL_PERMALINKS[2],
     },
     {
-      title: "Видео 4",
+      title: "Что говорят родители?",
       thumb: PHOTO_VIDEO_THUMBS[3],
       embedUrl: null,
       instagramPermalink: INSTAGRAM_REEL_PERMALINKS[3],
@@ -188,30 +146,6 @@ const pageData = {
       thumb: PHOTO_VIDEO_THUMBS[4],
       embedUrl: null,
       instagramPermalink: INSTAGRAM_REEL_PERMALINKS[4],
-    },
-    {
-      title: "Видео 6",
-      thumb: PHOTO_VIDEO_THUMBS[5],
-      embedUrl: "https://www.youtube.com/embed/D-Ktmq9T94s?si=mYV-oAS-3Bx1lrVM",
-      instagramPermalink: null,
-    },
-    {
-      title: "Видео 7",
-      thumb: PHOTO_VIDEO_THUMBS[6],
-      embedUrl: "https://www.youtube.com/embed/D-Ktmq9T94s?si=mYV-oAS-3Bx1lrVM",
-      instagramPermalink: null,
-    },
-    {
-      title: "Видео 8",
-      thumb: PHOTO_VIDEO_THUMBS[7],
-      embedUrl: "https://www.youtube.com/embed/D-Ktmq9T94s?si=mYV-oAS-3Bx1lrVM",
-      instagramPermalink: null,
-    },
-    {
-      title: "Видео 9",
-      thumb: PHOTO_VIDEO_THUMBS[8],
-      embedUrl: "https://www.youtube.com/embed/D-Ktmq9T94s?si=mYV-oAS-3Bx1lrVM",
-      instagramPermalink: null,
     },
   ],
 
@@ -295,45 +229,33 @@ function escapeHtml(str) {
   return div.innerHTML;
 }
 
-/* --- Unique features --- */
-function renderUniqueFeatures() {
-  const grid = document.getElementById("features-grid");
-  if (!grid) return;
+
+/**
+ * Инициализация карточек функций: обработчик кликов для мобильных устройств
+ */
+function initFeatureCards() {
+  const cards = document.querySelectorAll(".feature-card");
   const isCoarse = window.matchMedia("(hover: none), (pointer: coarse)").matches;
-  const fragment = document.createDocumentFragment();
 
-  pageData.uniqueFeatures.forEach((item, i) => {
-    const btn = document.createElement("button");
-    btn.type = "button";
-    btn.className = "feature-card";
-    btn.setAttribute("aria-expanded", "false");
-    btn.innerHTML = `
-      <img src="${item.image}" alt="" loading="lazy" />
-      <div class="feature-card-title-wrap">
-        <p class="feature-card-title">${escapeHtml(item.title)}</p>
-      </div>
-      <p class="feature-short">${escapeHtml(item.description)}</p>
-      <div class="card-overlay" aria-hidden="true">
-        <p class="card-overlay-text">${escapeHtml(item.description)}</p>
-      </div>
-    `;
-
-    if (isCoarse) {
-      btn.addEventListener("click", () => {
-        const open = !btn.classList.contains("is-expanded");
-        grid.querySelectorAll(".feature-card.is-expanded").forEach((el) => {
-          if (el !== btn) {
-            el.classList.remove("is-expanded");
-            el.setAttribute("aria-expanded", "false");
+  if (isCoarse) {
+    cards.forEach((card) => {
+      card.addEventListener("click", () => {
+        const isExpanded = card.classList.contains("is-expanded");
+        
+        // Закрыть все остальные карточки
+        cards.forEach((otherCard) => {
+          if (otherCard !== card && otherCard.classList.contains("is-expanded")) {
+            otherCard.classList.remove("is-expanded");
+            otherCard.setAttribute("aria-expanded", "false");
           }
         });
-        btn.classList.toggle("is-expanded", open);
-        btn.setAttribute("aria-expanded", open ? "true" : "false");
+        
+        // Переключить текущую карточку
+        card.classList.toggle("is-expanded", !isExpanded);
+        card.setAttribute("aria-expanded", !isExpanded ? "true" : "false");
       });
-    }
-    fragment.appendChild(btn);
-  });
-  grid.appendChild(fragment);
+    });
+  }
 }
 
 /**
@@ -397,6 +319,27 @@ function renderAchievements() {
     fragment.appendChild(article);
   });
   grid.appendChild(fragment);
+}
+
+function initAchievementsList() {
+  const button = document.getElementById("achievements-show-more");
+  const more = document.getElementById("achievements-more");
+  if (!(button instanceof HTMLButtonElement) || !(more instanceof HTMLElement)) return;
+
+  button.addEventListener("click", () => {
+    more.hidden = !more.hidden;
+    const isOpen = !more.hidden;
+
+    if (isOpen) {
+      more.classList.add("achievements-more--visible");
+      button.textContent = "Скрыть";
+      button.setAttribute("aria-expanded", "true");
+    } else {
+      more.classList.remove("achievements-more--visible");
+      button.textContent = "Смотреть все";
+      button.setAttribute("aria-expanded", "false");
+    }
+  });
 }
 
 /* --- Companies --- */
@@ -883,9 +826,10 @@ document.addEventListener("DOMContentLoaded", () => {
   initLoveSchoolPopup();
   initStudentsSlider();
   initApplicationModal();
-  renderUniqueFeatures();
+  initFeatureCards();
   renderLifeMarquee();
   renderAchievements();
+  initAchievementsList();
   renderCompanies();
   initVideoCarousel();
   initVideoModalChrome();

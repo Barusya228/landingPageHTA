@@ -14,8 +14,17 @@
   <header class="site-header header">
     <div class="container header-inner">
       <div class="header-left">
-        <img src="./logo/logo_square.png" alt="HTA Logo" class="logo" width="40" height="40" loading="lazy" />
-        <div class="logo-text">High Tech Academy</div>
+        <div class="header-social-links" aria-label="Социальные сети">
+          <a href="https://www.instagram.com/hta.kz" class="header-social-link header-social-link--instagram" aria-label="Instagram" target="_blank" rel="noopener noreferrer"></a>
+          <a href="https://www.facebook.com/HighTechAcademyKZ/" class="header-social-link header-social-link--facebook" aria-label="Facebook" target="_blank" rel="noopener noreferrer"></a>
+          <a href="https://www.youtube.com/channel/UCAAhNxRHrwwhFYMT9qIJ7AA/featured" class="header-social-link header-social-link--youtube" aria-label="YouTube" target="_blank" rel="noopener noreferrer"></a>
+          <a href="https://www.tiktok.com/@high.tech.academy1" class="header-social-link header-social-link--tiktok" aria-label="TikTok" target="_blank" rel="noopener noreferrer"></a>
+          <a href="https://www.linkedin.com/company/high-tech-academy-almaty/" class="header-social-link header-social-link--linkedin" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer"></a>
+        </div>
+        <div class="logo-brand">
+          <img src="./logo/logo_square.png" alt="HTA Logo" class="logo" width="45" height="45" loading="lazy" />
+          <div class="logo-text">High Tech Academy</div>
+        </div>
       </div>
       <nav class="nav header-menu" aria-label="Основная навигация">
         <button type="button" class="nav-toggle" aria-label="Открыть меню" aria-expanded="false">
@@ -30,14 +39,14 @@
           <li><a href="#open-day">День открытых дверей</a></li>
         </ul>
       </nav>
-      <div class="language-switcher" role="group" aria-label="Язык">
+      <!-- <div class="language-switcher" role="group" aria-label="Язык">
         <button type="button" class="lang-btn is-active" data-lang="ru">RU</button>
         <button type="button" class="lang-btn" data-lang="kz">KZ</button>
         <button type="button" class="lang-btn" data-lang="en">EN</button>
-      </div>
+      </div> -->
     </div>
   </header>
-
+  
   <main>
     <section id="hero" class="hero" aria-labelledby="hero-title">
       <div class="hero-overlay" aria-hidden="true"></div>
@@ -164,7 +173,80 @@
     <section id="unique-features" class="unique-features section reveal" aria-labelledby="unique-title">
       <div class="container">
         <h2 id="unique-title" class="section-title">Что делает HTA уникальной школой</h2>
-        <div class="features-grid" id="features-grid"></div>
+        <div class="features-grid">
+          <button type="button" class="feature-card" aria-expanded="false">
+            <img src="./images/Что делает нас уникальными/Проекты из реальной жизни.jpg" alt="" loading="lazy" />
+            <div class="feature-card-title-wrap">
+              <p class="feature-card-title">Проекты из реальной жизни</p>
+            </div>
+            <p class="feature-short">
+              Наши ученики работают с задачами реальных компаний: 
+              исследуют, спорят, ошибаются — и защищают свои решения 
+              перед практиками, которые решают такие задачи каждый день.<br/>
+              Не оценка от учителя. Обратная связь от людей из индустрии. 
+              И получают не оценки, а честную обратную связь. 
+              Так формируется понимание, что ошибки - это часть роста.
+            </p>
+            <div class="card-overlay" aria-hidden="true">
+              <p class="card-overlay-text">Наши ученики работают с задачами реальных компаний: исследуют, спорят, ошибаются — и защищают свои решения перед практиками, которые решают такие задачи каждый день. Не оценка от учителя. Обратная связь от людей из индустрии. И получают не оценки, а честную обратную связь. Так формируется понимание, что ошибки - это часть роста.</p>
+            </div>
+          </button>
+
+          <button type="button" class="feature-card" aria-expanded="false">
+            <img src="./images/Что делает нас уникальными/Предпринимательство.jpg" alt="" loading="lazy" />
+            <div class="feature-card-title-wrap">
+              <p class="feature-card-title">Курс предпринимательства</p>
+            </div>
+            <p class="feature-short">Бизнес-модели, питчи, работа в командах и знакомство с основами стартапов.</p>
+            <div class="card-overlay" aria-hidden="true">
+              <p class="card-overlay-text">Бизнес-модели, питчи, работа в командах и знакомство с основами стартапов.</p>
+            </div>
+          </button>
+
+          <button type="button" class="feature-card" aria-expanded="false">
+            <img src="./images/Что делает нас уникальными/Архитектура и дизайн.jpg" alt="" loading="lazy" />
+            <div class="feature-card-title-wrap">
+              <p class="feature-card-title">Курс архитектуры и дизайна</p>
+            </div>
+            <p class="feature-short">Пространство, эстетика и проектирование — от эскиза до презентации идеи.</p>
+            <div class="card-overlay" aria-hidden="true">
+              <p class="card-overlay-text">Пространство, эстетика и проектирование — от эскиза до презентации идеи.</p>
+            </div>
+          </button>
+
+          <button type="button" class="feature-card" aria-expanded="false">
+            <img src="./images/Что делает нас уникальными/Sports & Arts.jpg" alt="" loading="lazy" />
+            <div class="feature-card-title-wrap">
+              <p class="feature-card-title">Sports & Arts</p>
+            </div>
+            <p class="feature-short">Спорт и искусство как часть баланса: команды, выступления и творческие студии.</p>
+            <div class="card-overlay" aria-hidden="true">
+              <p class="card-overlay-text">Спорт и искусство как часть баланса: команды, выступления и творческие студии.</p>
+            </div>
+          </button>
+
+          <button type="button" class="feature-card" aria-expanded="false">
+            <img src="./images/Что делает нас уникальными/Дебаты.jpg" alt="" loading="lazy" />
+            <div class="feature-card-title-wrap">
+              <p class="feature-card-title">Дебаты</p>
+            </div>
+            <p class="feature-short">Аргументация, публичные выступления и участие в турнирах между школами.</p>
+            <div class="card-overlay" aria-hidden="true">
+              <p class="card-overlay-text">Аргументация, публичные выступления и участие в турнирах между школами.</p>
+            </div>
+          </button>
+
+          <button type="button" class="feature-card" aria-expanded="false">
+            <img src="./images/Что делает нас уникальными/STEM и робототехника.jpg" alt="" loading="lazy" />
+            <div class="feature-card-title-wrap">
+              <p class="feature-card-title">STEM и робототехника</p>
+            </div>
+            <p class="feature-short">Инженерное мышление, программирование и командные соревнования.</p>
+            <div class="card-overlay" aria-hidden="true">
+              <p class="card-overlay-text">Инженерное мышление, программирование и командные соревнования.</p>
+            </div>
+          </button>
+        </div>
       </div>
     </section>
 
@@ -185,7 +267,52 @@
         <h2 id="achievements-title" class="section-title">Достижения наших учеников</h2>
         <div class="achievements-grid" id="achievements-grid"></div>
         <div class="achievements-cta">
-          <a href="" class="btn btn-outline" target="_blank" rel="noopener noreferrer">Смотреть все</a>
+          <button type="button" class="btn btn-outline" id="achievements-show-more">Смотреть все</button>
+        </div>
+        <div class="achievements-more" id="achievements-more" hidden>
+          <div class="achievements-more__section">
+            <h3>Международный уровень</h3>
+            <ul>
+              <li>Western Edge Open — «Лучший инновационный проект» среди 80 команд из 20 стран (Калифорния, 2023)</li>
+              <li>FIRST Global Challenge — Runner-up award + Engineering documentation award (Астана, 2023)</li>
+              <li>Всемирный чемпионат по дебатам среди школьников — квалификация (Вьетнам, 2023)</li>
+              <li>EXPO — два инновационных приложения, Синар и Арсим Шайх (Дубай)</li>
+              <li>NSDA — два финалиста, один четвертьфиналист (Китай, 2021)</li>
+              <li>Турнир по дебатам — участие (Public Forum, Lincoln-Douglas, Original Oratory) (США, зима 2021)</li>
+              <li>Basketball ASG — тренировочный сбор (Черногория, лето 2022)</li>
+            </ul>
+          </div>
+          <div class="achievements-more__section">
+            <h3>Национальный уровень</h3>
+            <ul>
+              <li>Школьная лига «Дай Мяч», 5-я категория — 1-е место (Алматы, май 2023)</li>
+              <li>Кубок Турана — лучшая команда отборочных раундов (60+ команд) + Лучший спикер (2023)</li>
+              <li>Нац. чемпионат VEX — 3-е место (Vex V5), полуфинал (Vex V5), 4-е место (Vex IQ) (Алматы, 2023)</li>
+              <li>First Lego League — Командная работа + приглашение представлять Казахстан в Калифорнии (Астана, 2023)</li>
+              <li>Samsung Solve for Tomorrow — 3-е место + Гран-при жюри, денежный приз школе (Алматы, 2021)</li>
+              <li>«Дай Мяч» — 3-е место (2021)</li>
+              <li>«Дай Мяч» — 4-е место (2022)</li>
+              <li>Чемпионат РК — 4-е место (Талдыкорган, 2023)</li>
+            </ul>
+          </div>
+          <div class="achievements-more__section">
+            <h3>Городской / региональный уровень</h3>
+            <ul>
+              <li>First Lego League, регион — «Shaka»: Motivate award + Best pit award (ноябрь 2023)</li>
+              <li>Tech Cup Almaty — «Shaka»: Engineering excellence award (2023)</li>
+              <li>Tamos First Championship — «Arturli»: Engineering Design award (2023)</li>
+              <li>Kids Athletics — 4-е место, 2–3 классы (Алматы, ноябрь 2023)</li>
+              <li>Летний чемпионат по волейболу — диплом лучшего игрока, ученица 9 класса (Алматы, 2023)</li>
+            </ul>
+          </div>
+          <div class="achievements-more__section">
+            <h3>Инициативы и участие</h3>
+            <ul>
+              <li>Международный турнир HTA — 30+ спикеров из Алматы, Астаны, КНР; 6 учеников НТА (весна 2021)</li>
+              <li>Samsung Solve for Tomorrow + Techcup — участие (2022)</li>
+              <li>Жаспан Дания — книга «Проклятие хрустального цветка», призовое место на конкурсе талантов (5 класс)</li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>
