@@ -234,8 +234,8 @@ main {
 .header-left {
   display: flex;
   align-items: center;
-  gap: 15px;
-  flex-wrap: wrap;
+  gap: 0;
+  flex-shrink: 0;
 }
 
 .logo {
@@ -1800,6 +1800,58 @@ main {
 .social-list a {
   color: rgba(255, 255, 255, 0.75);
   font-size: 0.875rem;
+}
+
+.footer-social-icons {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.footer-social-link {
+  position: relative;
+  width: 28px;
+  height: 28px;
+  min-width: 28px;
+  min-height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  flex-shrink: 0;
+  opacity: 0.75;
+  transition: opacity 0.2s ease;
+}
+
+.footer-social-link::before {
+  content: attr(aria-label);
+  display: block;
+  width: 1px;
+  height: 1px;
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+.footer-social-link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  filter: brightness(0) invert(1);
+}
+
+.footer-social-link--instagram::after { background-image: url('./images/icons/instagram.svg'); }
+.footer-social-link--facebook::after { background-image: url('./images/icons/facebook.svg'); }
+.footer-social-link--youtube::after { background-image: url('./images/icons/youtube.svg'); }
+.footer-social-link--tiktok::after { background-image: url('./images/icons/tiktok.svg'); }
+.footer-social-link--linkedin::after { background-image: url('./images/icons/linkedin.svg'); }
+
+.footer-social-link:hover,
+.footer-social-link:focus-visible {
+  opacity: 1;
 }
 
 .footer-bottom {

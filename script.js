@@ -42,8 +42,8 @@ const COMPANY_LOGO_6 = "./logo/logo-compass.jpg";
 /** Файлы задаются внутри своей папки секции (без общего массива и slice) */
 const PHOTO_HERO = fromDir("hero", "главная.jpg");
 const PHOTO_ACHIEVEMENTS = fromDirList("achievements", [
-  "1.jfif",
-  "2.webp",
+  "1.webp",
+  "2.jfif",
   "3.jpg",
 ]);
 const PHOTO_VIDEO_THUMBS = fromDirList("video", [
@@ -81,11 +81,11 @@ const PHOTO_LIFE = fromDirList("life", [
   "22.webp",
 ]);
 const INSTAGRAM_REEL_PERMALINKS = [
-  "https://www.instagram.com/reel/DWEMEoODe7q/?utm_source=ig_embed&utm_campaign=loading",
-  "https://www.instagram.com/reel/DPvMWytD2eB/?utm_source=ig_embed&utm_campaign=loading",
   "https://www.instagram.com/reel/DKhFaLBNlh-/?utm_source=ig_embed&utm_campaign=loading",
-  "https://www.instagram.com/reel/DRRKiOFCK-7/?utm_source=ig_embed&utm_campaign=loading",
-  "https://www.instagram.com/reel/DNfGpn5tFW5/?utm_source=ig_embed&utm_campaign=loading",
+
+  "https://www.instagram.com/reel/DPvMWytD2eB/?utm_source=ig_embed&utm_campaign=loading",
+
+  
 ];
 
 const pageData = {
