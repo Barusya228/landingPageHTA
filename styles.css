@@ -8,6 +8,9 @@
   --color-orange: #ff8a3c;
   --color-orange-dark: #e86f20;
   --color-accent-border: rgba(255, 138, 60, 0.45);
+  --section-green: #ecf7dc;
+  --section-orange: #fff1e1;
+  --section-yellow: #fff8d2;
   --shadow-header: 0 1px 0 rgba(15, 24, 48, 0.06), 0 4px 24px rgba(15, 24, 48, 0.06);
   --shadow-card: 0 8px 30px rgba(15, 24, 48, 0.08);
   --radius-md: 12px;
@@ -319,6 +322,7 @@ main {
   height: 90vh;
   min-height: 620px;
   max-height: 860px;
+  background-color: var(--color-white);
   background-image: url("./images/DSC01536.jpg");
   background-size: cover;
   background-position: center;
@@ -502,7 +506,7 @@ main {
   position: relative;
   padding: 110px 20px;
   text-align: center;
-  background: var(--color-white);
+  background: var(--section-green);
 }
 
 .why-hta h2 {
@@ -929,7 +933,7 @@ main {
 
 /* === Unique features === */
 .unique-features {
-  background: var(--color-bg);
+  background: var(--color-white);
 }
 
 .features-grid {
@@ -1027,7 +1031,7 @@ main {
 
 /* === Life HTA marquee === */
 .life-hta {
-  background: var(--color-white);
+  background: var(--section-orange);
   overflow: hidden;
 }
 
@@ -1106,7 +1110,7 @@ main {
 
 /* === Achievements === */
 .achievements {
-  background: var(--color-bg);
+  background: var(--color-white);
 }
 
 .achievements-grid {
@@ -1205,6 +1209,10 @@ main {
 }
 
 /* === Companies === */
+.companies {
+  background: var(--section-yellow);
+}
+
 .companies-panel {
   display: grid;
   grid-template-columns: 1fr 1.2fr;
@@ -1262,11 +1270,11 @@ main {
 
 /* === Testimonials video === */
 .testimonials {
-  background: var(--color-bg);
+  background: var(--color-white);
 }
 
 .ideas-hta {
-  background: var(--color-bg);
+  background: var(--section-green);
 }
 
 /* Три цитаты под «Идеи HTA» — вне рамки слайдера: серый фон, цветная обводка */
@@ -1642,6 +1650,7 @@ main {
 /* === Open day CTA === */
 .open-day {
   padding-bottom: clamp(40px, 5vw, 64px);
+  background: var(--color-white);
 }
 
 .open-day-inner {
