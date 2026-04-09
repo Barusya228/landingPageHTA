@@ -33,8 +33,8 @@ function lifeImageWebpSrc(fallbackSrc) {
 }
 
 const COMPANY_LOGO_1 = "./logo/logo-arbuz.png";
-const COMPANY_LOGO_2 = "./logo/Frame-824631.png";
-const COMPANY_LOGO_3 = "./logo/logo-kazbeef.jpg";
+const COMPANY_LOGO_2 = "./logo/logo-kazbeef.jpg";
+const COMPANY_LOGO_3 = "./logo/logo-jlc.png";
 const COMPANY_LOGO_4 = "./logo/logo-shinlain.png";
 const COMPANY_LOGO_5 = "./logo/logo-not-hta.svg";
 const COMPANY_LOGO_6 = "./logo/logo-compass.jpg";
@@ -42,7 +42,7 @@ const COMPANY_LOGO_6 = "./logo/logo-compass.jpg";
 /** Файлы задаются внутри своей папки секции (без общего массива и slice) */
 const PHOTO_HERO = fromDir("hero", "главная.jpg");
 const PHOTO_ACHIEVEMENTS = fromDirList("achievements", [
-  "1.webp",
+  "1.jpeg",
   "2.jfif",
   "3.jpg",
 ]);
@@ -85,7 +85,9 @@ const INSTAGRAM_REEL_PERMALINKS = [
 
   "https://www.instagram.com/reel/DPvMWytD2eB/?utm_source=ig_embed&utm_campaign=loading",
 
-  
+  "https://www.instagram.com/reel/DWEMEoODe7q/?utm_source=ig_embed&utm_campaign=loading",
+
+  "https://www.instagram.com/reel/DNfGpn5tFW5/?utm_source=ig_embed&utm_campaign=loading",
 ];
 
 const pageData = {
@@ -94,15 +96,15 @@ const pageData = {
   achievements: [
     {
       image: PHOTO_ACHIEVEMENTS[0],
-      caption: "Команда HTA Goats в финале турнира по дебатам среди международных школ",
+      caption: "«Лучший инновационный проект» среди 80 команд из 20 стран.",
     },
     {
       image: PHOTO_ACHIEVEMENTS[1],
-      caption: "2 место на международном научном форуме Shoqan Ecology senior",
+      caption: "Победа на Shanghai Speech and Debate Invitational, 450 спикеров,6 стран Азии",
     },
     {
       image: PHOTO_ACHIEVEMENTS[2],
-      caption: "Победа в OyLab start up competition",
+      caption: "грант и 2 место - Shoqan Ecology Senior",
     },
   ],
 
