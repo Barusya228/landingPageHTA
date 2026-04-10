@@ -350,6 +350,7 @@ main {
   color: #fff;
   max-width: min(560px, 42vw);
   margin-left: clamp(88px, 10vw, 180px);
+  transform: translateY(-48px);
 }
 
 .hero-content h1 {
@@ -1918,6 +1919,15 @@ main {
   z-index: 80;
 }
 
+.b24-fixed-btn :is(button, a, [role="button"], .b24-web-form-popup-btn-32) {
+  min-height: 52px !important;
+  padding: 14px 24px !important;
+  border-radius: 999px !important;
+  font-size: 1.15rem !important;
+  font-weight: 700 !important;
+  line-height: 1.1 !important;
+}
+
 /* Application modal */
 .modal-form {
   position: fixed;
@@ -2104,6 +2114,7 @@ main {
   .hero-content {
     max-width: min(500px, 52vw);
     margin-left: clamp(24px, 5vw, 64px);
+    transform: translateY(-28px);
   }
 
   .hero-video {
@@ -2272,6 +2283,7 @@ main {
     text-align: center;
     margin-left: 0;
     margin-bottom: 24px;
+    transform: none;
   }
 
   .hero-content h1 {
