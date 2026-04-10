@@ -143,12 +143,6 @@ const pageData = {
       embedUrl: null,
       instagramPermalink: INSTAGRAM_REEL_PERMALINKS[3],
     },
-    {
-      title: "Видео 5",
-      thumb: PHOTO_VIDEO_THUMBS[4],
-      embedUrl: null,
-      instagramPermalink: INSTAGRAM_REEL_PERMALINKS[4],
-    },
   ],
 
   openDay: {

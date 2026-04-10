@@ -329,11 +329,11 @@ main {
   background-color: var(--color-white);
   background-image: url("./images/DSC01536.jpg");
   background-size: cover;
-  background-position: center;
+  background-position: 62% center;
   background-repeat: no-repeat;
   display: flex;
   align-items: center;
-  padding: 0 80px;
+  padding: 0 clamp(36px, 6vw, 80px);
   overflow: hidden;
 }
 
@@ -348,7 +348,8 @@ main {
   position: relative;
   z-index: 3;
   color: #fff;
-  max-width: 600px;
+  max-width: min(560px, 42vw);
+  margin-left: clamp(88px, 10vw, 180px);
 }
 
 .hero-content h1 {
@@ -980,15 +981,18 @@ main {
   left: 0;
   right: 0;
   bottom: 0;
-  padding: 1rem;
+  padding: 1rem 1rem 1.15rem;
   background: linear-gradient(transparent, rgba(0, 0, 0, 0.65));
 }
 
 .feature-card-title {
-  margin: 0;
+  margin: 0 auto;
+  max-width: 18ch;
   color: #fff;
-  font-size: 1rem;
-  font-weight: 600;
+  font-size: clamp(1rem, 1.4vw, 1.25rem);
+  font-weight: 700;
+  line-height: 1.2;
+  text-wrap: balance;
   text-align: center;
 }
 
@@ -1001,7 +1005,7 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1.25rem;
+  padding: 1.5rem;
 }
 
 .feature-card:hover .card-overlay,
@@ -1012,9 +1016,20 @@ main {
 .card-overlay-text {
   margin: 0;
   color: #fff;
-  font-size: 0.9rem;
-  line-height: 1.5;
-  text-align: center;
+  max-width: min(34ch, 100%);
+  font-size: clamp(0.95rem, 1.1vw, 1.05rem);
+  font-weight: 500;
+  line-height: 1.55;
+  text-align: left;
+  text-wrap: pretty;
+}
+
+.card-overlay-text__block {
+  display: block;
+}
+
+.card-overlay-text__block + .card-overlay-text__block {
+  margin-top: 0.85rem;
 }
 
 .feature-card.is-expanded .card-overlay {
@@ -2075,6 +2090,7 @@ main {
 
   .hero {
     padding: 0 36px;
+    background-position: 68% center;
   }
 
   .hero-content h1 {
@@ -2083,6 +2099,11 @@ main {
 
   .hero-content p {
     font-size: 18px;
+  }
+
+  .hero-content {
+    max-width: min(500px, 52vw);
+    margin-left: clamp(24px, 5vw, 64px);
   }
 
   .hero-video {
@@ -2239,6 +2260,7 @@ main {
     min-height: 75vh;
     max-height: none;
     padding: 0 20px;
+    background-position: center;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -2248,6 +2270,7 @@ main {
   .hero-content {
     max-width: 100%;
     text-align: center;
+    margin-left: 0;
     margin-bottom: 24px;
   }
 
@@ -2392,6 +2415,22 @@ main {
 
   .feature-card {
     min-height: 180px;
+  }
+
+  .feature-card-title {
+    max-width: 20ch;
+    font-size: 1.05rem;
+  }
+
+  .card-overlay {
+    padding: 1.25rem;
+  }
+
+  .card-overlay-text {
+    max-width: 100%;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    text-align: center;
   }
 
   .feature-card .feature-short {
