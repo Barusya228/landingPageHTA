@@ -1363,18 +1363,12 @@ main {
   font-size: clamp(1.1rem, 2vw, 1.35rem);
   font-weight: 700;
   color: var(--color-text);
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.9rem;
   line-height: 1.25;
-}
-
-.ideas-quote-card__class {
-  font-weight: 600;
-  color: #4a5568;
-  margin-bottom: clamp(18px, 2vw, 24px);
   position: relative;
 }
 
-.ideas-quote-card__class::after {
+.ideas-quote-card__header::after {
   content: "";
   display: block;
   width: 60%;
@@ -1385,15 +1379,15 @@ main {
   background: rgba(15, 24, 48, 0.14);
 }
 
-.ideas-quote-card--green .ideas-quote-card__class::after {
+.ideas-quote-card--green .ideas-quote-card__header::after {
   background: #95c11f;
 }
 
-.ideas-quote-card--yellow .ideas-quote-card__class::after {
+.ideas-quote-card--yellow .ideas-quote-card__header::after {
   background: #f2b705;
 }
 
-.ideas-quote-card--orange .ideas-quote-card__class::after {
+.ideas-quote-card--orange .ideas-quote-card__header::after {
   background: #e86a2f;
 }
 
@@ -1403,22 +1397,43 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: clamp(1rem, 1.35vw, 1.12rem);
-  line-height: 1.45;
+  font-size: clamp(0.95rem, 1.25vw, 1.08rem);
+  line-height: 1.5;
   color: #2d3748;
 }
 
-/* Скелет круглой аватарки; внутрь добавьте <img class="ideas-quote-card__avatar-img" src="..." alt="..." /> */
+.ideas-quote-card__footer {
+  margin-top: auto;
+  padding-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.ideas-quote-card__avatars {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
 .ideas-quote-card__avatar {
   width: 80px;
   height: 80px;
-  margin: clamp(18px, 2.5vw, 26px) auto 0;
+  margin: 0;
   flex-shrink: 0;
   border-radius: 50%;
   background: linear-gradient(160deg, #d1d5db 0%, #aeb4bf 100%);
   border: 3px solid rgba(255, 255, 255, 0.9);
   box-shadow: 0 4px 12px rgba(15, 24, 48, 0.12);
   overflow: hidden;
+}
+
+.ideas-quote-card__footer--dual .ideas-quote-card__avatar {
+  width: 68px;
+  height: 68px;
 }
 
 .ideas-quote-card__avatar-img {
@@ -2577,13 +2592,8 @@ main {
   }
 
   .ideas-quote-card {
-    min-height: 240px;
+    min-height: 260px;
     padding: 20px 16px 18px;
-  }
-
-  .ideas-quote-card__avatar {
-    width: 68px;
-    height: 68px;
   }
 
   /* --- Open day --- */
@@ -2798,7 +2808,17 @@ main {
   }
 
   .ideas-quote-card__text {
-    font-size: 0.9rem;
+    font-size: 0.88rem;
+  }
+
+  .ideas-quote-card__avatar {
+    width: 68px;
+    height: 68px;
+  }
+
+  .ideas-quote-card__footer--dual .ideas-quote-card__avatar {
+    width: 58px;
+    height: 58px;
   }
 
   .open-day-title {
