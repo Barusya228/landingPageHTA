@@ -641,6 +641,17 @@ function initOpenDay() {
   if (dateEl) dateEl.textContent = pageData.openDay.dateLine;
 }
 
+function initOpenDayForm() {
+  const host = document.getElementById("open-day-form-host");
+  if (!host || host.childElementCount > 0) return;
+
+  const script = document.createElement("script");
+  script.setAttribute("data-b24-form", "click/48/qgzyxa");
+  script.setAttribute("data-skip-moving", "true");
+  script.text = "(function(w,d,u){var s=d.createElement('script');s.async=true;s.src=u+'?'+(Date.now()/180000|0);var h=d.getElementsByTagName('script')[0];h.parentNode.insertBefore(s,h);})(window,document,'https://cdn-ru.bitrix24.kz/b18109524/crm/form/loader_48.js');";
+  host.appendChild(script);
+}
+
 /* --- Header: burger + lang (визуально) --- */
 function initHeader() {
   const toggle = document.querySelector(".nav-toggle");
@@ -831,6 +842,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initVideoModalChrome();
   initHeroForm();
   initOpenDay();
+  initOpenDayForm();
   initConsultModal();
   initReveal();
 });
