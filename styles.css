@@ -981,6 +981,10 @@ main {
   object-fit: cover;
 }
 
+.features-grid .feature-card:nth-child(6) img {
+  object-position: 72% center;
+}
+
 .feature-card-title-wrap {
   position: absolute;
   left: 0;
@@ -2524,6 +2528,10 @@ main {
 
   .feature-card .feature-short {
     display: block;
+  }
+
+  .features-grid .feature-card:nth-child(6) img {
+    object-position: 78% center;
   }
 
   /* --- Life HTA marquee: hide second row on mobile --- */

@@ -104,7 +104,7 @@ const pageData = {
     },
     {
       image: PHOTO_ACHIEVEMENTS[2],
-      caption: "грант и 2 место - Shoqan Ecology Senior",
+      caption: "Грант в размере 200 000 тенге и 2 место - Shoqan Ecology Senior",
     },
   ],
 
