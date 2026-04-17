@@ -154,14 +154,82 @@ const pageData = {
 function initStudentsSlider() {
   document.querySelectorAll(".students-slider-wrapper").forEach((wrapper) => {
     const slider = wrapper.querySelector(".students-slider");
-    if (!slider) return;
+    if (!(slider instanceof HTMLElement)) return;
     const btnRight = wrapper.querySelector(".slider-btn.right");
     const btnLeft = wrapper.querySelector(".slider-btn.left");
+
+    const getScrollStep = () => {
+      const cards = slider.querySelectorAll(".student-card");
+      if (cards.length >= 2) {
+        const firstCard = cards[0];
+        const secondCard = cards[1];
+        if (firstCard instanceof HTMLElement && secondCard instanceof HTMLElement) {
+          const delta = secondCard.offsetLeft - firstCard.offsetLeft;
+          if (delta > 0) return delta;
+        }
+      }
+
+      const firstCard = slider.querySelector(".student-card");
+      if (!(firstCard instanceof HTMLElement)) return 300;
+      const sliderStyles = window.getComputedStyle(slider);
+      const gap =
+        Number.parseFloat(sliderStyles.columnGap || sliderStyles.gap || "0") || 0;
+      return firstCard.getBoundingClientRect().width + gap;
+    };
+
+    const canSlide = () =>
+      slider.children.length > 1 && slider.scrollWidth > slider.clientWidth + 1;
+
+    const setScrollInstant = (left) => {
+      const previous = slider.style.scrollBehavior;
+      slider.style.scrollBehavior = "auto";
+      slider.scrollLeft = left;
+      slider.style.scrollBehavior = previous;
+    };
+
+    const animationMs = window.matchMedia("(prefers-reduced-motion: reduce)").matches
+      ? 0
+      : 360;
+    const smoothBehavior = animationMs === 0 ? "auto" : "smooth";
+    let isAnimating = false;
+
+    const lockForAnimation = () => {
+      isAnimating = true;
+      window.setTimeout(() => {
+        isAnimating = false;
+      }, animationMs + 40);
+    };
+
     btnRight?.addEventListener("click", () => {
-      slider.scrollBy({ left: 300, behavior: "smooth" });
+      if (isAnimating || !canSlide()) return;
+      const step = getScrollStep();
+      if (step <= 0) return;
+
+      const startLeft = slider.scrollLeft;
+      lockForAnimation();
+      slider.scrollTo({ left: startLeft + step, behavior: smoothBehavior });
+
+      window.setTimeout(() => {
+        const firstCard = slider.firstElementChild;
+        if (firstCard) slider.appendChild(firstCard);
+        setScrollInstant(Math.max(0, slider.scrollLeft - step));
+      }, animationMs + 20);
     });
+
     btnLeft?.addEventListener("click", () => {
-      slider.scrollBy({ left: -300, behavior: "smooth" });
+      if (isAnimating || !canSlide()) return;
+      const step = getScrollStep();
+      if (step <= 0) return;
+
+      const lastCard = slider.lastElementChild;
+      if (lastCard) slider.insertBefore(lastCard, slider.firstElementChild);
+
+      setScrollInstant(slider.scrollLeft + step);
+      lockForAnimation();
+      slider.scrollTo({
+        left: Math.max(0, slider.scrollLeft - step),
+        behavior: smoothBehavior,
+      });
     });
   });
 }

@@ -734,17 +734,15 @@ main {
   overflow-y: hidden;
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
-  scrollbar-width: thin;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
   padding: 6px 2px 8px;
 }
 
 .students-slider::-webkit-scrollbar {
-  height: 6px;
-}
-
-.students-slider::-webkit-scrollbar-thumb {
-  background: rgba(15, 24, 48, 0.2);
-  border-radius: 4px;
+  display: none;
+  width: 0;
+  height: 0;
 }
 
 .student-card {
