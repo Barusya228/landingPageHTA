@@ -1521,7 +1521,6 @@ main {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0.85;
 }
 
 .video-card-play {
@@ -1530,12 +1529,11 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(0, 0, 0, 0.25);
   transition: background var(--transition);
 }
 
 .video-card:hover .video-card-play {
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.08);
 }
 
 .video-card-play span {
