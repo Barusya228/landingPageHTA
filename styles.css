@@ -1080,6 +1080,164 @@ main {
   color: var(--color-text);
 }
 
+/* === Entrepreneurship course === */
+.entrepreneurship-course {
+  background: var(--color-white);
+  text-align: center;
+}
+
+.entrepreneurship-course-lead {
+  max-width: 860px;
+  margin: 0 auto clamp(34px, 4vw, 46px);
+  color: #7b7f87;
+  font-size: clamp(1rem, 1.45vw, 1.12rem);
+  line-height: 1.5;
+}
+
+.entrepreneurship-years {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(32px, 4.5vw, 64px);
+  max-width: 1040px;
+  margin: 0 auto clamp(66px, 6vw, 78px);
+  align-items: start;
+}
+
+.entrepreneurship-year-card {
+  min-height: 190px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 18px;
+  border-radius: 12px;
+  background: url("./images/Что делает нас уникальными/Предпринимательство.jpg") center / cover;
+  color: #fff;
+  position: relative;
+}
+
+.entrepreneurship-year-card--middle {
+  background-image: url("./images/Что делает нас уникальными/Проекты из реальной жизни.jpg");
+}
+
+.entrepreneurship-year-card--past {
+  background-image: url("./images/Достижения наших учеников/1.webp");
+}
+
+.entrepreneurship-year-title {
+  position: relative;
+  z-index: 1;
+  font-size: 1.08rem;
+  font-weight: 700;
+  line-height: 1.25;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.72);
+}
+
+.entrepreneurship-year-btn {
+  position: absolute;
+  left: 50%;
+  bottom: -50px;
+  transform: translateX(-50%);
+  min-width: 140px;
+  min-height: 38px;
+  padding: 0.6rem 1.25rem;
+  border: 0;
+  border-radius: 8px;
+  background: var(--color-orange);
+  color: #fff;
+  font-size: 0.82rem;
+  font-weight: 700;
+  line-height: 1;
+  transition: background var(--transition), transform var(--transition);
+}
+
+.entrepreneurship-year-btn:hover,
+.entrepreneurship-year-btn:focus-visible,
+.entrepreneurship-year-btn.is-active {
+  background: var(--color-orange-dark);
+  transform: translateX(-50%) translateY(-1px);
+}
+
+.entrepreneurship-year-btn:focus-visible {
+  outline: 2px solid var(--color-orange);
+  outline-offset: 3px;
+}
+
+.entrepreneurship-projects-panel {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 22px clamp(28px, 5vw, 58px) 44px;
+  border: 1px solid rgba(15, 24, 48, 0.18);
+  background: #fff;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transform: translateY(-12px);
+  transition: max-height 0.42s ease, opacity 0.32s ease, transform 0.32s ease;
+}
+
+.entrepreneurship-projects-panel.is-open {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.entrepreneurship-projects-panel[hidden] {
+  display: none;
+}
+
+.entrepreneurship-tabs {
+  display: flex;
+  justify-content: center;
+  gap: clamp(80px, 18vw, 190px);
+  margin-bottom: 18px;
+}
+
+.entrepreneurship-tab {
+  border: 0;
+  background: transparent;
+  color: #767a82;
+  font-size: 0.78rem;
+  padding: 0;
+  cursor: pointer;
+}
+
+.entrepreneurship-tab.is-active {
+  color: var(--color-orange);
+}
+
+.entrepreneurship-projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(28px, 5vw, 70px);
+}
+
+.entrepreneurship-project {
+  text-align: center;
+  color: #777b84;
+}
+
+.entrepreneurship-project h3 {
+  margin: 0 0 18px;
+  color: #565656;
+  font-size: 1.08rem;
+  line-height: 1.25;
+}
+
+.entrepreneurship-project p {
+  margin: 0 0 14px;
+  font-size: 0.88rem;
+  line-height: 1.4;
+}
+
+.entrepreneurship-project a {
+  color: var(--color-orange);
+  font-size: 0.78rem;
+}
+
+.entrepreneurship-project a:hover,
+.entrepreneurship-project a:focus-visible {
+  color: var(--color-orange-dark);
+}
+
 /* === Life HTA marquee === */
 .life-hta {
   background: var(--section-orange);
@@ -1206,16 +1364,21 @@ main {
 }
 
 .achievements-more {
-  display: none;
   margin-top: 1.5rem;
   max-width: 1120px;
   margin-inline: auto;
   text-align: left;
   padding: 0 1rem;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transform: translateY(-12px);
+  transition: max-height 0.42s ease, opacity 0.32s ease, transform 0.32s ease;
 }
 
 .achievements-more.achievements-more--visible {
-  display: block;
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .achievements-more[hidden] {
@@ -1256,6 +1419,116 @@ main {
 .btn-outline:hover {
   background: var(--color-orange);
   color: #fff;
+}
+
+/* === MBacc block === */
+.MBacc {
+  padding: clamp(42px, 5vw, 72px) 0;
+  background: var(--color-white);
+}
+
+.mbacc-panel {
+  display: grid;
+  grid-template-columns: 120px minmax(0, 1fr) 260px;
+  gap: clamp(28px, 4vw, 54px);
+  align-items: start;
+  padding: clamp(32px, 4.4vw, 48px) clamp(28px, 5vw, 56px);
+  border: 2px solid var(--color-orange);
+  border-radius: 22px;
+  background: var(--color-white);
+}
+
+.mbacc-logo {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.mbacc-logo img {
+  width: 112px;
+  max-height: 112px;
+  object-fit: contain;
+}
+
+.mbacc-copy {
+  max-width: 560px;
+  color: #7b7f87;
+  font-size: clamp(0.95rem, 1.2vw, 1.05rem);
+  line-height: 1.45;
+  text-align: left;
+}
+
+.mbacc-copy p {
+  margin: 0 0 1.25rem;
+}
+
+.mbacc-copy p:last-child {
+  margin-bottom: 0;
+}
+
+.mbacc-videos {
+  display: grid;
+  gap: 28px;
+  justify-items: center;
+}
+
+.mbacc-video {
+  width: min(100%, 200px);
+  text-align: center;
+}
+
+.mbacc-video-preview {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1.68 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 14px;
+  background: #2b2b2a;
+  padding: 0;
+  transition: transform var(--transition), background var(--transition);
+}
+
+.mbacc-video-preview:hover,
+.mbacc-video-preview:focus-visible {
+  background: #242423;
+  transform: translateY(-2px);
+}
+
+.mbacc-video-preview:focus-visible {
+  outline: 2px solid var(--color-orange);
+  outline-offset: 3px;
+}
+
+.mbacc-video-play {
+  width: 38px;
+  height: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--color-orange);
+}
+
+.mbacc-video-play::before {
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  margin-left: 3px;
+  border-top: 9px solid transparent;
+  border-bottom: 9px solid transparent;
+  border-left: 13px solid #fff;
+}
+
+.mbacc-video-title {
+  margin-top: 6px;
+  color: #4b4b4b;
+  font-size: 0.78rem;
+  font-weight: 700;
+  line-height: 1.25;
 }
 
 /* === Companies === */
@@ -2188,6 +2461,20 @@ main {
     gap: 28px;
   }
 
+  .entrepreneurship-years {
+    gap: 28px;
+  }
+
+  .mbacc-panel {
+    grid-template-columns: 100px minmax(0, 1fr);
+  }
+
+  .mbacc-videos {
+    grid-column: 1 / -1;
+    grid-template-columns: repeat(2, minmax(0, 200px));
+    justify-content: center;
+  }
+
   .companies-panel {
     grid-template-columns: 1fr;
     text-align: center;
@@ -2440,6 +2727,40 @@ main {
     padding: 24px 16px 20px;
   }
 
+  .MBacc {
+    padding: 32px 0;
+  }
+
+  .mbacc-panel {
+    grid-template-columns: 1fr;
+    gap: 22px;
+    padding: 28px 20px;
+    border-radius: 18px;
+  }
+
+  .mbacc-logo {
+    justify-content: flex-start;
+  }
+
+  .mbacc-logo img {
+    width: 96px;
+    max-height: 96px;
+  }
+
+  .mbacc-copy {
+    max-width: none;
+    font-size: 0.95rem;
+  }
+
+  .mbacc-videos {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+  }
+
+  .mbacc-video {
+    width: 100%;
+  }
+
   /* --- Research quote / students --- */
   .research-quote {
     margin: 20px auto;
@@ -2499,6 +2820,34 @@ main {
   .features-grid {
     grid-template-columns: 1fr;
     gap: 1rem;
+  }
+
+  .entrepreneurship-course-lead {
+    margin-bottom: 32px;
+  }
+
+  .entrepreneurship-years {
+    grid-template-columns: 1fr;
+    gap: 70px;
+    max-width: 430px;
+    margin-bottom: 54px;
+  }
+
+  .entrepreneurship-year-card {
+    min-height: 190px;
+  }
+
+  .entrepreneurship-projects-panel {
+    padding: 18px 16px 30px;
+  }
+
+  .entrepreneurship-tabs {
+    gap: 56px;
+  }
+
+  .entrepreneurship-projects-grid {
+    grid-template-columns: 1fr;
+    gap: 26px;
   }
 
   .feature-card {
@@ -2737,6 +3086,26 @@ main {
 
   .container {
     width: calc(100% - 24px);
+  }
+
+  .entrepreneurship-tabs {
+    gap: 32px;
+  }
+
+  .entrepreneurship-year-btn {
+    min-width: 128px;
+  }
+
+  .entrepreneurship-year-card {
+    min-height: 170px;
+  }
+
+  .mbacc-panel {
+    padding: 24px 16px;
+  }
+
+  .mbacc-videos {
+    grid-template-columns: 1fr;
   }
 
   .hero {

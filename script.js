@@ -118,6 +118,45 @@ const pageData = {
     { name: "Компания 6", logo: COMPANY_LOGO_6 },
   ],
 
+  entrepreneurship: {
+    "2025-2026": {
+      projects: [
+        { partner: "UvU", challenge: "Разработка сервиса для экологичных городских привычек", link: "#" },
+        { partner: "Almaty Air Initiative", challenge: "Идеи для вовлечения школьников в мониторинг качества воздуха", link: "#" },
+        { partner: "Amiran", challenge: "Новые форматы продвижения локального продукта для семейной аудитории", link: "#" },
+      ],
+      startups: [
+        { partner: "EcoStep", challenge: "Стартап по сортировке и повторному использованию школьных материалов", link: "#" },
+        { partner: "StudyBuddy", challenge: "Цифровой помощник для планирования командных проектов", link: "#" },
+        { partner: "FreshBox", challenge: "Сервис здоровых перекусов для учеников в течение учебного дня", link: "#" },
+      ],
+    },
+    "2024-2025": {
+      projects: [
+        { partner: "Arbuz", challenge: "Решение для улучшения опыта онлайн-заказа продуктов", link: "#" },
+        { partner: "KazBeef", challenge: "Коммуникационная идея для объяснения качества продукта покупателям", link: "#" },
+        { partner: "JLC", challenge: "Форматы продвижения молочной продукции среди подростков", link: "#" },
+      ],
+      startups: [
+        { partner: "Reuse Market", challenge: "Маркетплейс обмена вещами внутри школьного сообщества", link: "#" },
+        { partner: "SkillSwap", challenge: "Платформа взаимного обучения между учениками", link: "#" },
+        { partner: "Green Desk", challenge: "Настольный набор из переработанных материалов", link: "#" },
+      ],
+    },
+    "2023-2024": {
+      projects: [
+        { partner: "Shin-Line", challenge: "Идеи для сезонной линейки продукта и обратной связи клиентов", link: "#" },
+        { partner: "Compass", challenge: "Решение для навигации и выбора образовательных маршрутов", link: "#" },
+        { partner: "Platform A", challenge: "Концепция цифрового сервиса для молодежных мероприятий", link: "#" },
+      ],
+      startups: [
+        { partner: "Arturli", challenge: "Проектная студия школьных инженерных решений", link: "#" },
+        { partner: "Shaka", challenge: "Командный робототехнический продукт для соревнований", link: "#" },
+        { partner: "Urban Lab", challenge: "Мини-исследования городской среды и быстрые прототипы", link: "#" },
+      ],
+    },
+  },
+
   videoTestimonials: [
     {
       title: "Куда поступают выпускники HTA?",
@@ -385,24 +424,143 @@ function renderAchievements() {
   grid.appendChild(fragment);
 }
 
+function setCollapsibleOpen(element, isOpen, openClass) {
+  const animationMs = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 430;
+
+  window.clearTimeout(element._collapseTimer);
+
+  if (isOpen) {
+    element.hidden = false;
+    element.style.maxHeight = "0px";
+    element.classList.remove(openClass);
+
+    window.requestAnimationFrame(() => {
+      element.classList.add(openClass);
+      element.style.maxHeight = `${element.scrollHeight}px`;
+    });
+
+    element._collapseTimer = window.setTimeout(() => {
+      element.style.maxHeight = "none";
+    }, animationMs);
+    return;
+  }
+
+  element.style.maxHeight = `${element.scrollHeight}px`;
+
+  window.requestAnimationFrame(() => {
+    element.classList.remove(openClass);
+    element.style.maxHeight = "0px";
+  });
+
+  element._collapseTimer = window.setTimeout(() => {
+    element.hidden = true;
+  }, animationMs);
+}
+
 function initAchievementsList() {
   const button = document.getElementById("achievements-show-more");
   const more = document.getElementById("achievements-more");
   if (!(button instanceof HTMLButtonElement) || !(more instanceof HTMLElement)) return;
 
   button.addEventListener("click", () => {
-    more.hidden = !more.hidden;
-    const isOpen = !more.hidden;
+    const isOpen = more.hidden;
 
     if (isOpen) {
-      more.classList.add("achievements-more--visible");
+      setCollapsibleOpen(more, true, "achievements-more--visible");
       button.textContent = "Скрыть";
       button.setAttribute("aria-expanded", "true");
     } else {
-      more.classList.remove("achievements-more--visible");
+      setCollapsibleOpen(more, false, "achievements-more--visible");
       button.textContent = "Смотреть все";
       button.setAttribute("aria-expanded", "false");
     }
+  });
+}
+
+/* --- Entrepreneurship course --- */
+function renderEntrepreneurshipItems(year, type) {
+  const grid = document.getElementById("entrepreneurship-projects-grid");
+  if (!(grid instanceof HTMLElement)) return;
+
+  const yearData = pageData.entrepreneurship?.[year];
+  const items = yearData?.[type] || [];
+
+  grid.innerHTML = "";
+  const fragment = document.createDocumentFragment();
+
+  items.forEach((item) => {
+    const article = document.createElement("article");
+    article.className = "entrepreneurship-project";
+    article.innerHTML = `
+      <h3>Партнер: ${escapeHtml(item.partner)}</h3>
+      <p>Challenge: ${escapeHtml(item.challenge)}</p>
+      <a href="${escapeHtml(item.link)}" aria-label="Подробнее о проекте ${escapeHtml(item.partner)}">Link</a>
+    `;
+    fragment.appendChild(article);
+  });
+
+  grid.appendChild(fragment);
+}
+
+function initEntrepreneurshipCourse() {
+  const panel = document.getElementById("entrepreneurship-projects-panel");
+  const yearButtons = Array.from(document.querySelectorAll(".entrepreneurship-year-btn"));
+  const tabs = Array.from(document.querySelectorAll(".entrepreneurship-tab"));
+
+  if (!(panel instanceof HTMLElement) || yearButtons.length === 0 || tabs.length === 0) return;
+
+  let activeYear = null;
+  let activeType = "projects";
+
+  const setActiveTab = (type) => {
+    activeType = type;
+    tabs.forEach((tab) => {
+      const isActive = tab instanceof HTMLElement && tab.dataset.type === type;
+      tab.classList.toggle("is-active", isActive);
+    });
+  };
+
+  const setActiveYear = (year) => {
+    const shouldAnimateOpen = panel.hidden;
+    activeYear = year;
+
+    yearButtons.forEach((button) => {
+      if (!(button instanceof HTMLButtonElement)) return;
+      const isActive = button.dataset.year === year;
+      button.classList.toggle("is-active", isActive);
+      button.setAttribute("aria-expanded", String(isActive));
+    });
+
+    setActiveTab(activeType);
+    renderEntrepreneurshipItems(year, activeType);
+    if (shouldAnimateOpen) {
+      setCollapsibleOpen(panel, true, "is-open");
+    }
+  };
+
+  yearButtons.forEach((button) => {
+    if (!(button instanceof HTMLButtonElement)) return;
+    button.addEventListener("click", () => {
+      const year = button.dataset.year;
+      if (!year) return;
+      if (activeYear === year && !panel.hidden) {
+        setCollapsibleOpen(panel, false, "is-open");
+        activeYear = null;
+        button.classList.remove("is-active");
+        button.setAttribute("aria-expanded", "false");
+        return;
+      }
+      setActiveYear(year);
+    });
+  });
+
+  tabs.forEach((tab) => {
+    if (!(tab instanceof HTMLButtonElement)) return;
+    tab.addEventListener("click", () => {
+      const type = tab.dataset.type || "projects";
+      setActiveTab(type);
+      if (activeYear) renderEntrepreneurshipItems(activeYear, activeType);
+    });
   });
 }
 
@@ -905,6 +1063,7 @@ document.addEventListener("DOMContentLoaded", () => {
   renderLifeMarquee();
   renderAchievements();
   initAchievementsList();
+  initEntrepreneurshipCourse();
   renderCompanies();
   initVideoCarousel();
   initVideoModalChrome();
