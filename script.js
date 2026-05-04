@@ -121,38 +121,37 @@ const pageData = {
   entrepreneurship: {
     "2025-2026": {
       projects: [
-        { partner: "UvU", challenge: "Разработка сервиса для экологичных городских привычек", link: "#" },
-        { partner: "Almaty Air Initiative", challenge: "Идеи для вовлечения школьников в мониторинг качества воздуха", link: "#" },
-        { partner: "Amiran", challenge: "Новые форматы продвижения локального продукта для семейной аудитории", link: "#" },
+        { partner: "UvU", challenge: "создать план для UvU, чтобы запустить 1000 эко-шаттлов по городу за 3 года и завоевать рынок Алматы", link: "#" },
+        { partner: "Almaty Air Initiative", challenge: "разработать план новой организации, которая значительно улучшить качество воздуха в Алматы", link: "#" },
+        { partner: "Amiran", challenge: "разработать стратегию для Amiran, чтобы выйти в прибыль за 9 месяцев, сохраняя верность миссии компании. Стратегия должна работать в рамках текущих возможностей компании", link: "#" },
       ],
       startups: [
-        { partner: "EcoStep", challenge: "Стартап по сортировке и повторному использованию школьных материалов", link: "#" },
-        { partner: "StudyBuddy", challenge: "Цифровой помощник для планирования командных проектов", link: "#" },
-        { partner: "FreshBox", challenge: "Сервис здоровых перекусов для учеников в течение учебного дня", link: "#" },
+        { partner: "BARYTAN AI", initiative: "ученики разработали технологию, которая автоматически преобразует разговор между врачом и пациентом в структурированную медицинскую запись, тем самым экономя время и облегчая процесс записи данных", link: "#" },
+        { partner: "RayHeart", initiative: "ученики разработали умный медицинский корсет с встроенными биосенсорами, который постоянно отслеживает показатели работы сердца, помогая предотвращать и заранее предупреждать о повторном сердечном приступе", link: "#" },
+        { partner: "NEXTSTEP ", initiative: "ученики разработали двухнедельный интерактивный летний лагерь для подростков 15–18 лет, который в безопасной среде помогает им подготовиться к самостоятельной жизни, развивая практические навыки, связанные с реальными финансами и бытовыми задачами, через опыт и обучение", link: "#" },
       ],
     },
     "2024-2025": {
       projects: [
-        { partner: "Arbuz", challenge: "Решение для улучшения опыта онлайн-заказа продуктов", link: "#" },
-        { partner: "KazBeef", challenge: "Коммуникационная идея для объяснения качества продукта покупателям", link: "#" },
-        { partner: "JLC", challenge: "Форматы продвижения молочной продукции среди подростков", link: "#" },
+        { partner: "Platform A", challenge: "разработать план по завоеванию рынка Алматы и Казахстана для Platforma Market", link: "#" },
+        { partner: "KazBeef", challenge: "разработь план по созданию новой организации, которая решит проблему опустынивания в Казахстане. Обосновать предложение комплексным анализом существующих и возможных решений этой проблемы", link: "#" },
+        { partner: "Shin-Line", challenge: "создать стратегию для продукта \"Шин-Лайн\", чтобы стать лидером рынка на постсоветском пространстве", link: "#" },
       ],
       startups: [
-        { partner: "Reuse Market", challenge: "Маркетплейс обмена вещами внутри школьного сообщества", link: "#" },
-        { partner: "SkillSwap", challenge: "Платформа взаимного обучения между учениками", link: "#" },
-        { partner: "Green Desk", challenge: "Настольный набор из переработанных материалов", link: "#" },
+        { partner: "Silver Pear", initiative: "ученики решали проблему пищевых отходов, перерабатывая их в компост и корм для животных, снижая вред для окружающей среды и поддерживая устойчивое сельское хозяйство. Продукт был успешно протестирован в ЖК Dostyk Residence", link: "#" },
+        { partner: "TAN", initiative: "ученики создали бренд кофейных напитков с концепцией «сам себе бариста», позволяющий пользователям создавать собственные напитки благодаря уникальному трехъярусному дизайну", link: "#" },
+        { partner: "PET X", initiative: "ученики решали проблему переработки пластиковых бутылок, разработав машину для их превращения в филамент для 3D-принтеров", link: "#" },
       ],
     },
     "2023-2024": {
       projects: [
-        { partner: "Shin-Line", challenge: "Идеи для сезонной линейки продукта и обратной связи клиентов", link: "#" },
-        { partner: "Compass", challenge: "Решение для навигации и выбора образовательных маршрутов", link: "#" },
-        { partner: "Platform A", challenge: "Концепция цифрового сервиса для молодежных мероприятий", link: "#" },
+        { partner: "Arbuz", challenge: "разработать стратегию масштабирования компании Arbuz", link: "#" },
+        { partner: "Compass", challenge: "разработать технико-экономическое обоснование по одному из направлений развития компании Compass", link: "#" },
       ],
       startups: [
-        { partner: "Arturli", challenge: "Проектная студия школьных инженерных решений", link: "#" },
-        { partner: "Shaka", challenge: "Командный робототехнический продукт для соревнований", link: "#" },
-        { partner: "Urban Lab", challenge: "Мини-исследования городской среды и быстрые прототипы", link: "#" },
+        { partner: "POMOGI PRIUTU.KZ", initiative: "ученики решали проблему отсутствия финансирования приютов для животных, разработав приложение, в котором можно выбрать питомца, заботиться о нем и поддерживать его донатами", link: "#" },
+        { partner: "Food Saving", initiative: "ученики решали проблему пищевых отходов и финансовых потерь у ресторанов и магазинов, предлагая платформу с акционными продуктами, доступными для студентов", link: "#" },
+        { partner: "Aina", initiative: "ученики решали проблему оттока творческой молодежи из Казахстана, предлагая инициативу, которая усиливает интерес к современному искусству и повышает осведомленность о нем внутри страны", link: "#" },
       ],
     },
   },
@@ -491,9 +490,18 @@ function renderEntrepreneurshipItems(year, type) {
   items.forEach((item) => {
     const article = document.createElement("article");
     article.className = "entrepreneurship-project";
+    const description =
+      type === "startups"
+        ? `<p>Инициатива: ${escapeHtml(item.initiative || "")}</p>`
+        : `<p>Проектное задание: ${escapeHtml(item.challenge || "")}</p>`;
+    const title =
+      type === "startups"
+        ? escapeHtml(item.partner)
+        : `Партнер: ${escapeHtml(item.partner)}`;
+
     article.innerHTML = `
-      <h3>Партнер: ${escapeHtml(item.partner)}</h3>
-      <p>Challenge: ${escapeHtml(item.challenge)}</p>
+      <h3>${title}</h3>
+      ${description}
       <a href="${escapeHtml(item.link)}" aria-label="Подробнее о проекте ${escapeHtml(item.partner)}">Link</a>
     `;
     fragment.appendChild(article);
@@ -620,25 +628,44 @@ function renderVideoSlides(
   return strip;
 }
 
-function openVideo(videoId) {
-  const modal = document.getElementById("video-modal");
-  const frame = document.getElementById("video-frame");
+const MBACC_VIDEOS = [
+  {
+    title: "MBacc overview",
+    embedUrl: "https://www.youtube.com/embed/i8Org9juGOc",
+  },
+  {
+    title: "MBacc learning model",
+    embedUrl: "https://www.youtube.com/embed/N47_mxtsPoo",
+  },
+];
 
-  frame.src = `https://www.youtube.com/embed/D-Ktmq9T94s?si=mYV-oAS-3Bx1lrVM`;
-  modal.style.display = "flex";
+function openEmbedVideoModal({ title: videoTitle, embedUrl }) {
+  const backdrop = document.getElementById("video-modal-backdrop");
+  const body = document.getElementById("video-modal-body");
+  const title = document.getElementById("video-modal-title");
+  if (!backdrop || !body || !title || !embedUrl) return;
+
+  closeHeroVideoModal();
+
+  title.textContent = videoTitle || "Видео";
+  body.innerHTML = `<iframe src="${escapeHtml(embedUrl)}" title="${escapeHtml(videoTitle || "Видео")}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`;
+  backdrop.classList.add("is-open");
+  backdrop.setAttribute("aria-hidden", "false");
+  document.body.style.overflow = "hidden";
 }
 
-// кнопка на главном экране
-document.querySelector(".video-button").addEventListener("click", function () {
-  const videoId = this.dataset.video;
-  openVideo(videoId);
-});
+function initMbaccVideos() {
+  const buttons = Array.from(document.querySelectorAll(".mbacc-video-preview, .mbacc-dark-video-preview"));
+  if (buttons.length === 0) return;
 
-// закрытие
-document.querySelector(".video-modal-close").addEventListener("click", function () {
-  document.getElementById("video-modal").style.display = "none";
-  document.getElementById("video-frame").src = "";
-});
+  buttons.forEach((button, index) => {
+    if (!(button instanceof HTMLButtonElement)) return;
+    const video = MBACC_VIDEOS[index % MBACC_VIDEOS.length];
+    const title = button.parentElement?.querySelector(".mbacc-video-title, .mbacc-dark-video-title");
+    if (title) title.textContent = video.title;
+    button.addEventListener("click", () => openEmbedVideoModal(video));
+  });
+}
 
 function ensureInstagramEmbedScript() {
   if (window.instgrm?.Embeds) return;
@@ -1065,6 +1092,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initAchievementsList();
   initEntrepreneurshipCourse();
   renderCompanies();
+  initMbaccVideos();
   initVideoCarousel();
   initVideoModalChrome();
   initHeroForm();
