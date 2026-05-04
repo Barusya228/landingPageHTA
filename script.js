@@ -39,6 +39,18 @@ const COMPANY_LOGO_4 = "./logo/logo-shinlain.png";
 const COMPANY_LOGO_5 = "./logo/logo-not-hta.svg";
 const COMPANY_LOGO_6 = "./logo/logo-compass.jpg";
 
+const PARTNER_LOGOS = {
+  arbuz: "./logo/logo-arbuz.png",
+  kazbeef: "./logo/logo-kazbeef.jpg",
+  platformA: "./logo/logo-PlatformA.webp",
+  shinLine: "./logo/logo-shinlain.png",
+  compass: "./logo/logo-compass.jpg",
+  jlc: "./logo/logo-jlc.png",
+  uvu: "",
+  almatyAirInitiative: "",
+  amiran: "",
+};
+
 /** Файлы задаются внутри своей папки секции (без общего массива и slice) */
 const PHOTO_HERO = fromDir("hero", "главная.jpg");
 const PHOTO_ACHIEVEMENTS = fromDirList("achievements", [
@@ -121,9 +133,27 @@ const pageData = {
   entrepreneurship: {
     "2025-2026": {
       projects: [
-        { partner: "UvU", challenge: "создать план для UvU, чтобы запустить 1000 эко-шаттлов по городу за 3 года и завоевать рынок Алматы", link: "#" },
-        { partner: "Almaty Air Initiative", challenge: "разработать план новой организации, которая значительно улучшить качество воздуха в Алматы", link: "#" },
-        { partner: "Amiran", challenge: "разработать стратегию для Amiran, чтобы выйти в прибыль за 9 месяцев, сохраняя верность миссии компании. Стратегия должна работать в рамках текущих возможностей компании", link: "#" },
+        {
+          partner: "UvU",
+          logo: PARTNER_LOGOS.uvu,
+          challenge: "создать план для UvU, чтобы запустить 1000 эко-шаттлов по городу за 3 года и завоевать рынок Алматы",
+          links: [
+            { label: "Видео 1", url: "https://www.instagram.com/reel/DPvMWytD2eB/?igsh=MWl1dGM0Z252d3EzdA==" },
+            { label: "Видео 2", url: "https://www.instagram.com/p/DOoCyZfDOB3/?igsh=MXRoazliNHl6Y3hqcA==" },
+          ],
+        },
+        {
+          partner: "Almaty Air Initiative",
+          logo: PARTNER_LOGOS.almatyAirInitiative,
+          challenge: "разработать план новой организации, которая значительно улучшить качество воздуха в Алматы",
+          links: [],
+        },
+        {
+          partner: "Amiran",
+          logo: PARTNER_LOGOS.amiran,
+          challenge: "разработать стратегию для Amiran, чтобы выйти в прибыль за 9 месяцев, сохраняя верность миссии компании. Стратегия должна работать в рамках текущих возможностей компании",
+          links: [],
+        },
       ],
       startups: [
         { partner: "BARYTAN AI", initiative: "ученики разработали технологию, которая автоматически преобразует разговор между врачом и пациентом в структурированную медицинскую запись, тем самым экономя время и облегчая процесс записи данных", link: "#" },
@@ -133,9 +163,9 @@ const pageData = {
     },
     "2024-2025": {
       projects: [
-        { partner: "Platform A", challenge: "разработать план по завоеванию рынка Алматы и Казахстана для Platforma Market", link: "#" },
-        { partner: "KazBeef", challenge: "разработь план по созданию новой организации, которая решит проблему опустынивания в Казахстане. Обосновать предложение комплексным анализом существующих и возможных решений этой проблемы", link: "#" },
-        { partner: "Shin-Line", challenge: "создать стратегию для продукта \"Шин-Лайн\", чтобы стать лидером рынка на постсоветском пространстве", link: "#" },
+        { partner: "Platform A", logo: PARTNER_LOGOS.platformA, challenge: "разработать план по завоеванию рынка Алматы и Казахстана для Platforma Market", links: [] },
+        { partner: "KazBeef", logo: PARTNER_LOGOS.kazbeef, challenge: "разработь план по созданию новой организации, которая решит проблему опустынивания в Казахстане. Обосновать предложение комплексным анализом существующих и возможных решений этой проблемы", links: [] },
+        { partner: "Shin-Line", logo: PARTNER_LOGOS.shinLine, challenge: "создать стратегию для продукта \"Шин-Лайн\", чтобы стать лидером рынка на постсоветском пространстве", links: [] },
       ],
       startups: [
         { partner: "Silver Pear", initiative: "ученики решали проблему пищевых отходов, перерабатывая их в компост и корм для животных, снижая вред для окружающей среды и поддерживая устойчивое сельское хозяйство. Продукт был успешно протестирован в ЖК Dostyk Residence", link: "#" },
@@ -145,8 +175,8 @@ const pageData = {
     },
     "2023-2024": {
       projects: [
-        { partner: "Arbuz", challenge: "разработать стратегию масштабирования компании Arbuz", link: "#" },
-        { partner: "Compass", challenge: "разработать технико-экономическое обоснование по одному из направлений развития компании Compass", link: "#" },
+        { partner: "Arbuz", logo: PARTNER_LOGOS.arbuz, challenge: "разработать стратегию масштабирования компании Arbuz", links: [] },
+        { partner: "Compass", logo: PARTNER_LOGOS.compass, challenge: "разработать технико-экономическое обоснование по одному из направлений развития компании Compass", links: [] },
       ],
       startups: [
         { partner: "POMOGI PRIUTU.KZ", initiative: "ученики решали проблему отсутствия финансирования приютов для животных, разработав приложение, в котором можно выбрать питомца, заботиться о нем и поддерживать его донатами", link: "#" },
@@ -498,11 +528,28 @@ function renderEntrepreneurshipItems(year, type) {
       type === "startups"
         ? escapeHtml(item.partner)
         : `Партнер: ${escapeHtml(item.partner)}`;
+    const logo = type === "projects" && item.logo
+      ? `<div class="entrepreneurship-project-logo"><img src="${escapeHtml(item.logo)}" alt="Логотип ${escapeHtml(item.partner)}" loading="lazy" /></div>`
+      : "";
+    const links = Array.isArray(item.links)
+      ? item.links
+      : item.link && item.link !== "#"
+        ? [{ label: "Link", url: item.link }]
+        : [];
+    const linksMarkup = links.length
+      ? `<div class="entrepreneurship-project-links">${links
+          .map((link, index) => {
+            const label = link.label || `Link ${index + 1}`;
+            return `<a href="${escapeHtml(link.url)}" target="_blank" rel="noopener noreferrer" aria-label="${escapeHtml(label)}: ${escapeHtml(item.partner)}">${escapeHtml(label)}</a>`;
+          })
+          .join("")}</div>`
+      : `<div class="entrepreneurship-project-links entrepreneurship-project-links--empty"><span>Ссылка скоро</span></div>`;
 
     article.innerHTML = `
       <h3>${title}</h3>
       ${description}
-      <a href="${escapeHtml(item.link)}" aria-label="Подробнее о проекте ${escapeHtml(item.partner)}">Link</a>
+      ${logo}
+      ${linksMarkup}
     `;
     fragment.appendChild(article);
   });

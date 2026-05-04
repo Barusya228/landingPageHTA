@@ -1219,7 +1219,7 @@ main {
 .entrepreneurship-project-logo {
   width: min(148px, 70%);
   height: 64px;
-  margin: 0 auto 14px;
+  margin: 4px auto 16px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1230,18 +1230,6 @@ main {
   max-height: 100%;
   object-fit: contain;
   display: block;
-}
-
-.entrepreneurship-project-logo--fallback {
-  width: 64px;
-  border: 1px solid rgba(15, 24, 48, 0.16);
-  border-radius: 8px;
-  color: #565656;
-  background: #f7f8fa;
-  font-size: 0.88rem;
-  font-weight: 700;
-  line-height: 1.15;
-  padding: 6px;
 }
 
 .entrepreneurship-project h3 {
@@ -1544,12 +1532,12 @@ main {
 
 .mbacc-video:nth-child(1) .mbacc-video-preview,
 .mbacc-dark-video:nth-child(1) .mbacc-dark-video-preview {
-  background-image: url("./images/Видео/Ben.jpg");
+  background-image: url("./images/Видео/Students.jpg");
 }
 
 .mbacc-video:nth-child(2) .mbacc-video-preview,
 .mbacc-dark-video:nth-child(2) .mbacc-dark-video-preview {
-  background-image: url("./images/Видео/Students.jpg");
+  background-image: url("./images/Видео/Ben.jpg");
 }
 
 .mbacc-video-preview:hover,
