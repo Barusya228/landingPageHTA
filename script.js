@@ -681,7 +681,7 @@ const MBACC_VIDEOS = [
     embedUrl: "https://www.youtube.com/embed/i8Org9juGOc",
   },
   {
-    title: "MBacc learning model",
+    title: "Research on Student Learning Outcomes",
     embedUrl: "https://www.youtube.com/embed/N47_mxtsPoo",
   },
 ];
