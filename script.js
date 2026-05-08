@@ -11,6 +11,16 @@
  * ./images/Что говорят родители/
  * ./images/Жизнь в HTA/
  */
+/**
+ * БЫСТРАЯ НАВИГАЦИЯ ДЛЯ РЕДАКТИРОВАНИЯ:
+ * - Фото и папки: IMAGE_DIRS, PHOTO_HERO, PHOTO_ACHIEVEMENTS, PHOTO_VIDEO_THUMBS, PHOTO_LIFE.
+ * - Логотипы: COMPANY_LOGO_* и PARTNER_LOGOS.
+ * - Карточки, проекты, видео и даты: объект pageData.
+ * - Видео Minerva/MBacc: MBACC_VIDEOS.
+ *
+ * Для обычных правок контента почти всегда достаточно менять верхнюю часть этого файла.
+ * Функции ниже pageData отвечают за поведение сайта; их лучше трогать только разработчику.
+ */
 const IMAGE_DIRS = {
   hero: "./images/Банер",
   features: "./images/Что делает нас уникальными",
@@ -32,6 +42,10 @@ function lifeImageWebpSrc(fallbackSrc) {
   return String(fallbackSrc).replace(/\.(jpe?g|png)$/i, ".webp");
 }
 
+/**
+ * Логотипы для блока "Наши ученики предлагали решения...".
+ * Чтобы заменить логотип, положите файл в ./logo/ и поменяйте путь здесь.
+ */
 const COMPANY_LOGO_1 = "./logo/logo-arbuz.png";
 const COMPANY_LOGO_2 = "./logo/logo-kazbeef.jpg";
 const COMPANY_LOGO_3 = "./logo/logo-jlc.png";
@@ -39,6 +53,11 @@ const COMPANY_LOGO_4 = "./logo/logo-shinlain.png";
 const COMPANY_LOGO_5 = "./logo/logo-not-hta.svg";
 const COMPANY_LOGO_6 = "./logo/logo-compass.jpg";
 
+/**
+ * Логотипы партнёров в блоке "Курс Предпринимательства".
+ * Пустая строка означает, что логотип пока не показывается.
+ * Стартапы специально рендерятся без логотипов.
+ */
 const PARTNER_LOGOS = {
   arbuz: "./logo/logo-arbuz.png",
   kazbeef: "./logo/logo-kazbeef.jpg",
@@ -51,13 +70,16 @@ const PARTNER_LOGOS = {
   amiran: "",
 };
 
-/** Файлы задаются внутри своей папки секции (без общего массива и slice) */
+/** Главное фото hero-секции. */
 const PHOTO_HERO = fromDir("hero", "главная.jpg");
+
+/** Фото для карточек "Достижения наших учеников". */
 const PHOTO_ACHIEVEMENTS = fromDirList("achievements", [
   "1.jpeg",
   "2.jfif",
   "3.jpg",
 ]);
+/** Обложки видео для карусели "Голоса HTA". */
 const PHOTO_VIDEO_THUMBS = fromDirList("video", [
   "1.jpg",
   "2.jpg",
@@ -92,6 +114,10 @@ const PHOTO_LIFE = fromDirList("life", [
   "21.webp",
   "22.webp",
 ]);
+/**
+ * Instagram-ссылки для карусели "Голоса HTA".
+ * Для YouTube-видео используйте embedUrl внутри pageData.videoTestimonials.
+ */
 const INSTAGRAM_REEL_PERMALINKS = [
   "https://www.instagram.com/reel/DKhFaLBNlh-/?utm_source=ig_embed&utm_campaign=loading",
 
@@ -102,9 +128,16 @@ const INSTAGRAM_REEL_PERMALINKS = [
   "https://www.instagram.com/reel/DNfGpn5tFW5/?utm_source=ig_embed&utm_campaign=loading",
 ];
 
+/**
+ * ГЛАВНЫЙ КОНТЕНТ САЙТА.
+ * Здесь редактируются повторяющиеся блоки: достижения, компании, проекты, стартапы,
+ * видео-карусель и дата дня открытых дверей.
+ */
 const pageData = {
+  /** Фото для бегущей галереи "Жизнь в HTA". */
   lifeAtHtaImages: PHOTO_LIFE,
 
+  /** Карточки секции "Достижения наших учеников". */
   achievements: [
     {
       image: PHOTO_ACHIEVEMENTS[0],
@@ -130,6 +163,13 @@ const pageData = {
     { name: "Компания 6", logo: COMPANY_LOGO_6 },
   ],
 
+  /**
+   * Курс предпринимательства.
+   * projects: партнёр + проектное задание + логотип + ссылки.
+   * startups: название + описание инициативы, без логотипов.
+   * links: [] покажет "Ссылка скоро"; чтобы добавить ссылку:
+   * links: [{ label: "Видео 1", url: "https://..." }]
+   */
   entrepreneurship: {
     "2025-2026": {
       projects: [
@@ -186,6 +226,10 @@ const pageData = {
     },
   },
 
+  /**
+   * Карусель "Голоса HTA".
+   * thumb — обложка, instagramPermalink — Instagram, embedUrl — YouTube embed.
+   */
   videoTestimonials: [
     {
       title: "Куда поступают выпускники HTA?",
@@ -213,6 +257,7 @@ const pageData = {
     },
   ],
 
+  /** Текст даты в блоке "День открытых дверей". */
   openDay: {
     dateLine: "Апрель 2026 — дата уточняется",
   },
@@ -675,6 +720,11 @@ function renderVideoSlides(
   return strip;
 }
 
+/**
+ * Видео в блоке Minerva/MBacc.
+ * Обложки задаются в CSS у .mbacc-video:nth-child(...).
+ * Для замены видео меняйте только embedUrl.
+ */
 const MBACC_VIDEOS = [
   {
     title: "MBacc overview",
@@ -1109,8 +1159,8 @@ function openHeroVideoModal() {
 }
 
 function initHeroVideoModal() {
-  const playBtn = document.querySelector(".hero-video .video-button");
-  const label = document.querySelector(".hero-video span");
+  const playBtn = document.querySelector(".expert-video .video-button, .hero-video .video-button");
+  const label = document.querySelector(".expert-video h2, .hero-video span");
   const backdrop = document.getElementById("hero-video-modal-backdrop");
   const closeBtn = document.getElementById("hero-video-modal-close");
   const open = (e) => {

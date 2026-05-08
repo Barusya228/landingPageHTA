@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <!-- HEADER: логотип, меню и социальные ссылки. Тексты меню меняются здесь. -->
   <header class="site-header header">
     <div class="container header-inner">
       <div class="header-left">
@@ -55,6 +56,7 @@
   </header>
   
   <main>
+    <!-- HERO: первый экран, главный заголовок и фоновое фото. -->
     <section id="hero" class="hero" aria-labelledby="hero-title">
       <div class="hero-overlay" aria-hidden="true"></div>
 
@@ -64,14 +66,9 @@
            Полная аккредитация CIS</p>
       </div>
 
-      <div class="hero-video">
-        <div class="hero-video-preview">
-          <button type="button" class="video-button" aria-label="Смотреть видео о школе">▶</button>
-        </div>
-        <span>Какой видят школу гости</span>
-      </div>
     </section>
 
+    <!-- WHY HTA: три цветные карточки и отзывы учеников. -->
     <section id="why-hta" class="why-hta section reveal" aria-labelledby="why-hta-title">
       <h2 id="why-hta-title">Почему HTA</h2>
 
@@ -264,6 +261,7 @@
       </div>
     </section>
 
+    <!-- UNIQUE FEATURES: карточки "Что делает HTA уникальной школой". -->
     <section id="unique-features" class="unique-features section reveal" aria-labelledby="unique-title">
       <div class="container">
         <h2 id="unique-title" class="section-title">Что делает HTA уникальной школой</h2>
@@ -355,6 +353,7 @@
       </div>
     </section>
 
+    <!-- MBACC DARK: тёмная версия блока Minerva Baccalaureate. -->
     <section id="MBacc-dark" class="MBacc-dark">
       <div class="container">
         <div class="mbacc-dark-panel">
@@ -402,6 +401,7 @@
       </div>
     </section>
 
+    <!-- MBACC LIGHT: светлая версия блока Minerva Baccalaureate. -->
     <section id="MBacc" class="MBacc">
       <div class="container">
         <div class="mbacc-panel">
@@ -449,6 +449,7 @@
       </div>
     </section>
 
+    <!-- LIFE HTA: бегущая галерея. Фото задаются в PHOTO_LIFE в script.js. -->
     <section id="life-hta" class="life-hta section reveal" aria-labelledby="life-title">
       <div class="container">
         <h2 id="life-title" class="section-title">Жизнь в HTA</h2>
@@ -461,6 +462,7 @@
       </div>
     </section>
 
+    <!-- ACHIEVEMENTS: достижения учеников. Карточки генерируются из pageData.achievements. -->
     <section id="achievements" class="achievements section reveal" aria-labelledby="achievements-title">
       <div class="container">
         <h2 id="achievements-title" class="section-title">Достижения наших учеников</h2>
@@ -516,6 +518,7 @@
       </div>
     </section>
 
+    <!-- ENTREPRENEURSHIP: проекты и стартапы. Данные меняются в pageData.entrepreneurship. -->
     <section id="entrepreneurship-course" class="entrepreneurship-course section reveal" aria-labelledby="entrepreneurship-course-title">
       <div class="container">
         <h2 id="entrepreneurship-course-title" class="section-title">Курс Предпринимательства</h2>
@@ -552,6 +555,7 @@
       </div>
     </section>
 
+    <!-- COMPANIES: логотипы компаний. Данные меняются в pageData.companies. -->
     <section id="companies" class="companies section reveal" aria-labelledby="companies-title">
       <div class="container">
         <div class="companies-panel">
@@ -561,6 +565,7 @@
       </div>
     </section>
 
+    <!-- TESTIMONIALS: видео-карусель "Голоса HTA". Данные меняются в pageData.videoTestimonials. -->
     <section id="testimonials" class="testimonials section reveal" aria-labelledby="testimonials-title">
       <div class="container">
         <h2 id="testimonials-title" class="section-title">Голоса HTA</h2>
@@ -572,6 +577,7 @@
       </div>
     </section>
 
+    <!-- IDEAS HTA: цитаты и идеи, которые вдохновили школу. -->
     <section id="ideas-hta" class="ideas-hta section reveal" aria-labelledby="ideas-hta-title">
       <div class="container">
         <h2 id="ideas-hta-title" class="section-title">Идеи, которые вдохновили нас на создание HTA</h2>
@@ -648,7 +654,19 @@
       </div>
     </section>
 
-    <section id="PD" class="PD section reveal" aria-labelledby="PD-title">
+    <section id="expert-video" class="expert-video-section section reveal" aria-labelledby="expert-video-title">
+      <div class="container">
+        <div class="expert-video">
+          <div class="hero-video-preview">
+            <button type="button" class="video-button" aria-label="Смотреть мнение экспертов об HTA">▶</button>
+          </div>
+          <h2 id="expert-video-title">Мнение экспертов об HTA</h2>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROFESSIONAL DEVELOPMENT: блок развития учителей. -->
+    <section id="PD" class="PD section reveal" aria-labelledby="PD-title" hidden>
       <div class="container">
         <div class="PD-panel">
           <div class="PD-copy">
@@ -685,6 +703,7 @@
       </div>
     </section>
 
+    <!-- OPEN DAY: CTA и форма Bitrix24. Дата меняется в pageData.openDay. -->
     <section id="open-day" class="open-day section reveal" aria-labelledby="open-day-title">
       <div class="container">
         <div class="open-day-inner">
@@ -699,6 +718,7 @@
     </section>
   </main>
 
+   <!-- FOOTER: нижнее меню, контакты и социальные ссылки. -->
    <footer class="site-footer">
     <div class="footer-top">
       <div class="container">
@@ -803,6 +823,7 @@
     </div>
   </div> -->
 
+  <!-- SHARED VIDEO MODAL: общее окно для YouTube/Instagram видео. -->
   <div class="video-modal-backdrop" id="video-modal-backdrop" aria-hidden="true">
     <div class="video-modal" role="dialog" aria-modal="true" aria-labelledby="video-modal-title">
       <button type="button" class="video-modal-close" id="video-modal-close" aria-label="Закрыть">&times;</button>
@@ -811,6 +832,7 @@
     </div>
   </div>
 
+  <!-- HERO VIDEO MODAL: отдельное окно для видео с первого экрана. -->
   <div class="hero-video-modal-backdrop" id="hero-video-modal-backdrop" aria-hidden="true">
     <div
       class="hero-video-modal"
@@ -821,7 +843,7 @@
       <button type="button" class="hero-video-modal-close" id="hero-video-modal-close" aria-label="Закрыть">
         &times;
       </button>
-      <h3 class="hero-video-modal-title" id="hero-video-modal-title">Какая школа HTA?</h3>
+      <h3 class="hero-video-modal-title" id="hero-video-modal-title">Мнение экспертов об HTA</h3>
       <div class="hero-video-modal-body">
         <iframe
           id="hero-youtube-embed"
@@ -836,6 +858,7 @@
     </div>
   </div>
 
+  <!-- CONSULT MODAL: всплывающая форма консультации. -->
   <div class="consult-modal-backdrop" id="consult-modal-backdrop" aria-hidden="true">
     <div class="consult-modal-window" role="dialog" aria-modal="true" aria-labelledby="consult-modal-title">
       <button type="button" class="consult-modal-close" id="consult-modal-close" aria-label="Закрыть">&times;</button>
