@@ -23,6 +23,7 @@
   --color-bg: #ffffff;
   --color-white: #ffffff;
   --color-dark: #0f1830;
+  --color-hta-graphite: #292927;
   /* Брендовые акценты HTA. */
   --color-orange: #ff8a3c;
   --color-orange-dark: #e86f20;
@@ -616,8 +617,9 @@ main {
   flex-direction: column;
   padding: 0;
   box-sizing: border-box;
-  background: rgba(15, 24, 48, 0.78);
-  color: #fff;
+  background: rgba(255, 255, 255, 0.84);
+  color: #0f1830;
+  backdrop-filter: blur(2px);
   text-align: center;
   border-radius: inherit;
   opacity: 0;
@@ -644,7 +646,7 @@ main {
   text-align: left;
   pointer-events: auto;
   scrollbar-width: thin;
-  scrollbar-color: rgba(255, 255, 255, 0.45) rgba(255, 255, 255, 0.08);
+  scrollbar-color: rgba(15, 24, 48, 0.35) rgba(15, 24, 48, 0.08);
 }
 
 .why-card-hover-scroll::-webkit-scrollbar {
@@ -652,17 +654,17 @@ main {
 }
 
 .why-card-hover-scroll::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.06);
+  background: rgba(15, 24, 48, 0.06);
   border-radius: 999px;
 }
 
 .why-card-hover-scroll::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.38);
+  background: rgba(15, 24, 48, 0.32);
   border-radius: 999px;
 }
 
 .why-card-hover-scroll::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.55);
+  background: rgba(15, 24, 48, 0.5);
 }
 
 .why-card:hover .why-card-hover-overlay,
@@ -674,10 +676,11 @@ main {
   margin: 0;
   max-width: 28ch;
   width: min(100%, 28ch);
-  font-size: clamp(0.8125rem, 2.1vw, 1rem);
-  font-weight: 500;
-  line-height: 1.45;
+  font-size: clamp(1rem, 1.15vw, 1.18rem);
+  font-weight: 600;
+  line-height: 1.35;
   text-align: left;
+  color: #0f1830;
 }
 
 .why-card-hover-text--tagline {
@@ -708,6 +711,10 @@ main {
   background: #e86a2f;
 }
 
+.why-hta .why-card--mbacc {
+  background: var(--color-hta-graphite);
+}
+
 .why-hta .card-title {
   font-size: 30px;
   font-weight: 600;
@@ -728,6 +735,19 @@ main {
   opacity: 0.95;
 }
 
+.why-card-link {
+  position: relative;
+  z-index: 3;
+  display: inline-flex;
+  margin-top: 18px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.25;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
 .why-hta-extra {
   text-align: left;
   padding-bottom: 20px;
@@ -742,8 +762,8 @@ main {
 }
 
 .research-quote p {
-  font-size: 26px;
-  line-height: 1.6;
+  font-size: clamp(58px, 6vw, 78px);
+  line-height: 1.08;
   margin: 0 0 10px;
 }
 
@@ -1034,7 +1054,7 @@ main {
   object-fit: cover;
 }
 
-.features-grid .feature-card:nth-child(6) img {
+.features-grid .feature-card:first-child img {
   object-position: 72% center;
 }
 
@@ -1061,17 +1081,18 @@ main {
 .card-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(15, 24, 48, 0.65);
+  background: rgba(255, 255, 255, 0.84);
   opacity: 0;
   transition: opacity 0.3s ease;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1.5rem;
+  padding: 1rem 1.1rem;
   overflow-y: auto;
   overflow-x: hidden;
   scrollbar-width: thin;
-  scrollbar-color: rgba(255, 255, 255, 0.45) rgba(255, 255, 255, 0.12);
+  scrollbar-color: rgba(15, 24, 48, 0.35) rgba(15, 24, 48, 0.08);
+  backdrop-filter: blur(2px);
 }
 
 .feature-card:hover .card-overlay,
@@ -1081,15 +1102,15 @@ main {
 
 .card-overlay-text {
   margin: 0;
-  color: #fff;
+  color: #0f1830;
   display: block;
   width: 100%;
   max-width: min(32ch, 100%);
   padding-right: 0.15rem;
-  font-size: clamp(0.84rem, 0.92vw, 0.95rem);
-  font-weight: 500;
-  line-height: 1.45;
-  text-align: left;
+  font-size: clamp(1rem, 1.15vw, 1.18rem);
+  font-weight: 600;
+  line-height: 1.35;
+  text-align: center;
   text-wrap: pretty;
 }
 
@@ -1101,22 +1122,62 @@ main {
   margin-top: 0.7rem;
 }
 
+.card-overlay-heading {
+  margin: 0 0 0.45rem;
+  font-weight: 700;
+}
+
+.card-overlay-list {
+  margin: 0;
+  padding-left: 1.15rem;
+  text-align: left;
+}
+
+.card-overlay-list li {
+  margin-bottom: 0.35rem;
+}
+
+.card-overlay-list li:last-child {
+  margin-bottom: 0;
+}
+
+.card-overlay-list {
+  font-size: clamp(0.86rem, 0.95vw, 1rem);
+  line-height: 1.25;
+}
+
+.card-overlay-quote {
+  margin: 0.75rem 0 0;
+  font-size: clamp(0.82rem, 0.9vw, 0.95rem);
+  font-weight: 600;
+  line-height: 1.25;
+  text-align: center;
+}
+
+.card-overlay-source {
+  margin: 0.65rem 0 0;
+  font-size: clamp(0.72rem, 0.78vw, 0.82rem);
+  font-weight: 500;
+  line-height: 1.25;
+  text-align: center;
+}
+
 .card-overlay::-webkit-scrollbar {
   width: 6px;
 }
 
 .card-overlay::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(15, 24, 48, 0.06);
   border-radius: 999px;
 }
 
 .card-overlay::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.38);
+  background: rgba(15, 24, 48, 0.32);
   border-radius: 999px;
 }
 
 .card-overlay::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.55);
+  background: rgba(15, 24, 48, 0.5);
 }
 
 .feature-card.is-expanded .card-overlay {
@@ -1536,10 +1597,16 @@ main {
 
 .mbacc-copy {
   max-width: 560px;
-  color: #7b7f87;
-  font-size: clamp(0.95rem, 1.2vw, 1.05rem);
-  line-height: 1.45;
+  color: var(--color-text);
+  font-size: clamp(1.05rem, 1.35vw, 1.22rem);
+  font-weight: 600;
+  line-height: 1.5;
   text-align: left;
+}
+
+.mbacc-highlight {
+  color: var(--color-orange-dark);
+  font-weight: 800;
 }
 
 .mbacc-copy p {
@@ -1658,7 +1725,7 @@ main {
   align-items: start;
   padding: clamp(34px, 4.5vw, 52px) clamp(32px, 5vw, 58px);
   border-radius: 22px;
-  background: #292927;
+  background: var(--color-hta-graphite);
 }
 
 .mbacc-dark-logo {
@@ -3233,8 +3300,8 @@ main {
   }
 
   .research-quote p {
-    font-size: 17px;
-    line-height: 1.5;
+    font-size: clamp(42px, 10vw, 58px);
+    line-height: 1.08;
   }
 
   .quote-author {
@@ -3260,11 +3327,15 @@ main {
     overflow-x: auto;
     width: 100%;
     gap: 14px;
+    scroll-snap-type: x mandatory;
+    padding: 6px 40px 10px;
   }
 
   .student-card {
-    min-width: 250px;
+    width: 100%;
+    min-width: 100%;
     padding: 18px 14px 16px;
+    scroll-snap-align: center;
   }
 
   .student-name {
@@ -3276,9 +3347,25 @@ main {
   }
 
   .slider-btn {
-    position: static;
-    transform: none;
-    display: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background: rgba(255, 255, 255, 0.94);
+    border: 1px solid rgba(15, 24, 48, 0.12);
+    box-shadow: 0 6px 18px rgba(15, 24, 48, 0.12);
+    color: rgba(25, 50, 95, 0.78);
+    font-size: 38px;
+    z-index: 3;
+  }
+
+  .slider-btn.left {
+    left: 0;
+  }
+
+  .slider-btn.right {
+    right: 0;
   }
 
   /* --- Features --- */
@@ -3325,14 +3412,14 @@ main {
   }
 
   .card-overlay {
-    padding: 1.25rem;
+    padding: 0.9rem 1rem;
   }
 
   .card-overlay-text {
     max-width: 100%;
     padding-right: 0.1rem;
-    font-size: 0.82rem;
-    line-height: 1.4;
+    font-size: clamp(0.86rem, 3vw, 1rem);
+    line-height: 1.28;
     text-align: center;
   }
 
@@ -3340,7 +3427,7 @@ main {
     display: block;
   }
 
-  .features-grid .feature-card:nth-child(6) img {
+  .features-grid .feature-card:first-child img {
     object-position: 78% center;
   }
 
@@ -3666,7 +3753,7 @@ main {
   }
 
   .research-quote p {
-    font-size: 15px;
+    font-size: clamp(36px, 9vw, 48px);
   }
 
   .students-section h3 {
@@ -3674,7 +3761,8 @@ main {
   }
 
   .student-card {
-    min-width: 230px;
+    width: 100%;
+    min-width: 100%;
   }
 
   .ideas-hta-quotes {

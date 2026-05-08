@@ -727,11 +727,11 @@ function renderVideoSlides(
  */
 const MBACC_VIDEOS = [
   {
-    title: "MBacc overview",
+    title: "MBacc Through Students’ Eyes",
     embedUrl: "https://www.youtube.com/embed/i8Org9juGOc",
   },
   {
-    title: "Research on Student Learning Outcomes",
+    title: "Proven MBacc Outcomes",
     embedUrl: "https://www.youtube.com/embed/N47_mxtsPoo",
   },
 ];
