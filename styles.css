@@ -38,6 +38,7 @@
   --radius-lg: 16px;
   --radius-xl: 20px;
   --header-height: 84px;
+  --section-y: 64px;
   --transition: 0.2s ease;
 }
 
@@ -98,7 +99,7 @@ button {
 }
 
 .section {
-  padding: clamp(36px, 4.5vw, 64px) 0;
+  padding: var(--section-y) 0;
 }
 
 .section-title {
@@ -353,7 +354,7 @@ main {
   min-height: 620px;
   max-height: 860px;
   background-color: var(--color-white);
-  background-image: url("./images/DSC01536.jpg");
+  background-image: url("./images/Банер/главная.jpg");
   background-size: cover;
   background-position: 62% center;
   background-repeat: no-repeat;
@@ -570,7 +571,7 @@ main {
 /* === Why HTA === */
 .why-hta {
   position: relative;
-  padding: 110px 20px;
+  padding: var(--section-y) 20px;
   text-align: center;
   background: var(--section-green);
 }
@@ -715,6 +716,10 @@ main {
   background: var(--color-hta-graphite);
 }
 
+.why-card--mbacc {
+  padding-bottom: 52px;
+}
+
 .why-hta .card-title {
   font-size: 30px;
   font-weight: 600;
@@ -748,6 +753,34 @@ main {
   text-underline-offset: 4px;
 }
 
+.why-card-jump-link {
+  position: absolute;
+  left: 50%;
+  bottom: 16px;
+  z-index: 3;
+  transform: translateX(-50%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 34px;
+  color: #fff;
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 1;
+  text-decoration: none;
+  transition: opacity var(--transition), transform var(--transition);
+}
+
+.why-card--mbacc:hover .why-card-jump-link,
+.why-card--mbacc:focus-visible .why-card-jump-link {
+  transform: translate(-50%, 3px);
+}
+
+.MBacc {
+  scroll-margin-top: calc(var(--header-height) + 16px);
+}
+
 .why-hta-extra {
   text-align: left;
   padding-bottom: 20px;
@@ -762,9 +795,13 @@ main {
 }
 
 .research-quote p {
-  font-size: clamp(58px, 6vw, 78px);
-  line-height: 1.08;
+  font-size: clamp(18px, 4vw, 40px);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
   margin: 0 0 10px;
+  color: var(--color-text);
+  white-space: nowrap;
 }
 
 .quote-author {
@@ -1067,6 +1104,10 @@ main {
   background: linear-gradient(transparent, rgba(0, 0, 0, 0.65));
 }
 
+.feature-card--entrepreneurship-jump .feature-card-title-wrap {
+  padding-bottom: 3.35rem;
+}
+
 .feature-card-title {
   margin: 0 auto;
   max-width: 18ch;
@@ -1084,9 +1125,7 @@ main {
   background: rgba(255, 255, 255, 0.84);
   opacity: 0;
   transition: opacity 0.3s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: block;
   padding: 1rem 1.1rem;
   overflow-y: auto;
   overflow-x: hidden;
@@ -1101,9 +1140,11 @@ main {
 }
 
 .card-overlay-text {
-  margin: 0;
+  margin: 0 auto;
   color: #0f1830;
-  display: block;
+  display: grid;
+  min-height: 100%;
+  align-content: center;
   width: 100%;
   max-width: min(32ch, 100%);
   padding-right: 0.15rem;
@@ -1125,6 +1166,21 @@ main {
 .card-overlay-heading {
   margin: 0 0 0.45rem;
   font-weight: 700;
+}
+
+.card-overlay-text--entrepreneurship {
+  max-width: min(40ch, 100%);
+}
+
+.card-overlay-text--entrepreneurship .card-overlay-heading,
+.card-overlay-text--sports .card-overlay-heading,
+.card-overlay-text--debates .card-overlay-heading {
+  margin-bottom: 0.85rem;
+}
+
+.card-overlay-text--sports,
+.card-overlay-text--debates {
+  max-width: min(40ch, 100%);
 }
 
 .card-overlay-list {
@@ -1154,12 +1210,45 @@ main {
   text-align: center;
 }
 
+.card-overlay-quote--cleese {
+  text-align: left;
+}
+
+.card-overlay-quote--cleese span {
+  display: block;
+}
+
+.card-overlay-quote-author {
+  margin-top: 0.25rem;
+  text-align: right;
+}
+
+.card-overlay-quote--entrepreneurship {
+  width: 100%;
+  max-width: none;
+}
+
+.card-overlay-quote--sports {
+  width: 100%;
+  max-width: none;
+}
+
+.card-overlay-quote--debates {
+  width: 100%;
+  max-width: none;
+  text-align: left;
+}
+
 .card-overlay-source {
   margin: 0.65rem 0 0;
   font-size: clamp(0.72rem, 0.78vw, 0.82rem);
   font-weight: 500;
   line-height: 1.25;
   text-align: center;
+}
+
+.card-overlay-source--sports {
+  text-align: left;
 }
 
 .card-overlay::-webkit-scrollbar {
@@ -1194,6 +1283,39 @@ main {
   background: rgba(255, 255, 255, 0.95);
   font-size: 0.8125rem;
   color: var(--color-text);
+}
+
+.feature-card--entrepreneurship-jump {
+  cursor: pointer;
+}
+
+.feature-card-jump-arrow {
+  position: absolute;
+  left: 50%;
+  bottom: 14px;
+  z-index: 3;
+  transform: translateX(-50%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 32px;
+  color: #fff;
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 1;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.55);
+  transition: transform var(--transition), opacity var(--transition);
+}
+
+.feature-card--entrepreneurship-jump:hover .feature-card-jump-arrow,
+.feature-card--entrepreneurship-jump:focus-visible .feature-card-jump-arrow {
+  color: var(--color-orange);
+  transform: translate(-50%, 4px);
+}
+
+.entrepreneurship-course {
+  scroll-margin-top: calc(var(--header-height) + 16px);
 }
 
 /* === Entrepreneurship course === */
@@ -1568,7 +1690,7 @@ main {
 
 /* === MBacc block === */
 .MBacc {
-  padding: clamp(42px, 5vw, 72px) 0;
+  padding: var(--section-y) 0;
   background: var(--color-white);
 }
 
@@ -1643,8 +1765,7 @@ main {
   transition: transform var(--transition), background var(--transition);
 }
 
-.mbacc-video-preview::before,
-.mbacc-dark-video-preview::before {
+.mbacc-video-preview::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -1652,14 +1773,12 @@ main {
   transition: background var(--transition);
 }
 
-.mbacc-video:nth-child(1) .mbacc-video-preview,
-.mbacc-dark-video:nth-child(1) .mbacc-dark-video-preview {
+.mbacc-video:nth-child(1) .mbacc-video-preview {
   /* Обложка первого видео Minerva/MBacc. */
   background-image: url("./images/Видео/Students.jpg");
 }
 
-.mbacc-video:nth-child(2) .mbacc-video-preview,
-.mbacc-dark-video:nth-child(2) .mbacc-dark-video-preview {
+.mbacc-video:nth-child(2) .mbacc-video-preview {
   /* Обложка второго видео Minerva/MBacc. */
   background-image: url("./images/Видео/Ben.jpg");
 }
@@ -1670,9 +1789,7 @@ main {
 }
 
 .mbacc-video-preview:hover::before,
-.mbacc-video-preview:focus-visible::before,
-.mbacc-dark-video-preview:hover::before,
-.mbacc-dark-video-preview:focus-visible::before {
+.mbacc-video-preview:focus-visible::before {
   background: rgba(15, 24, 48, 0.2);
 }
 
@@ -1707,121 +1824,6 @@ main {
 .mbacc-video-title {
   margin-top: 6px;
   color: #4b4b4b;
-  font-size: 0.78rem;
-  font-weight: 700;
-  line-height: 1.25;
-}
-
-/* === MBacc dark block === */
-.MBacc-dark {
-  padding: 0 0 clamp(42px, 5vw, 72px);
-  background: var(--color-white);
-}
-
-.mbacc-dark-panel {
-  display: grid;
-  grid-template-columns: 110px minmax(0, 1fr) 260px;
-  gap: clamp(30px, 4.5vw, 68px);
-  align-items: start;
-  padding: clamp(34px, 4.5vw, 52px) clamp(32px, 5vw, 58px);
-  border-radius: 22px;
-  background: var(--color-hta-graphite);
-}
-
-.mbacc-dark-logo {
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-}
-
-.mbacc-dark-logo img {
-  width: 104px;
-  max-height: 104px;
-  object-fit: contain;
-  filter: brightness(0) invert(1);
-}
-
-.mbacc-dark-copy {
-  max-width: 560px;
-  padding: clamp(26px, 3.2vw, 38px) clamp(20px, 3vw, 30px);
-  border: 2px solid var(--color-orange);
-  border-radius: 22px;
-  color: rgba(255, 255, 255, 0.86);
-  font-size: clamp(0.92rem, 1.15vw, 1rem);
-  line-height: 1.45;
-  text-align: left;
-}
-
-.mbacc-dark-copy p {
-  margin: 0 0 1.35rem;
-}
-
-.mbacc-dark-copy p:last-child {
-  margin-bottom: 0;
-}
-
-.mbacc-dark-videos {
-  display: grid;
-  gap: 28px;
-  justify-items: center;
-}
-
-.mbacc-dark-video {
-  width: min(100%, 200px);
-  text-align: center;
-}
-
-.mbacc-dark-video-preview {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 1.68 / 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 0;
-  border-radius: 14px;
-  background: #505050 center / cover;
-  padding: 0;
-  overflow: hidden;
-  transition: transform var(--transition), background var(--transition);
-}
-
-.mbacc-dark-video-preview:hover,
-.mbacc-dark-video-preview:focus-visible {
-  transform: translateY(-2px);
-}
-
-.mbacc-dark-video-preview:focus-visible {
-  outline: 2px solid var(--color-orange);
-  outline-offset: 3px;
-}
-
-.mbacc-dark-video-play {
-  position: relative;
-  z-index: 1;
-  width: 38px;
-  height: 38px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  background: var(--color-orange);
-}
-
-.mbacc-dark-video-play::before {
-  content: "";
-  display: block;
-  width: 0;
-  height: 0;
-  margin-left: 3px;
-  border-top: 9px solid transparent;
-  border-bottom: 9px solid transparent;
-  border-left: 13px solid #fff;
-}
-
-.mbacc-dark-video-title {
-  margin-top: 6px;
-  color: #fff;
   font-size: 0.78rem;
   font-weight: 700;
   line-height: 1.25;
@@ -2451,7 +2453,7 @@ main {
 
 /* === Open day CTA === */
 .open-day {
-  padding-bottom: clamp(40px, 5vw, 64px);
+  padding-bottom: var(--section-y);
   background: var(--color-white);
 }
 
@@ -2887,8 +2889,8 @@ main {
 
 /* ---------- Tablet ---------- */
 @media (max-width: 992px) {
-  .section {
-    padding: clamp(32px, 4vw, 52px) 0;
+  :root {
+    --section-y: 52px;
   }
 
   .hero {
@@ -2916,7 +2918,7 @@ main {
   }
 
   .why-hta {
-    padding: 72px 16px;
+    padding: var(--section-y) 16px;
   }
 
   .why-hta h2 {
@@ -2935,17 +2937,7 @@ main {
     grid-template-columns: 100px minmax(0, 1fr);
   }
 
-  .mbacc-dark-panel {
-    grid-template-columns: 100px minmax(0, 1fr);
-  }
-
   .mbacc-videos {
-    grid-column: 1 / -1;
-    grid-template-columns: repeat(2, minmax(0, 200px));
-    justify-content: center;
-  }
-
-  .mbacc-dark-videos {
     grid-column: 1 / -1;
     grid-template-columns: repeat(2, minmax(0, 200px));
     justify-content: center;
@@ -2984,14 +2976,11 @@ main {
 @media (max-width: 768px) {
   :root {
     --header-height: 64px;
+    --section-y: 44px;
   }
 
   .container {
     width: calc(100% - 32px);
-  }
-
-  .section {
-    padding: clamp(28px, 4vw, 44px) 0;
   }
 
   .section-title {
@@ -3130,7 +3119,7 @@ main {
     text-align: center;
     margin-left: 0;
     margin-bottom: 0;
-    transform: none;
+    transform: translateY(16px);
   }
 
   .hero-content h1 {
@@ -3173,8 +3162,8 @@ main {
   }
 
   .expert-video-section {
-    padding-top: 40px;
-    padding-bottom: 40px;
+    padding-top: var(--section-y);
+    padding-bottom: var(--section-y);
   }
 
   .expert-video {
@@ -3187,7 +3176,7 @@ main {
 
   /* --- Why HTA --- */
   .why-hta {
-    padding: 48px 16px;
+    padding: var(--section-y) 16px;
   }
 
   .why-hta h2 {
@@ -3230,17 +3219,10 @@ main {
   }
 
   .MBacc {
-    padding: 32px 0;
+    padding: var(--section-y) 0;
   }
 
   .mbacc-panel {
-    grid-template-columns: 1fr;
-    gap: 22px;
-    padding: 28px 20px;
-    border-radius: 18px;
-  }
-
-  .mbacc-dark-panel {
     grid-template-columns: 1fr;
     gap: 22px;
     padding: 28px 20px;
@@ -3251,16 +3233,7 @@ main {
     justify-content: flex-start;
   }
 
-  .mbacc-dark-logo {
-    justify-content: flex-start;
-  }
-
   .mbacc-logo img {
-    width: 96px;
-    max-height: 96px;
-  }
-
-  .mbacc-dark-logo img {
     width: 96px;
     max-height: 96px;
   }
@@ -3270,26 +3243,12 @@ main {
     font-size: 0.95rem;
   }
 
-  .mbacc-dark-copy {
-    max-width: none;
-    font-size: 0.95rem;
-  }
-
   .mbacc-videos {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 18px;
   }
 
-  .mbacc-dark-videos {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 18px;
-  }
-
   .mbacc-video {
-    width: 100%;
-  }
-
-  .mbacc-dark-video {
     width: 100%;
   }
 
@@ -3300,8 +3259,8 @@ main {
   }
 
   .research-quote p {
-    font-size: clamp(42px, 10vw, 58px);
-    line-height: 1.08;
+    font-size: clamp(18px, 5.5vw, 32px);
+    line-height: 1.2;
   }
 
   .quote-author {
@@ -3624,6 +3583,10 @@ main {
 
 /* ---------- Small mobile ---------- */
 @media (max-width: 480px) {
+  :root {
+    --section-y: 24px;
+  }
+
   .header-inner {
     gap: 0.35rem;
   }
@@ -3664,10 +3627,6 @@ main {
     padding: 0 9px;
   }
 
-  .section {
-    padding: 24px 0;
-  }
-
   .container {
     width: calc(100% - 24px);
   }
@@ -3688,21 +3647,13 @@ main {
     padding: 24px 16px;
   }
 
-  .mbacc-dark-panel {
-    padding: 24px 16px;
-  }
-
   .mbacc-videos {
-    grid-template-columns: 1fr;
-  }
-
-  .mbacc-dark-videos {
     grid-template-columns: 1fr;
   }
 
   .hero {
     min-height: calc(100svh - var(--header-height));
-    padding: 0 16px 36px;
+    padding: 0 16px 30px;
   }
 
   .hero-content h1 {
@@ -3722,7 +3673,7 @@ main {
   }
 
   .why-hta {
-    padding: 36px 12px;
+    padding: var(--section-y) 12px;
   }
 
   .why-hta .why-card {
@@ -3753,7 +3704,7 @@ main {
   }
 
   .research-quote p {
-    font-size: clamp(36px, 9vw, 48px);
+    font-size: clamp(18px, 5.4vw, 24px);
   }
 
   .students-section h3 {

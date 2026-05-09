@@ -50,8 +50,9 @@ const COMPANY_LOGO_1 = "./logo/logo-arbuz.png";
 const COMPANY_LOGO_2 = "./logo/logo-kazbeef.jpg";
 const COMPANY_LOGO_3 = "./logo/logo-jlc.png";
 const COMPANY_LOGO_4 = "./logo/logo-shinlain.png";
-const COMPANY_LOGO_5 = "./logo/logo-not-hta.svg";
+const COMPANY_LOGO_5 = "./logo/logo-amiran.svg";
 const COMPANY_LOGO_6 = "./logo/logo-compass.jpg";
+const COMPANY_LOGO_7 = "./logo/logo-Almaty-Ait-Initiative.png";
 
 /**
  * Логотипы партнёров в блоке "Курс Предпринимательства".
@@ -65,9 +66,9 @@ const PARTNER_LOGOS = {
   shinLine: "./logo/logo-shinlain.png",
   compass: "./logo/logo-compass.jpg",
   jlc: "./logo/logo-jlc.png",
-  uvu: "",
-  almatyAirInitiative: "",
-  amiran: "",
+  uvu: "./logo/logo-uvu.png",
+  almatyAirInitiative: "./logo/logo-Almaty-Ait-Initiative.png",
+  amiran: "./logo/logo-amiran.svg",
 };
 
 /** Главное фото hero-секции. */
@@ -416,6 +417,8 @@ function initFeatureCards() {
 
   if (isCoarse) {
     cards.forEach((card) => {
+      if (card instanceof HTMLElement && card.dataset.scrollTarget) return;
+
       card.addEventListener("click", () => {
         const isExpanded = card.classList.contains("is-expanded");
         
@@ -433,6 +436,25 @@ function initFeatureCards() {
       });
     });
   }
+}
+
+function initScrollTargetCards() {
+  const cards = document.querySelectorAll("[data-scroll-target]");
+
+  cards.forEach((card) => {
+    if (!(card instanceof HTMLElement)) return;
+    if (card.classList.contains("why-card--mbacc")) return;
+
+    card.addEventListener("click", () => {
+      const targetId = card.dataset.scrollTarget;
+      if (!targetId) return;
+
+      const target = document.getElementById(targetId);
+      if (!(target instanceof HTMLElement)) return;
+
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  });
 }
 
 /**
@@ -752,15 +774,41 @@ function openEmbedVideoModal({ title: videoTitle, embedUrl }) {
 }
 
 function initMbaccVideos() {
-  const buttons = Array.from(document.querySelectorAll(".mbacc-video-preview, .mbacc-dark-video-preview"));
+  const buttons = Array.from(document.querySelectorAll(".mbacc-video-preview"));
   if (buttons.length === 0) return;
 
   buttons.forEach((button, index) => {
     if (!(button instanceof HTMLButtonElement)) return;
     const video = MBACC_VIDEOS[index % MBACC_VIDEOS.length];
-    const title = button.parentElement?.querySelector(".mbacc-video-title, .mbacc-dark-video-title");
+    const title = button.parentElement?.querySelector(".mbacc-video-title");
     if (title) title.textContent = video.title;
     button.addEventListener("click", () => openEmbedVideoModal(video));
+  });
+}
+
+function initMbaccCardJump() {
+  const card = document.querySelector(".why-card--mbacc[data-scroll-target]");
+  if (!(card instanceof HTMLElement)) return;
+
+  const scrollToTarget = () => {
+    const targetId = card.dataset.scrollTarget;
+    if (!targetId) return;
+
+    const target = document.getElementById(targetId);
+    if (!(target instanceof HTMLElement)) return;
+
+    target.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
+  card.addEventListener("click", (event) => {
+    if (event.target instanceof HTMLElement && event.target.closest("a")) return;
+    scrollToTarget();
+  });
+
+  card.addEventListener("keydown", (event) => {
+    if (event.key !== "Enter" && event.key !== " ") return;
+    event.preventDefault();
+    scrollToTarget();
   });
 }
 
@@ -1184,11 +1232,13 @@ document.addEventListener("DOMContentLoaded", () => {
   initStudentsSlider();
   initApplicationModal();
   initFeatureCards();
+  initScrollTargetCards();
   renderLifeMarquee();
   renderAchievements();
   initAchievementsList();
   initEntrepreneurshipCourse();
   renderCompanies();
+  initMbaccCardJump();
   initMbaccVideos();
   initVideoCarousel();
   initVideoModalChrome();

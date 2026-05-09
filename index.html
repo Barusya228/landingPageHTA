@@ -103,20 +103,31 @@
             <div class="why-card-hover-scroll">
               <p class="why-card-hover-text">
                 Мы учим видеть возможности там, где другие видят ограничения, 
-                работать в условиях неопределенности и превращать идеи в решения.<br />
+                работать в условиях неопределенности и превращать идеи в решения.
+              </p>
+              <p class="why-card-hover-text">
                 Цель обучения в HTA не простое накопление знаний, а умение ими пользоваться в реальном мире.
               </p>
             </div>
           </div>
         </div>
 
-        <div class="why-card orange why-card--mbacc">
+        <div
+          class="why-card orange why-card--mbacc"
+          role="link"
+          tabindex="0"
+          aria-label="Перейти к расширенному блоку Minerva Baccalaureate"
+          data-scroll-target="MBacc"
+        >
           <div class="card-title">Minerva Baccalaureate (MBacc)</div>
-          <div class="card-text">Программа старшей школы повышенной академической сложности.</div>
+          <div class="card-text">Программа повышенной академической сложности для старших классов.</div>
+          <span class="why-card-jump-link" aria-hidden="true">↓</span>
           <div class="why-card-hover-overlay" aria-hidden="true">
             <div class="why-card-hover-scroll">
               <p class="why-card-hover-text">
                 Обучение построено по модели flipped classroom - теорию ученики изучают самостоятельно, анализируют, обсуждают и применяют знания в классе. 
+              </p>
+              <p class="why-card-hover-text">
                 Выпускники HTA получают два диплома - казахстанский и американский.
               </p>
             </div>
@@ -304,9 +315,9 @@
                   <li>вместо оценок получают обратную связь от экспертов</li>
                   <li>приходят к пониманию - ошибка не поражение, а ступень в развитии</li>
                 </ul>
-                <p class="card-overlay-quote">
-                  “Ничто не мешает креативности так сильно, как страх совершить ошибку”<br />
-                  (с) Джон Клиз
+                <p class="card-overlay-quote card-overlay-quote--cleese">
+                  <span>“Ничто не мешает креативности так сильно, как страх совершить ошибку”</span>
+                  <span class="card-overlay-quote-author">(с) Джон Клиз</span>
                 </p>
               </div>
             </div>
@@ -330,20 +341,27 @@
             </div>
           </button>
 
-          <button type="button" class="feature-card" aria-expanded="false">
+          <button
+            type="button"
+            class="feature-card feature-card--entrepreneurship-jump"
+            aria-expanded="false"
+            aria-label="Перейти к расширенному блоку курса предпринимательства"
+            data-scroll-target="entrepreneurship-course"
+          >
             <img src="./images/Что делает нас уникальными/Предпринимательство.jpg" alt="" loading="lazy" />
             <div class="feature-card-title-wrap">
               <p class="feature-card-title">Курс предпринимательства</p>
             </div>
+            <span class="feature-card-jump-arrow" aria-hidden="true">↓</span>
             <div class="card-overlay" aria-hidden="true">
-              <div class="card-overlay-text">
+              <div class="card-overlay-text card-overlay-text--entrepreneurship">
                 <p class="card-overlay-heading">В рамках курса по предпринимательству ученики HTA:</p>
                 <ul class="card-overlay-list">
                   <li>решают 3 реальных бизнес-задачи с возрастающей сложностью</li>
                   <li>в конце курса сами выбирают проблему и создают план стартапа для решения этой проблемы, включая разработку стратегии выхода на рынок и MVP (minimum viable product)</li>
                   <li>завершают курс презентацией идеи стартапа реальным инвесторам</li>
                 </ul>
-                <p class="card-overlay-quote">В результате ученики развивают предпринимательское мышление и учатся работать в условиях неопределенности.</p>
+                <p class="card-overlay-quote card-overlay-quote--entrepreneurship">В результате ученики развивают предпринимательское мышление и учатся работать в условиях неопределенности.</p>
               </div>
             </div>
           </button>
@@ -354,15 +372,15 @@
               <p class="feature-card-title">Sports & Arts</p>
             </div>
             <div class="card-overlay" aria-hidden="true">
-              <div class="card-overlay-text">
+              <div class="card-overlay-text card-overlay-text--sports">
                 <p class="card-overlay-heading">Физическая активность напрямую влияет на:</p>
                 <ul class="card-overlay-list">
                   <li>концентрацию</li>
                   <li>память</li>
                   <li>способность быстро переключать внимание</li>
                 </ul>
-                <p class="card-overlay-quote">В HTA спорт, игра на улице и творчество являются важной частью учебного дня.</p>
-                <p class="card-overlay-source">Источник: мета-анализы - Frontiers in Psychology, Journal of Science and Medicine in Sport и Frontiers in Public Health.</p>
+                <p class="card-overlay-quote card-overlay-quote--sports">В HTA спорт, игра на улице и творчество являются важной частью учебного дня.</p>
+                <p class="card-overlay-source card-overlay-source--sports">Источник: мета-анализы - Frontiers in Psychology, Journal of Science and Medicine in Sport и Frontiers in Public Health.</p>
               </div>
             </div>
           </button>
@@ -373,66 +391,18 @@
               <p class="feature-card-title">Дебаты</p>
             </div>
             <div class="card-overlay" aria-hidden="true">
-              <div class="card-overlay-text">
+              <div class="card-overlay-text card-overlay-text--debates">
                 <p class="card-overlay-heading">Через соревновательную деятельность и публичные выступления дебаты:</p>
                 <ul class="card-overlay-list">
                   <li>развивают уверенность</li>
                   <li>формируют критическое мышление</li>
                   <li>лидерские качества</li>
                 </ul>
-                <p class="card-overlay-quote">Во время дебатов ученики развивают навыки аргументации, учатся опровергать и удерживать позицию перед аудиторией, разбирая мировые политические и экономические процессы и философские идеи.</p>
+                <p class="card-overlay-quote card-overlay-quote--debates">Во время дебатов ученики развивают навыки аргументации, учатся опровергать и удерживать позицию перед аудиторией, разбирая мировые политические и экономические процессы и философские идеи.</p>
               </div>
             </div>
           </button>
 
-        </div>
-      </div>
-    </section>
-
-    <!-- MBACC DARK: тёмная версия блока Minerva Baccalaureate. -->
-    <section id="MBacc-dark" class="MBacc-dark" hidden>
-      <div class="container">
-        <div class="mbacc-dark-panel">
-          <div class="mbacc-dark-logo">
-            <img src="./logo/MBacc.png" alt="Minerva Baccalaureate" loading="lazy" />
-          </div>
-
-          <div class="mbacc-dark-copy">
-            <p>
-              Minerva Baccalaureate (MBacc) is an advanced high school program that prepares students for even the most demanding university education.
-            </p>
-            <p>
-              The program integrates core subjects - science, mathematics, social studies, and language arts into an interdisciplinary curriculum with shared learning outcomes developed across courses and contexts.
-            </p>
-            <p>
-              Each course has two parts. Students build foundational knowledge through guided self-study, then apply it in small, instructor-led seminars where they analyze, discuss, and solve complex problems.
-            </p>
-            <p>
-              There are no lectures. Class time is dedicated to active learning - practicing skills, working with ideas, and applying knowledge in new situations.
-            </p>
-            <p>
-              Student progress is assessed through clearly defined learning outcomes, with detailed feedback that supports continuous development.
-            </p>
-            <p>
-              In the fourth optional year, students take university-level courses and may earn transferable college credits.
-            </p>
-          </div>
-
-          <div class="mbacc-dark-videos" aria-label="Р’РёРґРµРѕ Рѕ Minerva Baccalaureate">
-            <div class="mbacc-dark-video">
-              <button type="button" class="mbacc-dark-video-preview" aria-label="РЎРјРѕС‚СЂРµС‚СЊ РІРёРґРµРѕ">
-                <span class="mbacc-dark-video-play" aria-hidden="true"></span>
-              </button>
-              <div class="mbacc-dark-video-title">Video name</div>
-            </div>
-
-            <div class="mbacc-dark-video">
-              <button type="button" class="mbacc-dark-video-preview" aria-label="РЎРјРѕС‚СЂРµС‚СЊ РІРёРґРµРѕ">
-                <span class="mbacc-dark-video-play" aria-hidden="true"></span>
-              </button>
-              <div class="mbacc-dark-video-title">Video name</div>
-            </div>
-          </div>
         </div>
       </div>
     </section>
@@ -471,14 +441,14 @@
               <button type="button" class="mbacc-video-preview" aria-label="Смотреть видео">
                 <span class="mbacc-video-play" aria-hidden="true"></span>
               </button>
-              <div class="mbacc-video-title">Video name</div>
+              <div class="mbacc-video-title">MBacc Through Students’ Eyes</div>
             </div>
 
             <div class="mbacc-video">
               <button type="button" class="mbacc-video-preview" aria-label="Смотреть видео">
                 <span class="mbacc-video-play" aria-hidden="true"></span>
               </button>
-              <div class="mbacc-video-title">Video name</div>
+              <div class="mbacc-video-title">Proven MBacc Outcomes</div>
             </div>
           </div>
         </div>
