@@ -166,7 +166,7 @@ const pageData = {
 
   /**
    * Курс предпринимательства.
-   * projects: партнёр + проектное задание + логотип + ссылки.
+   * projects: партнёр + проектная задача + логотип + ссылки.
    * startups: название + описание инициативы, без логотипов.
    * links: [] покажет "Ссылка скоро"; чтобы добавить ссылку:
    * links: [{ label: "Видео 1", url: "https://..." }]
@@ -417,8 +417,6 @@ function initFeatureCards() {
 
   if (isCoarse) {
     cards.forEach((card) => {
-      if (card instanceof HTMLElement && card.dataset.scrollTarget) return;
-
       card.addEventListener("click", () => {
         const isExpanded = card.classList.contains("is-expanded");
         
@@ -443,9 +441,7 @@ function initScrollTargetCards() {
 
   cards.forEach((card) => {
     if (!(card instanceof HTMLElement)) return;
-    if (card.classList.contains("why-card--mbacc")) return;
-
-    card.addEventListener("click", () => {
+    const scrollToTarget = () => {
       const targetId = card.dataset.scrollTarget;
       if (!targetId) return;
 
@@ -453,6 +449,18 @@ function initScrollTargetCards() {
       if (!(target instanceof HTMLElement)) return;
 
       target.scrollIntoView({ behavior: "smooth", block: "start" });
+    };
+
+    card.addEventListener("click", (event) => {
+      event.stopPropagation();
+      scrollToTarget();
+    });
+
+    card.addEventListener("keydown", (event) => {
+      if (event.key !== "Enter" && event.key !== " ") return;
+      event.preventDefault();
+      event.stopPropagation();
+      scrollToTarget();
     });
   });
 }
@@ -590,7 +598,7 @@ function renderEntrepreneurshipItems(year, type) {
     const description =
       type === "startups"
         ? `<p>Инициатива: ${escapeHtml(item.initiative || "")}</p>`
-        : `<p>Проектное задание: ${escapeHtml(item.challenge || "")}</p>`;
+        : `<p>Проектная задача: ${escapeHtml(item.challenge || "")}</p>`;
     const title =
       type === "startups"
         ? escapeHtml(item.partner)
@@ -801,32 +809,6 @@ function initMbaccVideos() {
     const title = button.parentElement?.querySelector(".mbacc-video-title");
     if (title) title.textContent = video.title;
     button.addEventListener("click", () => openEmbedVideoModal(video));
-  });
-}
-
-function initMbaccCardJump() {
-  const card = document.querySelector(".why-card--mbacc[data-scroll-target]");
-  if (!(card instanceof HTMLElement)) return;
-
-  const scrollToTarget = () => {
-    const targetId = card.dataset.scrollTarget;
-    if (!targetId) return;
-
-    const target = document.getElementById(targetId);
-    if (!(target instanceof HTMLElement)) return;
-
-    target.scrollIntoView({ behavior: "smooth", block: "start" });
-  };
-
-  card.addEventListener("click", (event) => {
-    if (event.target instanceof HTMLElement && event.target.closest("a")) return;
-    scrollToTarget();
-  });
-
-  card.addEventListener("keydown", (event) => {
-    if (event.key !== "Enter" && event.key !== " ") return;
-    event.preventDefault();
-    scrollToTarget();
   });
 }
 
@@ -1226,7 +1208,7 @@ function openHeroVideoModal() {
 
 function initHeroVideoModal() {
   const playBtn = document.querySelector(".expert-video .video-button, .hero-video .video-button");
-  const label = document.querySelector(".expert-video h2, .hero-video span");
+  const label = document.querySelector(".hero-video span");
   const backdrop = document.getElementById("hero-video-modal-backdrop");
   const closeBtn = document.getElementById("hero-video-modal-close");
   const open = (e) => {
@@ -1256,7 +1238,6 @@ document.addEventListener("DOMContentLoaded", () => {
   initAchievementsList();
   initEntrepreneurshipCourse();
   renderCompanies();
-  initMbaccCardJump();
   initMbaccVideos();
   initVideoCarousel();
   initVideoModalChrome();
