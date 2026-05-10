@@ -626,6 +626,8 @@ function renderEntrepreneurshipItems(year, type) {
 
 function initEntrepreneurshipCourse() {
   const panel = document.getElementById("entrepreneurship-projects-panel");
+  const section = document.getElementById("entrepreneurship-course");
+  const backButton = document.getElementById("entrepreneurship-back-btn");
   const yearButtons = Array.from(document.querySelectorAll(".entrepreneurship-year-btn"));
   const tabs = Array.from(document.querySelectorAll(".entrepreneurship-tab"));
 
@@ -645,6 +647,7 @@ function initEntrepreneurshipCourse() {
   const setActiveYear = (year) => {
     const shouldAnimateOpen = panel.hidden;
     activeYear = year;
+    section?.classList.add("is-detail-open");
 
     yearButtons.forEach((button) => {
       if (!(button instanceof HTMLButtonElement)) return;
@@ -660,16 +663,27 @@ function initEntrepreneurshipCourse() {
     }
   };
 
+  const closeDetails = () => {
+    setCollapsibleOpen(panel, false, "is-open");
+    activeYear = null;
+    section?.classList.remove("is-detail-open");
+
+    yearButtons.forEach((button) => {
+      if (!(button instanceof HTMLButtonElement)) return;
+      button.classList.remove("is-active");
+      button.setAttribute("aria-expanded", "false");
+    });
+
+    section?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
   yearButtons.forEach((button) => {
     if (!(button instanceof HTMLButtonElement)) return;
     button.addEventListener("click", () => {
       const year = button.dataset.year;
       if (!year) return;
       if (activeYear === year && !panel.hidden) {
-        setCollapsibleOpen(panel, false, "is-open");
-        activeYear = null;
-        button.classList.remove("is-active");
-        button.setAttribute("aria-expanded", "false");
+        closeDetails();
         return;
       }
       setActiveYear(year);
@@ -684,6 +698,10 @@ function initEntrepreneurshipCourse() {
       if (activeYear) renderEntrepreneurshipItems(activeYear, activeType);
     });
   });
+
+  if (backButton instanceof HTMLButtonElement) {
+    backButton.addEventListener("click", closeDetails);
+  }
 }
 
 /* --- Companies --- */

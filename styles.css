@@ -712,6 +712,42 @@ main {
   background: #e86a2f;
 }
 
+.why-card--graduate-link::after {
+  content: "↗";
+  position: absolute;
+  right: 22px;
+  bottom: 22px;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border: 2px solid rgba(255, 255, 255, 0.78);
+  border-radius: 50%;
+  color: #fff;
+  font-size: 19px;
+  font-weight: 800;
+  line-height: 1;
+  transition: transform var(--transition), opacity var(--transition), background var(--transition);
+}
+
+.why-card--graduate-link:hover::after,
+.why-card--graduate-link:focus-visible::after {
+  transform: translate(3px, -3px);
+  opacity: 0;
+}
+
+.why-card--graduate-link .why-card-hover-scroll {
+  scrollbar-width: none;
+}
+
+.why-card--graduate-link .why-card-hover-scroll::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
 .why-hta .why-card--mbacc {
   background: var(--color-hta-graphite);
 }
@@ -744,13 +780,27 @@ main {
   position: relative;
   z-index: 3;
   display: inline-flex;
-  margin-top: 18px;
+  align-items: center;
+  justify-content: center;
+  width: min(100%, 28ch);
+  margin-top: 0.25rem;
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: #e86a2f;
   color: #fff;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 700;
   line-height: 1.25;
-  text-decoration: underline;
-  text-underline-offset: 4px;
+  text-decoration: none;
+  text-align: center;
+  box-shadow: 0 8px 18px rgba(232, 106, 47, 0.26);
+  transition: opacity var(--transition), transform var(--transition), background var(--transition);
+}
+
+.why-card-link:hover,
+.why-card-link:focus-visible {
+  background: var(--color-orange);
+  transform: translateY(-2px);
 }
 
 .why-card-jump-link {
@@ -827,7 +877,7 @@ main {
   font-size: clamp(2rem, 3vw, 2.55rem);
   font-weight: 700;
   letter-spacing: -0.02em;
-  color: #19325f;
+  color: var(--color-text);
 }
 
 .students-slider-wrapper {
@@ -1203,11 +1253,13 @@ main {
 }
 
 .card-overlay-quote {
+  width: 100%;
+  max-width: none;
   margin: 0.75rem 0 0;
   font-size: clamp(0.82rem, 0.9vw, 0.95rem);
   font-weight: 600;
   line-height: 1.25;
-  text-align: center;
+  text-align: left;
 }
 
 .card-overlay-quote--cleese {
@@ -1426,20 +1478,36 @@ main {
   display: flex;
   justify-content: center;
   gap: clamp(80px, 18vw, 190px);
-  margin-bottom: 18px;
+  margin-bottom: 24px;
 }
 
 .entrepreneurship-tab {
   border: 0;
   background: transparent;
   color: #767a82;
-  font-size: 0.78rem;
+  font-size: clamp(1.05rem, 1.7vw, 1.35rem);
+  font-weight: 800;
   padding: 0;
   cursor: pointer;
+  line-height: 1.15;
 }
 
 .entrepreneurship-tab.is-active {
   color: var(--color-orange);
+}
+
+.entrepreneurship-back-btn {
+  display: none;
+  margin: 0 0 18px;
+  padding: 0.65rem 1.35rem;
+  border: 2px solid var(--color-orange);
+  border-radius: 999px;
+  background: var(--color-orange);
+  color: #fff;
+  font-size: 0.98rem;
+  font-weight: 800;
+  line-height: 1.2;
+  box-shadow: 0 8px 18px rgba(255, 138, 60, 0.26);
 }
 
 .entrepreneurship-projects-grid {
@@ -3106,8 +3174,8 @@ main {
     height: auto;
     min-height: calc(100svh - var(--header-height));
     max-height: none;
-    padding: 0 20px 44px;
-    background-position: 61% center;
+    padding: 0 14px 18px;
+    background-position: 61% 88%;
     flex-direction: column;
     justify-content: flex-end;
     align-items: center;
@@ -3115,18 +3183,25 @@ main {
   }
 
   .hero-content {
+    position: absolute;
+    inset: 0;
     max-width: 100%;
-    text-align: center;
+    text-align: left;
     margin-left: 0;
     margin-bottom: 0;
-    transform: translateY(16px);
+    transform: none;
+    pointer-events: none;
   }
 
   .hero-content h1 {
-    margin-bottom: 18px;
-    font-size: clamp(31px, 8.5vw, 42px);
+    position: absolute;
+    left: 20px;
+    right: 18px;
+    top: clamp(72px, 12svh, 118px);
+    margin-bottom: 12px;
+    font-size: clamp(28px, 8vw, 37px);
     font-weight: 800;
-    line-height: 1.12;
+    line-height: 1.08;
   }
 
   .hero-content h1 br {
@@ -3134,9 +3209,13 @@ main {
   }
 
   .hero-content p {
-    font-size: clamp(18px, 5vw, 22px);
+    position: absolute;
+    left: 20px;
+    right: 18px;
+    bottom: clamp(118px, 22svh, 190px);
+    font-size: clamp(17px, 4.7vw, 20px);
     font-weight: 800;
-    line-height: 1.25;
+    line-height: 1.18;
     text-shadow: 0 2px 14px rgba(0, 0, 0, 0.4);
   }
 
@@ -3344,6 +3423,11 @@ main {
     margin-bottom: 54px;
   }
 
+  .entrepreneurship-course.is-detail-open .entrepreneurship-course-lead,
+  .entrepreneurship-course.is-detail-open .entrepreneurship-years {
+    display: none;
+  }
+
   .entrepreneurship-year-card {
     min-height: 190px;
   }
@@ -3352,8 +3436,17 @@ main {
     padding: 18px 16px 30px;
   }
 
+  .entrepreneurship-back-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
   .entrepreneurship-tabs {
-    gap: 56px;
+    justify-content: center;
+    gap: 38px;
   }
 
   .entrepreneurship-projects-grid {
@@ -3632,7 +3725,7 @@ main {
   }
 
   .entrepreneurship-tabs {
-    gap: 32px;
+    gap: 28px;
   }
 
   .entrepreneurship-year-btn {
@@ -3653,15 +3746,21 @@ main {
 
   .hero {
     min-height: calc(100svh - var(--header-height));
-    padding: 0 16px 30px;
+    padding: 0 12px 14px;
+  }
+
+  .hero-content {
+    transform: none;
   }
 
   .hero-content h1 {
-    font-size: clamp(29px, 8.2vw, 38px);
+    top: clamp(68px, 11svh, 108px);
+    font-size: clamp(27px, 7.8vw, 34px);
   }
 
   .hero-content p {
-    font-size: clamp(17px, 4.8vw, 21px);
+    bottom: clamp(112px, 20svh, 160px);
+    font-size: clamp(16px, 4.5vw, 19px);
   }
 
   .hero-video-preview {
