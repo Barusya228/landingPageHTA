@@ -1766,7 +1766,7 @@ main {
 }
 
 .achievements .container {
-  width: min(var(--content-width), calc(100% - 40px));
+  width: min(1200px, calc(100% - 40px));
 }
 
 .achievements-grid {
