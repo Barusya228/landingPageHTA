@@ -78,17 +78,14 @@ const PHOTO_HERO = fromDir("hero", "главная.jpg");
 const PHOTO_ACHIEVEMENTS = fromDirList("achievements", [
   "1.jpeg",
   "2.jfif",
-  "3.jpg",
+  "3.webp",
 ]);
 /** Обложки видео для карусели "Голоса HTA". */
 const PHOTO_VIDEO_THUMBS = fromDirList("video", [
   "1.jpg",
-  "2.jpg",
+  "2.webp",
   "3.jpg",
-  "4.jpg",
-  "5.jpg",
-  "6.jpg",
-  "HD_Teschers.jpg",
+  "4.webp",
 ]);
 /** Галерея «Жизнь в HTA»: 22 кадра (верх/низ ленты делятся в renderLifeMarquee) */
 const PHOTO_LIFE = fromDirList("life", [
@@ -142,7 +139,7 @@ const pageData = {
   achievements: [
     {
       image: PHOTO_ACHIEVEMENTS[0],
-      caption: "«Лучший инновационный проект» среди 80 команд из 20 стран.",
+      caption: "«Лучший инновационный проект» среди 80 команд из 20 стран",
     },
     {
       image: PHOTO_ACHIEVEMENTS[1],
@@ -571,11 +568,11 @@ function initAchievementsList() {
 
     if (isOpen) {
       setCollapsibleOpen(more, true, "achievements-more--visible");
-      button.textContent = "Скрыть";
+      button.textContent = "Вернуться";
       button.setAttribute("aria-expanded", "true");
     } else {
       setCollapsibleOpen(more, false, "achievements-more--visible");
-      button.textContent = "Смотреть все";
+      button.textContent = "Подробнее";
       button.setAttribute("aria-expanded", "false");
     }
   });
@@ -828,7 +825,7 @@ function renderInstagramEmbed(container, permalink) {
       data-instgrm-captioned
       data-instgrm-permalink="${escapeHtml(permalink)}"
       data-instgrm-version="14"
-      style="background:#FFF;border:0;border-radius:3px;box-shadow:0 0 1px 0 rgba(0,0,0,.5),0 1px 10px 0 rgba(0,0,0,.15);margin:1px auto;max-width:540px;min-width:326px;padding:0;width:calc(100% - 2px);"
+      style="background:#fff;border:0;border-radius:3px;box-shadow:0 0 1px 0 rgba(35,31,32,.5),0 1px 10px 0 rgba(35,31,32,.15);margin:1px auto;max-width:540px;min-width:326px;padding:0;width:calc(100% - 2px);"
     ></blockquote>
   `;
   ensureInstagramEmbedScript();
@@ -850,7 +847,7 @@ function openVideoModal(index) {
   } else if (v.embedUrl) {
     body.innerHTML = `<iframe src="${escapeHtml(v.embedUrl)}" title="${escapeHtml(v.title)}" allowfullscreen></iframe>`;
   } else {
-    body.innerHTML = v.placeholderHtml || "<p>Контент скоро появится.</p>";
+    body.innerHTML = v.placeholderHtml || "<p>Контент скоро появится</p>";
   }
   backdrop.classList.add("is-open");
   backdrop.setAttribute("aria-hidden", "false");
