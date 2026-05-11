@@ -1462,17 +1462,17 @@ main {
   justify-content: center;
   padding: 18px;
   border-radius: 12px;
-  background: url("./images/Что делает нас уникальными/Предпринимательство.jpg") center / cover;
+  background: url("./images/Жизнь в HTA/1.webp") center / cover;
   color: #fff;
   position: relative;
 }
 
 .entrepreneurship-year-card--middle {
-  background-image: url("./images/Что делает нас уникальными/Проекты из реальной жизни.jpg");
+  background-image: url("./images/Жизнь в HTA/2.webp");
 }
 
 .entrepreneurship-year-card--past {
-  background-image: url("./images/Достижения наших учеников/1.webp");
+  background-image: url("./images/Жизнь в HTA/3.webp");
 }
 
 .entrepreneurship-year-title {
