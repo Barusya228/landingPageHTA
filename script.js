@@ -164,8 +164,8 @@ const pageData = {
   /**
    * Курс предпринимательства.
    * projects: партнёр + проектная задача + логотип + ссылки.
-   * startups: название + описание инициативы, без логотипов.
-   * links: [] покажет "Ссылка скоро"; чтобы добавить ссылку:
+   * startups: название + описание инициативы, без логотипов и ссылок.
+   * В projects links: [] ничего не покажет; чтобы добавить ссылку:
    * links: [{ label: "Видео 1", url: "https://..." }]
    */
   entrepreneurship: {
@@ -176,21 +176,26 @@ const pageData = {
           logo: PARTNER_LOGOS.uvu,
           challenge: "создать план для UvU, чтобы запустить 1000 эко-шаттлов по городу за 3 года и завоевать рынок Алматы",
           links: [
-            { label: "Видео 1", url: "https://www.instagram.com/reel/DPvMWytD2eB/?igsh=MWl1dGM0Z252d3EzdA==" },
-            { label: "Видео 2", url: "https://www.instagram.com/p/DOoCyZfDOB3/?igsh=MXRoazliNHl6Y3hqcA==" },
+            { label: "Фидбэк Уву", url: "https://www.instagram.com/reel/DPvMWytD2eB/?igsh=MWl1dGM0Z252d3EzdA==" },
+            { label: "Field Trip Уву", url: "https://www.instagram.com/p/DOoCyZfDOB3/?igsh=MXRoazliNHl6Y3hqcA==" },
           ],
         },
         {
           partner: "Almaty Air Initiative",
           logo: PARTNER_LOGOS.almatyAirInitiative,
           challenge: "разработать план новой организации, которая значительно улучшить качество воздуха в Алматы",
-          links: [],
+          links: [
+            { label: "Фидбэк Almaty Ait Initiative", url: "https://www.instagram.com/reel/DQlRIb7j73a/?igsh=N296N3Nram5jMThpm" },
+          ],
         },
         {
           partner: "Amiran",
           logo: PARTNER_LOGOS.amiran,
           challenge: "разработать стратегию для Amiran, чтобы выйти в прибыль за 9 месяцев, сохраняя верность миссии компании. Стратегия должна работать в рамках текущих возможностей компании",
-          links: [],
+          links: [
+            { label: "Амиран фидбэк", url: "https://www.instagram.com/reel/DSsPZMXjRab/?igsh=MW11bGN4NDF1MndmZQ==" },
+            { label: "Field Trip Амиран", url: "https://www.instagram.com/reel/DRRKiOFCK-7/?igsh=anhiaGl5dGNuNDUy" },
+          ],
         },
       ],
       startups: [
@@ -201,7 +206,9 @@ const pageData = {
     },
     "2024-2025": {
       projects: [
-        { partner: "Platform A", logo: PARTNER_LOGOS.platformA, challenge: "разработать план по завоеванию рынка Алматы и Казахстана для Platforma Market", links: [] },
+        { partner: "Platform A", logo: PARTNER_LOGOS.platformA, challenge: "разработать план по завоеванию рынка Алматы и Казахстана для Platforma Market", links: [
+          { label: "Обложка Финал - Platforma Market", url: "https://www.instagram.com/reel/DAntohWtorV/?igsh=YnRocHExNjR0a3Ni" },
+        ] },
         { partner: "KazBeef", logo: PARTNER_LOGOS.kazbeef, challenge: "разработь план по созданию новой организации, которая решит проблему опустынивания в Казахстане. Обосновать предложение комплексным анализом существующих и возможных решений этой проблемы", links: [] },
         { partner: "Shin-Line", logo: PARTNER_LOGOS.shinLine, challenge: "создать стратегию для продукта \"Шин-Лайн\", чтобы стать лидером рынка на постсоветском пространстве", links: [] },
       ],
@@ -615,7 +622,7 @@ function renderEntrepreneurshipItems(year, type) {
             return `<a href="${escapeHtml(link.url)}" target="_blank" rel="noopener noreferrer" aria-label="${escapeHtml(label)}: ${escapeHtml(item.partner)}">${escapeHtml(label)}</a>`;
           })
           .join("")}</div>`
-      : `<div class="entrepreneurship-project-links entrepreneurship-project-links--empty"><span>Ссылка скоро</span></div>`;
+      : "";
 
     article.innerHTML = `
       <h3>${title}</h3>

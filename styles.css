@@ -41,7 +41,8 @@
   --radius-xl: 16px;
   --header-height: 84px;
   --section-y: 64px;
-  --content-width: 1500px;
+  --content-width: 1200px;
+  --why-hta-width: 1500px;
   --transition: 0.2s ease;
 }
 
@@ -619,7 +620,7 @@ main {
   justify-content: center;
   gap: clamp(32px, 3.4vw, 56px);
   flex-wrap: wrap;
-  width: min(var(--content-width), calc(100% - 40px));
+  width: min(var(--why-hta-width), calc(100% - 40px));
   max-width: none;
   margin: 0 auto 54px;
 }
@@ -915,7 +916,7 @@ main {
   border-radius: 22px;
   padding: 18px 56px 28px;
   margin: 28px auto 0;
-  max-width: var(--content-width);
+  max-width: var(--why-hta-width);
   text-align: center;
   background: #fff;
   box-shadow: 0 10px 26px rgba(35, 31, 32, 0.04);
@@ -1462,7 +1463,7 @@ main {
   justify-content: center;
   padding: 18px;
   border-radius: 12px;
-  background: url("./images/Жизнь в HTA/1.webp") center / cover;
+  background: url("./images/Курс предпринимательства/проекты 2025-2026.webp") center / cover;
   color: #fff;
   position: relative;
 }
@@ -1472,7 +1473,7 @@ main {
 }
 
 .entrepreneurship-year-card--past {
-  background-image: url("./images/Жизнь в HTA/3.webp");
+  background-image: url("./images/Курс предпринимательства/проекты 2023-2024.webp");
 }
 
 .entrepreneurship-year-title {
@@ -1955,12 +1956,12 @@ main {
 
 .mbacc-video:nth-child(1) .mbacc-video-preview {
   /* Обложка первого видео Minerva/MBacc. */
-  background-image: url("./images/Видео/Students.jpg");
+  background-image: url("./images/Видео/Students.webp");
 }
 
 .mbacc-video:nth-child(2) .mbacc-video-preview {
   /* Обложка второго видео Minerva/MBacc. */
-  background-image: url("./images/Видео/Ben.jpg");
+  background-image: url("./images/Видео/Ben.webp");
 }
 
 .mbacc-video-preview:hover,
@@ -2071,11 +2072,13 @@ main {
 
 /* === Testimonials video === */
 .testimonials {
-  background: var(--color-white);
+  background:
+    linear-gradient(180deg, rgba(245, 247, 248, 0.82) 0%, rgba(255, 255, 255, 0) 34%),
+    var(--color-white);
 }
 
 .testimonials .container {
-  width: min(var(--content-width), calc(100% - 40px));
+  width: min(1180px, calc(100% - 40px));
 }
 
 .ideas-hta {
@@ -2369,30 +2372,32 @@ main {
 .video-carousel {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: clamp(14px, 2vw, 24px);
+  margin-top: clamp(18px, 3vw, 34px);
 }
 
 .carousel-btn {
-  width: 54px;
-  height: 54px;
-  flex: 0 0 54px;
+  width: 48px;
+  height: 48px;
+  flex: 0 0 48px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid rgba(35, 31, 32, 0.08);
+  border: 1px solid rgba(35, 31, 32, 0.1);
   border-radius: 50%;
-  background: linear-gradient(180deg, #ffffff 0%, #f3f4f6 100%);
+  background: #fff;
   color: var(--color-dark);
-  font-size: 2rem;
+  font-size: 1.8rem;
   line-height: 1;
-  box-shadow: 0 10px 24px rgba(35, 31, 32, 0.12);
+  box-shadow: 0 14px 34px rgba(35, 31, 32, 0.12);
   transition: transform var(--transition), box-shadow var(--transition), background var(--transition), color var(--transition);
 }
 
 .carousel-btn:hover {
   transform: translateY(-2px);
-  background: linear-gradient(180deg, #ffffff 0%, #eceff3 100%);
-  box-shadow: 0 14px 28px rgba(35, 31, 32, 0.16);
+  background: var(--color-orange);
+  color: #fff;
+  box-shadow: 0 18px 38px rgba(237, 115, 48, 0.26);
 }
 
 .carousel-btn:focus-visible {
@@ -2410,34 +2415,69 @@ main {
 
 .video-carousel-track {
   flex: 1;
-  max-width: 980px;
+  max-width: 1020px;
   margin: 0 auto;
   overflow: hidden;
+  padding: 8px 4px 18px;
   --video-visible-count: 3;
 }
 
 .video-carousel-strip {
   display: flex;
-  gap: 1rem;
+  gap: 18px;
   width: 100%;
   will-change: transform;
 }
 
 .video-card {
-  flex: 0 0 calc((100% - (var(--video-visible-count) - 1) * 1rem) / var(--video-visible-count));
+  flex: 0 0 calc((100% - (var(--video-visible-count) - 1) * 18px) / var(--video-visible-count));
   position: relative;
-
+  aspect-ratio: 9 / 15;
+  min-height: 430px;
+  overflow: hidden;
+  border: 0;
+  border-radius: 18px;
+  padding: 0;
+  background: #111;
+  box-shadow: 0 18px 44px rgba(35, 31, 32, 0.16);
+  cursor: pointer;
+  isolation: isolate;
+  transition: transform var(--transition), box-shadow var(--transition);
 }
 
 .video-card img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transform: scale(1.01);
+  transition: transform 0.45s ease, filter 0.45s ease;
+}
+
+.video-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(180deg, rgba(35, 31, 32, 0.04) 0%, rgba(35, 31, 32, 0.04) 44%, rgba(35, 31, 32, 0.76) 100%),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0) 26%);
+  pointer-events: none;
+}
+
+.video-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 26px 54px rgba(35, 31, 32, 0.22);
+}
+
+.video-card:hover img {
+  filter: saturate(1.05) contrast(1.03);
+  transform: scale(1.055);
 }
 
 .video-card-play {
   position: absolute;
   inset: 0;
+  z-index: 2;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2445,12 +2485,12 @@ main {
 }
 
 .video-card:hover .video-card-play {
-  background: rgba(35, 31, 32, 0.08);
+  background: rgba(35, 31, 32, 0.1);
 }
 
 .video-card-play span {
-  width: 56px;
-  height: 56px;
+  width: 62px;
+  height: 62px;
   border-radius: 50%;
   background: var(--color-orange);
   color: #fff;
@@ -2459,22 +2499,31 @@ main {
   justify-content: center;
   font-size: 1.25rem;
   padding-left: 4px;
+  box-shadow: 0 14px 30px rgba(237, 115, 48, 0.34);
+  transition: transform var(--transition), background var(--transition);
+}
+
+.video-card:hover .video-card-play span {
+  transform: scale(1.08);
+  background: var(--color-orange-dark);
 }
 
 .video-card-caption {
   /* Подпись видео в секции "Голоса HTA". */
   position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  padding: 1rem 1rem 1.15rem;
-  background: linear-gradient(transparent, rgba(35, 31, 32, 0.83));
+  left: 18px;
+  right: 18px;
+  bottom: 18px;
+  z-index: 2;
+  padding: 0;
+  background: transparent;
   color: #fff;
-  font-size: clamp(1rem, 1.25vw, 1.15rem);
-  font-weight: 700;
-  line-height: 1.2;
-  text-align: center;
+  font-size: clamp(1rem, 1.2vw, 1.18rem);
+  font-weight: 800;
+  line-height: 1.15;
+  text-align: left;
   text-wrap: balance;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.52);
 }
 
 /* Video modal */
@@ -3652,7 +3701,16 @@ main {
 
   .video-card {
     flex-basis: 100%;
-    max-height: 380px;
+    width: min(100%, 330px);
+    min-height: 420px;
+    max-height: none;
+    margin: 0 auto;
+  }
+
+  .video-card-caption {
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
   }
 
   /* --- Ideas HTA quotes --- */
