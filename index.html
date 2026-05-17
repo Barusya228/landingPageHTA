@@ -3,44 +3,48 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>High Tech Academy</title>
-  <meta name="description" content="Международная школа High Tech Academy" />
+  <title>HTA | Готовим к реальной жизни</title>
+  <meta
+    name="description"
+    content="High Tech Academy - международная школа с проектным обучением, предпринимательским мышлением и Minerva Baccalaureate."
+  />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <!-- HEADER: логотип, меню и социальные ссылки. Тексты меню меняются здесь. -->
-  <header class="site-header header">
-    <div class="container header-inner">
-      <div class="header-left">
-        <div class="logo-brand">
-          <img src="./logo/logo_square.png" alt="HTA Logo" class="logo" width="45" height="45" loading="lazy" />
-          <div class="logo-text">High Tech Academy</div>
-        </div>
-      </div>
-      <nav class="nav header-menu" aria-label="Основная навигация">
-        <button type="button" class="nav-toggle" aria-label="Открыть меню" aria-expanded="false">
-          <span></span>
-          <span></span>
-        </button>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="#hero" aria-label="High Tech Academy">
+        <img src="./logo/logo.png" alt="High Tech Academy" width="70" height="34" />
+      </a>
+
+      <button
+        type="button"
+        class="nav-toggle"
+        aria-label="Открыть меню"
+        aria-expanded="false"
+        aria-controls="nav-list"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="site-nav" aria-label="Основная навигация">
         <ul class="nav-list" id="nav-list">
           <li><a href="#hero">Главная</a></li>
-          <li><a href="#unique-features">О нас</a></li>
-          <li><a href="#MBacc">Minerva Baccalaureate</a></li>
-          <li><a href="#achievements">Достижения</a></li>
+          <li><a href="#about">О нас</a></li>
+          <li><a href="#mbacc">Minerva Baccalaureate</a></li>
+          <li><a href="#projects">Достижения</a></li>
           <li><a href="#testimonials">Отзывы</a></li>
-          <li><a href="#open-day">День открытых дверей</a></li>
-          <li class="nav-socials" aria-label="Social links">
-            <a href="https://www.instagram.com/hta.kz" class="header-social-link header-social-link--instagram" aria-label="Instagram" target="_blank" rel="noopener noreferrer"></a>
-            <a href="https://www.facebook.com/people/High-Tech-Academy/61563897284883/" class="header-social-link header-social-link--facebook" aria-label="Facebook" target="_blank" rel="noopener noreferrer"></a>
-            <a href="https://www.youtube.com/channel/UCAAhNxRHrwwhFYMT9qIJ7AA/featured" class="header-social-link header-social-link--youtube" aria-label="YouTube" target="_blank" rel="noopener noreferrer"></a>
-            <a href="https://www.tiktok.com/@high.tech.academy1" class="header-social-link header-social-link--tiktok" aria-label="TikTok" target="_blank" rel="noopener noreferrer"></a>
-            <a href="https://www.linkedin.com/company/high-tech-academy-almaty/" class="header-social-link header-social-link--linkedin" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer"></a>
-          </li>
         </ul>
       </nav>
+
       <div class="header-social-links" aria-label="Социальные сети">
         <a href="https://www.instagram.com/hta.kz" class="header-social-link header-social-link--instagram" aria-label="Instagram" target="_blank" rel="noopener noreferrer"></a>
         <a href="https://www.facebook.com/people/High-Tech-Academy/61563897284883/" class="header-social-link header-social-link--facebook" aria-label="Facebook" target="_blank" rel="noopener noreferrer"></a>
@@ -48,877 +52,436 @@
         <a href="https://www.tiktok.com/@high.tech.academy1" class="header-social-link header-social-link--tiktok" aria-label="TikTok" target="_blank" rel="noopener noreferrer"></a>
         <a href="https://www.linkedin.com/company/high-tech-academy-almaty/" class="header-social-link header-social-link--linkedin" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer"></a>
       </div>
-      <!-- <div class="language-switcher" role="group" aria-label="Язык">
-        <button type="button" class="lang-btn is-active" data-lang="ru">RU</button>
-        <button type="button" class="lang-btn" data-lang="kz">KZ</button>
-        <button type="button" class="lang-btn" data-lang="en">EN</button>
-      </div> -->
     </div>
   </header>
-  
+
   <main>
-    <!-- HERO: первый экран, главный заголовок и фоновое фото. -->
-    <section id="hero" class="hero" aria-labelledby="hero-title">
+    <section id="hero" class="hero">
+      <img class="hero-image" src="./images/Банер/главная.jpg" alt="" loading="eager" fetchpriority="high" />
       <div class="hero-overlay" aria-hidden="true"></div>
 
-      <div class="hero-content">
-        <h1 id="hero-title">Международная школа<br /> с инновационной методикой обучения</h1>
-        <p>Minerva Baccalaureate - американская программа повышенной академической сложности<br />
-           Полная аккредитация CIS</p>
+      <div class="hero-copy">
+        <h1>Готовим к реальной жизни,<br />а не к тестам из прошлого</h1>
+        <p>
+          В мире, где ИИ генерирует ответы за секунды, детям нужны навыки,
+          которые не поддаются автоматизации: критическое мышление, смелость,
+          эмпатия и умение воплощать идеи в реальность
+        </p>
       </div>
 
-    </section>
+      <button
+        type="button"
+        class="floating-cta b24-web-form-popup-btn-32"
+        data-b24-form="click/32/3816ef"
+      >
+        Оставить заявку
+      </button>
 
-    <!-- WHY HTA: три цветные карточки и отзывы учеников. -->
-    <section id="why-hta" class="why-hta section reveal" aria-labelledby="why-hta-title">
-      <h2 id="why-hta-title">Почему HTA</h2>
-
-      <div class="why-hta-cards">
-        <div
-          class="why-card green"
-          id="love-school"
-        >
-          <div class="card-number">92%</div>
-          <div class="card-title">учеников HTA любят школу*</div>
-          <div class="card-text">*опрос учеников март 2026</div>
-          <div class="why-card-hover-overlay" aria-hidden="true">
-            <div class="why-card-hover-scroll">
-              <p class="why-card-hover-text">
-                - Невозможно заставить ребенка развиваться, 
-                его можно только поддержать, направить и <span class="brand-green-text">создать пространство</span>, в котором он сам <span class="brand-green-text">захочет расти</span>
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div class="why-card orange why-card--graduate-link">
-          <div class="card-title">Навыки 21 века</div>
-          <div class="card-text">Системное обучение навыкам, критически важным в эпоху ИИ</div>
-          <div class="why-card-hover-overlay" aria-hidden="true">
-            <div class="why-card-hover-scroll">
-              <p class="why-card-hover-text">
-                - Мы учим видеть возможности там, где другие видят ограничения, 
-                работать <span class="brand-green-text">в условиях неопределенности</span> и превращать <span class="brand-green-text">идеи в решения</span>
-              </p>
-              <p class="why-card-hover-text">
-                - Цель обучения в HTA не простое накопление знаний, а <span class="brand-green-text">умение</span> ими <span class="brand-green-text">пользоваться в реальном мире</span>
-              </p>
-              <div class="why-card-link-row">
-                <img class="why-card-link-logo" src="./logo/logo_square.png" alt="" loading="lazy" />
-                <a
-                  class="why-card-link"
-                  href="https://drive.google.com/file/d/14ZTkwMvyUzc5IOjFm31rxnuJ0S_WZPNk/view?usp=sharing"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >Портрет выпускника HTA</a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div
-          class="why-card orange why-card--mbacc"
-        >
-          <img class="why-card-mbacc-logo" src="./logo/MBacc.png" alt="Minerva Baccalaureate" loading="lazy" />
-          <div class="card-title">Minerva Baccalaureate</div>
-          <div class="card-text">Программа повышенной академической сложности для старших классов</div>
-          <div class="why-card-hover-overlay" aria-hidden="true">
-            <div class="why-card-hover-scroll">
-              <p class="why-card-hover-text">
-                - Обучение построено по модели flipped classroom - теорию ученики изучают самостоятельно, анализируют, обсуждают и применяют знания в классе 
-              </p>
-              <p class="why-card-hover-text">
-                - Выпускники HTA получают два диплома - казахстанский и американский
-              </p>
-              <span
-                class="why-card-jump-link"
-                role="button"
-                tabindex="0"
-                aria-label="Перейти к расширенному блоку Minerva Baccalaureate"
-                data-scroll-target="MBacc"
-              >↓</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="why-popup-backdrop" id="love-popup-backdrop" aria-hidden="true"></div>
-
-      <div class="container why-hta-extra">
-        <div class="students-section" id="why-hta-students-section">
-          <h3 id="why-hta-students-title">Ученики HTA о школе</h3>
-
-          <div class="students-slider-wrapper">
-            <button type="button" class="slider-btn left" aria-label="Предыдущие отзывы">‹</button>
-
-            <div class="students-slider" id="why-hta-students-slider">
-              <div class="student-card green">
-                <div class="student-name">Сурая</div>
-                <div class="student-class">7 класс</div>
-                <p>«Я чувствую себя тут комфортно, у меня здесь много друзей и добрые учителя»</p>
-              </div>
-
-              <div class="student-card orange">
-                <div class="student-name">Вадим</div>
-                <div class="student-class">9 класс</div>
-                <p>«Мне нравится, что каждый ученик получает индивидуальный подход от учителей»</p>
-              </div>
-
-              <div class="student-card yellow">
-                <div class="student-name">Алтай</div>
-                <div class="student-class">7 класс</div>
-                <p>«Здесь всегда есть поддержка»</p>
-              </div>
-
-              <div class="student-card green">
-                <div class="student-name">Ханна</div>
-                <div class="student-class">1 класс</div>
-                <p>«Здесь очень радостно и счастливо. Учителя заботливые, добрые и всегда помогают»</p>
-              </div>
-
-              <div class="student-card orange">
-                <div class="student-name">Амина</div>
-                <div class="student-class">11 класс</div>
-                <p>«Здесь нет ограничений твоей креативности. Школа всегда мотивирует выходить за рамки»</p>
-              </div>
-
-              <div class="student-card yellow">
-                <div class="student-name">Ибраим</div>
-                <div class="student-class">8 класс</div>
-                <p>«Учителя общаются с тобой так, что ты ощущаешь: ты в первую очередь человек, а потом уже ученик»</p>
-              </div>
-
-              <div class="student-card green">
-                <div class="student-name">Ануар</div>
-                <div class="student-class">7 класс</div>
-                <p>«Школа научила меня расти, изменяться и преодолевать препятствия»</p>
-              </div>
-
-              <div class="student-card orange">
-                <div class="student-name">Дарина</div>
-                <div class="student-class">10 класс</div>
-                <p>«Здесь ты чувствуешь себя нужным и важным. Ты всегда можешь высказать идею - и к ней отнесутся без осуждения»</p>
-              </div>
-
-              <div class="student-card yellow">
-                <div class="student-name">Амина</div>
-                <div class="student-class">11 класс</div>
-                <p>«Школа помогла мне стать увереннее в своих возможностях и перестать бояться»</p>
-              </div>
-
-              <div class="student-card green">
-                <div class="student-name">Данат</div>
-                <div class="student-class">7 класс</div>
-                <p>«Наша школа не учит зубрить - она развивает логику и мышление, что реально поможет в будущем»</p>
-              </div>
-
-              <div class="student-card orange">
-                <div class="student-name">Марийям</div>
-                <div class="student-class">2 класс</div>
-                <p>«Это веселая школа. Вкусно готовят, есть горка и очень хорошие учителя»</p>
-              </div>
-
-              <div class="student-card yellow">
-                <div class="student-name">Таниза</div>
-                <div class="student-class">3 класс</div>
-                <p>«Здесь вкусная еда, хорошие учителя и весёлые уроки»</p>
-              </div>
-
-              <div class="student-card green">
-                <div class="student-name">Шалкарбек</div>
-                <div class="student-class">4 класс</div>
-                <p>«Здесь хорошая еда, есть проекты, добрые учителя и хорошее обучение»</p>
-              </div>
-
-              <div class="student-card orange">
-                <div class="student-name">Павел</div>
-                <div class="student-class">5 класс</div>
-                <p>«Эта школа даёт надежду. Учит быть справедливым и честным. Люблю её за доброту»</p>
-              </div>
-
-              <div class="student-card yellow">
-                <div class="student-name">Артур</div>
-                <div class="student-class">6 класс</div>
-                <p>«Школа HTA учит не реагировать плохо на ситуацию, а рефлексировать и не дать ей повториться»</p>
-              </div>
-
-              <div class="student-card green">
-                <div class="student-name">Тея</div>
-                <div class="student-class">K класс</div>
-                <p>«Здесь хорошие учителя, и можно в обед набирать еду, которую сам хочешь. Можно гулять и играть с друзьями»</p>
-              </div>
-
-              <div class="student-card orange">
-                <div class="student-name">Таисия</div>
-                <div class="student-class">11 класс</div>
-                <p>«Ты не просто заучиваешь материал, а учишься мыслить, анализировать и применять знания в реальной жизни»</p>
-              </div>
-
-              <div class="student-card yellow">
-                <div class="student-name">Аяна</div>
-                <div class="student-class">7 класс</div>
-                <p>«Эта школа научила меня многим навыкам 21 века и я нашла здесь близких друзей»</p>
-              </div>
-
-              <div class="student-card green">
-                <div class="student-name">Даная</div>
-                <div class="student-class">9 класс</div>
-                <p>«Здесь раскрылся мой потенциал. Нет сильного стресса, и мы постоянно работаем в разных командах»</p>
-              </div>
-
-              <div class="student-card orange">
-                <div class="student-name">Жандос</div>
-                <div class="student-class">11 класс</div>
-                <p>«Окружение очень тёплое. У всех детей в HTA есть искренность и уважение друг к другу»</p>
-              </div>
-            </div>
-
-            <button type="button" class="slider-btn right" aria-label="Следующие отзывы">›</button>
-          </div>
-        </div>
+      <div class="hero-benefits" aria-label="Преимущества HTA">
+        <article>Международная школа<br />с полной аккредитацией CIS и WASC</article>
+        <article>Проектное обучение<br />по методу Корда,<br />развивающее критически важные навыки 21 века</article>
+        <article>Minerva Baccalaureate<br />- инновационная программа повышенной академической сложности<br />для старших классов</article>
+        <article>Развитие<br />предпринимательского<br />мышления</article>
       </div>
     </section>
 
-    <!-- UNIQUE FEATURES: карточки "Что делает HTA уникальной школой". -->
-    <section id="unique-features" class="unique-features section reveal" aria-labelledby="unique-title">
-      <div class="container">
-        <h2 id="unique-title" class="section-title">Инновационная система образования в HTA</h2>
-        <div class="features-grid">
-
-          <button type="button" class="feature-card" aria-expanded="false">
-            <img src="./images/Что делает нас уникальными/STEM и робототехника.webp" alt="" loading="lazy" />
-            <div class="feature-card-title-wrap">
-              <p class="feature-card-title">Роль учителя в High Tech Academy</p>
-            </div>
-            <div class="card-overlay" aria-hidden="true">
-              <div class="card-overlay-text">
-                <p class="card-overlay-heading">Учитель HTA</p>
-                <ul class="card-overlay-list">
-                  <li>дизайнер образовательного опыта</li>
-                  <li>эдвайзер - значимый взрослый, который выстраивает доверительные отношения с учениками в своей эдвайзери</li>
-                  <li>эксперт в своей предметной области, который создает условия для максимального роста каждого ученика</li>
-                  <li>рефлексирующий практик - постоянно пробует новые, более эффективные методы и инструменты преподавания</li>
-                </ul>
-              </div>
-            </div>
-          </button>
-
-          <button type="button" class="feature-card" aria-expanded="false">
-            <img src="./images/Что делает нас уникальными/Проекты из реальной жизни.webp" alt="" loading="lazy" />
-            <div class="feature-card-title-wrap">
-              <p class="feature-card-title">Креативное решение проблем</p>
-            </div>
-            <div class="card-overlay" aria-hidden="true">
-              <div class="card-overlay-text">
-                <p class="card-overlay-heading">Ученики HTA</p>
-                <ul class="card-overlay-list">
-                  <li>решают реальные задачи организаций и предлагают свои идеи владельцам и топ менеджерам бизнеса</li>
-                  <li>вместо оценок получают обратную связь от экспертов</li>
-                  <li>приходят к пониманию - ошибка не поражение, а ступень в развитии</li>
-                </ul>
-                <p class="card-overlay-quote card-overlay-quote--cleese">
-                  <span>“Ничто не мешает креативности так сильно, как страх совершить ошибку”</span>
-                  <span class="card-overlay-quote-author">Джон Клиз</span>
-                </p>
-              </div>
-            </div>
-          </button>
-
-          <button type="button" class="feature-card" aria-expanded="false">
-            <img src="./images/Что делает нас уникальными/Архитектура и дизайн.webp" alt="" loading="lazy" />
-            <div class="feature-card-title-wrap">
-              <p class="feature-card-title">Курс архитектуры и дизайна</p>
-            </div>
-            <div class="card-overlay" aria-hidden="true">
-              <div class="card-overlay-text">
-                <p class="card-overlay-heading">В рамках курса ученики HTA</p>
-                <ul class="card-overlay-list">
-                  <li>работают с пространством и формой</li>
-                  <li>учатся мыслить как инженеры и дизайнеры</li>
-                  <li>понимают потребности людей, ищут решения и проверяют их реализуемость</li>
-                  <li>каждый проект проходит путь от замысла до доработки через обратную связь экспертов</li>
-                </ul>
-              </div>
-            </div>
-          </button>
-
-          <button
-            type="button"
-            class="feature-card feature-card--entrepreneurship-jump"
-            aria-expanded="false"
-          >
-            <img src="./images/Что делает нас уникальными/STEM и робототехника.webp" alt="" loading="lazy" />
-            <div class="feature-card-title-wrap">
-              <p class="feature-card-title">Курс предпринимательства</p>
-            </div>
-            <span
-              class="feature-card-jump-arrow"
-              role="button"
-              tabindex="0"
-              aria-label="Перейти к расширенному блоку курса предпринимательства"
-              data-scroll-target="entrepreneurship-course"
-            >↓</span>
-            <div class="card-overlay" aria-hidden="true">
-              <div class="card-overlay-text card-overlay-text--entrepreneurship">
-                <p class="card-overlay-heading">В рамках курса по предпринимательству ученики HTA</p>
-                <ul class="card-overlay-list">
-                  <li>решают 3 реальных бизнес-задачи с возрастающей сложностью</li>
-                  <li>в конце курса сами выбирают проблему и создают план стартапа для решения этой проблемы, включая разработку стратегии выхода на рынок и MVP (Minimum Viable Product)</li>
-                  <li>завершают курс презентацией идеи стартапа реальным инвесторам</li>
-                  <li>ученики развивают предпринимательское мышление и учатся работать в условиях неопределенности</li>
-                </ul>
-              </div>
-            </div>
-          </button>
-
-          <button type="button" class="feature-card" aria-expanded="false">
-            <img src="./images/Что делает нас уникальными/Sports & Arts.webp" alt="" loading="lazy" />
-            <div class="feature-card-title-wrap">
-              <p class="feature-card-title">Sports & Arts</p>
-            </div>
-            <div class="card-overlay" aria-hidden="true">
-              <div class="card-overlay-text card-overlay-text--sports">
-                <p class="card-overlay-quote card-overlay-quote--sports">В HTA спорт, игра на улице и творчество являются важной частью учебного дня</p>
-                <p class="card-overlay-heading">Физическая активность положительно влияет на*</p>
-                <ul class="card-overlay-list">
-                  <li>концентрацию</li>
-                  <li>память</li>
-                  <li>способность быстро переключать внимание</li>
-                </ul>
-                <p class="card-overlay-source card-overlay-source--sports">*мета-анализы - Frontiers in Psychology, Journal of Science and Medicine in Sport и Frontiers in Public Health</p>
-              </div>
-            </div>
-          </button>
-
-          <button type="button" class="feature-card" aria-expanded="false">
-            <img src="./images/Что делает нас уникальными/Дебаты.webp" alt="" loading="lazy" />
-            <div class="feature-card-title-wrap">
-              <p class="feature-card-title">Дебаты</p>
-            </div>
-            <div class="card-overlay" aria-hidden="true">
-              <div class="card-overlay-text card-overlay-text--debates">
-                <p class="card-overlay-quote card-overlay-quote--debates">Во время дебатов ученики развивают навыки аргументации, учатся опровергать и удерживать позицию перед аудиторией, разбирая мировые политические и экономические процессы и философские идеи</p>
-                <p class="card-overlay-heading">Через соревновательную деятельность и публичные выступления дебаты</p>
-                <ul class="card-overlay-list">
-                  <li>развивают уверенность</li>
-                  <li>формируют критическое мышление</li>
-                  <li>лидерские качества</li>
-                </ul>
-              </div>
-            </div>
-          </button>
-
-        </div>
-      </div>
-    </section>
-
-    <section class="research-quote-section section reveal" aria-label="Подход HTA">
-      <div class="container">
-        <div class="research-quote">
+    <section id="about" class="section section-why">
+      <div class="container why-grid">
+        <div class="why-copy">
+          <p class="label">Почему это важно сейчас</p>
+          <h2>Мир изменился<br />Школа должна меняться<br />вместе с ним</h2>
           <p>
-            Готовим к жизни, а не к тестам!
+            Десятилетиями успех в школе означал: запомни информацию, выполни
+            инструкцию, дай ожидаемый ответ. Этот подход устарел.
+          </p>
+          <p>
+            Сегодня ИИ создает тексты, код и решения быстрее любого эксперта.
+            Главный вопрос для родителей уже не что будет знать мой ребенок,
+            а как он будет применять свои знания?
           </p>
         </div>
-      </div>
-    </section>
 
-    <!-- MBACC LIGHT: светлая версия блока Minerva Baccalaureate. -->
-    <section id="MBacc" class="MBacc">
-      <div class="container">
-        <div class="mbacc-panel">
-          <div class="mbacc-logo">
-            <img src="./logo/MBacc.png" alt="High Tech Academy" loading="lazy" />
-          </div>
+        <div class="question-box">
+          <strong>
+            Будет ли мой ребенок понимать, что делать, когда ответ не очевиден,
+            проблема реальная, а ее решение может изменить жизнь людей?
+          </strong>
+          <span>HTA — единственная школа в Казахстане, которая<br />готовит учеников к будущему, которое неизбежно изменит ИИ</span>
+        </div>
 
-          <div class="mbacc-copy">
+        <div class="why-cards">
+          <article>
+            <h3>ИИ заменяет исполнителей</h3>
             <p>
-              Minerva Baccalaureate (MBacc) is an <span class="mbacc-highlight">advanced</span> high school program that prepares students for even the most demanding university education.
+              Рутинные задачи выполняет ИИ. Ценность человека в навыках, которые
+              невозможно делегировать машине: критическом мышлении, коммуникации,
+              сотрудничестве и умении находить решения в условиях неопределенности
             </p>
+          </article>
+          <article>
+            <h3>Мир требует творцов, не потребителей</h3>
             <p>
-              The program integrates <span class="mbacc-highlight">core subjects</span> - science, mathematics, social studies, and language arts into an interdisciplinary curriculum with shared learning outcomes developed across courses and contexts.
+              Работодатели ищут людей, которые умеют ставить правильные вопросы,
+              решать нестандартные задачи и создавать ценность для общества,
+              а не следовать инструкциям
             </p>
+          </article>
+          <article>
+            <h3>Перемены неизбежны и их скорость увеличивается</h3>
             <p>
-              Each course has two parts. Students build <span class="mbacc-highlight">foundational knowledge</span> through guided self-study, then apply it in small, instructor-led seminars where they <span class="mbacc-highlight">analyze, discuss</span>, and <span class="mbacc-highlight">solve complex problems</span>.
+              Половина профессий, которые будут существовать через 10 лет, еще
+              не изобретены. Задача школы подготовить учеников к
+              неопределенности и постоянным изменениям
             </p>
-            <p>
-              There are <span class="mbacc-highlight">no lectures</span>. Class time is dedicated to <span class="mbacc-highlight">active learning</span> - practicing skills, working with ideas, and applying knowledge in new situations.
-            </p>
-            <p>
-              Student progress is assessed through clearly defined learning outcomes, with detailed feedback that supports <span class="mbacc-highlight">continuous development</span>.
-            </p>
-            <p>
-              In the fourth optional year, students take university-level courses and may earn transferable college credits.
-            </p>
-          </div>
-
-          <div class="mbacc-videos" aria-label="Видео о Minerva Baccalaureate">
-            <div class="mbacc-video">
-              <button type="button" class="mbacc-video-preview" aria-label="Смотреть видео">
-                <span class="mbacc-video-play" aria-hidden="true"></span>
-              </button>
-              <div class="mbacc-video-title">MBacc Through Students’ Eyes</div>
-            </div>
-
-            <div class="mbacc-video">
-              <button type="button" class="mbacc-video-preview" aria-label="Смотреть видео">
-                <span class="mbacc-video-play" aria-hidden="true"></span>
-              </button>
-              <div class="mbacc-video-title">Proven MBacc Outcomes</div>
-            </div>
-          </div>
+          </article>
         </div>
       </div>
     </section>
 
-    <!-- LIFE HTA: бегущая галерея. Фото задаются в PHOTO_LIFE в script.js. -->
-    <section id="life-hta" class="life-hta section reveal" aria-labelledby="life-title">
+    <section class="section dark-band section-learning">
+      <div class="container learning-grid">
+        <div>
+          <p class="label">ДНК системы обучения в HTA</p>
+          <h2>Обучение в HTA не простое накопление знаний, а умение ими пользоваться в реальном мире</h2>
+          <p>
+            HTA - единственная школа в Казахстане, которая готовит учеников именно
+            к такой реальности и к будущему, которое неизбежно изменит ИИ
+          </p>
+        </div>
+        <div class="video-placeholder" aria-label="Видео-плейсхолдер">
+          <span class="play-button" aria-hidden="true"></span>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="section section-korda">
       <div class="container">
-        <h2 id="life-title" class="section-title">Жизнь в HTA</h2>
-        <p class="life-quote">
-          <span>Образование не подготовка к жизни, образование - это сама жизнь</span>
-          <span class="life-quote-author">Джон Дьюи</span>
+        <p class="label">Проектное обучение</p>
+        <h2>Навыки развиваются через практику и действие</h2>
+
+        <div class="korda-grid">
+          <div class="korda-copy">
+            <p>
+              Korda Method ™- это подход к обучению, в котором главный фокус
+              смещается с того, ЧТО изучают ученики, на то, КАК они учатся.
+            </p>
+            <p>
+              Проектное обучение погружает учеников в реальную жизнь. Они учатся
+              определять проблему, глубоко исследовать контекст и потребности
+              пользователей, тестировать идеи и защищать свое решение перед
+              экспертами из этой сферы.
+            </p>
+            <p>
+              Обратная связь приходит не в виде оценки. Это вопрос, вызов, новое
+              ограничение, более сильная идея - и ученики дорабатывают и улучшают
+              свои решения через циклы обратной связи. Это развивает внутреннюю
+              устойчивость, гибкость мышления и готовность пробовать снова.
+            </p>
+          </div>
+          <div class="video-placeholder video-placeholder-light" aria-label="Видео-плейсхолдер">
+            <span class="play-button" aria-hidden="true"></span>
+          </div>
+        </div>
+
+        <div class="project-grid" aria-label="Карточки проектных задач">
+          <article>
+            <img src="./images/Курс предпринимательства/проекты 2025-2026.webp" alt="" loading="lazy" />
+            <div>
+              <p><strong>Проектная задача:</strong><br />Запустить 1000 эко-шаттлов по Алматы</p>
+              <p><strong>Партнер:</strong><br />ХХХХХХХ</p>
+            </div>
+          </article>
+          <article>
+            <img src="./images/Курс предпринимательства/проекты 2025-2026.webp" alt="" loading="lazy" />
+            <div>
+              <p><strong>Проектная задача:</strong><br />Улучшить качество воздуха в городе</p>
+              <p><strong>Партнер:</strong><br />ХХХХХХХ</p>
+            </div>
+          </article>
+          <article>
+            <img src="./images/Курс предпринимательства/проекты 2025-2026.webp" alt="" loading="lazy" />
+            <div>
+              <p><strong>Проектная задача:</strong><br />Разработать прибыльную стратегию, сохраняя верность миссии компании</p>
+              <p><strong>Партнер:</strong><br />ХХХХХХХ</p>
+            </div>
+          </article>
+          <article>
+            <img src="./images/Курс предпринимательства/проекты 2025-2026.webp" alt="" loading="lazy" />
+            <div>
+              <p><strong>Проектная задача:</strong><br />Создавать стартапы в сфере медицины, устойчивого развития, сокращения пищевых отходов и практических жизненных навыков</p>
+              <p><strong>Партнер:</strong><br />ХХХХХХХ</p>
+            </div>
+          </article>
+        </div>
+
+        <p class="instagram-line">
+          Подробнее о других проектах на странице
+          <a href="https://www.instagram.com/hta.kz" target="_blank" rel="noopener noreferrer">Instagram</a>
         </p>
-        <div class="life-quote-person" aria-label="Автор цитаты: Джон Дьюи">
-          <img
-            class="life-quote-person-photo"
-            src="./images/ideas-authors/Джон_Дуи.jpg"
-            alt="Джон Дьюи"
-            loading="lazy"
-            decoding="async"
-          />
-        </div>
-      </div>
-      <div class="marquee marquee--forward" aria-hidden="true">
-        <div class="marquee-inner life-row-left" id="marquee-row-1"></div>
-      </div>
-      <div class="marquee marquee--reverse" aria-hidden="true">
-        <div class="marquee-inner life-row-right" id="marquee-row-2"></div>
       </div>
     </section>
 
-    <!-- ACHIEVEMENTS: достижения учеников. Карточки генерируются из pageData.achievements. -->
-    <section id="achievements" class="achievements section reveal" aria-labelledby="achievements-title">
-      <div class="container">
-        <h2 id="achievements-title" class="section-title">Победы и успехи наших учеников</h2>
-        <div class="achievements-grid" id="achievements-grid"></div>
-        <div class="achievements-cta">
-          <button type="button" class="btn btn-outline" id="achievements-show-more">Смотреть все</button>
-        </div>
-        <div class="achievements-more" id="achievements-more" hidden>
-          <div class="achievements-more__section">
-            <h3>Международный уровень</h3>
-            <ul>
-              <li>Western Edge Open — «Лучший инновационный проект» среди 80 команд из 20 стран (Калифорния, 2023)</li>
-              <li>FIRST Global Challenge — Runner-up award + Engineering documentation award (Астана, 2023)</li>
-              <li>Всемирный чемпионат по дебатам среди школьников — квалификация (Вьетнам, 2023)</li>
-              <li>EXPO — два инновационных приложения, Синар и Арсим Шайх (Дубай)</li>
-              <li>NSDA — два финалиста, один четвертьфиналист (Китай, 2021)</li>
-              <li>Турнир по дебатам — участие (Public Forum, Lincoln-Douglas, Original Oratory) (США, зима 2021)</li>
-              <li>Basketball ASG — тренировочный сбор (Черногория, лето 2022)</li>
-            </ul>
+    <section class="section section-entrepreneur">
+      <div class="container entrepreneur-grid">
+        <div class="slider-image" id="entrepreneurship-slider">
+          <button type="button" class="slider-prev" aria-label="Предыдущее изображение">‹</button>
+          <div class="slider-track">
+            <img src="./images/Курс предпринимательства/проекты 2025-2026.webp" alt="" loading="lazy" class="is-active" />
+            <img src="./images/Курс предпринимательства/проекты 2023-2024.webp" alt="" loading="lazy" />
+            <img src="./images/Жизнь в HTA/2.webp" alt="" loading="lazy" />
           </div>
-          <div class="achievements-more__section">
-            <h3>Национальный уровень</h3>
-            <ul>
-              <li>Школьная лига «Дай Мяч», 5-я категория — 1-е место (Алматы, май 2023)</li>
-              <li>Кубок Турана — лучшая команда отборочных раундов (60+ команд) + Лучший спикер (2023)</li>
-              <li>Нац. чемпионат VEX — 3-е место (Vex V5), полуфинал (Vex V5), 4-е место (Vex IQ) (Алматы, 2023)</li>
-              <li>First Lego League — Командная работа + приглашение представлять Казахстан в Калифорнии (Астана, 2023)</li>
-              <li>Samsung Solve for Tomorrow — 3-е место + Гран-при жюри, денежный приз школе (Алматы, 2021)</li>
-              <li>«Дай Мяч» — 3-е место (2021)</li>
-              <li>«Дай Мяч» — 4-е место (2022)</li>
-              <li>Чемпионат РК — 4-е место (Талдыкорган, 2023)</li>
-            </ul>
-          </div>
-          <div class="achievements-more__section">
-            <h3>Городской / региональный уровень</h3>
-            <ul>
-              <li>First Lego League, регион — «Shaka»: Motivate award + Best pit award (ноябрь 2023)</li>
-              <li>Tech Cup Almaty — «Shaka»: Engineering excellence award (2023)</li>
-              <li>Tamos First Championship — «Arturli»: Engineering Design award (2023)</li>
-              <li>Kids Athletics — 4-е место, 2–3 классы (Алматы, ноябрь 2023)</li>
-              <li>Летний чемпионат по волейболу — диплом лучшего игрока, ученица 9 класса (Алматы, 2023)</li>
-            </ul>
-          </div>
-          <div class="achievements-more__section">
-            <h3>Инициативы и участие</h3>
-            <ul>
-              <li>Международный турнир HTA — 30+ спикеров из Алматы, Астаны, КНР; 6 учеников НТА (весна 2021)</li>
-              <li>Samsung Solve for Tomorrow + Techcup — участие (2022)</li>
-              <li>Жаспан Дания — книга «Проклятие хрустального цветка», призовое место на конкурсе талантов (5 класс)</li>
-            </ul>
-          </div>
+          <button type="button" class="slider-next" aria-label="Следующее изображение">›</button>
+        </div>
+
+        <div class="entrepreneur-copy">
+          <p class="label">Курс по предпринимательству</p>
+          <h2>Мышление, которое нужно ученикам, когда будущее невозможно предсказать</h2>
+          <p>
+            За год ученики проходят путь от реальных задач казахстанского бизнеса
+            до собственного стартапа, развивают предпринимательские навыки и учатся
+            справляться с неопределенностью, решая сложные проблемы для реального мира.
+          </p>
+          <p>
+            Мы не растим предпринимателей. Мы развиваем предпринимательское мышление:
+            способность видеть и определять проблемы, тестировать идеи, принимать
+            решения и создавать ценность для общества.
+          </p>
+          <a class="course-link" href="#projects">Подробнее о курсе</a>
         </div>
       </div>
     </section>
 
-    <!-- ENTREPRENEURSHIP: проекты и стартапы. Данные меняются в pageData.entrepreneurship. -->
-    <section id="entrepreneurship-course" class="entrepreneurship-course section reveal" aria-labelledby="entrepreneurship-course-title">
-      <div class="container">
-        <h2 id="entrepreneurship-course-title" class="section-title">Курс Предпринимательства</h2>
-        <p class="entrepreneurship-course-lead">
-          За год ученики проходят путь от реальных задач казахстанского бизнеса до собственного стартапа,
-          развивают предпринимательские навыки, учатся справляться с неопределенностью, решая сложные проблемы для реального мира.
-        </p>
-
-        <div class="entrepreneurship-years" aria-label="Проекты по годам">
-          <article class="entrepreneurship-year-card entrepreneurship-year-card--current">
-            <div class="entrepreneurship-year-title">Проекты 2025-2026</div>
-            <button type="button" class="btn entrepreneurship-year-btn" data-year="2025-2026" aria-expanded="false" aria-controls="entrepreneurship-projects-panel">Подробнее</button>
-          </article>
-
-          <article class="entrepreneurship-year-card entrepreneurship-year-card--middle">
-            <div class="entrepreneurship-year-title">Проекты 2024-2025</div>
-            <button type="button" class="btn entrepreneurship-year-btn" data-year="2024-2025" aria-expanded="false" aria-controls="entrepreneurship-projects-panel">Подробнее</button>
-          </article>
-
-          <article class="entrepreneurship-year-card entrepreneurship-year-card--past">
-            <div class="entrepreneurship-year-title">Проекты 2023-2024</div>
-            <button type="button" class="btn entrepreneurship-year-btn" data-year="2023-2024" aria-expanded="false" aria-controls="entrepreneurship-projects-panel">Подробнее</button>
-          </article>
+    <section id="mbacc" class="section section-minerva">
+      <div class="container minerva-panel">
+        <div class="minerva-mark" aria-hidden="true">
+          <img src="./logo/MBacc.png" alt="Minerva Baccalaureate" width="140" height="60" loading="lazy" />
         </div>
+        <p class="label">Minerva Baccalaureate</p>
+        <h2>Программа повышенной академической сложности для старшей школы</h2>
+        <div class="lime-rule" aria-hidden="true"></div>
 
-        <div class="entrepreneurship-projects-panel" id="entrepreneurship-projects-panel" hidden>
-          <button type="button" class="entrepreneurship-back-btn" id="entrepreneurship-back-btn">Вернуться</button>
-          <div class="entrepreneurship-tabs" aria-label="Категории проектов">
-            <button type="button" class="entrepreneurship-tab is-active" data-type="projects">Проекты</button>
-            <button type="button" class="entrepreneurship-tab" data-type="startups">Стартапы</button>
-          </div>
-
-          <div class="entrepreneurship-projects-grid" id="entrepreneurship-projects-grid"></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- COMPANIES: логотипы компаний. Данные меняются в pageData.companies. -->
-    <section id="companies" class="companies section reveal" aria-labelledby="companies-title">
-      <div class="container">
-        <div class="companies-panel">
-          <p id="companies-title" class="companies-text">Наши ученики предлагали решения проблем для этих компаний</p>
-          <div class="companies-logos" id="companies-logos"></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- TESTIMONIALS: видео-карусель "Голоса HTA". Данные меняются в pageData.videoTestimonials. -->
-    <section id="testimonials" class="testimonials section reveal" aria-labelledby="testimonials-title">
-      <div class="container">
-        <h2 id="testimonials-title" class="section-title">Голоса HTA</h2>
-        <div class="video-carousel">
-          <button type="button" class="carousel-btn carousel-btn--prev" id="video-carousel-prev" aria-label="Предыдущее видео">‹</button>
-          <div class="video-carousel-track" id="video-carousel-track"></div>
-          <button type="button" class="carousel-btn carousel-btn--next" id="video-carousel-next" aria-label="Следующее видео">›</button>
-        </div>
-      </div>
-    </section>
-
-    <!-- IDEAS HTA: цитаты и идеи, которые вдохновили школу. -->
-    <section id="ideas-hta" class="ideas-hta section reveal" aria-labelledby="ideas-hta-title">
-      <div class="container">
-        <h2 id="ideas-hta-title" class="section-title">Идеи, которые вдохновили нас на создание HTA</h2>
-        <div class="ideas-hta-quotes">
-          <article class="ideas-quote-card ideas-quote-card--green">
-            <div class="ideas-quote-card__header">
-              <span class="ideas-quote-card__name">Маргарет Мид</span>
-            </div>
-            <p class="ideas-quote-card__text">Никогда не сомневайтесь в том, что небольшая группа мыслящих, преданных своему делу людей может изменить мир. В действительности, лишь они и привносят эти изменения</p>
-            <div class="ideas-quote-card__footer">
-              <div class="ideas-quote-card__avatar" aria-label="Фото: Маргарет Мид">
-                <img class="ideas-quote-card__avatar-img" src="./images/ideas-authors/Маргарет_Мид.jpg" alt="Маргарет Мид" loading="lazy" decoding="async" />
-              </div>
-            </div>
-          </article>
-          <article class="ideas-quote-card ideas-quote-card--orange">
-            <div class="ideas-quote-card__header">
-              <span class="ideas-quote-card__name">Жан Пиаже</span>
-            </div>
-            <p class="ideas-quote-card__text">Главная цель образования в школе - формировать людей, способных создавать новое, а не просто повторять то, что уже сделали предыдущие поколения</p>
-            <div class="ideas-quote-card__footer">
-              <div class="ideas-quote-card__avatar" aria-label="Фото: Жан Пиаже">
-                <img class="ideas-quote-card__avatar-img" src="./images/ideas-authors/Jean_Piaget.png" alt="Жан Пиаже" loading="lazy" decoding="async" />
-              </div>
-            </div>
-          </article>
-          <article class="ideas-quote-card ideas-quote-card--yellow">
-            <div class="ideas-quote-card__header">
-              <span class="ideas-quote-card__name">Кэрол Дуэк</span>
-            </div>
-            <p class="ideas-quote-card__text">Люди с мышлением, направленным на рост, верят, что их базовые способности можно развить благодаря усилиям и упорному труду</p>
-            <div class="ideas-quote-card__footer">
-              <div class="ideas-quote-card__avatar" aria-label="Фото: Кэрол Дуэк">
-                <img class="ideas-quote-card__avatar-img" src="./images/ideas-authors/Carol_Dweck.jpg" alt="Кэрол Дуэк" loading="lazy" decoding="async" />
-              </div>
-            </div>
-          </article>
-          <article class="ideas-quote-card ideas-quote-card--green">
-            <div class="ideas-quote-card__header">
-              <span class="ideas-quote-card__name">Кен Робинсон</span>
-            </div>
-            <p class="ideas-quote-card__text">Невозможно заранее предсказать, каким вырастет человек. Можно только создать условия, в которых он начнёт развиваться и раскрываться</p>
-            <div class="ideas-quote-card__footer">
-              <div class="ideas-quote-card__avatar" aria-label="Фото: Ken Robinson">
-                <img class="ideas-quote-card__avatar-img" src="./images/ideas-authors/Ken_Robinson.jpg" alt="Ken Robinson" loading="lazy" decoding="async" />
-              </div>
-            </div>
-          </article>
-          <article class="ideas-quote-card ideas-quote-card--orange">
-            <div class="ideas-quote-card__header">
-              <span class="ideas-quote-card__name">OECD<br />(Learning Compass 2030)</span>
-            </div>
-            <p class="ideas-quote-card__text">Ответственность за обучение ученик проявляет в способности ставить цели, рефлексировать и действовать ответственно, чтобы добиваться изменений</p>
-            <div class="ideas-quote-card__footer">
-            </div>
-          </article>
-          <article class="ideas-quote-card ideas-quote-card--yellow">
-            <div class="ideas-quote-card__header">
-              <span class="ideas-quote-card__name">Рой Баумейстер и<br />Марк Лири</span>
-            </div>
-            <p class="ideas-quote-card__text">Чувство принадлежности - одна из базовых человеческих мотиваций</p>
-            <div class="ideas-quote-card__footer ideas-quote-card__footer--dual">
-              <div class="ideas-quote-card__avatars">
-                <div class="ideas-quote-card__avatar" aria-label="Фото: Рой Баумейстер">
-                  <img class="ideas-quote-card__avatar-img" src="./images/ideas-authors/Roy_Baumeister.jpg" alt="Рой Баумейстер" loading="lazy" decoding="async" />
-                </div>
-                <div class="ideas-quote-card__avatar" aria-label="Фото: Марк Лири">
-                  <img class="ideas-quote-card__avatar-img" src="./images/ideas-authors/Leary_Mark.jpg" alt="Марк Лири" loading="lazy" decoding="async" />
-                </div>
-              </div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="expert-video" class="expert-video-section section reveal" aria-labelledby="expert-video-title">
-      <div class="container">
-        <div class="expert-video">
-          <div class="expert-video-frame">
-            <iframe
-              class="expert-video-embed"
-              title="Мнение экспертов об HTA"
-              src="https://www.youtube.com/embed/D-Ktmq9T94s?rel=0&modestbranding=1&playsinline=1"
-              referrerpolicy="strict-origin-when-cross-origin"
-              allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
-              allowfullscreen
-            ></iframe>
-          </div>
-          <h2 id="expert-video-title">Мнение экспертов об HTA</h2>
-        </div>
-      </div>
-    </section>
-
-    <!-- PROFESSIONAL DEVELOPMENT: блок развития учителей. -->
-    <section id="PD" class="PD section reveal" aria-labelledby="PD-title" hidden>
-      <div class="container">
-        <div class="PD-panel">
-          <div class="PD-copy">
-            <p class="PD-kicker">Непрерывное профессиональное развитие</p>
-            <h2 id="PD-title">Учитель в HTA постоянно учится</h2>
+        <div class="minerva-grid">
+          <div>
             <p>
-              В HTA учитель - дизайнер образовательного опыта, эдвайзер и эксперт в своей предметной области.
-              Поэтому профессиональное развитие является постоянной частью школьной культуры.
+              Обучение проходит по методике Flipped Classroom - принцип обучения,
+              при котором учащиеся самостоятельно изучают новый материал и время
+              работы в классе посвящено применению знаний и непрерывному оцениванию
+              и закреплению знаний и навыков
+            </p>
+            <p>
+              Результат обучения напрямую зависит от качества самостоятельной
+              подготовки к занятиям в классе. Преподавание ведется на английском языке
+            </p>
+            <p>
+              Выпускники получают два диплома - казахстанский аттестат и
+              американский Minerva Baccalaureate
             </p>
           </div>
-
-          <div class="PD-grid" aria-label="Направления профессионального развития учителей">
-            <article class="PD-card PD-card--korda">
-              <h3>Корда Метод</h3>
-              <button type="button" class="btn PD-card-btn" data-pd="korda" aria-expanded="false" aria-controls="PD-details-panel">Смотреть все</button>
-            </article>
-
-            <article class="PD-card PD-card--training">
-              <h3>Ежегодный 4х недельный тренинг в августе</h3>
-              <button type="button" class="btn PD-card-btn" data-pd="training" aria-expanded="false" aria-controls="PD-details-panel">Смотреть все</button>
-            </article>
-
-            <article class="PD-card PD-card--festival">
-              <h3>Фестиваль педагогического мастерства</h3>
-              <button type="button" class="btn PD-card-btn" data-pd="festival" aria-expanded="false" aria-controls="PD-details-panel">Смотреть все</button>
-            </article>
-          </div>
-
-          <div class="PD-details-panel" id="PD-details-panel" hidden>
-            <h3 id="PD-details-title"></h3>
-            <p id="PD-details-text"></p>
+          <div class="video-placeholder" aria-label="Видео-плейсхолдер">
+            <span class="play-button" aria-hidden="true"></span>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- OPEN DAY: CTA и форма Bitrix24. Дата меняется в pageData.openDay. -->
-    <section id="open-day" class="open-day section reveal" aria-labelledby="open-day-title">
+    <section class="section section-happy">
       <div class="container">
-        <div class="open-day-inner">
-          <p class="open-day-label">День открытых дверей</p>
-          <h2 id="open-day-title" class="open-day-title">Приходите познакомиться</h2>
-          <p class="open-day-subtitle">Познакомьтесь со школой, учителями и атмосферой HTA — мы расскажем о программе и ответим на вопросы</p>
-          <p class="open-day-date-pill" id="open-day-date">Апрель 2026 — дата уточняется</p>
-          <div class="open-day-actions">
-            <div id="open-day-form-host"></div>
+        <p class="label">Счастливое детство</p>
+        <div class="quote-row">
+          <div class="quote-mark" aria-hidden="true">“</div>
+          <blockquote>Невозможно заранее предсказать, каким вырастет человек. Можно только создать условия, в которых он начнёт развиваться и раскрываться</blockquote>
+          <p class="quote-author">Кен Робинсон</p>
+        </div>
+
+        <div class="happy-grid" aria-label="Счастливое детство">
+          <article>
+            <span class="happy-icon happy-icon-person" aria-hidden="true"></span>
+            <h3>Каждого знают</h3>
+            <p>Мы видим в учениках личностей: их сильные стороны, потребности, эмоции и личные истории.</p>
+          </article>
+          <article>
+            <span class="happy-icon happy-icon-shield" aria-hidden="true"></span>
+            <h3>Безопасность - физическая, эмоциональная и социальная</h3>
+            <p>Взрослые замечают ранние сигналы и реагируют до того, как ситуация стала проблемой.</p>
+          </article>
+          <article>
+            <span class="happy-icon happy-icon-group" aria-hidden="true"></span>
+            <h3>Чувство принадлежности</h3>
+            <p>Ученики учатся слушать, сотрудничать и строить доверительные отношения каждый день.</p>
+          </article>
+          <article>
+            <span class="happy-icon happy-icon-reflect" aria-hidden="true"></span>
+            <h3>Рост через рефлексию</h3>
+            <p>Мы помогаем ученикам понимать себя, делать ответственный выбор и расти из ошибок.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-life">
+      <div class="container">
+        <h2>Жизнь в HTA</h2>
+        <div class="life-collage" aria-label="Жизнь в HTA">
+          <div class="life-cell life-cell-wide">
+            <img src="./images/Жизнь в HTA/1.webp" alt="" loading="lazy" />
+            <img src="./images/Жизнь в HTA/2.webp" alt="" loading="lazy" />
+            <img src="./images/Жизнь в HTA/3.webp" alt="" loading="lazy" />
           </div>
+          <div class="life-cell life-cell-small">
+            <img src="./images/Жизнь в HTA/4.webp" alt="" loading="lazy" />
+            <img src="./images/Жизнь в HTA/5.webp" alt="" loading="lazy" />
+            <img src="./images/Жизнь в HTA/6.webp" alt="" loading="lazy" />
+          </div>
+          <div class="life-cell life-cell-tall">
+            <img src="./images/Жизнь в HTA/7.webp" alt="" loading="lazy" />
+            <img src="./images/Жизнь в HTA/8.webp" alt="" loading="lazy" />
+            <img src="./images/Жизнь в HTA/9.webp" alt="" loading="lazy" />
+          </div>
+          <div class="life-cell life-cell-small">
+            <img src="./images/Жизнь в HTA/10.webp" alt="" loading="lazy" />
+            <img src="./images/Жизнь в HTA/11.webp" alt="" loading="lazy" />
+            <img src="./images/Жизнь в HTA/12.webp" alt="" loading="lazy" />
+          </div>
+          <div class="life-cell life-cell-dark"></div>
+          <div class="life-cell life-cell-small">
+            <img src="./images/Жизнь в HTA/13.webp" alt="" loading="lazy" />
+            <img src="./images/Жизнь в HTA/14.webp" alt="" loading="lazy" />
+            <img src="./images/Жизнь в HTA/15.webp" alt="" loading="lazy" />
+          </div>
+          <div class="life-cell life-cell-wide">
+            <img src="./images/Жизнь в HTA/16.webp" alt="" loading="lazy" />
+            <img src="./images/Жизнь в HTA/17.webp" alt="" loading="lazy" />
+            <img src="./images/Жизнь в HTA/18.webp" alt="" loading="lazy" />
+          </div>
+          <div class="life-cell life-cell-small">
+            <img src="./images/Жизнь в HTA/19.webp" alt="" loading="lazy" />
+            <img src="./images/Жизнь в HTA/20.webp" alt="" loading="lazy" />
+            <img src="./images/Жизнь в HTA/21.webp" alt="" loading="lazy" />
+          </div>
+          <div class="life-cell life-cell-small">
+            <img src="./images/Жизнь в HTA/22.webp" alt="" loading="lazy" />
+            <img src="./images/Достижения наших учеников/1.jpeg" alt="" loading="lazy" />
+            <img src="./images/Достижения наших учеников/3.webp" alt="" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="testimonials" class="section section-voices">
+      <div class="container">
+        <p class="label">Голоса учеников</p>
+        <div class="voices-stat">92%</div>
+        <h2>учеников HTA говорят, что любят свою школу</h2>
+        <p class="voices-note">Опрос учеников, март 2026</p>
+
+        <div class="testimonial-shell">
+          <button type="button" class="testimonial-arrow" aria-label="Предыдущий отзыв">‹</button>
+          <div class="testimonial-grid">
+            <article style="--testimonial-bg: url('./images/Жизнь в HTA/4.webp')">
+              <span>“</span>
+              <p>
+                Здесь нет ограничений твоей креативности. Школа всегда мотивирует
+                выходить за рамки. Ты не просто заучиваешь материал - ты учишься
+                мыслить, анализировать и применять знания в реальной жизни
+              </p>
+              <strong>Амина<br />11 класс</strong>
+            </article>
+            <article style="--testimonial-bg: url('./images/Жизнь в HTA/8.webp')">
+              <span>“</span>
+              <p>
+                Учителя общаются с тобой так, что ты ощущаешь: ты в первую очередь
+                человек, а потом уже человек
+              </p>
+              <strong>Ибраим<br />8 класс</strong>
+            </article>
+            <article style="--testimonial-bg: url('./images/Жизнь в HTA/10.webp')">
+              <span>“</span>
+              <p>
+                Здесь нет ограничений твоей креативности. Школа всегда мотивирует
+                выходить за рамки. Ты не просто заучиваешь материал - ты учишься
+                мыслить, анализировать и применять знания в реальной жизни
+              </p>
+              <strong>Амина<br />11 класс</strong>
+            </article>
+          </div>
+          <button type="button" class="testimonial-arrow" aria-label="Следующий отзыв">›</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-experts">
+      <div class="container">
+        <div class="experts-grid">
+          <div class="quote-row">
+            <div class="quote-mark" aria-hidden="true">"</div>
+            <blockquote>В XXI веке мы можем стать свидетелями появления многомиллионного неработающего класса… Этот «бесполезный класс» будет не просто неработающим — он будет неработоспособным</blockquote>
+            <p class="quote-author">Юваль Ной Харари, Homo Deus</p>
+          </div>
+          <div class="quote-row">
+            <div class="quote-mark" aria-hidden="true">"</div>
+            <blockquote>Любопытство, смелость, креативность, сострадание и коммуникация становятся особенно важными навыками в эпоху ИИ</blockquote>
+            <p class="quote-author">Райан Рослански, CEO LinkedIn</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-choice">
+      <div class="container">
+        <h2>Выбирайте HTA</h2>
+        <p>
+          Здесь ученики развивают смелость, креативность и способность создавать
+          ценность, чтобы быть готовыми к вызовам быстро меняющегося мира.
+        </p>
+        <a
+          class="graduate-link"
+          href="https://drive.google.com/file/d/14ZTkwMvyUzc5IOjFm31rxnuJ0S_WZPNk/view?usp=sharing"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Портрет выпускника
+        </a>
       </div>
     </section>
   </main>
 
-   <!-- FOOTER: нижнее меню, контакты и социальные ссылки. -->
-   <footer class="site-footer">
-    <div class="footer-top">
-      <div class="container">
-        <a href="https://hta.kz/" class="footer-more-link" target="_blank" rel="noopener noreferrer">Узнать больше о школе</a>
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="#hero" class="footer-logo-link">
+          <img src="./logo/HTA_SISU.webp" alt="HTA" width="52" height="52" loading="lazy" />
+          <span>High Tech Academy</span>
+        </a>
+        <p class="footer-tagline">Международная школа в Алматы</p>
+      </div>
+      <nav class="footer-nav" aria-label="Навигация">
+        <a href="#hero">Главная</a>
+        <a href="#about">О нас</a>
+        <a href="#mbacc">Minerva Baccalaureate</a>
+        <a href="#projects">Достижения</a>
+        <a href="#testimonials">Отзывы</a>
+      </nav>
+      <div class="footer-contacts">
+        <a href="tel:+77717471881">+7 (771) 747-18-81</a>
+        <a href="mailto:info@hta.kz">info@hta.kz</a>
+      </div>
+      <div class="footer-social-icons">
+        <a href="https://www.instagram.com/hta.kz" class="footer-social-link footer-social-link--instagram" aria-label="Instagram" target="_blank" rel="noopener noreferrer"></a>
+        <a href="https://www.facebook.com/people/High-Tech-Academy/61563897284883/" class="footer-social-link footer-social-link--facebook" aria-label="Facebook" target="_blank" rel="noopener noreferrer"></a>
+        <a href="https://www.youtube.com/channel/UCAAhNxRHrwwhFYMT9qIJ7AA/featured" class="footer-social-link footer-social-link--youtube" aria-label="YouTube" target="_blank" rel="noopener noreferrer"></a>
+        <a href="https://www.tiktok.com/@high.tech.academy1" class="footer-social-link footer-social-link--tiktok" aria-label="TikTok" target="_blank" rel="noopener noreferrer"></a>
+        <a href="https://www.linkedin.com/company/high-tech-academy-almaty/" class="footer-social-link footer-social-link--linkedin" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer"></a>
       </div>
     </div>
-    <div class="footer-main">
-      <div class="container footer-grid">
-        <div class="footer-brand-block">
-          <a href="#hero" class="logo logo--footer">
-            <img src="./logo/HTA_SISU.webp" alt="" width="52" height="52" loading="lazy" />
-            <span>High Tech Academy</span>
-          </a>
-          <p class="footer-tagline">Международная школа в Алматы</p>
-        </div>
-        <nav class="footer-nav" aria-label="Навигация в подвале">
-          <ul>
-            <li><a href="#hero">Главная</a></li>
-            <li><a href="#unique-features">О нас</a></li>
-            <li><a href="#MBacc">Minerva Baccalaureate</a></li>
-            <li><a href="#achievements">Достижения</a></li>
-            <li><a href="#testimonials">Отзывы</a></li>
-            <li><a href="#open-day">День открытых дверей</a></li>
-          </ul>
-        </nav>
-        <div class="footer-contacts">
-          <p><strong>Контакты</strong></p>
-          <p><a href="tel:+77717471881">+7 (771) 747-18-81</a></p>
-          <p><a href="mailto:info@hta.kz">info@hta.kz</a></p>
-        </div>
-        <div class="footer-social">
-          <p><strong>Соцсети</strong></p>
-          <div class="footer-social-icons">
-            <a href="https://www.instagram.com/hta.kz" class="footer-social-link footer-social-link--instagram" target="_blank" rel="noopener noreferrer" aria-label="Instagram"></a>
-            <a href="https://www.facebook.com/profile.php?id=61563897284883" class="footer-social-link footer-social-link--facebook" target="_blank" rel="noopener noreferrer" aria-label="Facebook"></a>
-            <a href="https://www.youtube.com/channel/UCAAhNxRHrwwhFYMT9qIJ7AA/featured" class="footer-social-link footer-social-link--youtube" target="_blank" rel="noopener noreferrer" aria-label="YouTube"></a>
-            <a href="https://www.tiktok.com/@high.tech.academy1" class="footer-social-link footer-social-link--tiktok" target="_blank" rel="noopener noreferrer" aria-label="TikTok"></a>
-            <a href="https://www.linkedin.com/company/high-tech-academy-almaty/" class="footer-social-link footer-social-link--linkedin" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"></a>
-          </div>
-        </div>
-      </div>
-      <div class="container footer-bottom">
-        <p>© <span id="year"></span> Все права защищены ТОО "Школа 21 века"</p>
+    <div class="footer-bottom">
+      <div class="container footer-bottom-inner">
+        <p>© 2026 Все права защищены ТОО "Школа 21 века"</p>
       </div>
     </div>
   </footer>
 
-  <!-- <button
-    type="button"
-    id="floating-consult-cta"
-    class="floating-cta b24-web-form-popup-btn-32"
-    data-b24-form="click/32/3816ef"
-  >
-    Записаться
-  </button> -->
-  
-  <div class="b24-fixed-btn">
+  <div class="b24-loader-host" aria-hidden="true">
     <script data-b24-form="click/32/3816ef" data-skip-moving="true">(function(w,d,u){var s=d.createElement('script');s.async=true;s.src=u+'?'+(Date.now()/180000|0);var h=d.getElementsByTagName('script')[0];h.parentNode.insertBefore(s,h);})(window,document,'https://cdn-ru.bitrix24.kz/b18109524/crm/form/loader_32.js');</script>
-  </div>
-
-  <!-- <div class="modal-form" id="applicationModal" aria-hidden="true">
-    <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="application-modal-title">
-      <h2 id="application-modal-title">Расскажите нам о себе</h2>
-      <p>Заполните форму — мы свяжемся с вами в течении рабочего дня</p>
-
-      <form class="hero-form" id="hero-lead-form" novalidate>
-        <div class="form-row">
-          <label class="visually-hidden" for="modal-parent-name">ФИО ребенка *</label>
-          <input id="modal-parent-name" name="parentName" type="text" required placeholder="Имя фамилия" />
-        </div>
-        <div class="form-row">
-          <label class="visually-hidden" for="modal-student-name">ФИО родителя *</label>
-          <input id="modal-student-name" name="studentName" type="text" required placeholder="Имя ученика" />
-        </div>
-        <div class="form-row">
-          <label class="visually-hidden" for="modal-phone">Номер телефона</label>
-          <input id="modal-phone" name="phone" type="tel" required placeholder="Номер телефона" />
-        </div>
-        <div class="form-row">
-          <label class="visually-hidden" for="modal-grade">Класс поступления</label>
-          <input id="modal-grade" name="grade" type="text" required placeholder="Класс поступления" />
-        </div>
-        <div class="form-row">
-          <label class="visually-hidden" for="modal-school">Текущая школа</label>
-          <input id="modal-school" name="currentSchool" type="text" placeholder="Текущая школа" />
-        </div>
-        <div class="form-row">
-          <label class="visually-hidden" for="modal-variant">Вариант</label>
-          <select id="modal-variant" name="variant" required>
-            <option value="">Выберите вариант</option>
-            <option value="consultation">Консультация</option>
-            <option value="tour">Экскурсия</option>
-            <option value="trial-day">Пробный день</option>
-          </select>
-        </div>
-        <div class="form-row">
-          <label class="visually-hidden" for="modal-comment">Комментарий</label>
-          <textarea id="modal-comment" name="comment" rows="3" placeholder="Комментарий"></textarea>
-        </div>
-
-        <button type="submit" class="submit-btn">Отправить</button>
-      </form>
-    </div>
-  </div> -->
-
-  <!-- SHARED VIDEO MODAL: общее окно для YouTube/Instagram видео. -->
-  <div class="video-modal-backdrop" id="video-modal-backdrop" aria-hidden="true">
-    <div class="video-modal" role="dialog" aria-modal="true" aria-labelledby="video-modal-title">
-      <button type="button" class="video-modal-close" id="video-modal-close" aria-label="Закрыть">&times;</button>
-      <h3 class="video-modal-title" id="video-modal-title">Видео</h3>
-      <div class="video-modal-body" id="video-modal-body"></div>
-    </div>
-  </div>
-
-  <!-- HERO VIDEO MODAL: отдельное окно для видео с первого экрана. -->
-  <div class="hero-video-modal-backdrop" id="hero-video-modal-backdrop" aria-hidden="true">
-    <div
-      class="hero-video-modal"
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby="hero-video-modal-title"
-    >
-      <button type="button" class="hero-video-modal-close" id="hero-video-modal-close" aria-label="Закрыть">
-        &times;
-      </button>
-      <h3 class="hero-video-modal-title" id="hero-video-modal-title">Мнение экспертов об HTA</h3>
-      <div class="hero-video-modal-body">
-        <iframe
-          id="hero-youtube-embed"
-          class="hero-youtube-embed"
-          title="Какая школа HTA?"
-          src="about:blank"
-          referrerpolicy="strict-origin-when-cross-origin"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
-          allowfullscreen
-        ></iframe>
-      </div>
-    </div>
-  </div>
-
-  <!-- CONSULT MODAL: всплывающая форма консультации. -->
-  <div class="consult-modal-backdrop" id="consult-modal-backdrop" aria-hidden="true">
-    <div class="consult-modal-window" role="dialog" aria-modal="true" aria-labelledby="consult-modal-title">
-      <button type="button" class="consult-modal-close" id="consult-modal-close" aria-label="Закрыть">&times;</button>
-      <h3 class="consult-modal-title" id="consult-modal-title">Записаться на консультацию</h3>
-      <form class="consult-modal-form" id="consult-modal-form" novalidate>
-        <div class="form-row">
-          <label class="visually-hidden" for="consult-name">Имя</label>
-          <input id="consult-name" name="name" type="text" required placeholder="Имя" />
-        </div>
-        <div class="form-row">
-          <label class="visually-hidden" for="consult-phone">Телефон</label>
-          <input id="consult-phone" name="phone" type="tel" required placeholder="Телефон" />
-        </div>
-        <button type="submit" class="btn btn-hero-submit btn-block">Отправить</button>
-        <p class="form-success" id="consult-modal-success" aria-live="polite"></p>
-      </form>
-    </div>
   </div>
 
   <script src="script.js" defer></script>
