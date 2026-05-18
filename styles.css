@@ -34,6 +34,10 @@ body.nav-open {
   overflow: hidden;
 }
 
+body.modal-open {
+  overflow: hidden;
+}
+
 img {
   display: block;
   max-width: 100%;
@@ -323,6 +327,12 @@ button {
   font-weight: 900;
 }
 
+.section-title-right {
+  display: block;
+  width: 100%;
+  text-align: right;
+}
+
 .why-grid {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 380px;
@@ -457,8 +467,28 @@ button {
   width: 100%;
   min-height: 245px;
   place-items: center;
+  padding: 0;
+  border: 0;
   border-radius: 10px;
   background: var(--dark-deep);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.video-placeholder:hover,
+.video-placeholder:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.18);
+}
+
+.video-trigger:not([data-video-embed]) {
+  cursor: default;
+}
+
+.video-trigger:not([data-video-embed]):hover,
+.video-trigger:not([data-video-embed]):focus-visible {
+  transform: none;
+  box-shadow: none;
 }
 
 .play-button {
@@ -491,6 +521,7 @@ button {
   font-size: 46px;
   font-weight: 700;
   line-height: 1.18;
+  text-align: right;
 }
 
 .korda-grid {
@@ -865,6 +896,77 @@ button {
   font-family: var(--sans);
   font-size: 22px;
   font-weight: 900;
+}
+
+.video-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+
+.video-modal.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.video-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(19, 22, 25, 0.82);
+}
+
+.video-modal__dialog {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 920px);
+  padding: 22px 22px 18px;
+  border-radius: 20px;
+  background: #111111;
+  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.35);
+}
+
+.video-modal__close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 40px;
+  height: 40px;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.video-modal__title {
+  margin: 0 44px 14px 0;
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.video-modal__body {
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: 14px;
+  background: #000000;
+}
+
+.video-modal__body iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
 }
 
 .life-collage {
@@ -1349,6 +1451,10 @@ button {
     right: 20px;
     bottom: 20px;
   }
+
+  .video-modal__dialog {
+    width: min(100%, 760px);
+  }
 }
 
 @media (max-width: 760px) {
@@ -1480,6 +1586,15 @@ button {
     height: 44px;
     font-size: 15px;
   }
+
+  .video-modal {
+    padding: 16px;
+  }
+
+  .video-modal__dialog {
+    padding: 18px 18px 14px;
+    border-radius: 16px;
+  }
 }
 
 @media (max-width: 540px) {
@@ -1533,6 +1648,10 @@ button {
   .life-collage {
     grid-template-columns: 1fr;
     grid-auto-rows: 168px;
+  }
+
+  .video-modal__title {
+    font-size: 16px;
   }
 
   .floating-cta {

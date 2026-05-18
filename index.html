@@ -89,7 +89,7 @@
     <section id="about" class="section section-why">
       <div class="container why-grid">
         <div class="why-copy">
-          <p class="label">Почему это важно сейчас</p>
+          <p class="label section-title-right">Почему это важно сейчас</p>
           <h2>Мир изменился<br />Школа должна меняться<br />вместе с ним</h2>
           <p>
             Десятилетиями успех в школе означал: запомни информацию, выполни
@@ -142,18 +142,23 @@
     <section class="section dark-band section-learning">
       <div class="container learning-grid">
         <div>
-          <p class="label">ДНК системы обучения в HTA</p>
+          <p class="label section-title-right">ДНК системы обучения в HTA</p>
           <h2>Обучение в HTA не простое накопление знаний, а умение ими пользоваться в реальном мире</h2>
         </div>
-        <div class="video-placeholder" aria-label="Видео-плейсхолдер">
+        <button
+          type="button"
+          class="video-placeholder video-trigger"
+          aria-label="Открыть видео о системе обучения HTA"
+          data-video-title="Видео о системе обучения HTA"
+        >
           <span class="play-button" aria-hidden="true"></span>
-        </div>
+        </button>
       </div>
     </section>
 
     <section id="projects" class="section section-korda">
       <div class="container">
-        <p class="label">Проектное обучение</p>
+        <p class="label section-title-right">Korda Method School</p>
         <h2>
           Навыки развиваются через<br/>
           практику и действие
@@ -178,9 +183,15 @@
               устойчивость, гибкость мышления и готовность пробовать снова.
             </p>
           </div>
-          <div class="video-placeholder video-placeholder-light" aria-label="Видео-плейсхолдер">
+          <button
+            type="button"
+            class="video-placeholder video-placeholder-light video-trigger"
+            aria-label="Открыть видео Korda Method School"
+            data-video-title="Korda Method School"
+            data-video-embed="https://www.instagram.com/reel/DUS1-FtjW8Z/embed"
+          >
             <span class="play-button" aria-hidden="true"></span>
-          </div>
+          </button>
         </div>
 
         <div class="project-grid" aria-label="Карточки проектных задач">
@@ -234,7 +245,7 @@
         </div>
 
         <div class="entrepreneur-copy">
-          <p class="label">Курс по предпринимательству</p>
+          <p class="label section-title-right">Курс по предпринимательству</p>
           <h2>Мышление, которое нужно ученикам, когда будущее невозможно предсказать</h2>
           <p>
             За год ученики проходят путь от реальных задач казахстанского бизнеса
@@ -256,7 +267,7 @@
         <div class="minerva-mark" aria-hidden="true">
           <img src="./logo/MBacc.png" alt="Minerva Baccalaureate" width="140" height="60" loading="lazy" />
         </div>
-        <p class="label">Minerva Baccalaureate</p>
+        <p class="label section-title-right">Minerva Baccalaureate</p>
         <h2>Программа повышенной академической сложности для старшей школы</h2>
         <div class="lime-rule" aria-hidden="true"></div>
 
@@ -277,16 +288,21 @@
               американский Minerva Baccalaureate
             </p>
           </div>
-          <div class="video-placeholder" aria-label="Видео-плейсхолдер">
+          <button
+            type="button"
+            class="video-placeholder video-trigger"
+            aria-label="Открыть видео Minerva Baccalaureate"
+            data-video-title="Minerva Baccalaureate"
+          >
             <span class="play-button" aria-hidden="true"></span>
-          </div>
+          </button>
         </div>
       </div>
     </section>
 
     <section class="section section-happy">
       <div class="container">
-        <p class="label">Счастливое детство</p>
+        <p class="label section-title-right">Счастливое детство</p>
         <div class="quote-row">
           <div class="quote-mark" aria-hidden="true">“</div>
           <blockquote>Невозможно заранее предсказать, каким вырастет человек. Можно только создать условия, в которых он начнет развиваться и раскрываться</blockquote>
@@ -320,7 +336,7 @@
 
     <section id="life" class="section section-life">
       <div class="container">
-        <h2>Жизнь в HTA</h2>
+        <h2 class="section-title-right">Жизнь в HTA</h2>
         <div class="life-collage" aria-label="Жизнь в HTA">
           <div class="life-cell life-cell--wide life-cell-1">
             <img src="./images/Жизнь в HTA/1.webp" alt="" loading="lazy" />
@@ -496,6 +512,15 @@
 
   <div class="b24-loader-host" aria-hidden="true">
     <script data-b24-form="click/32/3816ef" data-skip-moving="true">(function(w,d,u){var s=d.createElement('script');s.async=true;s.src=u+'?'+(Date.now()/180000|0);var h=d.getElementsByTagName('script')[0];h.parentNode.insertBefore(s,h);})(window,document,'https://cdn-ru.bitrix24.kz/b18109524/crm/form/loader_32.js');</script>
+  </div>
+
+  <div class="video-modal" id="video-modal" aria-hidden="true">
+    <div class="video-modal__backdrop" data-video-close></div>
+    <div class="video-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="video-modal-title">
+      <button type="button" class="video-modal__close" aria-label="Закрыть видео" data-video-close>×</button>
+      <p class="video-modal__title" id="video-modal-title">Видео</p>
+      <div class="video-modal__body" id="video-modal-body"></div>
+    </div>
   </div>
 
   <script src="script.js" defer></script>

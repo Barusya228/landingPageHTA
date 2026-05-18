@@ -126,8 +126,61 @@ function initLeadButtons() {
   });
 }
 
+function initVideoModal() {
+  const modal = document.getElementById("video-modal");
+  const modalBody = document.getElementById("video-modal-body");
+  const modalTitle = document.getElementById("video-modal-title");
+  const triggers = Array.from(document.querySelectorAll(".video-trigger"));
+
+  if (!(modal instanceof HTMLElement) || !(modalBody instanceof HTMLElement) || !(modalTitle instanceof HTMLElement) || !triggers.length) {
+    return;
+  }
+
+  const closeModal = () => {
+    modal.classList.remove("is-open");
+    modal.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("modal-open");
+    modalBody.replaceChildren();
+  };
+
+  const openModal = (title, embedUrl) => {
+    if (!embedUrl) return;
+
+    const iframe = document.createElement("iframe");
+    iframe.src = embedUrl;
+    iframe.title = title;
+    iframe.allow = "autoplay; encrypted-media; picture-in-picture; web-share";
+    iframe.allowFullscreen = true;
+
+    modalTitle.textContent = title;
+    modalBody.replaceChildren(iframe);
+    modal.classList.add("is-open");
+    modal.setAttribute("aria-hidden", "false");
+    document.body.classList.add("modal-open");
+  };
+
+  triggers.forEach((trigger) => {
+    trigger.addEventListener("click", () => {
+      if (!(trigger instanceof HTMLElement)) return;
+      openModal(
+        trigger.dataset.videoTitle || "Видео",
+        trigger.dataset.videoEmbed || ""
+      );
+    });
+  });
+
+  modal.querySelectorAll("[data-video-close]").forEach((control) => {
+    control.addEventListener("click", closeModal);
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && modal.classList.contains("is-open")) closeModal();
+  });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   initHeader();
   initSlider();
   initLeadButtons();
+  initVideoModal();
 });
