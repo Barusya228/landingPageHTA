@@ -330,20 +330,20 @@ button {
 .section-title-right {
   display: block;
   width: 100%;
-  text-align: right;
+  text-align: left;
 }
 
 .why-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 380px;
-  column-gap: 108px;
-  row-gap: 56px;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  column-gap: 76px;
+  row-gap: 48px;
   align-items: start;
 }
 
 .why-copy h2 {
   margin: 0 0 34px;
-  max-width: 650px;
+  max-width: 620px;
   color: #404852;
   font-size: 48px;
   font-weight: 700;
@@ -351,7 +351,7 @@ button {
 }
 
 .why-copy p {
-  max-width: 720px;
+  max-width: 690px;
   margin: 0 0 24px;
   color: #404852;
   font-size: 18px;
@@ -360,52 +360,54 @@ button {
 }
 
 .question-box {
-  min-height: 268px;
-  margin-top: 34px;
-  padding: 50px 38px 38px;
+  min-height: 320px;
+  margin-top: 28px;
+  padding: 42px 30px 34px;
   border: 2px solid var(--line);
-  border-radius: 9px;
+  border-radius: 18px;
   color: #404852;
   text-align: center;
 }
 
 .question-box strong {
   display: block;
-  margin-bottom: 34px;
+  margin-bottom: 30px;
   color: var(--green);
-  font-size: 17px;
+  font-size: 15px;
   font-weight: 800;
-  line-height: 1.35;
+  line-height: 1.45;
 }
 
 .question-box span {
   display: block;
-  font-size: 23px;
+  font-size: 21px;
   font-weight: 800;
-  line-height: 1.34;
+  line-height: 1.4;
 }
 
 .why-cards {
   grid-column: 1 / -1;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 56px;
+  grid-template-columns: repeat(3, minmax(0, 300px));
+  justify-content: space-between;
+  gap: 28px;
 }
 
 .why-cards article {
-  min-height: 340px;
-  padding: 38px 34px 32px;
-  border-radius: 12px;
+  min-height: 404px;
+  padding: 30px 30px 28px;
+  border-radius: 16px;
   background: var(--dark);
   color: #ffffff;
 }
 
 .why-cards h3 {
-  margin: 0 auto 34px;
+  min-height: 96px;
+  margin: 0 0 28px;
   color: var(--green);
-  font-size: 24px;
+  font-size: 22px;
   font-weight: 800;
-  line-height: 1.2;
+  line-height: 1.25;
   text-align: center;
 }
 
@@ -413,9 +415,9 @@ button {
   margin: 0;
   color: #ffffff;
   font-family: var(--sans);
-  font-size: 17px;
+  font-size: 16px;
   font-weight: 800;
-  line-height: 1.23;
+  line-height: 1.45;
 }
 
 .dark-band {
@@ -521,7 +523,7 @@ button {
   font-size: 46px;
   font-weight: 700;
   line-height: 1.18;
-  text-align: right;
+  text-align: left;
 }
 
 .korda-grid {
@@ -660,7 +662,7 @@ button {
 }
 
 .entrepreneur-copy {
-  text-align: center;
+  text-align: right;
 }
 
 .entrepreneur-copy .label {
@@ -797,8 +799,9 @@ button {
 
 .quote-author {
   grid-column: 2;
-  margin: 20px 0 0 230px;
-  font-size: 14px;
+  margin: 20px 0 0 140px;
+  font-size: 18px;
+  line-height: 1.35;
 }
 
 .happy-grid {
@@ -896,6 +899,22 @@ button {
   font-family: var(--sans);
   font-size: 22px;
   font-weight: 900;
+}
+
+.life-quote {
+  max-width: 980px;
+  margin: 0 0 34px;
+}
+
+.life-quote blockquote {
+  margin-top: 10px;
+  font-size: 29px;
+  line-height: 1.35;
+}
+
+.life-quote .quote-author {
+  margin-top: 14px;
+  color: #6c6f73;
 }
 
 .video-modal {
@@ -1156,8 +1175,11 @@ button {
 }
 
 .experts-grid .quote-row {
+  align-self: stretch;
+  min-height: 100%;
   max-width: none;
   margin: 0 0 28px;
+  grid-template-rows: auto 1fr auto;
   grid-template-columns: 48px minmax(0, 1fr);
 }
 
@@ -1172,7 +1194,10 @@ button {
 
 .experts-grid .quote-author {
   grid-column: 2;
-  margin: 16px 0 0 120px;
+  align-self: end;
+  margin: 18px 0 0 72px;
+  font-size: 17px;
+  line-height: 1.35;
 }
 
 .section-choice {
@@ -1643,6 +1668,11 @@ button {
 
   .quote-author {
     margin-left: 0;
+    font-size: 16px;
+  }
+
+  .life-quote blockquote {
+    font-size: 24px;
   }
 
   .life-collage {
