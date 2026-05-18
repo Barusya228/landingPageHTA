@@ -96,15 +96,27 @@ button {
 
 .brand {
   display: inline-flex;
+  flex-direction: column;
   align-items: center;
   flex: 0 0 auto;
-  width: 92px;
+  width: 136px;
   text-decoration: none;
 }
 
 .brand img {
   width: 82px;
   height: auto;
+}
+
+.brand span {
+  margin-top: 4px;
+  color: #5a5757;
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.1;
+  text-align: center;
+  white-space: nowrap;
 }
 
 .site-nav {
@@ -550,6 +562,20 @@ button {
   line-height: 1.34;
 }
 
+.korda-inline-brand {
+  display: inline-flex;
+  align-items: center;
+  margin-right: 4px;
+  vertical-align: baseline;
+}
+
+.korda-inline-brand img {
+  display: block;
+  width: 170px;
+  height: auto;
+  object-fit: contain;
+}
+
 .video-placeholder-light {
   min-height: 210px;
 }
@@ -868,6 +894,10 @@ button {
   margin: 12px 0 0;
   font-size: 18px;
   line-height: 1.35;
+}
+
+.section-happy .quote-row {
+  margin-bottom: 72px;
 }
 
 .happy-grid {
@@ -1711,8 +1741,16 @@ button {
     width: calc(100% - 28px);
   }
 
+  .brand {
+    width: 118px;
+  }
+
   .brand img {
     width: 72px;
+  }
+
+  .brand span {
+    font-size: 11px;
   }
 
   .section {
