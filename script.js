@@ -138,12 +138,13 @@ function initVideoModal() {
 
   const closeModal = () => {
     modal.classList.remove("is-open");
+    modal.classList.remove("is-portrait");
     modal.setAttribute("aria-hidden", "true");
     document.body.classList.remove("modal-open");
     modalBody.replaceChildren();
   };
 
-  const openModal = (title, embedUrl) => {
+  const openModal = (title, embedUrl, orientation) => {
     if (!embedUrl) return;
 
     const iframe = document.createElement("iframe");
@@ -154,6 +155,7 @@ function initVideoModal() {
 
     modalTitle.textContent = title;
     modalBody.replaceChildren(iframe);
+    modal.classList.toggle("is-portrait", orientation === "portrait");
     modal.classList.add("is-open");
     modal.setAttribute("aria-hidden", "false");
     document.body.classList.add("modal-open");
@@ -164,7 +166,8 @@ function initVideoModal() {
       if (!(trigger instanceof HTMLElement)) return;
       openModal(
         trigger.dataset.videoTitle || "Видео",
-        trigger.dataset.videoEmbed || ""
+        trigger.dataset.videoEmbed || "",
+        trigger.dataset.videoOrientation || ""
       );
     });
   });

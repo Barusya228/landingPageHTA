@@ -360,30 +360,8 @@ button {
 }
 
 .why-quote {
-  grid-template-columns: 54px minmax(0, 1fr);
-  max-width: 620px;
   margin: 56px 0 -40px 0;
   justify-self: start;
-}
-
-.why-quote .quote-mark {
-  justify-self: start;
-}
-
-.why-quote blockquote,
-.why-quote .quote-author {
-  grid-column: 2;
-}
-
-.why-quote blockquote {
-  margin-top: 6px;
-  font-size: 28px;
-  line-height: 1.32;
-}
-
-.why-quote .quote-author {
-  margin-top: 10px;
-  color: #6c6f73;
 }
 
 .question-box {
@@ -863,9 +841,9 @@ button {
 
 .quote-row {
   display: grid;
-  grid-template-columns: 60px minmax(0, 1fr);
-  max-width: 830px;
-  margin: 0 0 42px 100px;
+  grid-template-columns: 54px minmax(0, 1fr);
+  max-width: 760px;
+  margin: 0 0 42px;
   color: #404852;
 }
 
@@ -878,15 +856,16 @@ button {
 }
 
 .quote-row blockquote {
-  margin: 16px 0 0;
-  font-size: 23px;
+  grid-column: 2;
+  margin: 8px 0 0;
+  font-size: 26px;
   font-weight: 500;
-  line-height: 1.45;
+  line-height: 1.38;
 }
 
 .quote-author {
   grid-column: 2;
-  margin: 20px 0 0 140px;
+  margin: 12px 0 0;
   font-size: 18px;
   line-height: 1.35;
 }
@@ -989,18 +968,12 @@ button {
 }
 
 .life-quote {
-  max-width: 980px;
   margin: 0 0 34px;
 }
 
-.life-quote blockquote {
-  margin-top: 10px;
-  font-size: 29px;
-  line-height: 1.35;
-}
-
-.life-quote .quote-author {
-  margin-top: 14px;
+.why-quote .quote-author,
+.life-quote .quote-author,
+.section-happy .quote-author {
   color: #6c6f73;
 }
 
@@ -1073,6 +1046,20 @@ button {
   width: 100%;
   height: 100%;
   border: 0;
+}
+
+.video-modal.is-portrait .video-modal__dialog {
+  width: min(100%, 460px);
+  padding: 18px 18px 16px;
+}
+
+.video-modal.is-portrait .video-modal__title {
+  margin-bottom: 10px;
+}
+
+.video-modal.is-portrait .video-modal__body {
+  aspect-ratio: 9 / 16;
+  max-height: calc(100vh - 150px);
 }
 
 .life-collage {
@@ -1706,6 +1693,15 @@ button {
   .video-modal__dialog {
     padding: 18px 18px 14px;
     border-radius: 16px;
+  }
+
+  .video-modal.is-portrait .video-modal__dialog {
+    width: min(100%, 390px);
+    padding: 16px 16px 14px;
+  }
+
+  .video-modal.is-portrait .video-modal__body {
+    max-height: calc(100vh - 120px);
   }
 }
 
