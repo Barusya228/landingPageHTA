@@ -102,18 +102,27 @@ function initLeadButtons() {
   const buttons = document.querySelectorAll(".b24-web-form-popup-btn-32");
   buttons.forEach((button) => {
     button.addEventListener("click", async (event) => {
-      event.preventDefault();
-      event.stopImmediatePropagation();
-
-      if (openB24Form()) return;
+      if (openB24Form()) {
+        event.preventDefault();
+        return;
+      }
 
       try {
         await loadB24Form();
-        setTimeout(openB24Form, 350);
+
+        if (openB24Form()) {
+          event.preventDefault();
+          return;
+        }
+
+        // If the widget initializes with a small delay, try opening it once more.
+        window.setTimeout(() => {
+          openB24Form();
+        }, 350);
       } catch (error) {
         console.error("Bitrix24 form loader failed", error);
       }
-    }, true);
+    });
   });
 }
 
