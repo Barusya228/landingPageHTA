@@ -60,7 +60,65 @@ function initSlider() {
   });
 }
 
+const b24FormConfig = {
+  id: "32",
+  lang: "ru",
+  sec: "3816ef",
+  type: "popup",
+};
+
+let b24LoaderPromise = null;
+
+function openB24Form() {
+  if (typeof window.b24form !== "function") return false;
+  window.b24form(b24FormConfig);
+  return true;
+}
+
+function loadB24Form() {
+  if (b24LoaderPromise) return b24LoaderPromise;
+
+  b24LoaderPromise = new Promise((resolve, reject) => {
+    const existingScript = document.querySelector('script[src*="/crm/form/loader_32.js"]');
+    if (existingScript) {
+      setTimeout(resolve, 300);
+      return;
+    }
+
+    const script = document.createElement("script");
+    script.async = true;
+    script.src = `https://cdn-ru.bitrix24.kz/b18109524/crm/form/loader_32.js?${Math.floor(Date.now() / 180000)}`;
+    script.dataset.b24Form = "click/32/3816ef";
+    script.dataset.skipMoving = "true";
+    script.onload = resolve;
+    script.onerror = reject;
+    document.head.appendChild(script);
+  });
+
+  return b24LoaderPromise;
+}
+
+function initLeadButtons() {
+  const buttons = document.querySelectorAll(".b24-web-form-popup-btn-32");
+  buttons.forEach((button) => {
+    button.addEventListener("click", async (event) => {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+
+      if (openB24Form()) return;
+
+      try {
+        await loadB24Form();
+        setTimeout(openB24Form, 350);
+      } catch (error) {
+        console.error("Bitrix24 form loader failed", error);
+      }
+    }, true);
+  });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   initHeader();
   initSlider();
+  initLeadButtons();
 });
