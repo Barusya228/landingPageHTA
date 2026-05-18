@@ -6,7 +6,7 @@
   --green: #65b52a;
   --orange: #ff7020;
   --line: #7a7a7a;
-  --container: 1320px;
+  --container: 1240px;
   --header-height: 102px;
   --font: "Roboto Slab", Georgia, serif;
   --sans: Arial, Helvetica, sans-serif;
@@ -89,7 +89,7 @@ button {
   display: flex;
   align-items: center;
   height: var(--header-height);
-  width: min(calc(100% - 170px), 1500px);
+  width: min(calc(100% - 170px), var(--container));
   margin: 0 auto;
   gap: 46px;
 }
@@ -208,6 +208,36 @@ button {
 
 .nav-toggle.is-open span:nth-child(3) {
   transform: translateY(-7px) rotate(-45deg);
+}
+
+.site-header.is-collapsed .site-nav {
+  position: absolute;
+  top: var(--header-height);
+  right: 0;
+}
+
+.site-header.is-collapsed .nav-toggle {
+  display: block;
+}
+
+.site-header.is-collapsed .header-social-links {
+  display: none;
+}
+
+.site-header.is-collapsed .nav-list {
+  position: fixed;
+  inset: var(--header-height) 0 auto auto;
+  display: none;
+  width: min(320px, 100%);
+  padding: 24px;
+  border-bottom-left-radius: 14px;
+  background: #ffffff;
+  box-shadow: 0 18px 38px rgba(0, 0, 0, 0.16);
+}
+
+.site-header.is-collapsed .nav-list.is-open {
+  display: grid;
+  gap: 22px;
 }
 
 .hero {
@@ -348,13 +378,15 @@ button {
 .why-grid {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 320px;
-  column-gap: 76px;
-  row-gap: 24px;
+  column-gap: 40px;
+  row-gap: 16px;
   align-items: start;
+  max-width: 1240px;
+  margin: 0 auto;
 }
 
 .why-copy h2 {
-  margin: 0 0 34px;
+  margin: 0 0 22px;
   max-width: 620px;
   color: #404852;
   font-size: 48px;
@@ -364,7 +396,7 @@ button {
 
 .why-copy p {
   max-width: 690px;
-  margin: 0 0 24px;
+  margin: 0 0 18px;
   color: #404852;
   font-size: 18px;
   font-weight: 400;
@@ -372,13 +404,13 @@ button {
 }
 
 .why-quote {
-  margin: 56px 0 -40px 0;
+  margin: 12px 0 8px 0;
   justify-self: start;
 }
 
 .question-box {
   min-height: 320px;
-  margin-top: 28px;
+  margin-top: 10px;
   padding: 42px 30px 34px;
   border: 2px solid var(--line);
   border-radius: 18px;
@@ -390,14 +422,14 @@ button {
   display: block;
   margin-bottom: 30px;
   color: var(--green);
-  font-size: 15px;
+  font-size: 19px;
   font-weight: 800;
   line-height: 1.45;
 }
 
 .question-box span {
   display: block;
-  font-size: 21px;
+  font-size: 17px;
   font-weight: 800;
   line-height: 1.4;
 }
@@ -408,15 +440,21 @@ button {
   grid-template-columns: repeat(3, minmax(0, 300px));
   justify-content: center;
   gap: 22px;
-  margin-top: -56px;
+  margin-top: 24px;
 }
 
 .why-cards article {
   min-height: 404px;
   padding: 30px 30px 28px;
   border-radius: 16px;
-  background: var(--dark);
-  color: #ffffff;
+  border: 1px solid #d6d6d6;
+  background: var(--white);
+  color: #5f5f5f;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.92),
+    0 2px 4px rgba(37, 37, 36, 0.08),
+    0 10px 18px rgba(37, 37, 36, 0.12),
+    0 24px 40px rgba(37, 37, 36, 0.16);
 }
 
 .why-cards h3 {
@@ -431,7 +469,7 @@ button {
 
 .why-cards p {
   margin: 0;
-  color: #ffffff;
+  color: #5f5f5f;
   font-family: var(--sans);
   font-size: 16px;
   font-weight: 800;
@@ -794,7 +832,7 @@ button {
 
 .minerva-panel {
   position: relative;
-  width: min(calc(100% - 40px), 1320px);
+  width: min(calc(100% - 40px), var(--container));
   margin: 0 auto;
   padding: 18px 56px 48px;
   border-radius: 24px;
@@ -986,7 +1024,7 @@ button {
 }
 
 .section-life .container {
-  width: min(calc(100% - 36px), 1320px);
+  width: min(calc(100% - 36px), var(--container));
 }
 
 .section-life h2 {
@@ -1120,32 +1158,12 @@ button {
   height: 100%;
   object-fit: cover;
   opacity: 0;
-  animation: lifeFade 15s infinite;
+  transition: opacity 700ms ease;
 }
 
-.life-cell img:nth-child(2) {
-  animation-delay: 5s;
-}
-
-.life-cell img:nth-child(3) {
-  animation-delay: 10s;
-}
-
-.life-cell:nth-child(2) img,
-.life-cell:nth-child(6) img,
-.life-cell:nth-child(10) img {
-  animation-duration: 18s;
-}
-
-.life-cell:nth-child(3) img,
-.life-cell:nth-child(8) img,
-.life-cell:nth-child(11) img {
-  animation-duration: 21s;
-}
-
-.life-cell:nth-child(4) img,
-.life-cell:nth-child(9) img {
-  animation-duration: 24s;
+.life-cell img.is-active,
+.life-cell img:first-child {
+  opacity: 1;
 }
 
 .life-cell-1 { grid-column: 1 / 5; grid-row: 1 / 3; }
@@ -1159,18 +1177,6 @@ button {
 .life-cell-9 { grid-column: 1 / 5; grid-row: 5 / 7; }
 .life-cell-10 { grid-column: 5 / 7; grid-row: 5 / 7; }
 .life-cell-11 { grid-column: 7 / 11; grid-row: 5 / 7; }
-
-@keyframes lifeFade {
-  0%,
-  27% {
-    opacity: 1;
-  }
-
-  34%,
-  100% {
-    opacity: 0;
-  }
-}
 
 .section-voices {
   padding: 14px 0 70px;
@@ -1229,7 +1235,7 @@ button {
   overflow: hidden;
   padding: 28px 22px 20px;
   border-radius: 9px;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.54), rgba(0, 0, 0, 0.56)), var(--testimonial-bg);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.24), rgba(0, 0, 0, 0.28)), var(--testimonial-bg);
   background-position: center;
   background-size: cover;
   color: #ffffff;
@@ -1251,6 +1257,7 @@ button {
   font-family: var(--sans);
   font-size: 14px;
   font-weight: 800;
+  font-style: italic;
   line-height: 1.18;
 }
 
@@ -1273,14 +1280,16 @@ button {
 .experts-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 36px;
-  max-width: 960px;
+  gap: 88px;
+  width: 100%;
+  max-width: 1280px;
   margin: 0 auto;
 }
 
 .experts-grid .quote-row {
   align-self: stretch;
   min-height: 100%;
+  width: 100%;
   max-width: none;
   margin: 0 0 28px;
   grid-template-rows: auto 1fr auto;

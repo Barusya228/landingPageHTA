@@ -1,13 +1,51 @@
 function initHeader() {
+  const header = document.querySelector(".site-header");
+  const headerInner = document.querySelector(".header-inner");
+  const brand = document.querySelector(".brand");
+  const socialLinks = document.querySelector(".header-social-links");
   const toggle = document.querySelector(".nav-toggle");
   const navList = document.getElementById("nav-list");
-  if (!(toggle instanceof HTMLButtonElement) || !(navList instanceof HTMLElement)) return;
+  if (
+    !(header instanceof HTMLElement) ||
+    !(headerInner instanceof HTMLElement) ||
+    !(brand instanceof HTMLElement) ||
+    !(socialLinks instanceof HTMLElement) ||
+    !(toggle instanceof HTMLButtonElement) ||
+    !(navList instanceof HTMLElement)
+  ) {
+    return;
+  }
 
   const closeMenu = () => {
     navList.classList.remove("is-open");
     toggle.classList.remove("is-open");
     toggle.setAttribute("aria-expanded", "false");
     document.body.classList.remove("nav-open");
+  };
+
+  const updateHeaderLayout = () => {
+    const forceCollapsed = window.innerWidth <= 760;
+    const collisionGap = 12;
+
+    header.classList.remove("is-collapsed");
+
+    if (!forceCollapsed) {
+      const brandRect = brand.getBoundingClientRect();
+      const navRect = navList.getBoundingClientRect();
+      const socialRect = socialLinks.getBoundingClientRect();
+      const hasLeftCollision = navRect.left <= brandRect.right + collisionGap;
+      const hasRightCollision = navRect.right >= socialRect.left - collisionGap;
+
+      if (hasLeftCollision || hasRightCollision) {
+        header.classList.add("is-collapsed");
+      }
+    } else {
+      header.classList.add("is-collapsed");
+    }
+
+    if (!header.classList.contains("is-collapsed")) {
+      closeMenu();
+    }
   };
 
   toggle.addEventListener("click", () => {
@@ -29,9 +67,13 @@ function initHeader() {
     if (!navList.contains(target) && !toggle.contains(target)) closeMenu();
   });
 
-  window.addEventListener("resize", () => {
-    if (window.innerWidth > 760) closeMenu();
-  });
+  window.addEventListener("resize", updateHeaderLayout);
+
+  if (document.fonts?.ready) {
+    document.fonts.ready.then(updateHeaderLayout).catch(() => {});
+  }
+
+  updateHeaderLayout();
 }
 
 function initSlider() {
@@ -58,6 +100,43 @@ function initSlider() {
     currentIndex = (currentIndex + 1) % slides.length;
     showSlide(currentIndex);
   });
+}
+
+function initLifeCollage() {
+  const cells = Array.from(document.querySelectorAll(".life-cell"));
+  if (!cells.length) return;
+
+  cells.forEach((cell, cellIndex) => {
+    const images = Array.from(cell.querySelectorAll("img"));
+    if (images.length < 2) return;
+
+    let currentIndex = 0;
+    const rotationInterval = 5000 + (cellIndex % 4) * 700;
+    const startDelay = cellIndex * 220;
+
+    images.forEach((image, imageIndex) => {
+      image.classList.toggle("is-active", imageIndex === 0);
+    });
+
+    const showNextImage = () => {
+      images[currentIndex].classList.remove("is-active");
+      currentIndex = (currentIndex + 1) % images.length;
+      images[currentIndex].classList.add("is-active");
+    };
+
+    window.setTimeout(() => {
+      window.setInterval(showNextImage, rotationInterval);
+    }, startDelay);
+  });
+}
+
+function initWhyQuotePlacement() {
+  const whyCopy = document.querySelector(".why-copy");
+  const heading = whyCopy?.querySelector("h2");
+  const quote = whyCopy?.querySelector(".why-quote");
+  if (!(whyCopy instanceof HTMLElement) || !(heading instanceof HTMLElement) || !(quote instanceof HTMLElement)) return;
+
+  heading.insertAdjacentElement("afterend", quote);
 }
 
 const b24FormConfig = {
@@ -184,6 +263,8 @@ function initVideoModal() {
 document.addEventListener("DOMContentLoaded", () => {
   initHeader();
   initSlider();
+  initWhyQuotePlacement();
+  initLifeCollage();
   initLeadButtons();
   initVideoModal();
 });
