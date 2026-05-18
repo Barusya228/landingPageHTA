@@ -102,6 +102,47 @@ function initSlider() {
   });
 }
 
+function initHeroSlider() {
+  const slides = Array.from(document.querySelectorAll(".hero-slide"));
+  if (slides.length < 2) return;
+
+  let currentIndex = Math.max(0, slides.findIndex((slide) => slide.classList.contains("is-active")));
+  let isAnimating = false;
+
+  slides.forEach((slide, index) => {
+    if (index !== currentIndex) {
+      slide.classList.remove("is-active", "is-exiting");
+    }
+  });
+
+  const showNextSlide = () => {
+    if (isAnimating) return;
+    isAnimating = true;
+
+    const currentSlide = slides[currentIndex];
+    const nextIndex = (currentIndex + 1) % slides.length;
+    const nextSlide = slides[nextIndex];
+
+    nextSlide.classList.remove("is-exiting");
+
+    window.requestAnimationFrame(() => {
+      currentSlide.classList.add("is-exiting");
+      nextSlide.classList.add("is-active");
+    });
+
+    window.setTimeout(() => {
+      currentSlide.classList.add("is-reset");
+      currentSlide.classList.remove("is-active", "is-exiting");
+      void currentSlide.offsetWidth;
+      currentSlide.classList.remove("is-reset");
+      currentIndex = nextIndex;
+      isAnimating = false;
+    }, 920);
+  };
+
+  window.setInterval(showNextSlide, 5500);
+}
+
 function initLifeCollage() {
   const cells = Array.from(document.querySelectorAll(".life-cell"));
   if (!cells.length) return;
@@ -154,13 +195,53 @@ function openB24Form() {
   return true;
 }
 
+function waitForB24Form(timeout = 8000) {
+  if (typeof window.b24form === "function") {
+    return Promise.resolve(true);
+  }
+
+  return new Promise((resolve) => {
+    const startedAt = Date.now();
+    const timer = window.setInterval(() => {
+      if (typeof window.b24form === "function") {
+        window.clearInterval(timer);
+        resolve(true);
+        return;
+      }
+
+      if (Date.now() - startedAt >= timeout) {
+        window.clearInterval(timer);
+        resolve(false);
+      }
+    }, 100);
+  });
+}
+
 function loadB24Form() {
   if (b24LoaderPromise) return b24LoaderPromise;
 
   b24LoaderPromise = new Promise((resolve, reject) => {
     const existingScript = document.querySelector('script[src*="/crm/form/loader_32.js"]');
     if (existingScript) {
-      setTimeout(resolve, 300);
+      if (typeof window.b24form === "function") {
+        resolve();
+        return;
+      }
+
+      const finishWhenReady = async () => {
+        const ready = await waitForB24Form();
+        if (ready) {
+          resolve();
+        } else {
+          reject(new Error("Bitrix24 form loader script found, but form API did not initialize"));
+        }
+      };
+
+      existingScript.addEventListener("load", finishWhenReady, { once: true });
+      existingScript.addEventListener("error", () => reject(new Error("Bitrix24 form loader failed")), { once: true });
+      window.setTimeout(() => {
+        finishWhenReady().catch(reject);
+      }, 150);
       return;
     }
 
@@ -169,7 +250,14 @@ function loadB24Form() {
     script.src = `https://cdn-ru.bitrix24.kz/b18109524/crm/form/loader_32.js?${Math.floor(Date.now() / 180000)}`;
     script.dataset.b24Form = "click/32/3816ef";
     script.dataset.skipMoving = "true";
-    script.onload = resolve;
+    script.onload = async () => {
+      const ready = await waitForB24Form();
+      if (ready) {
+        resolve();
+      } else {
+        reject(new Error("Bitrix24 form API did not initialize after script load"));
+      }
+    };
     script.onerror = reject;
     document.head.appendChild(script);
   });
@@ -181,8 +269,9 @@ function initLeadButtons() {
   const buttons = document.querySelectorAll(".b24-web-form-popup-btn-32");
   buttons.forEach((button) => {
     button.addEventListener("click", async (event) => {
+      event.preventDefault();
+
       if (openB24Form()) {
-        event.preventDefault();
         return;
       }
 
@@ -190,11 +279,10 @@ function initLeadButtons() {
         await loadB24Form();
 
         if (openB24Form()) {
-          event.preventDefault();
           return;
         }
 
-        // If the widget initializes with a small delay, try opening it once more.
+        // If the widget initializes with a small delay after becoming available, try once more.
         window.setTimeout(() => {
           openB24Form();
         }, 350);
@@ -262,6 +350,7 @@ function initVideoModal() {
 
 document.addEventListener("DOMContentLoaded", () => {
   initHeader();
+  initHeroSlider();
   initSlider();
   initWhyQuotePlacement();
   initLifeCollage();
