@@ -180,6 +180,71 @@ function initWhyQuotePlacement() {
   heading.insertAdjacentElement("afterend", quote);
 }
 
+function initWhyAccents() {
+  const whyCopy = document.querySelector(".why-copy");
+  if (!(whyCopy instanceof HTMLElement)) return;
+
+  const paragraphs = Array.from(whyCopy.querySelectorAll("p"));
+  const replacements = [
+    { match: "безнадежно", replacement: '<span class="why-accent">безнадежно</span>' },
+    { match: "умеет делать", replacement: '<span class="why-accent">умеет делать</span>' },
+  ];
+
+  paragraphs.forEach((paragraph) => {
+    let html = paragraph.innerHTML;
+    let changed = false;
+
+    replacements.forEach(({ match, replacement }) => {
+      if (html.includes(match)) {
+        html = html.replace(match, replacement);
+        changed = true;
+      }
+    });
+
+    if (changed) {
+      paragraph.innerHTML = html;
+    }
+  });
+}
+
+function initLearningAccent() {
+  const learningSection = document.querySelector(".section-learning");
+  const paragraphs = learningSection ? Array.from(learningSection.querySelectorAll("p")) : [];
+  if (!paragraphs.length) return;
+
+  paragraphs.forEach((paragraph) => {
+    if (paragraph.innerHTML.includes("единственная")) {
+      paragraph.innerHTML = paragraph.innerHTML.replace(
+        "единственная",
+        '<span class="learning-accent">единственная</span>'
+      );
+    }
+  });
+}
+
+function initEntrepreneurProjectCards() {
+  const kordaSection = document.querySelector(".section-korda");
+  const entrepreneurGrid = document.querySelector(".section-entrepreneur .entrepreneur-grid");
+  if (!(kordaSection instanceof HTMLElement) || !(entrepreneurGrid instanceof HTMLElement)) return;
+
+  const projectGrid = kordaSection.querySelector(".project-grid");
+  const instagramLine = kordaSection.querySelector(".instagram-line");
+
+  if (projectGrid instanceof HTMLElement) {
+    entrepreneurGrid.appendChild(projectGrid);
+  }
+
+  if (instagramLine instanceof HTMLElement) {
+    entrepreneurGrid.appendChild(instagramLine);
+  }
+
+  const strayProjectGrids = Array.from(document.querySelectorAll("main > .project-grid"));
+  strayProjectGrids.forEach((grid) => grid.remove());
+
+  const strayInstagramLines = Array.from(document.querySelectorAll("main > .instagram-line"));
+  strayInstagramLines.forEach((line) => line.remove());
+}
+
 const b24FormConfig = {
   id: "32",
   lang: "ru",
@@ -353,6 +418,9 @@ document.addEventListener("DOMContentLoaded", () => {
   initHeroSlider();
   initSlider();
   initWhyQuotePlacement();
+  initWhyAccents();
+  initLearningAccent();
+  initEntrepreneurProjectCards();
   initLifeCollage();
   initLeadButtons();
   initVideoModal();
