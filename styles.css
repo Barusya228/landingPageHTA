@@ -7,7 +7,7 @@
   --orange: #ff7020;
   --line: #7a7a7a;
   --container: 1240px;
-  --header-height: 102px;
+  --header-height: 110px;
   --font: "Roboto Slab", Georgia, serif;
   --sans: Arial, Helvetica, sans-serif;
 }
@@ -78,7 +78,7 @@ button {
   position: sticky;
   top: 0;
   z-index: 50;
-  height: var(--header-height);
+  min-height: var(--header-height);
   background: var(--white);
   border-top: 0;
   border-bottom: 1px solid #d7d7d7;
@@ -88,10 +88,12 @@ button {
   position: relative;
   display: flex;
   align-items: center;
-  height: var(--header-height);
-  width: min(calc(100% - 170px), var(--container));
+  min-height: var(--header-height);
+  width: calc(100% - 36px);
+  max-width: 1600px;
   margin: 0 auto;
-  gap: 46px;
+  gap: 20px;
+  padding: 16px 0;
 }
 
 .brand {
@@ -99,7 +101,7 @@ button {
   flex-direction: column;
   align-items: center;
   flex: 0 0 auto;
-  width: 136px;
+  width: 156px;
   text-decoration: none;
 }
 
@@ -120,7 +122,7 @@ button {
 }
 
 .site-nav {
-  flex: 1;
+  flex: 1 1 auto;
   min-width: 0;
 }
 
@@ -128,7 +130,7 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 42px;
+  gap: clamp(18px, 2vw, 34px);
   margin: 0;
   padding: 0;
   list-style: none;
@@ -137,18 +139,27 @@ button {
 .nav-list a {
   color: #5a5757;
   font-family: var(--sans);
-  font-size: 17px;
+  font-size: 15px;
   font-weight: 700;
-  line-height: 1;
+  line-height: 1.2;
   text-decoration: none;
   white-space: nowrap;
 }
 
 .header-social-links {
   display: flex;
-  gap: 16px;
+  gap: 12px;
   align-items: center;
   flex: 0 0 auto;
+  margin-left: auto;
+}
+
+.header-korda-logo {
+  width: 120px;
+  height: auto;
+  margin-left: 2px;
+  flex: 0 0 auto;
+  object-fit: contain;
 }
 
 .header-social-link {
@@ -294,7 +305,7 @@ button {
   position: relative;
   z-index: 2;
   width: min(1040px, calc(100% - 280px));
-  padding: 350px 20px 0 max(68px, calc((100vw - var(--container)) / 2));
+  padding: 390px 20px 0 max(68px, calc((100vw - var(--container)) / 2));
   color: #ffffff;
 }
 
@@ -657,11 +668,12 @@ button {
 
 .video-placeholder-korda {
   justify-self: center;
-  width: min(100%, 320px);
-  min-height: 568px;
-  margin-top: -150px;
+  width: min(100%, 368px);
+  min-height: 652px;
+  margin-top: -132px;
   aspect-ratio: 9 / 16;
-  border-radius: 18px;
+  padding: 12px;
+  border-radius: 26px;
   background:
     linear-gradient(180deg, rgba(17, 20, 25, 0.12) 0%, rgba(17, 20, 25, 0.52) 100%),
     url("./images/Видео/Students.webp") center center / cover no-repeat;
@@ -684,8 +696,8 @@ button {
 .video-placeholder-korda::after {
   content: "Instagram Reel";
   position: absolute;
-  right: 16px;
-  bottom: 14px;
+  right: 22px;
+  bottom: 18px;
   padding: 6px 10px;
   border-radius: 999px;
   background: rgba(16, 18, 22, 0.58);
@@ -697,6 +709,8 @@ button {
 }
 
 .video-placeholder-korda .play-button {
+  position: relative;
+  z-index: 2;
   width: 68px;
   height: 68px;
   background: rgba(101, 181, 42, 0.95);
@@ -709,6 +723,68 @@ button {
   border-top-width: 15px;
   border-bottom-width: 15px;
   border-left-width: 20px;
+}
+
+.video-inline-trigger {
+  position: relative;
+  overflow: hidden;
+  border: 0;
+  cursor: pointer;
+}
+
+.video-inline-cover {
+  position: absolute;
+  inset: 12px;
+  border-radius: 18px;
+  background:
+    linear-gradient(180deg, rgba(23, 27, 31, 0.12), rgba(23, 27, 31, 0.42)),
+    var(--inline-video-cover, url("./images/Korda Method School/3.webp")) center center / cover no-repeat;
+}
+
+.video-inline-trigger iframe {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  min-height: 628px;
+  border: 0;
+  border-radius: 18px;
+  background: #ffffff;
+}
+
+.korda-cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  margin-top: 42px;
+}
+
+.korda-cards article {
+  min-height: 250px;
+  padding: 28px 26px;
+  border: 2px solid #5f5f5f;
+  border-radius: 24px;
+  background: #ffffff;
+  box-shadow:
+    0 6px 14px rgba(35, 48, 64, 0.08),
+    0 16px 34px rgba(35, 48, 64, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.korda-cards h3 {
+  margin: 0 0 18px;
+  color: var(--green);
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.korda-cards p {
+  margin: 0;
+  color: #5f5f5f;
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 1.42;
 }
 
 .project-grid {
@@ -1005,10 +1081,10 @@ main > .instagram-line {
 
 .happy-grid article {
   display: grid;
-  grid-template-rows: 176px 1fr;
+  grid-template-rows: 138px 1fr;
   align-items: start;
-  min-height: 410px;
-  padding: 30px 30px 28px;
+  min-height: 330px;
+  padding: 26px 30px 24px;
   border: 2px solid var(--green);
   border-radius: 16px;
   background: var(--white);
@@ -1135,60 +1211,79 @@ main > .instagram-line {
 .video-modal__dialog {
   position: relative;
   z-index: 1;
-  width: min(100%, 1120px);
-  padding: 26px 26px 22px;
-  border-radius: 20px;
-  background: #111111;
-  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.35);
+  width: min(100%, 1240px);
+  padding: 28px 32px 32px;
+  border-radius: 28px;
+  background:
+    radial-gradient(circle at top left, rgba(101, 181, 42, 0.08), transparent 26%),
+    linear-gradient(180deg, #ffffff 0%, #f7f6f2 100%);
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.22);
 }
 
 .video-modal__close {
   position: absolute;
-  top: 12px;
-  right: 12px;
+  top: 16px;
+  right: 16px;
   width: 40px;
   height: 40px;
   border: 0;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.1);
-  color: #ffffff;
+  background: rgba(64, 72, 82, 0.1);
+  color: #404852;
   font-size: 28px;
   line-height: 1;
   cursor: pointer;
 }
 
 .video-modal__title {
-  margin: 0 44px 14px 0;
-  color: #ffffff;
-  font-size: 18px;
+  margin: 0 56px 22px 0;
+  color: #223040;
+  font-size: 20px;
   font-weight: 700;
 }
 
 .video-modal__body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   aspect-ratio: 16 / 9;
   overflow: hidden;
-  border-radius: 14px;
-  background: #000000;
+  border-radius: 24px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(255, 255, 255, 0.58)),
+    linear-gradient(135deg, rgba(101, 181, 42, 0.08), rgba(255, 112, 32, 0.08));
 }
 
 .video-modal__body iframe {
+  display: block;
   width: 100%;
   height: 100%;
   border: 0;
 }
 
 .video-modal.is-portrait .video-modal__dialog {
-  width: min(100%, 620px);
-  padding: 22px 22px 18px;
+  width: min(100%, 700px);
+  padding: 22px 22px 24px;
 }
 
 .video-modal.is-portrait .video-modal__title {
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
 .video-modal.is-portrait .video-modal__body {
-  aspect-ratio: 9 / 16;
+  aspect-ratio: auto;
+  min-height: calc(100vh - 150px);
   max-height: calc(100vh - 150px);
+  padding: 8px;
+}
+
+.video-modal.is-portrait .video-modal__body iframe {
+  width: min(100%, 520px);
+  height: min(calc(100vh - 170px), 924px);
+  max-width: calc((100vh - 170px) * 9 / 16);
+  aspect-ratio: 9 / 16;
+  border-radius: 22px;
+  box-shadow: 0 20px 46px rgba(34, 48, 64, 0.18);
 }
 
 .life-collage {
@@ -1560,8 +1655,12 @@ main > .instagram-line {
     gap: 24px;
   }
 
+  .brand {
+    width: 142px;
+  }
+
   .nav-list {
-    gap: 18px;
+    gap: 14px;
   }
 
   .nav-list a {
@@ -1611,7 +1710,8 @@ main > .instagram-line {
   }
 
   .project-grid,
-  .happy-grid {
+  .happy-grid,
+  .korda-cards {
     grid-template-columns: repeat(2, 1fr);
   }
 
@@ -1661,6 +1761,10 @@ main > .instagram-line {
 }
 
 @media (max-width: 760px) {
+  :root {
+    --header-height: 94px;
+  }
+
   .site-nav {
     position: absolute;
     top: var(--header-height);
@@ -1800,13 +1904,25 @@ main > .instagram-line {
     border-radius: 16px;
   }
 
+  .korda-cards {
+    grid-template-columns: 1fr;
+  }
+
   .video-modal.is-portrait .video-modal__dialog {
-    width: min(100%, 500px);
+    width: min(100%, 560px);
     padding: 18px 18px 16px;
   }
 
   .video-modal.is-portrait .video-modal__body {
-    max-height: calc(100vh - 120px);
+    min-height: calc(100vh - 130px);
+    max-height: calc(100vh - 130px);
+    padding: 6px;
+  }
+
+  .video-modal.is-portrait .video-modal__body iframe {
+    width: min(100%, 440px);
+    height: min(calc(100vh - 142px), 782px);
+    max-width: calc((100vh - 142px) * 9 / 16);
   }
 }
 

@@ -24,7 +24,7 @@ function initHeader() {
   };
 
   const updateHeaderLayout = () => {
-    const forceCollapsed = window.innerWidth <= 760;
+    const forceCollapsed = window.innerWidth <= 1120;
     const collisionGap = 12;
 
     header.classList.remove("is-collapsed");
@@ -413,6 +413,35 @@ function initVideoModal() {
   });
 }
 
+function initInlineVideos() {
+  const inlineTriggers = Array.from(document.querySelectorAll(".video-inline-trigger"));
+  if (!inlineTriggers.length) return;
+
+  inlineTriggers.forEach((trigger) => {
+    if (!(trigger instanceof HTMLButtonElement)) return;
+
+    const cover = trigger.querySelector(".video-inline-cover");
+    if (cover instanceof HTMLElement && trigger.dataset.inlineVideoCover) {
+      cover.style.setProperty("--inline-video-cover", `url("${trigger.dataset.inlineVideoCover}")`);
+    }
+
+    trigger.addEventListener("click", () => {
+      const embedUrl = trigger.dataset.inlineVideoEmbed || "";
+      if (!embedUrl || trigger.querySelector("iframe")) return;
+
+      const iframe = document.createElement("iframe");
+      iframe.src = embedUrl;
+      iframe.title = trigger.dataset.inlineVideoTitle || "Видео";
+      iframe.loading = "lazy";
+      iframe.allow = "autoplay; encrypted-media; picture-in-picture; web-share";
+      iframe.allowFullscreen = true;
+
+      trigger.replaceChildren(iframe);
+      trigger.classList.add("is-playing");
+    });
+  });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   initHeader();
   initHeroSlider();
@@ -423,5 +452,6 @@ document.addEventListener("DOMContentLoaded", () => {
   initEntrepreneurProjectCards();
   initLifeCollage();
   initLeadButtons();
+  initInlineVideos();
   initVideoModal();
 });
