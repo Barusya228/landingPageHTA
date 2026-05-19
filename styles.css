@@ -670,7 +670,7 @@ button {
   justify-self: center;
   width: min(100%, 368px);
   min-height: 652px;
-  margin-top: -132px;
+  margin-top: -196px;
   aspect-ratio: 9 / 16;
   padding: 12px;
   border-radius: 26px;
@@ -785,9 +785,10 @@ button {
 .project-task-block__title {
   margin: 0 0 24px;
   color: var(--green);
-  font-size: 38px;
-  font-weight: 700;
-  line-height: 1.15;
+  font-family: var(--sans);
+  font-size: 22px;
+  font-weight: 900;
+  line-height: 1.2;
 }
 
 .project-task-cards {
@@ -1586,6 +1587,19 @@ main > .instagram-line {
   line-height: 1.2;
 }
 
+.graduate-portrait {
+  width: min(100%, 980px);
+  margin: 0 auto 22px;
+  border-radius: 18px;
+  box-shadow: 0 18px 42px rgba(34, 48, 64, 0.14);
+}
+
+.graduate-link {
+  color: #223040;
+  font-size: 18px;
+  font-weight: 600;
+}
+
 .section-choice p {
   max-width: 900px;
   margin: 0 auto;
@@ -1952,7 +1966,7 @@ main > .instagram-line {
   }
 
   .project-task-block__title {
-    font-size: 32px;
+    font-size: 22px;
   }
 
   .project-task-card h3 {
