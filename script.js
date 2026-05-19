@@ -186,7 +186,6 @@ function initWhyAccents() {
 
   const paragraphs = Array.from(whyCopy.querySelectorAll("p"));
   const replacements = [
-    { match: "безнадежно", replacement: '<span class="why-accent">безнадежно</span>' },
     { match: "умеет делать", replacement: '<span class="why-accent">умеет делать</span>' },
   ];
 
@@ -223,26 +222,119 @@ function initLearningAccent() {
 }
 
 function initEntrepreneurProjectCards() {
-  const kordaSection = document.querySelector(".section-korda");
-  const entrepreneurGrid = document.querySelector(".section-entrepreneur .entrepreneur-grid");
-  if (!(kordaSection instanceof HTMLElement) || !(entrepreneurGrid instanceof HTMLElement)) return;
+  return;
+}
 
-  const projectGrid = kordaSection.querySelector(".project-grid");
-  const instagramLine = kordaSection.querySelector(".instagram-line");
+function initProjectTaskCards() {
+  const container = document.getElementById("korda-project-tasks");
+  if (!(container instanceof HTMLElement)) return;
 
-  if (projectGrid instanceof HTMLElement) {
-    entrepreneurGrid.appendChild(projectGrid);
+  // Replace videoUrl values here when final vertical videos are ready.
+  const projectTasks = [
+    {
+      label: "Проектная задача",
+      title: "Снижение насилия над детьми",
+      description: "Разработать план по снижению насилия над детьми в Казахстане.",
+      partner: 'волонтерская организация "Корган"',
+      videoUrl: "./Видео/Дорис.mp4",
+    },
+    {
+      label: "Проектная задача",
+      title: "Безопасность в горах Алматы",
+      description: "Разработать план по значительному снижению инцидентов в горах Алматы.",
+      partner: "Shymbulak Outdoor",
+      videoUrl: "./Видео/Дорис.mp4",
+    },
+    {
+      label: "Проектная задача",
+      title: "Новый спортивный зал",
+      description: "Разработать концепцию нового спортивного зала, который заменит существующее воздухоопорное сооружение с учетом особенностей участка и потребностей школы.",
+      partner: "High Tech Academy",
+      videoUrl: "./Видео/Дорис.mp4",
+    },
+  ];
+
+  container.replaceChildren(
+    ...projectTasks.map((task) => {
+      const article = document.createElement("article");
+      article.className = "project-task-card";
+      article.innerHTML = `
+        <h3>${task.title}</h3>
+        <span class="project-task-card__label">${task.label}</span>
+        <p class="project-task-card__description">${task.description}</p>
+        <div class="project-task-card__footer">
+          <p class="project-task-card__partner"><strong>Партнер:</strong> ${task.partner}</p>
+          <button
+            type="button"
+            class="project-task-card__button project-task-video-button"
+            data-video-title="${task.title}"
+            data-video-src="${task.videoUrl}"
+          >
+            Смотреть видео
+          </button>
+        </div>
+      `;
+      return article;
+    })
+  );
+}
+
+function initProjectTaskVideoModal() {
+  const modal = document.getElementById("video-modal");
+  const modalBody = document.getElementById("video-modal-body");
+  const modalTitle = document.getElementById("video-modal-title");
+  const triggers = Array.from(document.querySelectorAll(".project-task-video-button"));
+
+  if (!(modal instanceof HTMLElement) || !(modalBody instanceof HTMLElement) || !(modalTitle instanceof HTMLElement) || !triggers.length) {
+    return;
   }
 
-  if (instagramLine instanceof HTMLElement) {
-    entrepreneurGrid.appendChild(instagramLine);
-  }
+  const closeModal = () => {
+    const video = modalBody.querySelector("video");
+    if (video instanceof HTMLVideoElement) {
+      video.pause();
+      video.removeAttribute("src");
+      video.load();
+    }
 
-  const strayProjectGrids = Array.from(document.querySelectorAll("main > .project-grid"));
-  strayProjectGrids.forEach((grid) => grid.remove());
+    modal.classList.remove("is-open");
+    modal.classList.remove("is-portrait");
+    modal.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("modal-open");
+    modalBody.replaceChildren();
+  };
 
-  const strayInstagramLines = Array.from(document.querySelectorAll("main > .instagram-line"));
-  strayInstagramLines.forEach((line) => line.remove());
+  const openModal = (title, videoSrc) => {
+    if (!videoSrc) return;
+
+    const video = document.createElement("video");
+    video.src = videoSrc;
+    video.title = title;
+    video.controls = true;
+    video.preload = "metadata";
+    video.playsInline = true;
+
+    modalTitle.textContent = title;
+    modalBody.replaceChildren(video);
+    modal.classList.add("is-open", "is-portrait");
+    modal.setAttribute("aria-hidden", "false");
+    document.body.classList.add("modal-open");
+  };
+
+  triggers.forEach((trigger) => {
+    trigger.addEventListener("click", () => {
+      if (!(trigger instanceof HTMLElement)) return;
+      openModal(trigger.dataset.videoTitle || "Видео", trigger.dataset.videoSrc || "");
+    });
+  });
+
+  modal.querySelectorAll("[data-video-close]").forEach((control) => {
+    control.addEventListener("click", closeModal);
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && modal.classList.contains("is-open")) closeModal();
+  });
 }
 
 const b24FormConfig = {
@@ -449,9 +541,11 @@ document.addEventListener("DOMContentLoaded", () => {
   initWhyQuotePlacement();
   initWhyAccents();
   initLearningAccent();
+  initProjectTaskCards();
   initEntrepreneurProjectCards();
   initLifeCollage();
   initLeadButtons();
   initInlineVideos();
   initVideoModal();
+  initProjectTaskVideoModal();
 });
