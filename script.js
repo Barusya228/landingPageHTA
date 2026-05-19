@@ -2,14 +2,14 @@ function initHeader() {
   const header = document.querySelector(".site-header");
   const headerInner = document.querySelector(".header-inner");
   const brand = document.querySelector(".brand");
-  const socialLinks = document.querySelector(".header-social-links");
+  const headerActions = document.querySelector(".header-actions");
   const toggle = document.querySelector(".nav-toggle");
   const navList = document.getElementById("nav-list");
   if (
     !(header instanceof HTMLElement) ||
     !(headerInner instanceof HTMLElement) ||
     !(brand instanceof HTMLElement) ||
-    !(socialLinks instanceof HTMLElement) ||
+    !(headerActions instanceof HTMLElement) ||
     !(toggle instanceof HTMLButtonElement) ||
     !(navList instanceof HTMLElement)
   ) {
@@ -32,7 +32,7 @@ function initHeader() {
     if (!forceCollapsed) {
       const brandRect = brand.getBoundingClientRect();
       const navRect = navList.getBoundingClientRect();
-      const socialRect = socialLinks.getBoundingClientRect();
+      const socialRect = headerActions.getBoundingClientRect();
       const hasLeftCollision = navRect.left <= brandRect.right + collisionGap;
       const hasRightCollision = navRect.right >= socialRect.left - collisionGap;
 
