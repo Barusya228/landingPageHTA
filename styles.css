@@ -1092,8 +1092,10 @@ main > .instagram-line {
   margin: 0 auto;
   padding: 18px 56px 48px;
   border-radius: 24px;
-  background: var(--dark);
-  color: #ffffff;
+  border: 2px solid #6a6a6a;
+  background: #ffffff;
+  color: #223040;
+  box-shadow: 0 18px 34px rgba(20, 24, 28, 0.08);
 }
 
 .minerva-panel .label {
@@ -1101,10 +1103,11 @@ main > .instagram-line {
   font-size: 27px;
 }
 
+.minerva-panel h1,
 .minerva-panel h2 {
   max-width: 1050px;
   margin: 0;
-  color: #ffffff;
+  color: #223040;
   font-size: 52px;
   font-weight: 700;
   line-height: 1.28;
@@ -1127,7 +1130,7 @@ main > .instagram-line {
   width: 92px;
   height: auto;
   object-fit: contain;
-  filter: brightness(0) invert(1);
+  filter: none;
 }
 
 .minerva-grid {
@@ -1139,7 +1142,7 @@ main > .instagram-line {
 
 .minerva-grid p {
   margin: 0 0 26px;
-  color: #ffffff;
+  color: #223040;
   font-family: var(--sans);
   font-size: 23px;
   font-weight: 400;
@@ -1165,27 +1168,28 @@ main > .instagram-line {
 }
 
 .minerva-curriculum__card {
-  width: min(100%, 980px);
-  min-width: 860px;
+  width: min(100%, 1120px);
+  min-width: 980px;
   margin: 0 auto;
-  padding: 26px 28px;
+  padding: 28px 32px;
   border-radius: 24px;
   background: #ffffff;
+  border: 1px solid #e7e7e7;
   box-shadow: 0 18px 34px rgba(20, 24, 28, 0.16);
 }
 
 .minerva-curriculum__table {
   display: grid;
-  grid-template-columns: 90px repeat(5, minmax(110px, 1fr));
-  column-gap: 22px;
-  row-gap: 18px;
-  align-items: start;
+  grid-template-columns: 126px repeat(5, minmax(150px, 1fr));
+  column-gap: 14px;
+  row-gap: 14px;
+  align-items: stretch;
 }
 
 .minerva-curriculum__heading {
   color: #5f5a57;
   font-family: var(--sans);
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 800;
   line-height: 1.2;
   text-align: center;
@@ -1196,45 +1200,55 @@ main > .instagram-line {
 }
 
 .minerva-curriculum__label {
-  align-self: start;
-  padding-top: 6px;
+  align-self: center;
   color: #5f5a57;
   font-family: var(--sans);
   font-size: 15px;
   font-weight: 800;
   line-height: 1.2;
+  text-align: left;
 }
 
-.minerva-curriculum__tracks {
-  display: grid;
-  gap: 12px;
+.minerva-curriculum__cell {
+  display: flex;
+  align-items: stretch;
 }
 
-.minerva-curriculum__track {
-  display: block;
+.minerva-curriculum__course {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
-  height: 16px;
-  border-radius: 999px;
+  min-height: 74px;
+  padding: 14px 16px;
+  border-radius: 26px;
+  color: #ffffff;
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 1.2;
+  text-align: center;
+  text-wrap: balance;
 }
 
-.minerva-curriculum__track--science {
-  background: #5f8f22;
+.minerva-curriculum__course--science {
+  background: #4f8a1f;
 }
 
-.minerva-curriculum__track--social {
-  background: #74b92d;
+.minerva-curriculum__course--social {
+  background: #68b82e;
 }
 
-.minerva-curriculum__track--literary {
-  background: #b2d583;
+.minerva-curriculum__course--literary {
+  background: #a8cf82;
 }
 
-.minerva-curriculum__track--math {
-  background: #b8b2ad;
+.minerva-curriculum__course--math {
+  background: #b9b4af;
 }
 
-.minerva-curriculum__track--skills {
-  background: #8b8885;
+.minerva-curriculum__course--skills {
+  background: #7a7875;
 }
 
 .section-happy {
@@ -1284,11 +1298,12 @@ main > .instagram-line {
 }
 
 .happy-grid article {
-  display: grid;
-  grid-template-rows: 138px 1fr;
-  align-items: start;
-  min-height: 330px;
-  padding: 26px 30px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 24px;
+  min-height: 270px;
+  padding: 24px 30px;
   border: 2px solid var(--green);
   border-radius: 16px;
   background: var(--white);
@@ -1341,23 +1356,26 @@ main > .instagram-line {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 0;
+  min-height: 92px;
   margin: 0;
   color: var(--green);
-  font-size: 24px;
+  font-size: 22px;
   font-weight: 800;
-  line-height: 1.3;
+  line-height: 1.25;
 }
 
 .happy-grid p {
   margin: 0;
-  align-self: start;
   text-align: center;
   color: #5f5f5f;
   font-family: var(--sans);
   font-size: 18px;
   font-weight: 400;
   line-height: 1.45;
+}
+
+.happy-grid article:first-child h3 {
+  font-size: 21px;
 }
 
 .section-life {
@@ -1560,33 +1578,51 @@ main > .instagram-line {
 
 .voices-layout {
   display: grid;
-  grid-template-columns: minmax(260px, 0.34fr) minmax(0, 0.66fr);
+  grid-template-columns: minmax(300px, 0.38fr) minmax(0, 0.62fr);
   gap: 44px;
-  align-items: start;
+  align-items: center;
 }
 
 .voices-copy {
-  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 18px;
+  min-height: 100%;
+  max-width: 360px;
+  padding: 12px 0;
 }
 
 .voices-stat {
   color: var(--green);
-  font-size: 86px;
+  font-size: 112px;
   font-weight: 400;
   line-height: 1;
 }
 
 .section-voices h2 {
-  margin: 18px 0 10px;
+  margin: 0;
   color: #223040;
-  font-size: 23px;
+  font-size: 31px;
   font-weight: 700;
+  line-height: 1.18;
 }
 
 .voices-note {
   margin: 0;
   color: #223040;
-  font-size: 14px;
+  font-size: 17px;
+  line-height: 1.35;
+}
+
+.voices-note::after {
+  content: "";
+  display: block;
+  width: 96px;
+  height: 2px;
+  margin-top: 18px;
+  border-radius: 999px;
+  background: rgba(100, 188, 34, 0.5);
 }
 
 .voices-carousel-col {
@@ -1650,12 +1686,14 @@ main > .instagram-line {
 
 .testimonial-slide img {
   display: block;
-  width: auto;
+  width: 100%;
   max-width: 100%;
   height: auto;
-  max-height: 760px;
+  max-height: 640px;
   border-radius: 28px;
   box-shadow: 0 24px 50px rgba(34, 48, 64, 0.16);
+  object-fit: contain;
+  object-position: center;
 }
 
 .testimonial-dots {
@@ -1682,13 +1720,14 @@ main > .instagram-line {
 
 .voices-disclaimer {
   max-width: 620px;
-  margin: 18px 0 0 auto;
+  width: 100%;
+  margin: 18px auto 0;
   color: #6c6f73;
   font-family: var(--sans);
   font-size: 12px;
   font-weight: 600;
   line-height: 1.4;
-  text-align: right;
+  text-align: center;
 }
 
 .section-experts {
@@ -2044,13 +2083,30 @@ main > .instagram-line {
   }
 
   .voices-layout {
-    grid-template-columns: minmax(220px, 0.36fr) minmax(0, 0.64fr);
+    grid-template-columns: minmax(240px, 0.37fr) minmax(0, 0.63fr);
     gap: 28px;
   }
 
+  .voices-copy {
+    max-width: 320px;
+    gap: 16px;
+  }
+
+  .voices-stat {
+    font-size: 92px;
+  }
+
+  .section-voices h2 {
+    font-size: 26px;
+  }
+
+  .voices-note {
+    font-size: 15px;
+  }
+
   .testimonial-slide img {
-    min-height: 460px;
-    object-fit: cover;
+    max-height: 520px;
+    object-fit: contain;
   }
 
   .floating-cta {
@@ -2192,14 +2248,20 @@ main > .instagram-line {
   }
 
   .minerva-curriculum__card {
-    min-width: 760px;
+    min-width: 900px;
     padding: 22px 20px;
     border-radius: 20px;
   }
 
   .minerva-curriculum__table {
-    grid-template-columns: 78px repeat(5, minmax(96px, 1fr));
-    column-gap: 16px;
+    grid-template-columns: 110px repeat(5, minmax(138px, 1fr));
+    column-gap: 12px;
+  }
+
+  .minerva-curriculum__course {
+    min-height: 70px;
+    padding: 12px 14px;
+    font-size: 13px;
   }
 
   .life-collage {
@@ -2240,6 +2302,8 @@ main > .instagram-line {
   .voices-copy {
     padding-top: 0;
     text-align: center;
+    max-width: none;
+    gap: 14px;
   }
 
   .section-voices h2,
@@ -2247,12 +2311,28 @@ main > .instagram-line {
     text-align: center;
   }
 
+  .voices-stat {
+    font-size: 82px;
+  }
+
+  .section-voices h2 {
+    font-size: 24px;
+  }
+
+  .voices-note {
+    font-size: 15px;
+  }
+
+  .voices-note::after {
+    margin: 16px auto 0;
+  }
+
   .testimonial-slide {
     min-height: 400px;
   }
 
   .testimonial-slide img {
-    max-height: 520px;
+    max-height: 420px;
     border-radius: 22px;
   }
 
@@ -2333,6 +2413,7 @@ main > .instagram-line {
 
   .hero-copy h1,
   .entrepreneur-copy h2,
+  .minerva-panel h1,
   .minerva-panel h2 {
     font-size: 28px;
   }
