@@ -521,8 +521,9 @@ button {
   color: #5f5f5f;
   font-family: var(--sans);
   font-size: 16px;
-  font-weight: 800;
+  font-weight: 400;
   line-height: 1.45;
+  text-align: center;
 }
 
 .dark-band {
@@ -654,18 +655,37 @@ button {
   line-height: 1.34;
 }
 
-.korda-inline-brand {
-  display: inline-flex;
-  align-items: center;
-  margin-right: 4px;
-  vertical-align: baseline;
+.korda-intro-line {
+  display: flow-root;
+  max-width: 820px;
+  margin-bottom: 22px;
 }
 
-.korda-inline-brand img {
+.korda-intro-line p {
+  margin: 0;
+}
+
+.korda-inline-logo {
+  float: left;
   display: block;
-  width: 170px;
+  width: 28px;
   height: auto;
   object-fit: contain;
+  margin: 4px 12px 2px 0;
+}
+
+.korda-brand {
+  color: #ff6848;
+  font-weight: 700;
+}
+
+.korda-tm {
+  color: #ff6848;
+  font-size: 0.45em;
+  font-weight: 700;
+  vertical-align: super;
+  position: relative;
+  top: -0.2em;
 }
 
 .video-placeholder-light {
@@ -806,7 +826,7 @@ button {
 .project-task-card {
   display: flex;
   flex-direction: column;
-  min-height: 100%;
+  min-height: 520px;
   padding: 28px 26px 24px;
   border: 1px solid #a8adb3;
   border-radius: 24px;
@@ -828,6 +848,7 @@ button {
 }
 
 .project-task-card h3 {
+  min-height: 108px;
   margin: 0 0 16px;
   color: var(--green);
   font-size: 30px;
@@ -836,6 +857,7 @@ button {
 }
 
 .project-task-card__description {
+  min-height: 132px;
   margin: 0;
   color: #404852;
   font-size: 17px;
@@ -1133,6 +1155,88 @@ main > .instagram-line {
   margin-top: 10px;
 }
 
+.minerva-curriculum {
+  margin-top: 52px;
+}
+
+.minerva-curriculum__scroller {
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+
+.minerva-curriculum__card {
+  width: min(100%, 980px);
+  min-width: 860px;
+  margin: 0 auto;
+  padding: 26px 28px;
+  border-radius: 24px;
+  background: #ffffff;
+  box-shadow: 0 18px 34px rgba(20, 24, 28, 0.16);
+}
+
+.minerva-curriculum__table {
+  display: grid;
+  grid-template-columns: 90px repeat(5, minmax(110px, 1fr));
+  column-gap: 22px;
+  row-gap: 18px;
+  align-items: start;
+}
+
+.minerva-curriculum__heading {
+  color: #5f5a57;
+  font-family: var(--sans);
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.minerva-curriculum__corner {
+  min-height: 1px;
+}
+
+.minerva-curriculum__label {
+  align-self: start;
+  padding-top: 6px;
+  color: #5f5a57;
+  font-family: var(--sans);
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.minerva-curriculum__tracks {
+  display: grid;
+  gap: 12px;
+}
+
+.minerva-curriculum__track {
+  display: block;
+  width: 100%;
+  height: 16px;
+  border-radius: 999px;
+}
+
+.minerva-curriculum__track--science {
+  background: #5f8f22;
+}
+
+.minerva-curriculum__track--social {
+  background: #74b92d;
+}
+
+.minerva-curriculum__track--literary {
+  background: #b2d583;
+}
+
+.minerva-curriculum__track--math {
+  background: #b8b2ad;
+}
+
+.minerva-curriculum__track--skills {
+  background: #8b8885;
+}
+
 .section-happy {
   padding: 52px 0 48px;
 }
@@ -1248,11 +1352,11 @@ main > .instagram-line {
 .happy-grid p {
   margin: 0;
   align-self: start;
-  text-align: left;
+  text-align: center;
   color: #5f5f5f;
   font-family: var(--sans);
   font-size: 18px;
-  font-weight: 800;
+  font-weight: 400;
   line-height: 1.45;
 }
 
@@ -1447,16 +1551,27 @@ main > .instagram-line {
 
 .section-voices {
   padding: 14px 0 70px;
-  text-align: center;
+  text-align: left;
 }
 
 .section-voices .label {
   margin-bottom: 10px;
 }
 
+.voices-layout {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.34fr) minmax(0, 0.66fr);
+  gap: 44px;
+  align-items: start;
+}
+
+.voices-copy {
+  padding-top: 20px;
+}
+
 .voices-stat {
   color: var(--green);
-  font-size: 66px;
+  font-size: 86px;
   font-weight: 400;
   line-height: 1;
 }
@@ -1469,75 +1584,100 @@ main > .instagram-line {
 }
 
 .voices-note {
-  margin: 0 0 54px;
+  margin: 0;
   color: #223040;
   font-size: 14px;
 }
 
+.voices-carousel-col {
+  min-width: 0;
+}
+
 .testimonial-shell {
   display: grid;
-  grid-template-columns: 42px minmax(0, 1fr) 42px;
-  gap: 12px;
+  grid-template-columns: 56px minmax(0, 1fr) 56px;
+  gap: 18px;
   align-items: center;
+  width: 100%;
+  margin: 0;
 }
 
 .testimonial-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
   border: 0;
-  background: transparent;
-  color: #9a9a9a;
+  background: rgba(255, 255, 255, 0.96);
+  color: #8d9298;
   font-family: Georgia, serif;
-  font-size: 58px;
+  font-size: 46px;
   line-height: 1;
+  box-shadow: 0 12px 26px rgba(34, 48, 64, 0.12);
+  transition: transform 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.testimonial-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
-}
-
-.testimonial-grid article {
-  position: relative;
-  min-height: 205px;
-  overflow: hidden;
-  padding: 28px 22px 20px;
-  border-radius: 9px;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.24), rgba(0, 0, 0, 0.28)), var(--testimonial-bg);
-  background-position: center;
-  background-size: cover;
-  color: #ffffff;
-  text-align: left;
-}
-
-.testimonial-grid span {
-  display: block;
+.testimonial-arrow:hover,
+.testimonial-arrow:focus-visible {
   color: var(--green);
-  font-family: Georgia, serif;
-  font-size: 58px;
-  font-weight: 800;
-  line-height: 0.75;
+  transform: translateY(-1px);
+  box-shadow: 0 14px 30px rgba(34, 48, 64, 0.16);
 }
 
-.testimonial-grid p {
-  margin: 0 0 10px;
-  color: #ffffff;
-  font-family: var(--sans);
-  font-size: 14px;
-  font-weight: 800;
-  font-style: italic;
-  line-height: 1.18;
+.testimonial-viewport {
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
 }
 
-.testimonial-grid strong {
-  position: absolute;
-  right: 18px;
-  bottom: 16px;
-  color: #ffffff;
-  font-family: var(--sans);
-  font-size: 12px;
-  font-weight: 800;
-  line-height: 1.1;
-  text-align: right;
+.testimonial-track {
+  position: relative;
+  width: 100%;
+}
+
+.testimonial-slide {
+  position: relative;
+  display: none;
+  min-height: 0;
+  justify-content: center;
+}
+
+.testimonial-slide.is-active {
+  display: flex;
+}
+
+.testimonial-slide img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 760px;
+  border-radius: 28px;
+  box-shadow: 0 24px 50px rgba(34, 48, 64, 0.16);
+}
+
+.testimonial-dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.testimonial-dot {
+  width: 10px;
+  height: 10px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(122, 122, 122, 0.34);
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.testimonial-dot.is-active {
+  background: var(--green);
+  transform: scale(1.2);
 }
 
 .voices-disclaimer {
@@ -1874,6 +2014,10 @@ main > .instagram-line {
     gap: 28px;
   }
 
+  .minerva-curriculum__card {
+    width: 100%;
+  }
+
   .life-collage {
     grid-template-columns: repeat(6, minmax(0, 1fr));
     grid-template-rows: none;
@@ -1891,6 +2035,22 @@ main > .instagram-line {
 
   .testimonial-grid {
     grid-template-columns: 1fr;
+  }
+
+  .testimonial-shell {
+    grid-template-columns: 48px minmax(0, 1fr) 48px;
+    gap: 14px;
+    width: 100%;
+  }
+
+  .voices-layout {
+    grid-template-columns: minmax(220px, 0.36fr) minmax(0, 0.64fr);
+    gap: 28px;
+  }
+
+  .testimonial-slide img {
+    min-height: 460px;
+    object-fit: cover;
   }
 
   .floating-cta {
@@ -1984,6 +2144,7 @@ main > .instagram-line {
 
   .project-task-card {
     padding: 24px 22px 22px;
+    min-height: 0;
   }
 
   .project-task-block__title {
@@ -1991,7 +2152,16 @@ main > .instagram-line {
   }
 
   .project-task-card h3 {
+    min-height: 0;
     font-size: 26px;
+  }
+
+  .project-task-card__description {
+    min-height: 0;
+  }
+
+  .korda-inline-logo {
+    width: 26px;
   }
 
   .project-grid article {
@@ -2017,6 +2187,21 @@ main > .instagram-line {
     margin-bottom: 20px;
   }
 
+  .minerva-curriculum {
+    margin-top: 40px;
+  }
+
+  .minerva-curriculum__card {
+    min-width: 760px;
+    padding: 22px 20px;
+    border-radius: 20px;
+  }
+
+  .minerva-curriculum__table {
+    grid-template-columns: 78px repeat(5, minmax(96px, 1fr));
+    column-gap: 16px;
+  }
+
   .life-collage {
     grid-template-columns: 1fr;
     grid-template-rows: none;
@@ -2037,7 +2222,47 @@ main > .instagram-line {
   }
 
   .testimonial-arrow {
-    display: none;
+    width: 48px;
+    height: 48px;
+    font-size: 40px;
+  }
+
+  .testimonial-shell {
+    grid-template-columns: 48px minmax(0, 1fr) 48px;
+    gap: 10px;
+  }
+
+  .voices-layout {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .voices-copy {
+    padding-top: 0;
+    text-align: center;
+  }
+
+  .section-voices h2,
+  .voices-note {
+    text-align: center;
+  }
+
+  .testimonial-slide {
+    min-height: 400px;
+  }
+
+  .testimonial-slide img {
+    max-height: 520px;
+    border-radius: 22px;
+  }
+
+  .testimonial-dots {
+    margin-top: 18px;
+  }
+
+  .voices-disclaimer {
+    max-width: none;
+    text-align: center;
   }
 
   .experts-grid {
@@ -2110,6 +2335,14 @@ main > .instagram-line {
   .entrepreneur-copy h2,
   .minerva-panel h2 {
     font-size: 28px;
+  }
+
+  .korda-intro-line {
+    gap: 8px;
+  }
+
+  .korda-inline-logo {
+    width: 24px;
   }
 
   .why-copy h2,

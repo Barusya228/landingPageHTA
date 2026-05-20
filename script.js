@@ -233,7 +233,7 @@ function initProjectTaskCards() {
   const projectTasks = [
     {
       label: "Проектная задача",
-      title: "Снижение насилия над детьми",
+      title: "Права детей в Казахстане",
       description: "Разработать план по снижению насилия над детьми в Казахстане.",
       partner: 'волонтерская организация "Корган"',
       videoUrl: "./Видео/Снижение насилия над детьми.mp4",
@@ -247,7 +247,7 @@ function initProjectTaskCards() {
     },
     {
       label: "Проектная задача",
-      title: "Новый спортивный зал",
+      title: "Новый спортивный комплекс для HTA",
       description: "Разработать концепцию нового спортивного зала, который заменит существующее воздухоопорное сооружение с учетом особенностей участка и потребностей школы.",
       partner: "High Tech Academy",
       videoUrl: "./Видео/Новый спортивный зал.mp4",
@@ -335,6 +335,78 @@ function initProjectTaskVideoModal() {
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape" && modal.classList.contains("is-open")) closeModal();
   });
+}
+
+function initTestimonialCarousel() {
+  const carousel = document.getElementById("testimonial-carousel");
+  const dotsContainer = document.querySelector(".testimonial-dots");
+  if (!(carousel instanceof HTMLElement) || !(dotsContainer instanceof HTMLElement)) return;
+
+  const slides = Array.from(carousel.querySelectorAll(".testimonial-slide"));
+  const prevButton = carousel.querySelector(".testimonial-arrow--prev");
+  const nextButton = carousel.querySelector(".testimonial-arrow--next");
+  if (!(prevButton instanceof HTMLButtonElement) || !(nextButton instanceof HTMLButtonElement) || slides.length < 2) return;
+
+  let currentIndex = Math.max(0, slides.findIndex((slide) => slide.classList.contains("is-active")));
+  let autoplayId = 0;
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  const dots = slides.map((_, index) => {
+    const dot = document.createElement("button");
+    dot.type = "button";
+    dot.className = "testimonial-dot";
+    dot.setAttribute("aria-label", `Показать отзыв ${index + 1}`);
+    dot.addEventListener("click", () => showSlide(index));
+    dotsContainer.appendChild(dot);
+    return dot;
+  });
+
+  const showSlide = (index) => {
+    currentIndex = (index + slides.length) % slides.length;
+    slides.forEach((slide, slideIndex) => {
+      slide.classList.toggle("is-active", slideIndex === currentIndex);
+    });
+    dots.forEach((dot, dotIndex) => {
+      dot.classList.toggle("is-active", dotIndex === currentIndex);
+    });
+  };
+
+  const showNext = () => showSlide(currentIndex + 1);
+  const showPrev = () => showSlide(currentIndex - 1);
+
+  const stopAutoplay = () => {
+    if (autoplayId) {
+      window.clearInterval(autoplayId);
+      autoplayId = 0;
+    }
+  };
+
+  const startAutoplay = () => {
+    stopAutoplay();
+    autoplayId = window.setInterval(showNext, 7000);
+  };
+
+  prevButton.addEventListener("click", showPrev);
+  nextButton.addEventListener("click", showNext);
+
+  carousel.addEventListener("mouseenter", stopAutoplay);
+  carousel.addEventListener("mouseleave", startAutoplay);
+
+  carousel.addEventListener("touchstart", (event) => {
+    touchStartX = event.changedTouches[0]?.clientX || 0;
+  }, { passive: true });
+
+  carousel.addEventListener("touchend", (event) => {
+    touchEndX = event.changedTouches[0]?.clientX || 0;
+    const delta = touchEndX - touchStartX;
+    if (Math.abs(delta) < 40) return;
+    if (delta < 0) showNext();
+    if (delta > 0) showPrev();
+  }, { passive: true });
+
+  showSlide(currentIndex);
+  startAutoplay();
 }
 
 const b24FormConfig = {
@@ -548,4 +620,5 @@ document.addEventListener("DOMContentLoaded", () => {
   initInlineVideos();
   initVideoModal();
   initProjectTaskVideoModal();
+  initTestimonialCarousel();
 });
