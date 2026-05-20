@@ -835,8 +835,8 @@ button {
 .project-task-card {
   display: flex;
   flex-direction: column;
-  min-height: 520px;
-  padding: 28px 26px 24px;
+  min-height: 438px;
+  padding: 24px 24px 22px;
   border: 1px solid #a8adb3;
   border-radius: 24px;
   background: #ffffff;
@@ -847,7 +847,7 @@ button {
 
 .project-task-card__label {
   align-self: flex-start;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
   color: var(--green);
   font-family: var(--sans);
   font-size: 13px;
@@ -857,8 +857,8 @@ button {
 }
 
 .project-task-card h3 {
-  min-height: 108px;
-  margin: 0 0 16px;
+  min-height: 84px;
+  margin: 0 0 12px;
   color: var(--green);
   font-size: 30px;
   font-weight: 700;
@@ -866,22 +866,22 @@ button {
 }
 
 .project-task-card__description {
-  min-height: 132px;
+  min-height: 96px;
   margin: 0;
   color: var(--color-graphite);
   font-size: 17px;
   font-weight: 500;
-  line-height: 1.5;
+  line-height: 1.42;
 }
 
 .project-task-card__footer {
   margin-top: auto;
-  padding-top: 20px;
+  padding-top: 16px;
   border-top: 1px solid rgba(122, 122, 122, 0.28);
 }
 
 .project-task-card__partner {
-  margin: 0 0 18px;
+  margin: 0 0 16px;
   color: var(--color-graphite);
   font-family: var(--sans);
   font-size: 15px;
@@ -891,6 +891,14 @@ button {
 
 .project-task-card__partner strong {
   color: var(--color-graphite);
+}
+
+.project-task-card__actions {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 10px;
 }
 
 .project-task-card__button {
@@ -910,6 +918,41 @@ button {
   line-height: 1;
   text-decoration: none;
   transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.project-task-card__partner-mark {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  min-width: 56px;
+  min-height: 38px;
+}
+
+.project-task-card__partner-logo {
+  display: block;
+  max-width: 72px;
+  max-height: 32px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+.project-task-card__partner-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 42px;
+  height: 32px;
+  padding: 0 10px;
+  border: 1px solid rgba(101, 181, 42, 0.42);
+  border-radius: 999px;
+  background: rgba(101, 181, 42, 0.08);
+  color: var(--color-graphite);
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1;
 }
 
 .project-task-card__button:hover,
@@ -1144,6 +1187,190 @@ main > .instagram-line {
   color: var(--green);
   font-weight: 700;
   text-decoration: none;
+}
+
+.entrepreneur-projects-more {
+  display: flex;
+  justify-content: center;
+  margin-top: 24px;
+}
+
+.entrepreneur-projects-more__toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 220px;
+  min-height: 46px;
+  padding: 0 24px;
+  border: 1px solid var(--green);
+  border-radius: 999px;
+  background: var(--green);
+  color: #ffffff;
+  font-family: var(--sans);
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 1;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.entrepreneur-projects-more__toggle:hover,
+.entrepreneur-projects-more__toggle:focus-visible {
+  background: #5aa224;
+  box-shadow: 0 10px 18px rgba(101, 181, 42, 0.24);
+  transform: translateY(-1px);
+}
+
+.entrepreneur-projects-extra {
+  margin-top: 26px;
+  padding: 22px 22px 24px;
+  border: 1px solid #cfd4d9;
+  border-radius: 24px;
+  background: #ffffff;
+  box-shadow: 0 12px 28px rgba(34, 48, 64, 0.08);
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: opacity 0.22s ease, transform 0.22s ease;
+}
+
+.entrepreneur-projects-extra.is-open {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.entrepreneur-projects-extra__tabs {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.entrepreneur-projects-extra__tab {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 128px;
+  min-height: 40px;
+  padding: 0 18px;
+  border: 1px solid #cfd4d9;
+  border-radius: 999px;
+  background: #ffffff;
+  color: var(--color-graphite);
+  font-family: var(--sans);
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 1;
+  transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+}
+
+.entrepreneur-projects-extra__tab.is-active {
+  border-color: var(--green);
+  background: rgba(101, 181, 42, 0.12);
+  color: var(--green);
+}
+
+.entrepreneur-projects-extra__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.entrepreneur-projects-extra__card {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-height: 100%;
+  padding: 18px 16px 16px;
+  border: 1px solid #d5dadd;
+  border-radius: 18px;
+  background: #ffffff;
+  box-shadow: 0 8px 20px rgba(34, 48, 64, 0.05);
+}
+
+.entrepreneur-projects-extra__card-title,
+.entrepreneur-projects-extra__card-partner {
+  margin: 0;
+  color: var(--green);
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1.22;
+  text-align: center;
+}
+
+.entrepreneur-projects-extra__card-partner {
+  font-size: 17px;
+}
+
+.entrepreneur-projects-extra__card-label {
+  margin: 0 0 4px;
+  color: var(--color-graphite);
+  font-size: 14px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.entrepreneur-projects-extra__card-task {
+  margin: 0;
+  color: var(--color-graphite);
+  font-size: 15px;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.entrepreneur-projects-extra__card-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 50px;
+  margin-top: auto;
+}
+
+.entrepreneur-projects-extra__card-logo img {
+  display: block;
+  max-width: 110px;
+  max-height: 42px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+.entrepreneur-projects-extra__card-logo-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 72px;
+  height: 36px;
+  padding: 0 14px;
+  border: 1px solid rgba(101, 181, 42, 0.34);
+  border-radius: 999px;
+  background: rgba(101, 181, 42, 0.08);
+  color: var(--color-graphite);
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.entrepreneur-projects-extra__links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 14px;
+}
+
+.entrepreneur-projects-extra__link {
+  color: var(--green);
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.entrepreneur-projects-extra__link--placeholder {
+  opacity: 0.8;
+}
+
+.entrepreneur-projects-extra__status {
+  color: #7e858d;
+  font-size: 14px;
+  font-weight: 600;
 }
 
 .course-link {
@@ -2114,6 +2341,10 @@ main > .instagram-line {
     grid-template-columns: repeat(2, 1fr);
   }
 
+  .entrepreneur-projects-extra__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .project-task-cards {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -2276,6 +2507,23 @@ main > .instagram-line {
     grid-template-columns: 1fr;
   }
 
+  .entrepreneur-projects-extra {
+    padding: 20px 16px 18px;
+  }
+
+  .entrepreneur-projects-extra__tabs {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .entrepreneur-projects-extra__tab {
+    width: 100%;
+  }
+
+  .entrepreneur-projects-extra__grid {
+    grid-template-columns: 1fr;
+  }
+
   .entrepreneur-project-card {
     grid-template-columns: 150px minmax(0, 1fr);
     gap: 14px;
@@ -2310,6 +2558,10 @@ main > .instagram-line {
 
   .project-task-card__description {
     min-height: 0;
+  }
+
+  .project-task-card__actions {
+    align-items: center;
   }
 
   .korda-inline-logo {

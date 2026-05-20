@@ -222,7 +222,159 @@ function initLearningAccent() {
 }
 
 function initEntrepreneurProjectCards() {
-  return;
+  const toggle = document.getElementById("entrepreneur-projects-toggle");
+  const panel = document.getElementById("entrepreneur-projects-extra");
+  const grid = document.getElementById("entrepreneur-projects-extra-grid");
+  const tabs = Array.from(document.querySelectorAll(".entrepreneur-projects-extra__tab"));
+
+  if (!(toggle instanceof HTMLButtonElement) || !(panel instanceof HTMLElement) || !(grid instanceof HTMLElement) || !tabs.length) {
+    return;
+  }
+
+  const extraProjectTabs = {
+    projects: [
+      {
+        partner: "UvU",
+        task: "Создать план для UvU, чтобы запустить 1000 эко-шаттлов по городу за 3 года и завоевать рынок Алматы.",
+        logo: "./logo/logo-uvu.png",
+        links: [
+          { label: "Видео 1", url: "#" },
+          { label: "Видео 2", url: "#" },
+        ],
+      },
+      {
+        partner: "Almaty Air Initiative",
+        task: "Разработать план новой организации, которая значительно улучшит качество воздуха в Алматы.",
+        logo: "./logo/logo-Almaty-Ait-Initiative.png",
+        links: [],
+      },
+      {
+        partner: "Amiran",
+        task: "Разработать стратегию для Amiran, чтобы выйти в прибыль за 9 месяцев, сохраняя верность миссии компании. Стратегия должна работать в рамках текущих возможностей компании.",
+        logo: "./logo/logo-amiran.svg",
+        links: [],
+      },
+    ],
+    startups: [
+      {
+        title: "BARYTAN AI",
+        partner: "Инициатива",
+        task: "Ученики разработали технологию, которая автоматически преобразует разговор между врачом и пациентом в структурированную медицинскую запись, тем самым экономя время и облегчая процесс записи данных.",
+        badge: "AI",
+        links: [],
+      },
+      {
+        title: "RayHeart",
+        partner: "Инициатива",
+        task: "Ученики разработали умный медицинский корсет с встроенными биосенсорами, который постоянно отслеживает показатели работы сердца, помогая предотвращать и заранее предупреждать о повторном сердечном приступе.",
+        badge: "RH",
+        links: [],
+      },
+      {
+        title: "NEXTSTEP",
+        partner: "Инициатива",
+        task: "Ученики разработали двухнедельный интерактивный летний лагерь для подростков 15–18 лет, который в безопасной среде помогает им подготовиться к самостоятельной жизни, развивая практические навыки, связанные с реальными финансами и бытовыми задачами, через опыт и обучение.",
+        badge: "NS",
+        links: [],
+      },
+    ],
+  };
+
+  let showExtraProjects = false;
+  let activeExtraTab = "projects";
+
+  const renderLinks = (links) => {
+    if (!links.length) {
+      return `<span class="entrepreneur-projects-extra__status">Ссылка скоро</span>`;
+    }
+
+    return links
+      .map((link) => {
+        if (!link.url || link.url === "#") {
+          return `<span class="entrepreneur-projects-extra__link entrepreneur-projects-extra__link--placeholder">${link.label}</span>`;
+        }
+
+        return `<a class="entrepreneur-projects-extra__link" href="${link.url}" target="_blank" rel="noopener noreferrer">${link.label}</a>`;
+      })
+      .join("");
+  };
+
+  const renderLogo = (item) => {
+    if (item.logo) {
+      const alt = item.partner || item.title || "Логотип";
+      return `<img src="${item.logo}" alt="${alt}" loading="lazy" />`;
+    }
+
+    return `<span class="entrepreneur-projects-extra__card-logo-badge" aria-hidden="true">${item.badge || "LOGO"}</span>`;
+  };
+
+  const renderCards = () => {
+    const items = extraProjectTabs[activeExtraTab] || [];
+
+    grid.replaceChildren(
+      ...items.map((item) => {
+        const article = document.createElement("article");
+        article.className = "entrepreneur-projects-extra__card";
+
+        article.innerHTML = `
+          ${item.title ? `<h3 class="entrepreneur-projects-extra__card-title">${item.title}</h3>` : `<p class="entrepreneur-projects-extra__card-partner">Партнер: ${item.partner}</p>`}
+          ${item.title ? `<p class="entrepreneur-projects-extra__card-label">Партнер: ${item.partner}</p>` : ""}
+          <p class="entrepreneur-projects-extra__card-label">Проектная задача:</p>
+          <p class="entrepreneur-projects-extra__card-task">${item.task}</p>
+          <div class="entrepreneur-projects-extra__card-logo">
+            ${renderLogo(item)}
+          </div>
+          <div class="entrepreneur-projects-extra__links">
+            ${renderLinks(item.links || [])}
+          </div>
+        `;
+
+        return article;
+      })
+    );
+
+    tabs.forEach((tab) => {
+      const isActive = tab.dataset.extraTab === activeExtraTab;
+      tab.classList.toggle("is-active", isActive);
+      tab.setAttribute("aria-selected", String(isActive));
+    });
+  };
+
+  const openPanel = () => {
+    panel.hidden = false;
+    requestAnimationFrame(() => {
+      panel.classList.add("is-open");
+    });
+  };
+
+  const closePanel = () => {
+    panel.classList.remove("is-open");
+    window.setTimeout(() => {
+      if (!showExtraProjects) panel.hidden = true;
+    }, 220);
+  };
+
+  toggle.addEventListener("click", () => {
+    showExtraProjects = !showExtraProjects;
+    toggle.textContent = showExtraProjects ? "Скрыть проекты" : "Показать больше проектов";
+    toggle.setAttribute("aria-expanded", String(showExtraProjects));
+
+    if (showExtraProjects) {
+      renderCards();
+      openPanel();
+    } else {
+      closePanel();
+    }
+  });
+
+  tabs.forEach((tab) => {
+    tab.addEventListener("click", () => {
+      const nextTab = tab.dataset.extraTab;
+      if (!nextTab || nextTab === activeExtraTab) return;
+      activeExtraTab = nextTab;
+      renderCards();
+    });
+  });
 }
 
 function initProjectTaskCards() {
@@ -255,9 +407,13 @@ function initProjectTaskCards() {
   ];
 
   container.replaceChildren(
-    ...projectTasks.map((task) => {
+    ...projectTasks.map((task, index) => {
       const article = document.createElement("article");
       article.className = "project-task-card";
+      const partnerLogoMarkup =
+        index === 2
+          ? `<img class="project-task-card__partner-logo" src="./logo/HTA_SISU.webp" alt="${task.partner}" loading="lazy" />`
+          : `<span class="project-task-card__partner-badge" aria-label="${task.partner}">${index === 0 ? "K" : "SO"}</span>`;
       article.innerHTML = `
         <h3>${task.title}</h3>
         <span class="project-task-card__label">${task.label}</span>
@@ -277,6 +433,49 @@ function initProjectTaskCards() {
       return article;
     })
   );
+}
+
+function initProjectTaskPartnerMarks() {
+  const cards = Array.from(document.querySelectorAll(".project-task-card"));
+  if (!cards.length) return;
+
+  const marks = [
+    { type: "badge", text: "K" },
+    { type: "badge", text: "SO" },
+    { type: "image", src: "./logo/HTA_SISU.webp", alt: "High Tech Academy" },
+  ];
+
+  cards.forEach((card, index) => {
+    const footer = card.querySelector(".project-task-card__footer");
+    const button = card.querySelector(".project-task-video-button");
+
+    if (!(footer instanceof HTMLElement) || !(button instanceof HTMLElement)) return;
+
+    let actions = footer.querySelector(".project-task-card__actions");
+    if (!(actions instanceof HTMLElement)) {
+      actions = document.createElement("div");
+      actions.className = "project-task-card__actions";
+      footer.append(actions);
+    }
+
+    actions.append(button);
+
+    const config = marks[index];
+    if (!config) return;
+
+    let mark = actions.querySelector(".project-task-card__partner-mark");
+    if (!(mark instanceof HTMLElement)) {
+      mark = document.createElement("div");
+      mark.className = "project-task-card__partner-mark";
+      actions.append(mark);
+    }
+
+    if (config.type === "image") {
+      mark.innerHTML = `<img class="project-task-card__partner-logo" src="${config.src}" alt="${config.alt}" loading="lazy" />`;
+    } else {
+      mark.innerHTML = `<span class="project-task-card__partner-badge" aria-hidden="true">${config.text}</span>`;
+    }
+  });
 }
 
 function initProjectTaskVideoModal() {
@@ -614,6 +813,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initWhyAccents();
   initLearningAccent();
   initProjectTaskCards();
+  initProjectTaskPartnerMarks();
   initEntrepreneurProjectCards();
   initLifeCollage();
   initLeadButtons();

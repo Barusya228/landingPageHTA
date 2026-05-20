@@ -324,6 +324,52 @@
           Подробнее о других проектах на странице
           <a href="https://www.instagram.com/hta.kz" target="_blank" rel="noopener noreferrer">Instagram</a>
         </p>
+
+        <div class="entrepreneur-projects-more">
+          <button
+            type="button"
+            class="entrepreneur-projects-more__toggle"
+            id="entrepreneur-projects-toggle"
+            aria-expanded="false"
+            aria-controls="entrepreneur-projects-extra"
+          >
+            Показать больше проектов
+          </button>
+        </div>
+
+        <section
+          class="entrepreneur-projects-extra"
+          id="entrepreneur-projects-extra"
+          aria-label="Дополнительные проекты и стартапы курса по предпринимательству"
+          hidden
+        >
+          <div class="entrepreneur-projects-extra__tabs" role="tablist" aria-label="Категории проектов">
+            <button
+              type="button"
+              class="entrepreneur-projects-extra__tab is-active"
+              data-extra-tab="projects"
+              role="tab"
+              aria-selected="true"
+            >
+              Проекты
+            </button>
+            <button
+              type="button"
+              class="entrepreneur-projects-extra__tab"
+              data-extra-tab="startups"
+              role="tab"
+              aria-selected="false"
+            >
+              Стартапы
+            </button>
+          </div>
+
+          <div
+            class="entrepreneur-projects-extra__grid"
+            id="entrepreneur-projects-extra-grid"
+            aria-live="polite"
+          ></div>
+        </section>
       </div>
     </section>
 
