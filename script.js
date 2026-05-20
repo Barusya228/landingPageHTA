@@ -440,9 +440,9 @@ function initProjectTaskPartnerMarks() {
   if (!cards.length) return;
 
   const marks = [
-    { type: "badge", text: "K" },
-    { type: "badge", text: "SO" },
-    { type: "image", src: "./logo/HTA_SISU.webp", alt: "High Tech Academy" },
+    { type: "badge", text: "Корган" },
+    { type: "image", src: "./logo/logo-Shymbulak Outdoor.svg", alt: "Shymbulak Outdoor" },
+    { type: "image", src: "./logo/logo-HTA.png", alt: "High Tech Academy" },
   ];
 
   cards.forEach((card, index) => {

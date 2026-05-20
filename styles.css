@@ -567,10 +567,6 @@ button {
   line-height: 1.35;
 }
 
-.section-learning .label {
-  color: var(--color-graphite);
-}
-
 .section-learning p:not(.label) span {
   color: var(--green);
 }
@@ -776,6 +772,7 @@ button {
   border-radius: 18px;
   background: #111111;
   object-fit: cover;
+  object-position: center;
 }
 
 .korda-cards {
@@ -925,14 +922,14 @@ button {
   flex: 0 0 auto;
   align-items: center;
   justify-content: center;
-  min-width: 56px;
-  min-height: 38px;
+  min-width: 74px;
+  min-height: 40px;
 }
 
 .project-task-card__partner-logo {
   display: block;
-  max-width: 72px;
-  max-height: 32px;
+  max-width: 92px;
+  max-height: 34px;
   width: auto;
   height: auto;
   object-fit: contain;
@@ -942,17 +939,18 @@ button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 42px;
+  min-width: 58px;
   height: 32px;
-  padding: 0 10px;
+  padding: 0 12px;
   border: 1px solid rgba(101, 181, 42, 0.42);
   border-radius: 999px;
   background: rgba(101, 181, 42, 0.08);
   color: var(--color-graphite);
   font-family: var(--sans);
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 800;
   line-height: 1;
+  white-space: nowrap;
 }
 
 .project-task-card__button:hover,
@@ -1459,6 +1457,12 @@ main > .instagram-line {
 .minerva-grid .video-placeholder {
   min-height: 232px;
   border-radius: 12px;
+}
+
+.minerva-video-preview {
+  background:
+    linear-gradient(180deg, rgba(17, 20, 25, 0.14) 0%, rgba(17, 20, 25, 0.38) 100%),
+    url("./images/Minerva Baccalaureate/Ben.webp") 54% center / cover no-repeat;
 }
 
 .minerva-link {
