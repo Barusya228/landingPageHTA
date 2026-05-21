@@ -465,6 +465,8 @@ button {
   padding: 42px 30px 34px;
   border: 2px solid var(--line);
   border-radius: 18px;
+  background: #ffffff;
+  box-shadow: 0 18px 34px rgba(68, 68, 68, 0.12), 0 6px 14px rgba(68, 68, 68, 0.08);
   color: var(--color-graphite);
   text-align: center;
 }
@@ -543,7 +545,7 @@ button {
 
 .learning-grid {
   display: grid;
-  grid-template-columns: minmax(0, 720px) 390px;
+  grid-template-columns: minmax(0, 720px) 420px;
   gap: 80px;
   align-items: center;
   width: min(calc(100% - 168px), 1180px);
@@ -577,7 +579,19 @@ button {
 }
 
 .section-learning .video-placeholder {
-  min-height: 390px;
+  width: min(100%, 420px);
+  min-height: 236px;
+  margin-left: auto;
+  border-radius: 18px;
+}
+
+.learning-video-preview {
+  aspect-ratio: 16 / 9;
+  min-height: 0;
+  background-color: var(--dark-deep);
+  background:
+    linear-gradient(180deg, rgba(20, 24, 28, 0.1), rgba(20, 24, 28, 0.18)),
+    url("./images/ДНК системы обучения в HTA/Podcast.png") center center / contain no-repeat;
 }
 
 .video-placeholder {
@@ -593,6 +607,14 @@ button {
   overflow: hidden;
   cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.learning-video-preview {
+  aspect-ratio: 16 / 10;
+  min-height: 0;
+  background:
+    linear-gradient(180deg, rgba(20, 24, 28, 0.1), rgba(20, 24, 28, 0.18)),
+    url("./images/ДНК системы обучения в HTA/Podcast.png") center center / cover no-repeat;
 }
 
 .video-placeholder:hover,
@@ -1121,7 +1143,7 @@ main > .instagram-line {
 }
 
 .entrepreneur-projects-grid {
-  display: grid;
+  display: none;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 18px;
 }
@@ -1173,12 +1195,50 @@ main > .instagram-line {
   line-height: 1.24;
 }
 
+.entrepreneur-project-groups {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+}
+
+.entrepreneur-project-groups__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 188px;
+  min-height: 48px;
+  padding: 0 24px;
+  border: 1px solid rgba(101, 181, 42, 0.6);
+  border-radius: 999px;
+  background: #ffffff;
+  color: var(--green);
+  font-family: var(--sans);
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 1;
+  box-shadow: 0 8px 18px rgba(34, 48, 64, 0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease;
+}
+
+.entrepreneur-project-groups__button:hover,
+.entrepreneur-project-groups__button:focus-visible {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 18px rgba(101, 181, 42, 0.16);
+}
+
+.entrepreneur-project-groups__button.is-active {
+  border-color: var(--green);
+  background: var(--green);
+  color: #ffffff;
+}
+
 .entrepreneur-projects-note {
-  margin: 20px 0 0;
+  margin: 18px 0 0;
   color: #5d6773;
   font-size: 14px;
   line-height: 1.35;
-  text-align: right;
+  text-align: center;
 }
 
 .entrepreneur-projects-note a {
@@ -1187,39 +1247,8 @@ main > .instagram-line {
   text-decoration: none;
 }
 
-.entrepreneur-projects-more {
-  display: flex;
-  justify-content: center;
-  margin-top: 24px;
-}
-
-.entrepreneur-projects-more__toggle {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 220px;
-  min-height: 46px;
-  padding: 0 24px;
-  border: 1px solid var(--green);
-  border-radius: 999px;
-  background: var(--green);
-  color: #ffffff;
-  font-family: var(--sans);
-  font-size: 15px;
-  font-weight: 800;
-  line-height: 1;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
-}
-
-.entrepreneur-projects-more__toggle:hover,
-.entrepreneur-projects-more__toggle:focus-visible {
-  background: #5aa224;
-  box-shadow: 0 10px 18px rgba(101, 181, 42, 0.24);
-  transform: translateY(-1px);
-}
-
 .entrepreneur-projects-extra {
-  margin-top: 26px;
+  margin-top: 22px;
   padding: 22px 22px 24px;
   border: 1px solid #cfd4d9;
   border-radius: 24px;
@@ -1235,21 +1264,30 @@ main > .instagram-line {
   transform: translateY(0);
 }
 
+.entrepreneur-projects-extra__heading {
+  margin: 0 0 20px;
+  color: var(--green);
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1.15;
+  text-align: center;
+}
+
 .entrepreneur-projects-extra__tabs {
   display: flex;
   justify-content: center;
-  gap: 12px;
-  margin-bottom: 20px;
+  gap: 14px;
+  margin-bottom: 22px;
 }
 
 .entrepreneur-projects-extra__tab {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 128px;
-  min-height: 40px;
-  padding: 0 18px;
-  border: 1px solid #cfd4d9;
+  min-width: 136px;
+  min-height: 44px;
+  padding: 0 20px;
+  border: 1px solid var(--color-graphite);
   border-radius: 999px;
   background: #ffffff;
   color: var(--color-graphite);
@@ -1257,13 +1295,21 @@ main > .instagram-line {
   font-size: 15px;
   font-weight: 800;
   line-height: 1;
-  transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+  box-shadow: 0 7px 16px rgba(68, 68, 68, 0.12);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.entrepreneur-projects-extra__tab:hover,
+.entrepreneur-projects-extra__tab:focus-visible {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 18px rgba(68, 68, 68, 0.16);
 }
 
 .entrepreneur-projects-extra__tab.is-active {
-  border-color: var(--green);
-  background: rgba(101, 181, 42, 0.12);
-  color: var(--green);
+  border-color: var(--color-graphite);
+  background: var(--green);
+  color: #ffffff;
+  box-shadow: 0 10px 20px rgba(68, 68, 68, 0.18);
 }
 
 .entrepreneur-projects-extra__grid {
@@ -1306,12 +1352,50 @@ main > .instagram-line {
   text-align: center;
 }
 
+.entrepreneur-projects-extra__card-partner-line {
+  margin: -2px 0 0;
+  color: var(--color-graphite);
+  font-size: 15px;
+  line-height: 1.35;
+  text-align: center;
+}
+
 .entrepreneur-projects-extra__card-task {
   margin: 0;
   color: var(--color-graphite);
   font-size: 15px;
   line-height: 1.4;
   text-align: center;
+}
+
+.entrepreneur-projects-extra__card-actions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.entrepreneur-projects-extra__card-video {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 136px;
+  min-height: 38px;
+  padding: 0 16px;
+  border: 1px solid var(--green);
+  border-radius: 999px;
+  background: rgba(101, 181, 42, 0.08);
+  color: var(--green);
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.entrepreneur-projects-extra__card-video:hover,
+.entrepreneur-projects-extra__card-video:focus-visible {
+  background: var(--green);
+  color: #ffffff;
 }
 
 .entrepreneur-projects-extra__card-logo {
@@ -1977,6 +2061,9 @@ main > .instagram-line {
   overflow: hidden;
   display: flex;
   justify-content: center;
+  border-radius: 32px;
+  box-shadow: 0 20px 42px rgba(68, 68, 68, 0.12), 0 8px 20px rgba(68, 68, 68, 0.08);
+  max-height: 560px;
 }
 
 .testimonial-track {
@@ -2000,9 +2087,9 @@ main > .instagram-line {
   width: 100%;
   max-width: 100%;
   height: auto;
-  max-height: 640px;
+  max-height: 560px;
   border-radius: 28px;
-  box-shadow: 0 24px 50px rgba(34, 48, 64, 0.16);
+  box-shadow: 0 24px 50px rgba(68, 68, 68, 0.18);
   object-fit: contain;
   object-position: center;
 }
@@ -2349,6 +2436,10 @@ main > .instagram-line {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .entrepreneur-project-groups {
+    justify-content: center;
+  }
+
   .project-task-cards {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -2515,12 +2606,12 @@ main > .instagram-line {
     padding: 20px 16px 18px;
   }
 
-  .entrepreneur-projects-extra__tabs {
+  .entrepreneur-project-groups {
     flex-direction: column;
     align-items: stretch;
   }
 
-  .entrepreneur-projects-extra__tab {
+  .entrepreneur-project-groups__button {
     width: 100%;
   }
 

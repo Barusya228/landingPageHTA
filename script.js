@@ -377,6 +377,282 @@ function initEntrepreneurProjectCards() {
   });
 }
 
+function initEntrepreneurProjectYearBlocks() {
+  const panel = document.getElementById("entrepreneur-projects-extra");
+  const title = document.getElementById("entrepreneur-projects-extra-title");
+  const grid = document.getElementById("entrepreneur-projects-extra-grid");
+  const yearButtons = Array.from(document.querySelectorAll("[data-project-year-trigger]"));
+  const tabs = Array.from(document.querySelectorAll(".entrepreneur-projects-extra__tab"));
+
+  if (!(panel instanceof HTMLElement) || !(title instanceof HTMLElement) || !(grid instanceof HTMLElement) || !yearButtons.length || !tabs.length) {
+    return;
+  }
+
+  const yearlyEntrepreneurshipData = {
+    "2023-2024": {
+      projects: [
+        {
+          partner: "UvU",
+          task: "Создать план для UvU, чтобы запустить 1000 эко-шаттлов по городу за 3 года и завоевать рынок Алматы.",
+          logo: "./logo/logo-uvu.png",
+          links: [
+            { label: "Видео 1", url: "#" },
+            { label: "Видео 2", url: "#" },
+          ],
+        },
+        {
+          partner: "Almaty Air Initiative",
+          task: "Разработать план новой организации, которая значительно улучшит качество воздуха в Алматы.",
+          logo: "./logo/logo-Almaty-Ait-Initiative.png",
+          links: [{ label: "Ссылка скоро", url: "#" }],
+        },
+        {
+          partner: "Amiran",
+          task: "Разработать стратегию для Amiran, чтобы выйти в прибыль за 9 месяцев, сохраняя верность миссии компании. Стратегия должна работать в рамках текущих возможностей компании.",
+          logo: "./logo/logo-amiran.svg",
+          links: [{ label: "Ссылка скоро", url: "#" }],
+        },
+      ],
+      startups: [
+        {
+          title: "Медицинские стартапы",
+          partner: "XXXXXXX",
+          task: "Создать стартап-идею в сфере медицины, которая решает реальную проблему пользователей и может быть протестирована на практике.",
+          badge: "MED",
+          links: [],
+        },
+        {
+          title: "Устойчивое развитие",
+          partner: "XXXXXXX",
+          task: "Создать стартап-решение, связанное с устойчивым развитием, экологией или снижением негативного воздействия на городскую среду.",
+          badge: "SD",
+          links: [],
+        },
+        {
+          title: "Пищевые отходы и жизненные навыки",
+          partner: "XXXXXXX",
+          task: "Создать стартап, который помогает сокращать пищевые отходы или развивать практические жизненные навыки.",
+          badge: "LS",
+          links: [],
+        },
+      ],
+    },
+    "2024-2025": {
+      projects: [
+        {
+          partner: "Партнер 1",
+          task: "Описание проектной задачи за 2024–2025 учебный год.",
+          badge: "P1",
+          links: [{ label: "Ссылка скоро", url: "#" }],
+        },
+        {
+          partner: "Партнер 2",
+          task: "Описание проектной задачи за 2024–2025 учебный год.",
+          badge: "P2",
+          links: [{ label: "Ссылка скоро", url: "#" }],
+        },
+        {
+          partner: "Партнер 3",
+          task: "Описание проектной задачи за 2024–2025 учебный год.",
+          badge: "P3",
+          links: [{ label: "Ссылка скоро", url: "#" }],
+        },
+      ],
+      startups: [
+        {
+          title: "Стартап 1",
+          partner: "XXXXXXX",
+          task: "Описание стартап-задачи за 2024–2025 учебный год.",
+          badge: "S1",
+          links: [],
+        },
+        {
+          title: "Стартап 2",
+          partner: "XXXXXXX",
+          task: "Описание стартап-задачи за 2024–2025 учебный год.",
+          badge: "S2",
+          links: [],
+        },
+        {
+          title: "Стартап 3",
+          partner: "XXXXXXX",
+          task: "Описание стартап-задачи за 2024–2025 учебный год.",
+          badge: "S3",
+          links: [],
+        },
+      ],
+    },
+    "2025-2026": {
+      projects: [
+        {
+          partner: "Партнер 1",
+          task: "Описание проектной задачи за 2025–2026 учебный год.",
+          badge: "P1",
+          links: [{ label: "Ссылка скоро", url: "#" }],
+        },
+        {
+          partner: "Партнер 2",
+          task: "Описание проектной задачи за 2025–2026 учебный год.",
+          badge: "P2",
+          links: [{ label: "Ссылка скоро", url: "#" }],
+        },
+        {
+          partner: "Партнер 3",
+          task: "Описание проектной задачи за 2025–2026 учебный год.",
+          badge: "P3",
+          links: [{ label: "Ссылка скоро", url: "#" }],
+        },
+      ],
+      startups: [
+        {
+          title: "Стартап 1",
+          partner: "XXXXXXX",
+          task: "Описание стартап-задачи за 2025–2026 учебный год.",
+          badge: "S1",
+          links: [],
+        },
+        {
+          title: "Стартап 2",
+          partner: "XXXXXXX",
+          task: "Описание стартап-задачи за 2025–2026 учебный год.",
+          badge: "S2",
+          links: [],
+        },
+        {
+          title: "Стартап 3",
+          partner: "XXXXXXX",
+          task: "Описание стартап-задачи за 2025–2026 учебный год.",
+          badge: "S3",
+          links: [],
+        },
+      ],
+    },
+  };
+
+  let activeYear = null;
+  let activeTab = "projects";
+
+  const renderLinks = (links) => {
+    if (!links.length) {
+      return `<span class="entrepreneur-projects-extra__status">Ссылка скоро</span>`;
+    }
+
+    return links
+      .map((link) => {
+        if (!link.url || link.url === "#") {
+          return `<span class="entrepreneur-projects-extra__link entrepreneur-projects-extra__link--placeholder">${link.label}</span>`;
+        }
+
+        return `<a class="entrepreneur-projects-extra__link" href="${link.url}" target="_blank" rel="noopener noreferrer">${link.label}</a>`;
+      })
+      .join("");
+  };
+
+  const renderLogo = (item) => {
+    if (item.logo) {
+      const alt = item.partner || item.title || "Логотип";
+      return `<img src="${item.logo}" alt="${alt}" loading="lazy" />`;
+    }
+
+    return `<span class="entrepreneur-projects-extra__card-logo-badge" aria-hidden="true">${item.badge || "LOGO"}</span>`;
+  };
+
+  const renderCards = () => {
+    if (!activeYear) return;
+
+    const yearData = yearlyEntrepreneurshipData[activeYear];
+    const items = yearData?.[activeTab] || [];
+
+    title.textContent = activeYear.replace("-", "–");
+
+    grid.replaceChildren(
+      ...items.map((item) => {
+        const article = document.createElement("article");
+        article.className = "entrepreneur-projects-extra__card";
+
+        article.innerHTML = `
+          ${activeTab === "projects"
+            ? `<p class="entrepreneur-projects-extra__card-partner">Партнер: ${item.partner}</p>`
+            : `<h3 class="entrepreneur-projects-extra__card-title">${item.title}</h3>
+               <p class="entrepreneur-projects-extra__card-label">Партнер:</p>
+               <p class="entrepreneur-projects-extra__card-partner-line">${item.partner}</p>`}
+          <p class="entrepreneur-projects-extra__card-label">Проектная задача:</p>
+          <p class="entrepreneur-projects-extra__card-task">${item.task}</p>
+          <div class="entrepreneur-projects-extra__card-logo">
+            ${renderLogo(item)}
+          </div>
+          <div class="entrepreneur-projects-extra__links">
+            ${renderLinks(item.links || [])}
+          </div>
+        `;
+
+        return article;
+      })
+    );
+
+    tabs.forEach((tab) => {
+      if (!(tab instanceof HTMLButtonElement)) return;
+      const isActive = tab.dataset.extraTab === activeTab;
+      tab.classList.toggle("is-active", isActive);
+      tab.setAttribute("aria-selected", String(isActive));
+    });
+  };
+
+  const syncYearButtons = () => {
+    yearButtons.forEach((button) => {
+      if (!(button instanceof HTMLButtonElement)) return;
+      const isActive = button.dataset.projectYearTrigger === activeYear;
+      button.classList.toggle("is-active", isActive);
+      button.setAttribute("aria-expanded", String(isActive));
+    });
+  };
+
+  const openPanel = () => {
+    panel.hidden = false;
+    requestAnimationFrame(() => {
+      panel.classList.add("is-open");
+    });
+  };
+
+  const closePanel = () => {
+    panel.classList.remove("is-open");
+    window.setTimeout(() => {
+      if (!activeYear) panel.hidden = true;
+    }, 220);
+  };
+
+  yearButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      if (!(button instanceof HTMLButtonElement)) return;
+      const nextYear = button.dataset.projectYearTrigger;
+      if (!nextYear) return;
+
+      if (activeYear === nextYear) {
+        activeYear = null;
+        syncYearButtons();
+        closePanel();
+        return;
+      }
+
+      activeYear = nextYear;
+      activeTab = "projects";
+      syncYearButtons();
+      renderCards();
+      openPanel();
+    });
+  });
+
+  tabs.forEach((tab) => {
+    tab.addEventListener("click", () => {
+      if (!(tab instanceof HTMLButtonElement) || !activeYear) return;
+      const nextTab = tab.dataset.extraTab;
+      if (!nextTab || nextTab === activeTab) return;
+      activeTab = nextTab;
+      renderCards();
+    });
+  });
+}
+
 function initProjectTaskCards() {
   const container = document.getElementById("korda-project-tasks");
   if (!(container instanceof HTMLElement)) return;
@@ -814,7 +1090,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initLearningAccent();
   initProjectTaskCards();
   initProjectTaskPartnerMarks();
-  initEntrepreneurProjectCards();
+  initEntrepreneurProjectYearBlocks();
   initLifeCollage();
   initLeadButtons();
   initInlineVideos();

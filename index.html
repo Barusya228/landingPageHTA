@@ -40,9 +40,9 @@
           <li><a href="#about">Почему HTA</a></li>
           <li><a href="#projects">Korda Method</a></li>
           <li><a href="#entrepreneur">Предпринимательство</a></li>
-          <li><a href="#mbacc">Minerva Baccalaureate</a></li>
+          <li><a href="#mbacc">MBacc</a></li>
           <li><a href="#life">Жизнь в HTA</a></li>
-          <li><a href="#"></a></li>
+          <li><a href="#profile">Портрет выпускника</a></li>
         </ul>
       </nav>
 
@@ -159,7 +159,7 @@
         </div>
         <button
           type="button"
-          class="video-placeholder video-trigger"
+          class="video-placeholder video-trigger learning-video-preview"
           aria-label="Открыть видео о системе обучения HTA"
           data-video-title="Видео о системе обучения HTA"
           data-video-embed="https://www.youtube.com/embed/yxKj67w_Wh0?autoplay=1&rel=0"
@@ -216,7 +216,7 @@
               preload="metadata"
               poster="./images/Korda Method School/Дорис.jpg"
             >
-              <source src="./Видео/Дорис.mp4" type="video/mp4" />
+              <source src="./Видео/Дорис-RU.mp4" type="video/mp4" />
             </video>
           </div>
         </div>
@@ -321,30 +321,50 @@
           </article>
         </div>
 
-        <p class="entrepreneur-projects-note" hidden>
+        <div class="entrepreneur-project-groups" aria-label="Проекты по учебным годам">
+          <button
+            type="button"
+            class="entrepreneur-project-groups__button"
+            data-project-year-trigger="2023-2024"
+            aria-expanded="false"
+            aria-controls="entrepreneur-projects-extra"
+          >
+            2023–2024
+          </button>
+          <button
+            type="button"
+            class="entrepreneur-project-groups__button"
+            data-project-year-trigger="2024-2025"
+            aria-expanded="false"
+            aria-controls="entrepreneur-projects-extra"
+          >
+            2024–2025
+          </button>
+          <button
+            type="button"
+            class="entrepreneur-project-groups__button"
+            data-project-year-trigger="2025-2026"
+            aria-expanded="false"
+            aria-controls="entrepreneur-projects-extra"
+          >
+            2025–2026
+          </button>
+        </div>
+
+        <p class="entrepreneur-projects-note">
           Подробнее о других проектах на странице
           <a href="https://www.instagram.com/hta.kz" target="_blank" rel="noopener noreferrer">Instagram</a>
         </p>
 
-        <div class="entrepreneur-projects-more">
-          <button
-            type="button"
-            class="entrepreneur-projects-more__toggle"
-            id="entrepreneur-projects-toggle"
-            aria-expanded="false"
-            aria-controls="entrepreneur-projects-extra"
-          >
-            Примеры проектов
-          </button>
-        </div>
-
         <section
           class="entrepreneur-projects-extra"
           id="entrepreneur-projects-extra"
-          aria-label="Дополнительные проекты и стартапы курса по предпринимательству"
+          aria-label="Проекты курса по предпринимательству по учебным годам"
           hidden
         >
-          <div class="entrepreneur-projects-extra__tabs" role="tablist" aria-label="Категории проектов">
+          <h3 class="entrepreneur-projects-extra__heading" id="entrepreneur-projects-extra-title">2023–2024</h3>
+
+          <div class="entrepreneur-projects-extra__tabs" role="tablist" aria-label="Категории проектов года">
             <button
               type="button"
               class="entrepreneur-projects-extra__tab is-active"
@@ -674,7 +694,7 @@
       </div>
     </section>
 
-    <section class="section section-choice">
+    <section id="profile" class="section section-choice">
       <div class="container">
         <h2> Станьте частью сообщества HTA</h2>
         <img
@@ -702,6 +722,7 @@
           <li><a href="#entrepreneur">Предпринимательство</a></li>
           <li><a href="#mbacc">Minerva Baccalaureate</a></li>
           <li><a href="#life">Жизнь в HTA</a></li>
+          <li><a href="#profile">Портрет выпускника</a></li>
       </nav>
       <div class="footer-contacts">
         <a href="tel:+77717471881">+7 (771) 747-18-81</a>
