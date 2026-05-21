@@ -394,7 +394,29 @@ function initEntrepreneurProjectYearBlocks() {
 
   const entrepreneurshipData = {
     "2025-2026": {
-      projects: [],
+      projects: [
+        {
+          title: "Партнер: UvU",
+          description: "Проектная задача: создать план для UvU, чтобы запустить 1000 эко-шаттлов по городу за 3 года и завоевать рынок Алматы",
+          logo: "./logo/logo-uvu.png",
+          links: [
+            { label: "Видео 1" },
+            { label: "Видео 2" },
+          ],
+        },
+        {
+          title: "Партнер: Almaty Air Initiative",
+          description: "Проектная задача: разработать план новой организации, которая значительно улучшить качество воздуха в Алматы",
+          logo: "./logo/logo-Almaty-Ait-Initiative.png",
+          linkLabel: "Ссылка скоро",
+        },
+        {
+          title: "Партнер: Amiran",
+          description: "Проектная задача: разработать стратегию для Amiran, чтобы выйти в прибыль за 9 месяцев, сохраняя верность миссии компании. Стратегия должна работать в рамках текущих возможностей компании",
+          logo: "./logo/logo-amiran.svg",
+          linkLabel: "Ссылка скоро",
+        },
+      ],
       startups: [
         {
           title: "BARYTAN AI",
@@ -491,6 +513,18 @@ function initEntrepreneurProjectYearBlocks() {
   let activeTab = "projects";
 
   const renderLink = (item) => {
+    if (Array.isArray(item.links) && item.links.length) {
+      return item.links
+        .map((link) => {
+          if (!link.url) {
+            return `<span class="entrepreneur-projects-extra__link entrepreneur-projects-extra__link--placeholder">${link.label}</span>`;
+          }
+
+          return `<a class="entrepreneur-projects-extra__link" href="${link.url}" target="_blank" rel="noopener noreferrer">${link.label}</a>`;
+        })
+        .join("");
+    }
+
     if (!item.linkUrl) {
       return `<span class="entrepreneur-projects-extra__link entrepreneur-projects-extra__link--placeholder">${item.linkLabel || "Ссылка скоро"}</span>`;
     }
