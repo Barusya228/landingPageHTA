@@ -687,7 +687,7 @@ button {
   text-align: left;
 }
 
-.korda-text-column p {
+.korda-text-column p:not(.label) {
   max-width: 760px;
   margin: 0 0 22px;
   color: var(--color-graphite);
@@ -733,10 +733,15 @@ button {
   min-height: 210px;
 }
 
-.video-placeholder-korda {
-  justify-self: center;
-  align-self: start;
+.korda-video-block {
   width: min(100%, 340px);
+  justify-self: center;
+}
+
+.video-placeholder-korda {
+  justify-self: stretch;
+  align-self: start;
+  width: 100%;
   margin-top: 0;
   margin-bottom: 0;
   aspect-ratio: 9 / 16;
@@ -809,6 +814,34 @@ button {
   background: #111111;
   object-fit: cover;
   object-position: center;
+}
+
+.korda-video-caption {
+  margin-top: 16px;
+  padding-left: 14px;
+  border-left: 2px solid rgba(101, 181, 42, 0.7);
+  color: var(--color-graphite);
+  text-align: left;
+}
+
+.korda-video-name,
+.korda-video-role {
+  margin: 0;
+}
+
+.korda-video-name {
+  font-family: var(--sans);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.korda-video-role {
+  margin-top: 6px;
+  font-family: var(--sans);
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.4;
 }
 
 .project-examples-section {
@@ -1554,19 +1587,27 @@ main > .instagram-line {
   line-height: 1.22;
 }
 
+.minerva-video-block {
+  width: 100%;
+  max-width: 390px;
+  justify-self: start;
+}
+
 .minerva-grid .video-placeholder {
+  display: block;
+  width: 100%;
   min-height: 232px;
   border-radius: 12px;
 }
 
 .minerva-video-caption {
-  margin: 12px 0 0;
+  margin: 14px 0 0;
   color: var(--color-graphite);
   font-family: var(--sans);
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 500;
   line-height: 1.35;
-  text-align: center;
+  text-align: left;
 }
 
 .minerva-video-preview {
