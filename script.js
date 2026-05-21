@@ -398,6 +398,7 @@ function initEntrepreneurProjectYearBlocks() {
         {
           title: "Партнер: UvU",
           description: "Проектная задача: создать план для UvU, чтобы запустить 1000 эко-шаттлов по городу за 3 года и завоевать рынок Алматы",
+          image: "./images/Курс по предпринимательству/UvU транспорт.jpg",
           logo: "./logo/logo-uvu.png",
           links: [
             { label: "Видео 1" },
@@ -407,12 +408,14 @@ function initEntrepreneurProjectYearBlocks() {
         {
           title: "Партнер: Almaty Air Initiative",
           description: "Проектная задача: разработать план новой организации, которая значительно улучшить качество воздуха в Алматы",
+          image: "./images/Курс по предпринимательству/AIR Solution.jpg",
           logo: "./logo/logo-Almaty-Ait-Initiative.png",
           linkLabel: "Ссылка скоро",
         },
         {
           title: "Партнер: Amiran",
           description: "Проектная задача: разработать стратегию для Amiran, чтобы выйти в прибыль за 9 месяцев, сохраняя верность миссии компании. Стратегия должна работать в рамках текущих возможностей компании",
+          image: "./images/Курс по предпринимательству/Амиран 2.jpg",
           logo: "./logo/logo-amiran.svg",
           linkLabel: "Ссылка скоро",
         },
@@ -421,16 +424,19 @@ function initEntrepreneurProjectYearBlocks() {
         {
           title: "BARYTAN AI",
           description: "Инициатива: ученики разработали технологию, которая автоматически преобразует разговор между врачом и пациентом в структурированную медицинскую запись, тем самым экономя время и облегчая процесс записи данных",
+          image: "./images/Курс по предпринимательству/стартап 1.jpg",
           linkLabel: "Ссылка скоро",
         },
         {
           title: "RayHeart",
           description: "Инициатива: ученики разработали умный медицинский корсет с встроенными биосенсорами, который постоянно отслеживает показатели работы сердца, помогая предотвращать и заранее предупреждать о повторном сердечном приступе",
+          image: "./images/Курс по предпринимательству/DSC07286.jpg.jpeg",
           linkLabel: "Ссылка скоро",
         },
         {
           title: "NEXTSTEP",
           description: "Инициатива: ученики разработали двухнедельный интерактивный летний лагерь для подростков 15–18 лет, который в безопасной среде помогает им подготовиться к самостоятельной жизни, развивая практические навыки, связанные с реальными финансами и бытовыми задачами, через опыт и обучение",
+          image: "./images/Курс по предпринимательству/UvU 3.jpg",
           linkLabel: "Ссылка скоро",
         },
       ],
@@ -440,18 +446,21 @@ function initEntrepreneurProjectYearBlocks() {
       {
           title: "Партнер: Platform A",
           description: "Проектная задача: разработать план по завоеванию рынка Алматы и Казахстана для Platforma Market",
+          image: "./images/Курс по предпринимательству/проекты 2025-2026.webp",
           logo: "./logo/logo-PlatformA.webp",
           linkLabel: "Ссылка скоро",
         },
         {
           title: "Партнер: KazBeef",
           description: "Проектная задача: разработать план по созданию новой организации, которая решит проблему опустынивания в Казахстане. Обосновать предложение комплексным анализом существующих и возможных решений этой проблемы",
+          image: "./images/Курс по предпринимательству/Air Solutin.jpg",
           logo: "./logo/logo-kazbeef.jpg",
           linkLabel: "Ссылка скоро",
         },
         {
           title: "Партнер: Shin-Line",
           description: "Проектная задача: создать стратегию для продукта “Шин-Лайн”, чтобы стать лидером рынка на постсоветском пространстве",
+          image: "./images/Курс по предпринимательству/проекты 2023-2024.webp",
           logo: "./logo/logo-shinlain.png",
           linkLabel: "Ссылка скоро",
         },
@@ -460,16 +469,19 @@ function initEntrepreneurProjectYearBlocks() {
         {
           title: "Silver Pear",
           description: "Инициатива: ученики решили проблему пищевых отходов, перерабатывая их в компост и корм для животных, снижая вред для окружающей среды и поддерживая устойчивое сельское хозяйство. Продукт был успешно протестирован в ЖК Dostyk Residence",
+          image: "./images/Курс по предпринимательству/стартап 1.jpg",
           linkLabel: "Ссылка скоро",
         },
         {
           title: "TAN",
           description: "Инициатива: ученики создали бренд кофейных напитков с концепцией «сам себе бариста», позволяющий пользователям создавать собственные напитки благодаря уникальному трехъярусному дизайну",
+          image: "./images/Курс по предпринимательству/DSC07286.jpg.jpeg",
           linkLabel: "Ссылка скоро",
         },
         {
           title: "PET X",
           description: "Инициатива: ученики решали проблему переработки пластиковых бутылок, разработав машину для их превращения в филамент для 3D-принтеров",
+          image: "./images/Курс по предпринимательству/UvU 3.jpg",
           linkLabel: "Ссылка скоро",
         },
       ],
@@ -479,12 +491,14 @@ function initEntrepreneurProjectYearBlocks() {
         {
           title: "Партнер: Arbuz",
           description: "Проектная задача: разработать стратегию масштабирования компании Arbuz",
+          image: "./images/Курс по предпринимательству/проекты 2023-2024.webp",
           logo: "./logo/logo-arbuz.png",
           linkLabel: "Ссылка скоро",
         },
         {
           title: "Партнер: Compass",
           description: "Проектная задача: разработать технико-экономическое обоснование по одному из направлений развития компании Compass",
+          image: "./images/Курс по предпринимательству/DSC07286.jpg.jpeg",
           logo: "./logo/logo-compass.jpg",
           linkLabel: "Ссылка скоро",
         },
@@ -493,67 +507,93 @@ function initEntrepreneurProjectYearBlocks() {
         {
           title: "POMOGI PRIUTU.KZ",
           description: "Инициатива: ученики решили проблему отсутствия финансирования приютов для животных, разработав приложение, в котором можно выбрать питомца, заботиться о нем и поддерживать его донатами",
+          image: "./images/Курс по предпринимательству/стартап 1.jpg",
           linkLabel: "Ссылка скоро",
         },
         {
           title: "Food Saving",
           description: "Инициатива: ученики решили проблему пищевых отходов и финансовых потерь у ресторанов и магазинов, предлагая платформу с акционными продуктами, доступными для студентов",
+          image: "./images/Курс по предпринимательству/UvU 3.jpg",
           linkLabel: "Ссылка скоро",
         },
         {
           title: "Aina",
           description: "Инициатива: ученики решили проблему оттока творческой молодежи из Казахстана, предлагая инициативу, которая усиливает интерес к современному искусству и повышает осведомленность о нем внутри страны",
+          image: "./images/Курс по предпринимательству/DSC07286.jpg.jpeg",
           linkLabel: "Ссылка скоро",
         },
       ],
     },
   };
 
-  let activeYear = null;
-  let activeTab = "projects";
+  let activeYear = "2025-2026";
+  let activeCategory = "projects";
+  let activeItemIndex = 0;
+
+  const escapeHtml = (value = "") =>
+    String(value)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
+
+  const getShortTitle = (item) => item.title.replace(/^Партнер:\s*/i, "");
+  const getShortDescription = (item) => item.description.replace(/^(Проектная задача|Инициатива):\s*/i, "");
+  const getInitials = (value) =>
+    value
+      .split(/\s+/)
+      .filter(Boolean)
+      .slice(0, 2)
+      .map((part) => part[0])
+      .join("")
+      .toUpperCase();
 
   const renderLink = (item) => {
     if (Array.isArray(item.links) && item.links.length) {
       return item.links
         .map((link) => {
           if (!link.url) {
-            return `<span class="entrepreneur-projects-extra__link entrepreneur-projects-extra__link--placeholder">${link.label}</span>`;
+            return `<span class="entrepreneur-projects-extra__link entrepreneur-projects-extra__link--placeholder">${escapeHtml(link.label)}</span>`;
           }
 
-          return `<a class="entrepreneur-projects-extra__link" href="${link.url}" target="_blank" rel="noopener noreferrer">${link.label}</a>`;
+          return `<a class="entrepreneur-projects-extra__link" href="${escapeHtml(link.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(link.label)}</a>`;
         })
         .join("");
     }
 
     if (!item.linkUrl) {
-      return `<span class="entrepreneur-projects-extra__link entrepreneur-projects-extra__link--placeholder">${item.linkLabel || "Ссылка скоро"}</span>`;
+      return `<span class="entrepreneur-projects-extra__link entrepreneur-projects-extra__link--placeholder">${escapeHtml(item.linkLabel || "Ссылка скоро")}</span>`;
     }
 
-    return `<a class="entrepreneur-projects-extra__link" href="${item.linkUrl}" target="_blank" rel="noopener noreferrer">${item.linkLabel || "Подробнее"}</a>`;
+    return `<a class="entrepreneur-projects-extra__link" href="${escapeHtml(item.linkUrl)}" target="_blank" rel="noopener noreferrer">${escapeHtml(item.linkLabel || "Подробнее")}</a>`;
   };
 
   const renderLogo = (item) => {
-    if (!item.logo) return "";
-    return `<div class="entrepreneur-projects-extra__card-logo"><img src="${item.logo}" alt="${item.title}" loading="lazy" /></div>`;
+    if (item.logo) {
+      return `<span class="entrepreneur-projects-extra__logo"><img src="${escapeHtml(item.logo)}" alt="${escapeHtml(getShortTitle(item))}" loading="lazy" /></span>`;
+    }
+
+    return `<span class="entrepreneur-projects-extra__logo entrepreneur-projects-extra__logo--text">${escapeHtml(getInitials(getShortTitle(item)))}</span>`;
   };
 
   const syncTabs = () => {
     tabs.forEach((tab) => {
       if (!(tab instanceof HTMLButtonElement)) return;
-      const isActive = tab.dataset.extraTab === activeTab;
+      const isActive = tab.dataset.extraTab === activeCategory;
       tab.classList.toggle("is-active", isActive);
       tab.setAttribute("aria-selected", String(isActive));
     });
   };
 
-  const renderCards = () => {
+  const renderSpotlight = () => {
     if (!activeYear) return;
 
     const yearData = entrepreneurshipData[activeYear];
-    const items = yearData?.[activeTab] || [];
+    const currentItems = yearData?.[activeCategory] || [];
     title.textContent = activeYear.replace("-", "–");
 
-    if (!items.length) {
+    if (!currentItems.length) {
       const empty = document.createElement("p");
       empty.className = "entrepreneur-projects-extra__empty";
       empty.textContent = "Информация скоро будет добавлена";
@@ -562,23 +602,72 @@ function initEntrepreneurProjectYearBlocks() {
       return;
     }
 
-    grid.replaceChildren(
-      ...items.map((item) => {
-        const article = document.createElement("article");
-        article.className = "entrepreneur-projects-extra__card";
-        article.innerHTML = `
-          <h3 class="entrepreneur-projects-extra__card-title">${item.title}</h3>
-          <p class="entrepreneur-projects-extra__card-task">${item.description}</p>
-          ${renderLogo(item)}
+    if (activeItemIndex >= currentItems.length) activeItemIndex = 0;
+
+    const activeItem = currentItems[activeItemIndex] || currentItems[0];
+    const nav = document.createElement("div");
+    nav.className = "entrepreneur-projects-extra__nav";
+    nav.setAttribute("aria-label", "Список проектов");
+
+    currentItems.forEach((item, index) => {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "entrepreneur-projects-extra__nav-card";
+      button.classList.toggle("is-active", index === activeItemIndex);
+      button.setAttribute("aria-pressed", String(index === activeItemIndex));
+      button.dataset.itemIndex = String(index);
+      button.innerHTML = `
+        ${renderLogo(item)}
+        <span class="entrepreneur-projects-extra__nav-copy">
+          <span class="entrepreneur-projects-extra__nav-title">${escapeHtml(getShortTitle(item))}</span>
+          <span class="entrepreneur-projects-extra__nav-text">${escapeHtml(getShortDescription(item))}</span>
+        </span>
+        <span class="entrepreneur-projects-extra__nav-arrow" aria-hidden="true">›</span>
+      `;
+      button.addEventListener("click", () => {
+        activeItemIndex = index;
+        renderSpotlight();
+      });
+      nav.append(button);
+    });
+
+    const hero = document.createElement("article");
+    hero.className = "entrepreneur-projects-extra__spotlight";
+    hero.innerHTML = `
+      <img
+        class="entrepreneur-projects-extra__spotlight-image"
+        src="${escapeHtml(activeItem.image)}"
+        alt="${escapeHtml(getShortTitle(activeItem))}"
+        loading="lazy"
+      />
+      <div class="entrepreneur-projects-extra__spotlight-info">
+        ${renderLogo(activeItem)}
+        <div class="entrepreneur-projects-extra__spotlight-copy">
+          <h4 class="entrepreneur-projects-extra__spotlight-title">${escapeHtml(activeItem.title)}</h4>
+          <p class="entrepreneur-projects-extra__spotlight-text">${escapeHtml(activeItem.description)}</p>
           <div class="entrepreneur-projects-extra__links">
-            ${renderLink(item)}
+            ${renderLink(activeItem)}
           </div>
-        `;
-        return article;
-      })
-    );
+        </div>
+      </div>
+    `;
+
+    grid.replaceChildren(nav, hero);
 
     syncTabs();
+  };
+
+  const resetActiveItem = () => {
+    activeItemIndex = 0;
+  };
+
+  const selectYear = (nextYear) => {
+    activeYear = nextYear;
+    activeCategory = "projects";
+    resetActiveItem();
+    syncYearButtons();
+    renderSpotlight();
+    openPanel();
   };
 
   const syncYearButtons = () => {
@@ -597,31 +686,12 @@ function initEntrepreneurProjectYearBlocks() {
     });
   };
 
-  const closePanel = () => {
-    panel.classList.remove("is-open");
-    window.setTimeout(() => {
-      if (!activeYear) panel.hidden = true;
-    }, 220);
-  };
-
   yearButtons.forEach((button) => {
     button.addEventListener("click", () => {
       if (!(button instanceof HTMLButtonElement)) return;
       const nextYear = button.dataset.projectYearTrigger;
       if (!nextYear) return;
-
-      if (activeYear === nextYear) {
-        activeYear = null;
-        syncYearButtons();
-        closePanel();
-        return;
-      }
-
-      activeYear = nextYear;
-      activeTab = "projects";
-      syncYearButtons();
-      renderCards();
-      openPanel();
+      selectYear(nextYear);
     });
   });
 
@@ -629,11 +699,16 @@ function initEntrepreneurProjectYearBlocks() {
     tab.addEventListener("click", () => {
       if (!(tab instanceof HTMLButtonElement) || !activeYear) return;
       const nextTab = tab.dataset.extraTab;
-      if (!nextTab || nextTab === activeTab) return;
-      activeTab = nextTab;
-      renderCards();
+      if (!nextTab || nextTab === activeCategory) return;
+      activeCategory = nextTab;
+      resetActiveItem();
+      renderSpotlight();
     });
   });
+
+  syncYearButtons();
+  renderSpotlight();
+  openPanel();
 }
 
 function initTestimonialCarousel() {

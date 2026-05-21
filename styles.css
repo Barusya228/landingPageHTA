@@ -76,6 +76,16 @@ button {
   line-height: 1.2;
 }
 
+.section-title-left {
+  margin: 0 0 24px;
+  color: var(--green);
+  font-family: var(--sans);
+  font-size: 22px;
+  font-weight: 900;
+  line-height: 1.2;
+  text-align: left;
+}
+
 .site-header {
   position: sticky;
   top: 0;
@@ -1298,11 +1308,11 @@ main > .instagram-line {
 
 .entrepreneur-projects-extra {
   margin-top: 22px;
-  padding: 22px 22px 24px;
-  border: 1px solid #cfd4d9;
-  border-radius: 24px;
-  background: #ffffff;
-  box-shadow: 0 12px 28px rgba(34, 48, 64, 0.08);
+  padding: 28px 30px 32px;
+  border: 1px solid rgba(101, 181, 42, 0.28);
+  border-radius: 28px;
+  background: linear-gradient(135deg, #ffffff 0%, #fbfdf8 100%);
+  box-shadow: 0 18px 44px rgba(34, 48, 64, 0.08);
   opacity: 0;
   transform: translateY(-8px);
   transition: opacity 0.22s ease, transform 0.22s ease;
@@ -1314,9 +1324,9 @@ main > .instagram-line {
 }
 
 .entrepreneur-projects-extra__heading {
-  margin: 0 0 20px;
+  margin: 0 0 18px;
   color: var(--green);
-  font-size: 30px;
+  font-size: 34px;
   font-weight: 700;
   line-height: 1.15;
   text-align: center;
@@ -1326,7 +1336,7 @@ main > .instagram-line {
   display: flex;
   justify-content: center;
   gap: 14px;
-  margin-bottom: 22px;
+  margin-bottom: 26px;
 }
 
 .entrepreneur-projects-extra__tab {
@@ -1363,20 +1373,125 @@ main > .instagram-line {
 
 .entrepreneur-projects-extra__grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 18px;
+  grid-template-columns: minmax(260px, 0.35fr) minmax(0, 0.65fr);
+  gap: 24px;
+  align-items: stretch;
 }
 
-.entrepreneur-projects-extra__card {
+.entrepreneur-projects-extra__nav {
   display: flex;
   flex-direction: column;
   gap: 14px;
-  min-height: 100%;
-  padding: 18px 16px 16px;
-  border: 1px solid #d5dadd;
-  border-radius: 18px;
+}
+
+.entrepreneur-projects-extra__nav-card {
+  display: grid;
+  grid-template-columns: 74px minmax(0, 1fr) 34px;
+  align-items: center;
+  gap: 16px;
+  min-height: 132px;
+  padding: 16px;
+  border: 1px solid #dce1e5;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--color-graphite);
+  text-align: left;
+  box-shadow: 0 8px 22px rgba(34, 48, 64, 0.05);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease, background 0.2s ease;
+}
+
+.entrepreneur-projects-extra__nav-card:hover,
+.entrepreneur-projects-extra__nav-card:focus-visible {
+  transform: translateY(-1px);
+  border-color: rgba(101, 181, 42, 0.55);
+  box-shadow: 0 12px 24px rgba(34, 48, 64, 0.08);
+}
+
+.entrepreneur-projects-extra__nav-card.is-active {
+  border-color: var(--green);
+  background: #fbfff8;
+  box-shadow: inset 4px 0 0 var(--green), 0 14px 28px rgba(101, 181, 42, 0.14);
+}
+
+.entrepreneur-projects-extra__logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 74px;
+  height: 74px;
+  border-radius: 12px;
   background: #ffffff;
-  box-shadow: 0 8px 20px rgba(34, 48, 64, 0.05);
+  overflow: hidden;
+}
+
+.entrepreneur-projects-extra__logo img {
+  display: block;
+  max-width: 62px;
+  max-height: 58px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+.entrepreneur-projects-extra__logo--text {
+  background: var(--green);
+  color: #ffffff;
+  font-family: var(--sans);
+  font-size: 17px;
+  font-weight: 800;
+  letter-spacing: 0;
+}
+
+.entrepreneur-projects-extra__nav-copy {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.entrepreneur-projects-extra__nav-title {
+  color: var(--green);
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1.16;
+}
+
+.entrepreneur-projects-extra__nav-text {
+  display: -webkit-box;
+  overflow: hidden;
+  color: var(--color-graphite);
+  font-size: 14px;
+  line-height: 1.34;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+.entrepreneur-projects-extra__nav-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border: 1px solid #dce1e5;
+  border-radius: 50%;
+  color: var(--green);
+  font-size: 30px;
+  line-height: 1;
+}
+
+.entrepreneur-projects-extra__nav-card.is-active .entrepreneur-projects-extra__nav-arrow {
+  border-color: var(--green);
+  background: var(--green);
+  color: #ffffff;
+}
+
+.entrepreneur-projects-extra__spotlight {
+  position: relative;
+  min-height: 500px;
+  overflow: hidden;
+  border-radius: 18px;
+  background: #d8dde2;
+  box-shadow: 0 18px 36px rgba(34, 48, 64, 0.18);
 }
 
 .entrepreneur-projects-extra__empty {
@@ -1390,123 +1505,73 @@ main > .instagram-line {
   text-align: center;
 }
 
-.entrepreneur-projects-extra__card-title,
-.entrepreneur-projects-extra__card-partner {
-  margin: 0;
-  color: var(--green);
-  font-size: 18px;
-  font-weight: 800;
-  line-height: 1.22;
-  text-align: center;
+.entrepreneur-projects-extra__spotlight-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
-.entrepreneur-projects-extra__card-partner {
-  font-size: 17px;
-}
-
-.entrepreneur-projects-extra__card-label {
-  margin: 0 0 4px;
-  color: var(--color-graphite);
-  font-size: 14px;
-  font-weight: 700;
-  text-align: center;
-}
-
-.entrepreneur-projects-extra__card-partner-line {
-  margin: -2px 0 0;
-  color: var(--color-graphite);
-  font-size: 15px;
-  line-height: 1.35;
-  text-align: center;
-}
-
-.entrepreneur-projects-extra__card-task {
-  margin: 0;
-  color: var(--color-graphite);
-  font-size: 15px;
-  line-height: 1.4;
-  text-align: center;
-}
-
-.entrepreneur-projects-extra__card-actions {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-
-.entrepreneur-projects-extra__card-video {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 136px;
-  min-height: 38px;
-  padding: 0 16px;
-  border: 1px solid var(--green);
-  border-radius: 999px;
-  background: rgba(101, 181, 42, 0.08);
-  color: var(--green);
-  font-family: var(--sans);
-  font-size: 14px;
-  font-weight: 800;
-  line-height: 1;
-}
-
-.entrepreneur-projects-extra__card-video:hover,
-.entrepreneur-projects-extra__card-video:focus-visible {
-  background: var(--green);
+.entrepreneur-projects-extra__spotlight-info {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  left: 20px;
+  display: grid;
+  grid-template-columns: 74px minmax(0, 1fr);
+  gap: 18px;
+  align-items: start;
+  padding: 22px;
+  border-radius: 16px;
+  background: rgba(17, 22, 25, 0.82);
   color: #ffffff;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.22);
+  backdrop-filter: blur(8px);
 }
 
-.entrepreneur-projects-extra__card-logo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 50px;
-  margin-top: auto;
+.entrepreneur-projects-extra__spotlight-copy {
+  min-width: 0;
 }
 
-.entrepreneur-projects-extra__card-logo img {
-  display: block;
-  max-width: 110px;
-  max-height: 42px;
-  width: auto;
-  height: auto;
-  object-fit: contain;
-}
-
-.entrepreneur-projects-extra__card-logo-badge {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 72px;
-  height: 36px;
-  padding: 0 14px;
-  border: 1px solid rgba(101, 181, 42, 0.34);
-  border-radius: 999px;
-  background: rgba(101, 181, 42, 0.08);
-  color: var(--color-graphite);
-  font-size: 12px;
+.entrepreneur-projects-extra__spotlight-title {
+  margin: 0 0 8px;
+  color: #ffffff;
+  font-size: 26px;
   font-weight: 800;
-  line-height: 1;
+  line-height: 1.14;
+}
+
+.entrepreneur-projects-extra__spotlight-text {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.94);
+  font-size: 16px;
+  line-height: 1.38;
 }
 
 .entrepreneur-projects-extra__links {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  gap: 8px 14px;
+  gap: 10px 18px;
+  margin-top: 16px;
 }
 
 .entrepreneur-projects-extra__link {
   color: var(--green);
-  font-size: 14px;
-  font-weight: 700;
+  font-size: 15px;
+  font-weight: 800;
   text-decoration: none;
 }
 
+.entrepreneur-projects-extra__link::before {
+  content: "▷";
+  display: inline-block;
+  margin-right: 6px;
+}
+
 .entrepreneur-projects-extra__link--placeholder {
-  opacity: 0.8;
+  opacity: 0.9;
 }
 
 .entrepreneur-projects-extra__status {
@@ -2131,7 +2196,7 @@ main > .instagram-line {
   gap: 18px;
   min-height: 100%;
   max-width: 360px;
-  padding: 12px 0;
+  padding: 12px 0 12px 36px;
 }
 
 .voices-stat {
@@ -2343,7 +2408,7 @@ main > .instagram-line {
   text-align: center;
 }
 
-.section-choice h2 {
+.section-choice > .container > h2:not(.section-title-left) {
   margin: 0 0 28px;
   color: var(--green);
   font-size: 40px;
@@ -2762,7 +2827,7 @@ main > .instagram-line {
   }
 
   .entrepreneur-projects-extra__grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: minmax(250px, 0.38fr) minmax(0, 0.62fr);
   }
 
   .entrepreneur-project-groups {
@@ -2822,6 +2887,7 @@ main > .instagram-line {
   .voices-copy {
     max-width: 320px;
     gap: 16px;
+    padding-left: 20px;
   }
 
   .voices-stat {
@@ -2942,6 +3008,45 @@ main > .instagram-line {
 
   .entrepreneur-projects-extra__grid {
     grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .entrepreneur-projects-extra__nav-card {
+    min-height: 112px;
+    grid-template-columns: 60px minmax(0, 1fr) 32px;
+    gap: 12px;
+    padding: 14px;
+  }
+
+  .entrepreneur-projects-extra__logo {
+    width: 60px;
+    height: 60px;
+  }
+
+  .entrepreneur-projects-extra__logo img {
+    max-width: 50px;
+    max-height: 46px;
+  }
+
+  .entrepreneur-projects-extra__spotlight {
+    min-height: 440px;
+  }
+
+  .entrepreneur-projects-extra__spotlight-info {
+    right: 14px;
+    bottom: 14px;
+    left: 14px;
+    grid-template-columns: 60px minmax(0, 1fr);
+    gap: 14px;
+    padding: 16px;
+  }
+
+  .entrepreneur-projects-extra__spotlight-title {
+    font-size: 21px;
+  }
+
+  .entrepreneur-projects-extra__spotlight-text {
+    font-size: 14px;
   }
 
   .entrepreneur-project-card {
@@ -3068,7 +3173,7 @@ main > .instagram-line {
   }
 
   .voices-copy {
-    padding-top: 0;
+    padding: 0;
     text-align: center;
     max-width: none;
     gap: 14px;
@@ -3209,6 +3314,54 @@ main > .instagram-line {
   .project-grid img {
     width: 100%;
     height: 160px;
+  }
+
+  .entrepreneur-projects-extra {
+    border-radius: 20px;
+  }
+
+  .entrepreneur-projects-extra__heading {
+    font-size: 28px;
+  }
+
+  .entrepreneur-projects-extra__tabs {
+    gap: 10px;
+  }
+
+  .entrepreneur-projects-extra__tab {
+    min-width: 0;
+    flex: 1 1 0;
+    padding: 0 14px;
+  }
+
+  .entrepreneur-projects-extra__nav-card {
+    grid-template-columns: 54px minmax(0, 1fr) 30px;
+  }
+
+  .entrepreneur-projects-extra__logo {
+    width: 54px;
+    height: 54px;
+  }
+
+  .entrepreneur-projects-extra__nav-title {
+    font-size: 16px;
+  }
+
+  .entrepreneur-projects-extra__nav-text {
+    font-size: 13px;
+    -webkit-line-clamp: 2;
+  }
+
+  .entrepreneur-projects-extra__spotlight {
+    min-height: 520px;
+  }
+
+  .entrepreneur-projects-extra__spotlight-info {
+    grid-template-columns: 1fr;
+  }
+
+  .entrepreneur-projects-extra__spotlight-info .entrepreneur-projects-extra__logo {
+    display: none;
   }
 
   .quote-row {
