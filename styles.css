@@ -1841,8 +1841,6 @@ main > .instagram-line {
   margin: 0 0 34px;
 }
 
-.why-quote .quote-author,
-.life-quote .quote-author,
 .section-happy .quote-author {
   color: #ffffff;
 }
@@ -2240,6 +2238,18 @@ main > .instagram-line {
   margin: 0 0 28px;
   color: var(--green);
   font-size: 40px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.community-message {
+  margin-top: 42px;
+}
+
+.community-message h2 {
+  margin: 0;
+  color: var(--green);
+  font-size: 36px;
   font-weight: 700;
   line-height: 1.2;
 }
