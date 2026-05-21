@@ -685,7 +685,7 @@ function initProjectTaskCards() {
   container.replaceChildren(
     ...projectTasks.map((task, index) => {
       const article = document.createElement("article");
-      article.className = "project-task-card";
+      article.className = "project-card project-task-card";
       const partnerLogoMarkup =
         index === 2
           ? `<img class="project-task-card__partner-logo" src="./logo/HTA_SISU.webp" alt="${task.partner}" loading="lazy" />`
@@ -1291,6 +1291,8 @@ document.addEventListener("DOMContentLoaded", () => {
   initCommunitySlider();
   initInlineVideos();
   initVideoModal();
+  initProjectTaskCards();
+  initProjectTaskPartnerMarks();
   initProjectTaskVideoModal();
   initTestimonialCarousel();
 });

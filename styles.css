@@ -627,7 +627,7 @@ button {
 
 .video-placeholder-korda:hover,
 .video-placeholder-korda:focus-visible {
-  transform: translateY(-4px);
+  transform: none;
 }
 
 .video-trigger:not([data-video-embed]) {
@@ -660,11 +660,25 @@ button {
   border-left: 14px solid #ffffff;
 }
 
-.section-korda {
-  padding: 58px 0 42px;
+.korda-section {
+  padding: 58px 0 28px;
 }
 
-.section-korda h2 {
+.korda-section-grid,
+.project-examples-section {
+  width: min(1180px, calc(100% - 40px));
+  margin-inline: auto;
+}
+
+.korda-section-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 430px;
+  column-gap: clamp(48px, 7vw, 110px);
+  row-gap: 32px;
+  align-items: start;
+}
+
+.korda-text-column h2 {
   margin: 0 0 28px;
   color: var(--color-graphite);
   font-size: 46px;
@@ -673,14 +687,7 @@ button {
   text-align: left;
 }
 
-.korda-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 430px;
-  gap: 110px;
-  align-items: start;
-}
-
-.korda-copy p {
+.korda-text-column p {
   max-width: 760px;
   margin: 0 0 22px;
   color: var(--color-graphite);
@@ -729,7 +736,7 @@ button {
 .video-placeholder-korda {
   justify-self: center;
   align-self: start;
-  width: min(100%, 368px);
+  width: min(100%, 340px);
   margin-top: 0;
   margin-bottom: 0;
   aspect-ratio: 9 / 16;
@@ -804,15 +811,31 @@ button {
   object-position: center;
 }
 
+.project-examples-section {
+  padding-top: 0;
+  padding-bottom: 58px;
+}
+
+.project-examples-title {
+  margin: 0 0 24px;
+  color: var(--green);
+  font-family: var(--sans);
+  font-size: 22px;
+  font-weight: 900;
+  line-height: 1.2;
+}
+
+.project-examples-grid,
 .korda-cards {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 24px;
-  margin-top: 42px;
+  margin-top: 0;
 }
 
+.project-examples-grid article,
 .korda-cards article {
-  min-height: 250px;
+  min-height: 0;
   padding: 28px 26px;
   border: 2px solid #5f5f5f;
   border-radius: 24px;
@@ -823,6 +846,7 @@ button {
     inset 0 1px 0 rgba(255, 255, 255, 0.9);
 }
 
+.project-examples-grid h3,
 .korda-cards h3 {
   margin: 0 0 18px;
   color: var(--green);
@@ -831,25 +855,13 @@ button {
   line-height: 1.25;
 }
 
+.project-examples-grid p,
 .korda-cards p {
   margin: 0;
   color: var(--color-graphite);
   font-size: 17px;
   font-weight: 500;
   line-height: 1.42;
-}
-
-.project-task-block {
-  margin-top: 28px;
-}
-
-.project-task-block__title {
-  margin: 0 0 24px;
-  color: var(--green);
-  font-family: var(--sans);
-  font-size: 22px;
-  font-weight: 900;
-  line-height: 1.2;
 }
 
 .project-task-cards {
@@ -861,7 +873,7 @@ button {
 .project-task-card {
   display: flex;
   flex-direction: column;
-  min-height: 438px;
+  min-height: 0;
   padding: 24px 24px 22px;
   border: 1px solid #a8adb3;
   border-radius: 24px;
@@ -883,7 +895,6 @@ button {
 }
 
 .project-task-card h3 {
-  min-height: 84px;
   margin: 0 0 12px;
   color: var(--green);
   font-size: 30px;
@@ -892,7 +903,6 @@ button {
 }
 
 .project-task-card__description {
-  min-height: 96px;
   margin: 0;
   color: var(--color-graphite);
   font-size: 17px;
@@ -943,7 +953,7 @@ button {
   font-weight: 800;
   line-height: 1;
   text-decoration: none;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  transition: box-shadow 0.2s ease, background 0.2s ease;
 }
 
 .project-task-card__partner-mark {
@@ -986,7 +996,6 @@ button {
 .project-task-card__button:focus-visible {
   background: #5aa224;
   box-shadow: 0 10px 18px rgba(101, 181, 42, 0.24);
-  transform: translateY(-1px);
 }
 
 .project-grid {
@@ -2635,7 +2644,7 @@ main > .instagram-line {
 
   .why-grid,
   .learning-grid,
-  .korda-grid,
+  .korda-section-grid,
   .entrepreneur-grid,
   .minerva-grid {
     grid-template-columns: 1fr;
@@ -2647,7 +2656,7 @@ main > .instagram-line {
 
   .project-grid,
   .happy-grid,
-  .korda-cards,
+  .project-examples-grid,
   .entrepreneur-projects-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -2858,7 +2867,7 @@ main > .instagram-line {
     min-height: 0;
   }
 
-  .project-task-block__title {
+  .project-examples-title {
     font-size: 22px;
   }
 
@@ -3027,6 +3036,7 @@ main > .instagram-line {
     border-radius: 16px;
   }
 
+  .project-examples-grid,
   .korda-cards {
     grid-template-columns: 1fr;
   }
@@ -3084,7 +3094,7 @@ main > .instagram-line {
 
   .why-copy h2,
   .section-learning h2,
-  .section-korda h2 {
+  .korda-text-column h2 {
     font-size: 26px;
   }
 
