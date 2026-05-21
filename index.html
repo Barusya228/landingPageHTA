@@ -202,7 +202,7 @@
             </p>
             <p>
               Обратная связь - не оценка, а вопросы и коучинг от экспертов, 
-              которые помогают ученикам увидеть сильные ислабые стороны их решений и углубить свое понимание проблемы. 
+              которые помогают ученикам увидеть сильные и слабые стороны их решений и углубить свое понимание проблемы. 
               Ученики дорабатывают проекты, пробуют снова и учатся не бояться ошибок. 
               Так развивается гибкость мышления, внутренняя устойчивость и 
               готовность действовать в условиях неопределенности.
@@ -697,12 +697,26 @@
     <section id="profile" class="section section-choice">
       <div class="container">
         <h2> Станьте частью сообщества HTA</h2>
-        <img
-          class="graduate-portrait"
-          src="./images/Портрет выпускника/Портрет RU.jpeg"
-          alt="Портрет выпускника HTA"
-          loading="lazy"
-        />
+        <div class="community-slider" data-community-slider>
+          <div class="community-slider__card">
+            <button class="community-slider__arrow community-slider__arrow--prev" type="button" aria-label="Предыдущий слайд" data-community-prev>
+              <span aria-hidden="true">&#8249;</span>
+            </button>
+            <div class="community-slider__viewport">
+              <img
+                class="community-slider__image"
+                src="./images/Портрет выпускника/Портрет RU.jpeg"
+                alt="Портрет выпускника HTA"
+                loading="lazy"
+                data-community-image
+              />
+            </div>
+            <button class="community-slider__arrow community-slider__arrow--next" type="button" aria-label="Следующий слайд" data-community-next>
+              <span aria-hidden="true">&#8250;</span>
+            </button>
+          </div>
+          <div class="community-slider__dots" aria-label="Навигация по слайдам" data-community-dots></div>
+        </div>
       </div>
     </section>
   </main>
@@ -757,6 +771,94 @@
   </div>
 
   <script src="script.js" defer></script>
+  <script>
+    window.addEventListener("load", () => {
+      const slider = document.querySelector("[data-community-slider]");
+      if (!(slider instanceof HTMLElement)) return;
+
+      const image = slider.querySelector("[data-community-image]");
+      const prevButton = slider.querySelector("[data-community-prev]");
+      const nextButton = slider.querySelector("[data-community-next]");
+      const dotsHost = slider.querySelector("[data-community-dots]");
+
+      if (
+        !(image instanceof HTMLImageElement) ||
+        !(prevButton instanceof HTMLButtonElement) ||
+        !(nextButton instanceof HTMLButtonElement) ||
+        !(dotsHost instanceof HTMLElement)
+      ) {
+        return;
+      }
+
+      const slides = [
+        { src: "./images/Портрет выпускника/1.png", alt: "Портрет выпускника HTA — мечтатель" },
+        { src: "./images/Портрет выпускника/2.png", alt: "Портрет выпускника HTA — критически мыслящий" },
+        { src: "./images/Портрет выпускника/3.png", alt: "Портрет выпускника HTA — обучающийся на протяжении всей жизни" },
+        { src: "./images/Портрет выпускника/4.png", alt: "Портрет выпускника HTA — умеет сотрудничать" },
+        { src: "./images/Портрет выпускника/5.png", alt: "Портрет выпускника HTA — гражданин мира" },
+        { src: "./images/Портрет выпускника/6.png", alt: "Портрет выпускника HTA — решающий проблемы" },
+        { src: "./images/Портрет выпускника/7.png", alt: "Портрет выпускника HTA — искусный собеседник" },
+        { src: "./images/Портрет выпускника/8.png", alt: "Портрет выпускника HTA — эмоционально-компетентный" }
+      ];
+
+      let activeIndex = 0;
+      let touchStartX = 0;
+      let touchCurrentX = 0;
+
+      const freshPrevButton = prevButton.cloneNode(true);
+      const freshNextButton = nextButton.cloneNode(true);
+      prevButton.replaceWith(freshPrevButton);
+      nextButton.replaceWith(freshNextButton);
+      dotsHost.replaceChildren();
+
+      const dots = slides.map((slide, index) => {
+        const dot = document.createElement("button");
+        dot.type = "button";
+        dot.className = "community-slider__dot";
+        dot.setAttribute("aria-label", `Открыть слайд ${index + 1}`);
+        dot.addEventListener("click", () => renderSlide(index));
+        dotsHost.append(dot);
+        return dot;
+      });
+
+      const renderSlide = (nextIndex) => {
+        activeIndex = (nextIndex + slides.length) % slides.length;
+        const slide = slides[activeIndex];
+
+        image.classList.add("is-fading");
+        window.setTimeout(() => {
+          image.src = slide.src;
+          image.alt = slide.alt;
+          image.classList.remove("is-fading");
+        }, 140);
+
+        dots.forEach((dot, index) => {
+          dot.classList.toggle("is-active", index === activeIndex);
+          dot.setAttribute("aria-current", index === activeIndex ? "true" : "false");
+        });
+      };
+
+      freshPrevButton.addEventListener("click", () => renderSlide(activeIndex - 1));
+      freshNextButton.addEventListener("click", () => renderSlide(activeIndex + 1));
+
+      slider.addEventListener("touchstart", (event) => {
+        touchStartX = event.changedTouches[0]?.clientX || 0;
+        touchCurrentX = touchStartX;
+      }, { passive: true });
+
+      slider.addEventListener("touchmove", (event) => {
+        touchCurrentX = event.changedTouches[0]?.clientX || touchCurrentX;
+      }, { passive: true });
+
+      slider.addEventListener("touchend", () => {
+        const delta = touchCurrentX - touchStartX;
+        if (Math.abs(delta) < 36) return;
+        renderSlide(delta > 0 ? activeIndex - 1 : activeIndex + 1);
+      });
+
+      renderSlide(0);
+    });
+  </script>
 </body>
 </html>
 

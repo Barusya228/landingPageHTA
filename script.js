@@ -1081,6 +1081,111 @@ function initInlineVideos() {
   });
 }
 
+function initCommunitySlider() {
+  const slider = document.querySelector("[data-community-slider]");
+  if (!(slider instanceof HTMLElement)) return;
+
+  const image = slider.querySelector("[data-community-image]");
+  const prevButton = slider.querySelector("[data-community-prev]");
+  const nextButton = slider.querySelector("[data-community-next]");
+  const dotsHost = slider.querySelector("[data-community-dots]");
+
+  if (
+    !(image instanceof HTMLImageElement) ||
+    !(prevButton instanceof HTMLButtonElement) ||
+    !(nextButton instanceof HTMLButtonElement) ||
+    !(dotsHost instanceof HTMLElement)
+  ) {
+    return;
+  }
+
+  const communitySlides = [
+    {
+      src: "./images/Портрет выпускника/1.png",
+      alt: "Мечтатель"
+    },
+    {
+      src: "./images/Портрет выпускника/2.png",
+      alt: "Критические мыслители"
+    },
+    {
+      src: "./images/Портрет выпускника/3.png",
+      alt: "Обучается на протяжении всей жизни"
+    }
+    {
+      src: "./images/Портрет выпускника/4.png",
+      alt: "Умеет сотрудничать"
+    }
+    {
+      src: "./images/Портрет выпускника/5.png",
+      alt: "Гражданин мира"
+    }
+    {
+      src: "./images/Портрет выпускника/6.png",
+      alt: "Решающий проблемы"
+    }
+    {
+      src: "./images/Портрет выпускника/7.png",
+      alt: "Искусный собеседник"
+    }
+    {
+      src: "./images/Портрет выпускника/8.png",
+      alt: "Эмоционально компетентный"
+    }
+  ];
+
+  let activeIndex = 0;
+  let touchStartX = 0;
+  let touchCurrentX = 0;
+
+  const dots = communitySlides.map((slide, index) => {
+    const dot = document.createElement("button");
+    dot.type = "button";
+    dot.className = "community-slider__dot";
+    dot.setAttribute("aria-label", `Открыть слайд ${index + 1}`);
+    dot.addEventListener("click", () => renderSlide(index));
+    dotsHost.append(dot);
+    return dot;
+  });
+
+  const renderSlide = (nextIndex) => {
+    activeIndex = (nextIndex + communitySlides.length) % communitySlides.length;
+    const slide = communitySlides[activeIndex];
+
+    image.classList.add("is-fading");
+    window.setTimeout(() => {
+      image.src = slide.src;
+      image.alt = slide.alt;
+      image.classList.remove("is-fading");
+    }, 140);
+
+    dots.forEach((dot, index) => {
+      dot.classList.toggle("is-active", index === activeIndex);
+      dot.setAttribute("aria-current", index === activeIndex ? "true" : "false");
+    });
+  };
+
+  prevButton.addEventListener("click", () => renderSlide(activeIndex - 1));
+  nextButton.addEventListener("click", () => renderSlide(activeIndex + 1));
+
+  slider.addEventListener("touchstart", (event) => {
+    touchStartX = event.changedTouches[0]?.clientX || 0;
+    touchCurrentX = touchStartX;
+  }, { passive: true });
+
+  slider.addEventListener("touchmove", (event) => {
+    touchCurrentX = event.changedTouches[0]?.clientX || touchCurrentX;
+  }, { passive: true });
+
+  slider.addEventListener("touchend", () => {
+    const delta = touchCurrentX - touchStartX;
+    if (Math.abs(delta) < 36) return;
+    renderSlide(delta > 0 ? activeIndex - 1 : activeIndex + 1);
+  });
+
+  renderSlide(0);
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   initHeader();
   initHeroSlider();
@@ -1093,6 +1198,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initEntrepreneurProjectYearBlocks();
   initLifeCollage();
   initLeadButtons();
+  initCommunitySlider();
   initInlineVideos();
   initVideoModal();
   initProjectTaskVideoModal();
