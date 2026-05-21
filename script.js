@@ -823,9 +823,17 @@ function initTestimonialCarousel() {
   if (!(prevButton instanceof HTMLButtonElement) || !(nextButton instanceof HTMLButtonElement) || slides.length < 2) return;
 
   let currentIndex = Math.max(0, slides.findIndex((slide) => slide.classList.contains("is-active")));
+  if (currentIndex < 0) currentIndex = 0;
   let autoplayId = 0;
   let touchStartX = 0;
   let touchEndX = 0;
+
+  dotsContainer.replaceChildren();
+
+  const freshPrevButton = prevButton.cloneNode(true);
+  const freshNextButton = nextButton.cloneNode(true);
+  prevButton.replaceWith(freshPrevButton);
+  nextButton.replaceWith(freshNextButton);
 
   const dots = slides.map((_, index) => {
     const dot = document.createElement("button");
@@ -833,7 +841,7 @@ function initTestimonialCarousel() {
     dot.className = "testimonial-dot";
     dot.setAttribute("aria-label", `Показать отзыв ${index + 1}`);
     dot.addEventListener("click", () => showSlide(index));
-    dotsContainer.appendChild(dot);
+    dotsContainer.append(dot);
     return dot;
   });
 
@@ -844,6 +852,7 @@ function initTestimonialCarousel() {
     });
     dots.forEach((dot, dotIndex) => {
       dot.classList.toggle("is-active", dotIndex === currentIndex);
+      dot.setAttribute("aria-current", dotIndex === currentIndex ? "true" : "false");
     });
   };
 
@@ -862,8 +871,8 @@ function initTestimonialCarousel() {
     autoplayId = window.setInterval(showNext, 7000);
   };
 
-  prevButton.addEventListener("click", showPrev);
-  nextButton.addEventListener("click", showNext);
+  freshPrevButton.addEventListener("click", showPrev);
+  freshNextButton.addEventListener("click", showNext);
 
   carousel.addEventListener("mouseenter", stopAutoplay);
   carousel.addEventListener("mouseleave", startAutoplay);
@@ -1081,7 +1090,7 @@ function initInlineVideos() {
   });
 }
 
-function initCommunitySlider() {
+/* function initCommunitySlider() {
   const slider = document.querySelector("[data-community-slider]");
   if (!(slider instanceof HTMLElement)) return;
 
@@ -1184,6 +1193,89 @@ function initCommunitySlider() {
   });
 
   renderSlide(0);
+} */
+
+function initCommunitySlider() {
+  const slider = document.querySelector("[data-community-slider]");
+  if (!(slider instanceof HTMLElement)) return;
+
+  const image = slider.querySelector("[data-community-image]");
+  const prevButton = slider.querySelector("[data-community-prev]");
+  const nextButton = slider.querySelector("[data-community-next]");
+  const dotsHost = slider.querySelector("[data-community-dots]");
+
+  if (
+    !(image instanceof HTMLImageElement) ||
+    !(prevButton instanceof HTMLButtonElement) ||
+    !(nextButton instanceof HTMLButtonElement) ||
+    !(dotsHost instanceof HTMLElement)
+  ) {
+    return;
+  }
+
+  const communitySlides = [
+    { src: "./images/Портрет выпускника/1.png", alt: "Портрет выпускника HTA — мечтатель" },
+    { src: "./images/Портрет выпускника/2.png", alt: "Портрет выпускника HTA — критически мыслящий" },
+    { src: "./images/Портрет выпускника/3.png", alt: "Портрет выпускника HTA — обучающийся на протяжении всей жизни" },
+    { src: "./images/Портрет выпускника/4.png", alt: "Портрет выпускника HTA — умеет сотрудничать" },
+    { src: "./images/Портрет выпускника/5.png", alt: "Портрет выпускника HTA — гражданин мира" },
+    { src: "./images/Портрет выпускника/6.png", alt: "Портрет выпускника HTA — решающий проблемы" },
+    { src: "./images/Портрет выпускника/7.png", alt: "Портрет выпускника HTA — искусный собеседник" },
+    { src: "./images/Портрет выпускника/8.png", alt: "Портрет выпускника HTA — эмоционально-компетентный" }
+  ];
+
+  let activeIndex = 0;
+  let touchStartX = 0;
+  let touchCurrentX = 0;
+
+  dotsHost.replaceChildren();
+
+  const dots = communitySlides.map((_, index) => {
+    const dot = document.createElement("button");
+    dot.type = "button";
+    dot.className = "community-slider__dot";
+    dot.setAttribute("aria-label", `Открыть слайд ${index + 1}`);
+    dot.addEventListener("click", () => renderSlide(index));
+    dotsHost.append(dot);
+    return dot;
+  });
+
+  const renderSlide = (nextIndex) => {
+    activeIndex = (nextIndex + communitySlides.length) % communitySlides.length;
+    const slide = communitySlides[activeIndex];
+
+    image.classList.add("is-fading");
+    window.setTimeout(() => {
+      image.src = slide.src;
+      image.alt = slide.alt;
+      image.classList.remove("is-fading");
+    }, 140);
+
+    dots.forEach((dot, index) => {
+      dot.classList.toggle("is-active", index === activeIndex);
+      dot.setAttribute("aria-current", index === activeIndex ? "true" : "false");
+    });
+  };
+
+  prevButton.addEventListener("click", () => renderSlide(activeIndex - 1));
+  nextButton.addEventListener("click", () => renderSlide(activeIndex + 1));
+
+  slider.addEventListener("touchstart", (event) => {
+    touchStartX = event.changedTouches[0]?.clientX || 0;
+    touchCurrentX = touchStartX;
+  }, { passive: true });
+
+  slider.addEventListener("touchmove", (event) => {
+    touchCurrentX = event.changedTouches[0]?.clientX || touchCurrentX;
+  }, { passive: true });
+
+  slider.addEventListener("touchend", () => {
+    const delta = touchCurrentX - touchStartX;
+    if (Math.abs(delta) < 36) return;
+    renderSlide(delta > 0 ? activeIndex - 1 : activeIndex + 1);
+  });
+
+  renderSlide(0);
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -1193,8 +1285,6 @@ document.addEventListener("DOMContentLoaded", () => {
   initWhyQuotePlacement();
   initWhyAccents();
   initLearningAccent();
-  initProjectTaskCards();
-  initProjectTaskPartnerMarks();
   initEntrepreneurProjectYearBlocks();
   initLifeCollage();
   initLeadButtons();
