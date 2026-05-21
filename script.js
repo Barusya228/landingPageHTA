@@ -221,437 +221,6 @@ function initLearningAccent() {
   });
 }
 
-function initEntrepreneurProjectCards() {
-  const toggle = document.getElementById("entrepreneur-projects-toggle");
-  const panel = document.getElementById("entrepreneur-projects-extra");
-  const grid = document.getElementById("entrepreneur-projects-extra-grid");
-  const tabs = Array.from(document.querySelectorAll(".entrepreneur-projects-extra__tab"));
-
-  if (!(toggle instanceof HTMLButtonElement) || !(panel instanceof HTMLElement) || !(grid instanceof HTMLElement) || !tabs.length) {
-    return;
-  }
-
-  const extraProjectTabs = {
-    projects: [
-      {
-        partner: "UvU",
-        task: "Создать план для UvU, чтобы запустить 1000 эко-шаттлов по городу за 3 года и завоевать рынок Алматы.",
-        logo: "./logo/logo-uvu.png",
-        links: [
-          { label: "Видео 1", url: "#" },
-          { label: "Видео 2", url: "#" },
-        ],
-      },
-      {
-        partner: "Almaty Air Initiative",
-        task: "Разработать план новой организации, которая значительно улучшит качество воздуха в Алматы.",
-        logo: "./logo/logo-Almaty-Ait-Initiative.png",
-        links: [],
-      },
-      {
-        partner: "Amiran",
-        task: "Разработать стратегию для Amiran, чтобы выйти в прибыль за 9 месяцев, сохраняя верность миссии компании. Стратегия должна работать в рамках текущих возможностей компании.",
-        logo: "./logo/logo-amiran.svg",
-        links: [],
-      },
-    ],
-    startups: [
-      {
-        title: "BARYTAN AI",
-        partner: "Инициатива",
-        task: "Ученики разработали технологию, которая автоматически преобразует разговор между врачом и пациентом в структурированную медицинскую запись, тем самым экономя время и облегчая процесс записи данных.",
-        badge: "AI",
-        links: [],
-      },
-      {
-        title: "RayHeart",
-        partner: "Инициатива",
-        task: "Ученики разработали умный медицинский корсет с встроенными биосенсорами, который постоянно отслеживает показатели работы сердца, помогая предотвращать и заранее предупреждать о повторном сердечном приступе.",
-        badge: "RH",
-        links: [],
-      },
-      {
-        title: "NEXTSTEP",
-        partner: "Инициатива",
-        task: "Ученики разработали двухнедельный интерактивный летний лагерь для подростков 15–18 лет, который в безопасной среде помогает им подготовиться к самостоятельной жизни, развивая практические навыки, связанные с реальными финансами и бытовыми задачами, через опыт и обучение.",
-        badge: "NS",
-        links: [],
-      },
-    ],
-  };
-
-  let showExtraProjects = false;
-  let activeExtraTab = "projects";
-
-  const renderLinks = (links) => {
-    if (!links.length) {
-      return `<span class="entrepreneur-projects-extra__status">Ссылка скоро</span>`;
-    }
-
-    return links
-      .map((link) => {
-        if (!link.url || link.url === "#") {
-          return `<span class="entrepreneur-projects-extra__link entrepreneur-projects-extra__link--placeholder">${link.label}</span>`;
-        }
-
-        return `<a class="entrepreneur-projects-extra__link" href="${link.url}" target="_blank" rel="noopener noreferrer">${link.label}</a>`;
-      })
-      .join("");
-  };
-
-  const renderLogo = (item) => {
-    if (item.logo) {
-      const alt = item.partner || item.title || "Логотип";
-      return `<img src="${item.logo}" alt="${alt}" loading="lazy" />`;
-    }
-
-    return `<span class="entrepreneur-projects-extra__card-logo-badge" aria-hidden="true">${item.badge || "LOGO"}</span>`;
-  };
-
-  const renderCards = () => {
-    const items = extraProjectTabs[activeExtraTab] || [];
-
-    grid.replaceChildren(
-      ...items.map((item) => {
-        const article = document.createElement("article");
-        article.className = "entrepreneur-projects-extra__card";
-
-        article.innerHTML = `
-          ${item.title ? `<h3 class="entrepreneur-projects-extra__card-title">${item.title}</h3>` : `<p class="entrepreneur-projects-extra__card-partner">Партнер: ${item.partner}</p>`}
-          ${item.title ? `<p class="entrepreneur-projects-extra__card-label">Партнер: ${item.partner}</p>` : ""}
-          <p class="entrepreneur-projects-extra__card-label">Проектная задача:</p>
-          <p class="entrepreneur-projects-extra__card-task">${item.task}</p>
-          <div class="entrepreneur-projects-extra__card-logo">
-            ${renderLogo(item)}
-          </div>
-          <div class="entrepreneur-projects-extra__links">
-            ${renderLinks(item.links || [])}
-          </div>
-        `;
-
-        return article;
-      })
-    );
-
-    tabs.forEach((tab) => {
-      const isActive = tab.dataset.extraTab === activeExtraTab;
-      tab.classList.toggle("is-active", isActive);
-      tab.setAttribute("aria-selected", String(isActive));
-    });
-  };
-
-  const openPanel = () => {
-    panel.hidden = false;
-    requestAnimationFrame(() => {
-      panel.classList.add("is-open");
-    });
-  };
-
-  const closePanel = () => {
-    panel.classList.remove("is-open");
-    window.setTimeout(() => {
-      if (!showExtraProjects) panel.hidden = true;
-    }, 220);
-  };
-
-  toggle.addEventListener("click", () => {
-    showExtraProjects = !showExtraProjects;
-    toggle.textContent = showExtraProjects ? "Скрыть проекты" : "Показать больше проектов";
-    toggle.setAttribute("aria-expanded", String(showExtraProjects));
-
-    if (showExtraProjects) {
-      renderCards();
-      openPanel();
-    } else {
-      closePanel();
-    }
-  });
-
-  tabs.forEach((tab) => {
-    tab.addEventListener("click", () => {
-      const nextTab = tab.dataset.extraTab;
-      if (!nextTab || nextTab === activeExtraTab) return;
-      activeExtraTab = nextTab;
-      renderCards();
-    });
-  });
-}
-
-function initEntrepreneurProjectYearBlocks() {
-  const panel = document.getElementById("entrepreneur-projects-extra");
-  const title = document.getElementById("entrepreneur-projects-extra-title");
-  const grid = document.getElementById("entrepreneur-projects-extra-grid");
-  const yearButtons = Array.from(document.querySelectorAll("[data-project-year-trigger]"));
-  const tabs = Array.from(document.querySelectorAll(".entrepreneur-projects-extra__tab"));
-
-  if (!(panel instanceof HTMLElement) || !(title instanceof HTMLElement) || !(grid instanceof HTMLElement) || !yearButtons.length || !tabs.length) {
-    return;
-  }
-
-  const yearlyEntrepreneurshipData = {
-    "2023-2024": {
-      projects: [
-        {
-          partner: "UvU",
-          task: "Создать план для UvU, чтобы запустить 1000 эко-шаттлов по городу за 3 года и завоевать рынок Алматы.",
-          logo: "./logo/logo-uvu.png",
-          links: [
-            { label: "Видео 1", url: "#" },
-            { label: "Видео 2", url: "#" },
-          ],
-        },
-        {
-          partner: "Almaty Air Initiative",
-          task: "Разработать план новой организации, которая значительно улучшит качество воздуха в Алматы.",
-          logo: "./logo/logo-Almaty-Ait-Initiative.png",
-          links: [{ label: "Ссылка скоро", url: "#" }],
-        },
-        {
-          partner: "Amiran",
-          task: "Разработать стратегию для Amiran, чтобы выйти в прибыль за 9 месяцев, сохраняя верность миссии компании. Стратегия должна работать в рамках текущих возможностей компании.",
-          logo: "./logo/logo-amiran.svg",
-          links: [{ label: "Ссылка скоро", url: "#" }],
-        },
-      ],
-      startups: [
-        {
-          title: "Медицинские стартапы",
-          partner: "XXXXXXX",
-          task: "Создать стартап-идею в сфере медицины, которая решает реальную проблему пользователей и может быть протестирована на практике.",
-          badge: "MED",
-          links: [],
-        },
-        {
-          title: "Устойчивое развитие",
-          partner: "XXXXXXX",
-          task: "Создать стартап-решение, связанное с устойчивым развитием, экологией или снижением негативного воздействия на городскую среду.",
-          badge: "SD",
-          links: [],
-        },
-        {
-          title: "Пищевые отходы и жизненные навыки",
-          partner: "XXXXXXX",
-          task: "Создать стартап, который помогает сокращать пищевые отходы или развивать практические жизненные навыки.",
-          badge: "LS",
-          links: [],
-        },
-      ],
-    },
-    "2024-2025": {
-      projects: [
-        {
-          partner: "Партнер 1",
-          task: "Описание проектной задачи за 2024–2025 учебный год.",
-          badge: "P1",
-          links: [{ label: "Ссылка скоро", url: "#" }],
-        },
-        {
-          partner: "Партнер 2",
-          task: "Описание проектной задачи за 2024–2025 учебный год.",
-          badge: "P2",
-          links: [{ label: "Ссылка скоро", url: "#" }],
-        },
-        {
-          partner: "Партнер 3",
-          task: "Описание проектной задачи за 2024–2025 учебный год.",
-          badge: "P3",
-          links: [{ label: "Ссылка скоро", url: "#" }],
-        },
-      ],
-      startups: [
-        {
-          title: "Стартап 1",
-          partner: "XXXXXXX",
-          task: "Описание стартап-задачи за 2024–2025 учебный год.",
-          badge: "S1",
-          links: [],
-        },
-        {
-          title: "Стартап 2",
-          partner: "XXXXXXX",
-          task: "Описание стартап-задачи за 2024–2025 учебный год.",
-          badge: "S2",
-          links: [],
-        },
-        {
-          title: "Стартап 3",
-          partner: "XXXXXXX",
-          task: "Описание стартап-задачи за 2024–2025 учебный год.",
-          badge: "S3",
-          links: [],
-        },
-      ],
-    },
-    "2025-2026": {
-      projects: [
-        {
-          partner: "Партнер 1",
-          task: "Описание проектной задачи за 2025–2026 учебный год.",
-          badge: "P1",
-          links: [{ label: "Ссылка скоро", url: "#" }],
-        },
-        {
-          partner: "Партнер 2",
-          task: "Описание проектной задачи за 2025–2026 учебный год.",
-          badge: "P2",
-          links: [{ label: "Ссылка скоро", url: "#" }],
-        },
-        {
-          partner: "Партнер 3",
-          task: "Описание проектной задачи за 2025–2026 учебный год.",
-          badge: "P3",
-          links: [{ label: "Ссылка скоро", url: "#" }],
-        },
-      ],
-      startups: [
-        {
-          title: "Стартап 1",
-          partner: "XXXXXXX",
-          task: "Описание стартап-задачи за 2025–2026 учебный год.",
-          badge: "S1",
-          links: [],
-        },
-        {
-          title: "Стартап 2",
-          partner: "XXXXXXX",
-          task: "Описание стартап-задачи за 2025–2026 учебный год.",
-          badge: "S2",
-          links: [],
-        },
-        {
-          title: "Стартап 3",
-          partner: "XXXXXXX",
-          task: "Описание стартап-задачи за 2025–2026 учебный год.",
-          badge: "S3",
-          links: [],
-        },
-      ],
-    },
-  };
-
-  let activeYear = null;
-  let activeTab = "projects";
-
-  const renderLinks = (links) => {
-    if (!links.length) {
-      return `<span class="entrepreneur-projects-extra__status">Ссылка скоро</span>`;
-    }
-
-    return links
-      .map((link) => {
-        if (!link.url || link.url === "#") {
-          return `<span class="entrepreneur-projects-extra__link entrepreneur-projects-extra__link--placeholder">${link.label}</span>`;
-        }
-
-        return `<a class="entrepreneur-projects-extra__link" href="${link.url}" target="_blank" rel="noopener noreferrer">${link.label}</a>`;
-      })
-      .join("");
-  };
-
-  const renderLogo = (item) => {
-    if (item.logo) {
-      const alt = item.partner || item.title || "Логотип";
-      return `<img src="${item.logo}" alt="${alt}" loading="lazy" />`;
-    }
-
-    return `<span class="entrepreneur-projects-extra__card-logo-badge" aria-hidden="true">${item.badge || "LOGO"}</span>`;
-  };
-
-  const renderCards = () => {
-    if (!activeYear) return;
-
-    const yearData = yearlyEntrepreneurshipData[activeYear];
-    const items = yearData?.[activeTab] || [];
-
-    title.textContent = activeYear.replace("-", "–");
-
-    grid.replaceChildren(
-      ...items.map((item) => {
-        const article = document.createElement("article");
-        article.className = "entrepreneur-projects-extra__card";
-
-        article.innerHTML = `
-          ${activeTab === "projects"
-            ? `<p class="entrepreneur-projects-extra__card-partner">Партнер: ${item.partner}</p>`
-            : `<h3 class="entrepreneur-projects-extra__card-title">${item.title}</h3>
-               <p class="entrepreneur-projects-extra__card-label">Партнер:</p>
-               <p class="entrepreneur-projects-extra__card-partner-line">${item.partner}</p>`}
-          <p class="entrepreneur-projects-extra__card-label">Проектная задача:</p>
-          <p class="entrepreneur-projects-extra__card-task">${item.task}</p>
-          <div class="entrepreneur-projects-extra__card-logo">
-            ${renderLogo(item)}
-          </div>
-          <div class="entrepreneur-projects-extra__links">
-            ${renderLinks(item.links || [])}
-          </div>
-        `;
-
-        return article;
-      })
-    );
-
-    tabs.forEach((tab) => {
-      if (!(tab instanceof HTMLButtonElement)) return;
-      const isActive = tab.dataset.extraTab === activeTab;
-      tab.classList.toggle("is-active", isActive);
-      tab.setAttribute("aria-selected", String(isActive));
-    });
-  };
-
-  const syncYearButtons = () => {
-    yearButtons.forEach((button) => {
-      if (!(button instanceof HTMLButtonElement)) return;
-      const isActive = button.dataset.projectYearTrigger === activeYear;
-      button.classList.toggle("is-active", isActive);
-      button.setAttribute("aria-expanded", String(isActive));
-    });
-  };
-
-  const openPanel = () => {
-    panel.hidden = false;
-    requestAnimationFrame(() => {
-      panel.classList.add("is-open");
-    });
-  };
-
-  const closePanel = () => {
-    panel.classList.remove("is-open");
-    window.setTimeout(() => {
-      if (!activeYear) panel.hidden = true;
-    }, 220);
-  };
-
-  yearButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      if (!(button instanceof HTMLButtonElement)) return;
-      const nextYear = button.dataset.projectYearTrigger;
-      if (!nextYear) return;
-
-      if (activeYear === nextYear) {
-        activeYear = null;
-        syncYearButtons();
-        closePanel();
-        return;
-      }
-
-      activeYear = nextYear;
-      activeTab = "projects";
-      syncYearButtons();
-      renderCards();
-      openPanel();
-    });
-  });
-
-  tabs.forEach((tab) => {
-    tab.addEventListener("click", () => {
-      if (!(tab instanceof HTMLButtonElement) || !activeYear) return;
-      const nextTab = tab.dataset.extraTab;
-      if (!nextTab || nextTab === activeTab) return;
-      activeTab = nextTab;
-      renderCards();
-    });
-  });
-}
 
 function initProjectTaskCards() {
   const container = document.getElementById("korda-project-tasks");
@@ -809,6 +378,227 @@ function initProjectTaskVideoModal() {
 
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape" && modal.classList.contains("is-open")) closeModal();
+  });
+}
+
+function initEntrepreneurProjectYearBlocks() {
+  const panel = document.getElementById("entrepreneur-projects-extra");
+  const title = document.getElementById("entrepreneur-projects-extra-title");
+  const grid = document.getElementById("entrepreneur-projects-extra-grid");
+  const yearButtons = Array.from(document.querySelectorAll("[data-project-year-trigger]"));
+  const tabs = Array.from(document.querySelectorAll(".entrepreneur-projects-extra__tab"));
+
+  if (!(panel instanceof HTMLElement) || !(title instanceof HTMLElement) || !(grid instanceof HTMLElement) || !yearButtons.length || !tabs.length) {
+    return;
+  }
+
+  const entrepreneurshipData = {
+    "2025-2026": {
+      projects: [],
+      startups: [
+        {
+          title: "BARYTAN AI",
+          description: "Инициатива: ученики разработали технологию, которая автоматически преобразует разговор между врачом и пациентом в структурированную медицинскую запись, тем самым экономя время и облегчая процесс записи данных",
+          linkLabel: "Ссылка скоро",
+        },
+        {
+          title: "RayHeart",
+          description: "Инициатива: ученики разработали умный медицинский корсет с встроенными биосенсорами, который постоянно отслеживает показатели работы сердца, помогая предотвращать и заранее предупреждать о повторном сердечном приступе",
+          linkLabel: "Ссылка скоро",
+        },
+        {
+          title: "NEXTSTEP",
+          description: "Инициатива: ученики разработали двухнедельный интерактивный летний лагерь для подростков 15–18 лет, который в безопасной среде помогает им подготовиться к самостоятельной жизни, развивая практические навыки, связанные с реальными финансами и бытовыми задачами, через опыт и обучение",
+          linkLabel: "Ссылка скоро",
+        },
+      ],
+    },
+    "2024-2025": {
+      projects: [
+        {
+          title: "Партнер: Arbuz",
+          description: "Проектная задача: разработать стратегию масштабирования компании Arbuz",
+          logo: "./logo/logo-arbuz.png",
+          linkLabel: "Ссылка скоро",
+        },
+        {
+          title: "Партнер: Compass",
+          description: "Проектная задача: разработать технико-экономическое обоснование по одному из направлений развития компании Compass",
+          logo: "./logo/logo-compass.jpg",
+          linkLabel: "Ссылка скоро",
+        },
+      ],
+      startups: [
+        {
+          title: "POMOGI PRIUTU.KZ",
+          description: "Инициатива: ученики решили проблему отсутствия финансирования приютов для животных, разработав приложение, в котором можно выбрать питомца, заботиться о нем и поддерживать его донатами",
+          linkLabel: "Ссылка скоро",
+        },
+        {
+          title: "Food Saving",
+          description: "Инициатива: ученики решили проблему пищевых отходов и финансовых потерь у ресторанов и магазинов, предлагая платформу с акционными продуктами, доступными для студентов",
+          linkLabel: "Ссылка скоро",
+        },
+        {
+          title: "Aina",
+          description: "Инициатива: ученики решили проблему оттока творческой молодежи из Казахстана, предлагая инициативу, которая усиливает интерес к современному искусству и повышает осведомленность о нем внутри страны",
+          linkLabel: "Ссылка скоро",
+        },
+      ],
+    },
+    "2023-2024": {
+      projects: [
+        {
+          title: "Партнер: Platform A",
+          description: "Проектная задача: разработать план по завоеванию рынка Алматы и Казахстана для Platforma Market",
+          logo: "./logo/logo-PlatformA.webp",
+          linkLabel: "Ссылка скоро",
+        },
+        {
+          title: "Партнер: KazBeef",
+          description: "Проектная задача: разработать план по созданию новой организации, которая решит проблему опустынивания в Казахстане. Обосновать предложение комплексным анализом существующих и возможных решений этой проблемы",
+          logo: "./logo/logo-kazbeef.jpg",
+          linkLabel: "Ссылка скоро",
+        },
+        {
+          title: "Партнер: Shin-Line",
+          description: "Проектная задача: создать стратегию для продукта “Шин-Лайн”, чтобы стать лидером рынка на постсоветском пространстве",
+          logo: "./logo/logo-shinlain.png",
+          linkLabel: "Ссылка скоро",
+        },
+      ],
+      startups: [
+        {
+          title: "Silver Pear",
+          description: "Инициатива: ученики решили проблему пищевых отходов, перерабатывая их в компост и корм для животных, снижая вред для окружающей среды и поддерживая устойчивое сельское хозяйство. Продукт был успешно протестирован в ЖК Dostyk Residence",
+          linkLabel: "Ссылка скоро",
+        },
+        {
+          title: "TAN",
+          description: "Инициатива: ученики создали бренд кофейных напитков с концепцией «сам себе бариста», позволяющий пользователям создавать собственные напитки благодаря уникальному трехъярусному дизайну",
+          linkLabel: "Ссылка скоро",
+        },
+        {
+          title: "PET X",
+          description: "Инициатива: ученики решали проблему переработки пластиковых бутылок, разработав машину для их превращения в филамент для 3D-принтеров",
+          linkLabel: "Ссылка скоро",
+        },
+      ],
+    },
+  };
+
+  let activeYear = null;
+  let activeTab = "projects";
+
+  const renderLink = (item) => {
+    if (!item.linkUrl) {
+      return `<span class="entrepreneur-projects-extra__link entrepreneur-projects-extra__link--placeholder">${item.linkLabel || "Ссылка скоро"}</span>`;
+    }
+
+    return `<a class="entrepreneur-projects-extra__link" href="${item.linkUrl}" target="_blank" rel="noopener noreferrer">${item.linkLabel || "Подробнее"}</a>`;
+  };
+
+  const renderLogo = (item) => {
+    if (!item.logo) return "";
+    return `<div class="entrepreneur-projects-extra__card-logo"><img src="${item.logo}" alt="${item.title}" loading="lazy" /></div>`;
+  };
+
+  const syncTabs = () => {
+    tabs.forEach((tab) => {
+      if (!(tab instanceof HTMLButtonElement)) return;
+      const isActive = tab.dataset.extraTab === activeTab;
+      tab.classList.toggle("is-active", isActive);
+      tab.setAttribute("aria-selected", String(isActive));
+    });
+  };
+
+  const renderCards = () => {
+    if (!activeYear) return;
+
+    const yearData = entrepreneurshipData[activeYear];
+    const items = yearData?.[activeTab] || [];
+    title.textContent = activeYear.replace("-", "–");
+
+    if (!items.length) {
+      const empty = document.createElement("p");
+      empty.className = "entrepreneur-projects-extra__empty";
+      empty.textContent = "Информация скоро будет добавлена";
+      grid.replaceChildren(empty);
+      syncTabs();
+      return;
+    }
+
+    grid.replaceChildren(
+      ...items.map((item) => {
+        const article = document.createElement("article");
+        article.className = "entrepreneur-projects-extra__card";
+        article.innerHTML = `
+          <h3 class="entrepreneur-projects-extra__card-title">${item.title}</h3>
+          <p class="entrepreneur-projects-extra__card-task">${item.description}</p>
+          ${renderLogo(item)}
+          <div class="entrepreneur-projects-extra__links">
+            ${renderLink(item)}
+          </div>
+        `;
+        return article;
+      })
+    );
+
+    syncTabs();
+  };
+
+  const syncYearButtons = () => {
+    yearButtons.forEach((button) => {
+      if (!(button instanceof HTMLButtonElement)) return;
+      const isActive = button.dataset.projectYearTrigger === activeYear;
+      button.classList.toggle("is-active", isActive);
+      button.setAttribute("aria-expanded", String(isActive));
+    });
+  };
+
+  const openPanel = () => {
+    panel.hidden = false;
+    requestAnimationFrame(() => {
+      panel.classList.add("is-open");
+    });
+  };
+
+  const closePanel = () => {
+    panel.classList.remove("is-open");
+    window.setTimeout(() => {
+      if (!activeYear) panel.hidden = true;
+    }, 220);
+  };
+
+  yearButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      if (!(button instanceof HTMLButtonElement)) return;
+      const nextYear = button.dataset.projectYearTrigger;
+      if (!nextYear) return;
+
+      if (activeYear === nextYear) {
+        activeYear = null;
+        syncYearButtons();
+        closePanel();
+        return;
+      }
+
+      activeYear = nextYear;
+      activeTab = "projects";
+      syncYearButtons();
+      renderCards();
+      openPanel();
+    });
+  });
+
+  tabs.forEach((tab) => {
+    tab.addEventListener("click", () => {
+      if (!(tab instanceof HTMLButtonElement) || !activeYear) return;
+      const nextTab = tab.dataset.extraTab;
+      if (!nextTab || nextTab === activeTab) return;
+      activeTab = nextTab;
+      renderCards();
+    });
   });
 }
 
