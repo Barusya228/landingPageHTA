@@ -1698,7 +1698,8 @@ main > .instagram-line {
 }
 
 .minerva-grid .video-placeholder {
-  display: block;
+  display: grid;
+  place-items: center;
   width: 100%;
   min-height: 232px;
   border-radius: 12px;
@@ -1736,6 +1737,21 @@ main > .instagram-line {
   background:
     linear-gradient(180deg, rgba(17, 20, 25, 0.14) 0%, rgba(17, 20, 25, 0.38) 100%),
     url("./images/Minerva Baccalaureate/Ben.webp") 54% center / cover no-repeat;
+}
+
+.minerva-video-preview .play-button {
+  width: 54px;
+  height: 54px;
+  background: rgba(101, 181, 42, 0.96);
+  box-shadow: 0 12px 24px rgba(101, 181, 42, 0.28);
+}
+
+.minerva-video-preview .play-button::after {
+  top: 15px;
+  left: 22px;
+  border-top-width: 12px;
+  border-bottom-width: 12px;
+  border-left-width: 17px;
 }
 
 .minerva-link {
@@ -2693,16 +2709,19 @@ main > .instagram-line {
   }
 }
 
-.b24-loader-host {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  padding: 0;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
+.b24-floating-container {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 70;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  max-width: calc(100vw - 24px);
+}
+
+.b24-floating-container > * {
+  max-width: 100%;
 }
 
 .site-footer {
@@ -3309,6 +3328,11 @@ main > .instagram-line {
     min-height: 440px;
   }
 
+  .entrepreneur-projects-extra__spotlight-image {
+    object-fit: cover;
+    object-position: 100% center;
+  }
+
   .entrepreneur-projects-extra__spotlight-info {
     right: 14px;
     bottom: 14px;
@@ -3542,6 +3566,19 @@ main > .instagram-line {
   .minerva-grid .video-placeholder {
     min-height: 0;
     aspect-ratio: 16 / 9;
+  }
+
+  .minerva-video-preview .play-button {
+    width: 48px;
+    height: 48px;
+  }
+
+  .minerva-video-preview .play-button::after {
+    top: 13px;
+    left: 20px;
+    border-top-width: 11px;
+    border-bottom-width: 11px;
+    border-left-width: 15px;
   }
 
   .minerva-curriculum__card {
