@@ -528,8 +528,9 @@ function initEntrepreneurProjectYearBlocks() {
           description: "Проектная задача: разработать план новой организации, которая значительно улучшить качество воздуха в Алматы",
           image: "./images/Курс по предпринимательству/almaty air initiative проект.png",
           logo: "./logo/logo-Almaty-Ait-Initiative.png",
-          linkLabel: "Видео",
-          linkUrl: "https://www.instagram.com/reel/DQlRIb7j73a/?igsh=N296N3Nram5jMThpm",
+          links: [
+            { label: "Видео", url: "https://www.instagram.com/reel/DQlRIb7j73a/?igsh=N296N3Nram5jMThpm" },
+          ],
         },
         {
           title: "Партнер: Amiran",
@@ -567,8 +568,9 @@ function initEntrepreneurProjectYearBlocks() {
           description: "Проектная задача: разработать план по завоеванию рынка Алматы и Казахстана для Platforma Market",
           image: "./images/Курс по предпринимательству/Проект Платформа 2024-2025.png",
           logo: "./logo/logo-PlatformA.webp",
-          linkLabel: "Видео",
-          linkUrl: "https://www.instagram.com/reel/DAntohWtorV/?igsh=YnRocHExNjR0a3Ni",
+          links: [
+            { label: "Видео", url: "https://www.instagram.com/reel/DAntohWtorV/?igsh=YnRocHExNjR0a3Ni" },
+          ],
         },
         {
           title: "Партнер: KazBeef",
@@ -659,24 +661,25 @@ function initEntrepreneurProjectYearBlocks() {
       .join("")
       .toUpperCase();
 
-  const renderLink = (item) => {
-    if (Array.isArray(item.links) && item.links.length) {
-      return item.links
-        .map((link) => {
-          if (!link.url) {
-            return `<span class="entrepreneur-projects-extra__link entrepreneur-projects-extra__link--placeholder">${escapeHtml(link.label)}</span>`;
-          }
+  const getValidLinks = (item) =>
+    Array.isArray(item.links)
+      ? item.links.filter((link) => link && link.url && link.label)
+      : [];
 
-          return `<a class="entrepreneur-projects-extra__link" href="${escapeHtml(link.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(link.label)}</a>`;
-        })
-        .join("");
-    }
+  const renderLinks = (item) => {
+    const links = getValidLinks(item);
+    if (!links.length) return "";
 
-    if (!item.linkUrl) {
-      return `<span class="entrepreneur-projects-extra__link entrepreneur-projects-extra__link--placeholder">${escapeHtml(item.linkLabel)}</span>`;
-    }
-
-    return `<a class="entrepreneur-projects-extra__link" href="${escapeHtml(item.linkUrl)}" target="_blank" rel="noopener noreferrer">${escapeHtml(item.linkLabel || "Подробнее")}</a>`;
+    return `
+      <div class="entrepreneur-projects-extra__links">
+        ${links
+          .map(
+            (link) =>
+              `<a class="entrepreneur-projects-extra__link" href="${escapeHtml(link.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(link.label)}</a>`
+          )
+          .join("")}
+      </div>
+    `;
   };
 
   const renderLogo = (item) => {
@@ -755,9 +758,7 @@ function initEntrepreneurProjectYearBlocks() {
         <div class="entrepreneur-projects-extra__spotlight-copy">
           <h4 class="entrepreneur-projects-extra__spotlight-title">${escapeHtml(activeItem.title)}</h4>
           <p class="entrepreneur-projects-extra__spotlight-text">${escapeHtml(activeItem.description)}</p>
-          <div class="entrepreneur-projects-extra__links">
-            ${renderLink(activeItem)}
-          </div>
+          ${renderLinks(activeItem)}
         </div>
       </div>
     `;
