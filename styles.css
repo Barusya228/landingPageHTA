@@ -20,6 +20,7 @@
   --type-label-size: 22px;
   --type-label-weight: 900;
   --type-label-line: 1.2;
+  --type-section-subtitle-size: 32px;
   --type-heading-size: clamp(34px, 3.4vw, 48px);
   --type-heading-weight: 700;
   --type-heading-line: 1.22;
@@ -101,6 +102,20 @@ button {
   font-weight: var(--type-label-weight);
   line-height: var(--type-label-line);
   text-align: left;
+}
+
+.section-lead {
+  color: var(--hta-text);
+  font-size: var(--type-body-size);
+  font-weight: var(--type-body-weight);
+  line-height: var(--type-body-line);
+}
+
+.section-subtitle {
+  color: var(--hta-graphite);
+  font-size: var(--type-section-subtitle-size);
+  font-weight: var(--type-heading-weight);
+  line-height: var(--type-heading-line);
 }
 
 .site-header {
@@ -460,22 +475,15 @@ button {
   margin: 0 auto;
 }
 
+.why-copy h1,
 .why-copy h2 {
   margin: 0 0 22px;
   max-width: 620px;
-  color: var(--hta-graphite);
-  font-size: var(--type-heading-size);
-  font-weight: var(--type-heading-weight);
-  line-height: var(--type-heading-line);
 }
 
 .why-copy p {
   max-width: 690px;
   margin: 0 0 18px;
-  color: var(--hta-text);
-  font-size: var(--type-body-size);
-  font-weight: var(--type-body-weight);
-  line-height: var(--type-body-line);
 }
 
 .why-accent {
@@ -582,10 +590,6 @@ button {
 
 .section-learning h2 {
   margin: 0 0 42px;
-  color: var(--hta-graphite);
-  font-size: var(--type-heading-size);
-  font-weight: var(--type-heading-weight);
-  line-height: var(--type-heading-line);
 }
 
 .section-learning p:not(.label),
@@ -597,6 +601,10 @@ button {
   font-size: var(--type-body-size);
   font-weight: 700;
   line-height: var(--type-body-line);
+}
+
+.section-learning .section-lead {
+  max-width: 620px;
 }
 
 .section-learning p:not(.label) span {
@@ -707,22 +715,15 @@ button {
   align-items: start;
 }
 
+.korda-text-column h1,
 .korda-text-column h2 {
   margin: 0 0 28px;
-  color: var(--hta-graphite);
-  font-size: var(--type-heading-size);
-  font-weight: var(--type-heading-weight);
-  line-height: var(--type-heading-line);
   text-align: left;
 }
 
 .korda-text-column p:not(.label) {
   max-width: 760px;
   margin: 0 0 22px;
-  color: var(--hta-text);
-  font-size: var(--type-body-size);
-  font-weight: var(--type-body-weight);
-  line-height: var(--type-body-line);
 }
 
 .korda-intro-line {
@@ -1224,18 +1225,10 @@ main > .instagram-line {
 .entrepreneur-copy h1,
 .entrepreneur-copy h2 {
   margin: 0 0 26px;
-  color: var(--hta-graphite);
-  font-size: var(--type-heading-size);
-  font-weight: var(--type-heading-weight);
-  line-height: var(--type-heading-line);
 }
 
 .entrepreneur-copy p:not(.label) {
   margin: 0 0 24px;
-  color: var(--hta-text);
-  font-size: var(--type-body-size);
-  font-weight: var(--type-body-weight);
-  line-height: var(--type-body-line);
 }
 
 .section-entrepreneur-projects {
@@ -1664,10 +1657,6 @@ main > .instagram-line {
 .minerva-panel h2 {
   max-width: 1050px;
   margin: 0;
-  color: var(--hta-graphite);
-  font-size: var(--type-heading-size);
-  font-weight: var(--type-heading-weight);
-  line-height: var(--type-heading-line);
 }
 
 .lime-rule {
@@ -1699,11 +1688,7 @@ main > .instagram-line {
 
 .minerva-grid p {
   margin: 0 0 20px;
-  color: var(--hta-text);
   font-family: var(--sans);
-  font-size: var(--type-body-size);
-  font-weight: var(--type-body-weight);
-  line-height: var(--type-body-line);
 }
 
 .minerva-video-block {
@@ -3350,11 +3335,11 @@ main > .instagram-line {
     padding-right: 0;
   }
 
-  .hero-copy h1,
-  .entrepreneur-copy h1,
-  .entrepreneur-copy h2,
-  .minerva-panel h1,
-  .minerva-panel h2 {
+  .hero-copy h1 {
+    font-size: 28px;
+  }
+
+  .section-subtitle {
     font-size: 28px;
   }
 
@@ -3367,7 +3352,6 @@ main > .instagram-line {
   }
 
   .why-copy h2,
-  .section-learning h2,
   .korda-text-column h2,
   .section-choice > .container > h2:not(.section-title-left) {
     font-size: 26px;
