@@ -2,6 +2,11 @@
   --white: #ffffff;
   --ink: #444444;
   --color-graphite: #444444;
+  --hta-green: #65b52a;
+  --hta-graphite: #444444;
+  --hta-text: #444444;
+  --hta-muted: #666666;
+  --hta-white: #ffffff;
   --dark: #6a6a6a;
   --dark-deep: #252524;
   --green: #65b52a;
@@ -12,6 +17,18 @@
   --font: "Roboto Slab", Georgia, serif;
   --sans: "Roboto Slab", Georgia, serif;
   --font-sans: "Roboto Slab", Georgia, serif;
+  --type-label-size: 22px;
+  --type-label-weight: 900;
+  --type-label-line: 1.2;
+  --type-heading-size: clamp(34px, 3.4vw, 48px);
+  --type-heading-weight: 700;
+  --type-heading-line: 1.22;
+  --type-body-size: 18px;
+  --type-body-weight: 400;
+  --type-body-line: 1.45;
+  --type-description-size: 17px;
+  --type-description-weight: 500;
+  --type-description-line: 1.42;
 }
 
 *,
@@ -68,21 +85,21 @@ button {
 }
 
 .label {
-  margin: 0 0 16px;
-  color: var(--green);
+  margin: 0 0 24px;
+  color: var(--hta-green);
   font-family: var(--sans);
-  font-size: 22px;
-  font-weight: 900;
-  line-height: 1.2;
+  font-size: var(--type-label-size);
+  font-weight: var(--type-label-weight);
+  line-height: var(--type-label-line);
 }
 
 .section-title-left {
   margin: 0 0 24px;
-  color: var(--green);
+  color: var(--hta-green);
   font-family: var(--sans);
-  font-size: 22px;
-  font-weight: 900;
-  line-height: 1.2;
+  font-size: var(--type-label-size);
+  font-weight: var(--type-label-weight);
+  line-height: var(--type-label-line);
   text-align: left;
 }
 
@@ -421,10 +438,10 @@ button {
 }
 
 .section-why .label {
-  color: var(--green);
+  color: var(--hta-green);
   font-family: var(--sans);
-  font-size: 22px;
-  font-weight: 900;
+  font-size: var(--type-label-size);
+  font-weight: var(--type-label-weight);
 }
 
 .section-title-right {
@@ -446,19 +463,19 @@ button {
 .why-copy h2 {
   margin: 0 0 22px;
   max-width: 620px;
-  color: var(--color-graphite);
-  font-size: 48px;
-  font-weight: 700;
-  line-height: 1.24;
+  color: var(--hta-graphite);
+  font-size: var(--type-heading-size);
+  font-weight: var(--type-heading-weight);
+  line-height: var(--type-heading-line);
 }
 
 .why-copy p {
   max-width: 690px;
   margin: 0 0 18px;
-  color: var(--color-graphite);
-  font-size: 18px;
-  font-weight: 400;
-  line-height: 1.35;
+  color: var(--hta-text);
+  font-size: var(--type-body-size);
+  font-weight: var(--type-body-weight);
+  line-height: var(--type-body-line);
 }
 
 .why-accent {
@@ -565,20 +582,21 @@ button {
 
 .section-learning h2 {
   margin: 0 0 42px;
-  color: var(--color-graphite);
-  font-size: 48px;
-  font-weight: 700;
-  line-height: 1.26;
+  color: var(--hta-graphite);
+  font-size: var(--type-heading-size);
+  font-weight: var(--type-heading-weight);
+  line-height: var(--type-heading-line);
 }
 
-.section-learning p:not(.label) {
+.section-learning p:not(.label),
+.section-learning h1 {
   max-width: 620px;
   margin: 0;
-  color: var(--color-graphite);
+  color: var(--hta-text);
   font-family: var(--sans);
-  font-size: 20px;
-  font-weight: 800;
-  line-height: 1.35;
+  font-size: var(--type-body-size);
+  font-weight: 700;
+  line-height: var(--type-body-line);
 }
 
 .section-learning p:not(.label) span {
@@ -691,20 +709,20 @@ button {
 
 .korda-text-column h2 {
   margin: 0 0 28px;
-  color: var(--color-graphite);
-  font-size: 46px;
-  font-weight: 700;
-  line-height: 1.18;
+  color: var(--hta-graphite);
+  font-size: var(--type-heading-size);
+  font-weight: var(--type-heading-weight);
+  line-height: var(--type-heading-line);
   text-align: left;
 }
 
 .korda-text-column p:not(.label) {
   max-width: 760px;
   margin: 0 0 22px;
-  color: var(--color-graphite);
-  font-size: 17px;
-  font-weight: 500;
-  line-height: 1.34;
+  color: var(--hta-text);
+  font-size: var(--type-body-size);
+  font-weight: var(--type-body-weight);
+  line-height: var(--type-body-line);
 }
 
 .korda-intro-line {
@@ -862,11 +880,11 @@ button {
 
 .project-examples-title {
   margin: 0 0 24px;
-  color: var(--green);
+  color: var(--hta-green);
   font-family: var(--sans);
-  font-size: 22px;
-  font-weight: 900;
-  line-height: 1.2;
+  font-size: var(--type-label-size);
+  font-weight: var(--type-label-weight);
+  line-height: var(--type-label-line);
 }
 
 .project-examples-grid,
@@ -902,10 +920,10 @@ button {
 .project-examples-grid p,
 .korda-cards p {
   margin: 0;
-  color: var(--color-graphite);
-  font-size: 17px;
-  font-weight: 500;
-  line-height: 1.42;
+  color: var(--hta-text);
+  font-size: var(--type-description-size);
+  font-weight: var(--type-description-weight);
+  line-height: var(--type-description-line);
 }
 
 .project-task-cards {
@@ -948,10 +966,10 @@ button {
 
 .project-task-card__description {
   margin: 0;
-  color: var(--color-graphite);
-  font-size: 17px;
-  font-weight: 500;
-  line-height: 1.42;
+  color: var(--hta-text);
+  font-size: var(--type-description-size);
+  font-weight: var(--type-description-weight);
+  line-height: var(--type-description-line);
 }
 
 .project-task-card__footer {
@@ -1203,20 +1221,21 @@ main > .instagram-line {
   text-align: right;
 }
 
+.entrepreneur-copy h1,
 .entrepreneur-copy h2 {
   margin: 0 0 26px;
-  color: var(--color-graphite);
-  font-size: 48px;
-  font-weight: 700;
-  line-height: 1.28;
+  color: var(--hta-graphite);
+  font-size: var(--type-heading-size);
+  font-weight: var(--type-heading-weight);
+  line-height: var(--type-heading-line);
 }
 
 .entrepreneur-copy p:not(.label) {
   margin: 0 0 24px;
-  color: var(--color-graphite);
-  font-size: 17px;
-  font-weight: 500;
-  line-height: 1.35;
+  color: var(--hta-text);
+  font-size: var(--type-body-size);
+  font-weight: var(--type-body-weight);
+  line-height: var(--type-body-line);
 }
 
 .section-entrepreneur-projects {
@@ -1636,17 +1655,19 @@ main > .instagram-line {
 
 .minerva-panel .label {
   margin-bottom: 24px;
-  font-size: 27px;
+  font-size: var(--type-label-size);
+  font-weight: var(--type-label-weight);
+  line-height: var(--type-label-line);
 }
 
 .minerva-panel h1,
 .minerva-panel h2 {
   max-width: 1050px;
   margin: 0;
-  color: var(--color-graphite);
-  font-size: 52px;
-  font-weight: 700;
-  line-height: 1.28;
+  color: var(--hta-graphite);
+  font-size: var(--type-heading-size);
+  font-weight: var(--type-heading-weight);
+  line-height: var(--type-heading-line);
 }
 
 .lime-rule {
@@ -1678,11 +1699,11 @@ main > .instagram-line {
 
 .minerva-grid p {
   margin: 0 0 20px;
-  color: var(--color-graphite);
+  color: var(--hta-text);
   font-family: var(--sans);
-  font-size: 18px;
-  font-weight: 400;
-  line-height: 1.42;
+  font-size: var(--type-body-size);
+  font-weight: var(--type-body-weight);
+  line-height: var(--type-body-line);
 }
 
 .minerva-video-block {
@@ -2015,11 +2036,11 @@ main > .instagram-line {
 .happy-grid p {
   margin: 0;
   text-align: center;
-  color: var(--color-graphite);
+  color: var(--hta-text);
   font-family: var(--sans);
-  font-size: 18px;
-  font-weight: 400;
-  line-height: 1.45;
+  font-size: var(--type-body-size);
+  font-weight: var(--type-body-weight);
+  line-height: var(--type-body-line);
 }
 
 .happy-grid article:first-child h3 {
@@ -2252,17 +2273,17 @@ main > .instagram-line {
 
 .section-voices h2 {
   margin: 0;
-  color: var(--color-graphite);
-  font-size: 31px;
-  font-weight: 700;
-  line-height: 1.18;
+  color: var(--hta-graphite);
+  font-size: 30px;
+  font-weight: var(--type-heading-weight);
+  line-height: var(--type-heading-line);
 }
 
 .voices-note {
   margin: 0;
-  color: var(--color-graphite);
-  font-size: 17px;
-  line-height: 1.35;
+  color: var(--hta-text);
+  font-size: var(--type-description-size);
+  line-height: var(--type-description-line);
 }
 
 .voices-note::after {
@@ -2424,7 +2445,9 @@ main > .instagram-line {
 
 .experts-grid blockquote {
   margin: 10px 0 0;
-  font-size: 20px;
+  color: var(--hta-text);
+  font-size: var(--type-body-size);
+  line-height: var(--type-body-line);
 }
 
 .experts-grid .quote-author {
@@ -2454,10 +2477,10 @@ main > .instagram-line {
 
 .section-choice > .container > h2:not(.section-title-left) {
   margin: 0 0 28px;
-  color: var(--green);
-  font-size: 40px;
-  font-weight: 700;
-  line-height: 1.2;
+  color: var(--hta-graphite);
+  font-size: var(--type-heading-size);
+  font-weight: var(--type-heading-weight);
+  line-height: var(--type-heading-line);
 }
 
 .community-message {
@@ -3328,6 +3351,7 @@ main > .instagram-line {
   }
 
   .hero-copy h1,
+  .entrepreneur-copy h1,
   .entrepreneur-copy h2,
   .minerva-panel h1,
   .minerva-panel h2 {
@@ -3344,7 +3368,8 @@ main > .instagram-line {
 
   .why-copy h2,
   .section-learning h2,
-  .korda-text-column h2 {
+  .korda-text-column h2,
+  .section-choice > .container > h2:not(.section-title-left) {
     font-size: 26px;
   }
 
