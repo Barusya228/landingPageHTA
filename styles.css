@@ -240,7 +240,7 @@ button {
 .header-social-link--instagram::after { background-image: url("./images/icons/instagram.svg"); }
 .header-social-link--facebook::after { background-image: url("./images/icons/facebook.svg"); }
 .header-social-link--youtube::after { background-image: url("./images/icons/youtube.svg"); }
-.header-social-link--tiktok::after { background-image: url("./images/icons/tiktok.svg"); }
+.header-social-link--tiktok::after { background-image: url("./images/icons/tiktok.png"); }
 .header-social-link--linkedin::after { background-image: url("./images/icons/linkedin.svg"); }
 
 .nav-toggle {
@@ -2733,11 +2733,11 @@ main > .instagram-line {
 .b24-floating-container button,
 .b24-floating-container a,
 .b24-floating-container [role="button"] {
-  min-width: 210px !important;
-  min-height: 64px !important;
-  padding: 0 34px !important;
+  min-width: 190px !important;
+  min-height: 56px !important;
+  padding: 0 28px !important;
   border-radius: 999px !important;
-  font-size: 20px !important;
+  font-size: 18px !important;
   font-weight: 800 !important;
   line-height: 1.2 !important;
 }
@@ -2851,7 +2851,7 @@ main > .instagram-line {
 .footer-social-link--instagram::after { background-image: url("./images/icons/instagram.svg"); }
 .footer-social-link--facebook::after { background-image: url("./images/icons/facebook.svg"); }
 .footer-social-link--youtube::after { background-image: url("./images/icons/youtube.svg"); }
-.footer-social-link--tiktok::after { background-image: url("./images/icons/tiktok.svg"); }
+.footer-social-link--tiktok::after { background-image: url("./images/icons/tiktok.png"); }
 .footer-social-link--linkedin::after { background-image: url("./images/icons/linkedin.svg"); }
 
 .footer-social-link:hover,
