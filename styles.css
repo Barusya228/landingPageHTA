@@ -1122,8 +1122,8 @@ main > .instagram-line {
 
 .entrepreneur-grid {
   display: grid;
-  grid-template-columns: 460px minmax(0, 1fr);
-  gap: 84px;
+  grid-template-columns: 620px minmax(0, 1fr);
+  gap: 64px;
   align-items: center;
 }
 
@@ -1142,7 +1142,7 @@ main > .instagram-line {
 
 .slider-image {
   position: relative;
-  width: min(100%, 560px);
+  width: min(100%, 640px);
   height: auto;
 }
 
@@ -1150,7 +1150,7 @@ main > .instagram-line {
   position: relative;
   width: 100%;
   max-width: 100%;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 16 / 8.1;
   margin: 0 auto;
   overflow: hidden;
   border-radius: 14px;
@@ -2503,12 +2503,14 @@ main > .instagram-line {
 
 .community-message__link {
   display: inline-block;
-  margin-top: 14px;
+  margin-top: 88px;
   color: var(--green);
   font-size: 24px;
   font-weight: 700;
   line-height: 1.2;
-  text-decoration: none;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 6px;
   transition: opacity 0.2s ease;
 }
 
@@ -3779,7 +3781,7 @@ main > .instagram-line {
   }
 
   .community-message__link {
-    margin-top: 12px;
+    margin-top: 52px;
     font-size: 20px;
   }
 
