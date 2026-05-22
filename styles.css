@@ -2730,6 +2730,18 @@ main > .instagram-line {
   max-width: 100%;
 }
 
+.b24-floating-container button,
+.b24-floating-container a,
+.b24-floating-container [role="button"] {
+  min-width: 210px !important;
+  min-height: 64px !important;
+  padding: 0 34px !important;
+  border-radius: 999px !important;
+  font-size: 20px !important;
+  font-weight: 800 !important;
+  line-height: 1.2 !important;
+}
+
 .site-footer {
   padding: 40px 0 0;
   background: #211d1f;
@@ -3846,6 +3858,20 @@ main > .instagram-line {
     font-size: 15px;
   }
 
+  .b24-floating-container {
+    right: 14px;
+    bottom: 14px;
+  }
+
+  .b24-floating-container button,
+  .b24-floating-container a,
+  .b24-floating-container [role="button"] {
+    min-width: 190px !important;
+    min-height: 58px !important;
+    padding: 0 28px !important;
+    font-size: 18px !important;
+  }
+
   .video-modal {
     padding: 16px;
   }
@@ -4092,6 +4118,20 @@ main > .instagram-line {
     height: 42px;
     padding: 0 20px;
     font-size: 14px;
+  }
+
+  .b24-floating-container {
+    right: 12px;
+    bottom: 12px;
+  }
+
+  .b24-floating-container button,
+  .b24-floating-container a,
+  .b24-floating-container [role="button"] {
+    min-width: 178px !important;
+    min-height: 56px !important;
+    padding: 0 24px !important;
+    font-size: 17px !important;
   }
 }
 

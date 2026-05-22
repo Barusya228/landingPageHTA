@@ -403,7 +403,7 @@ function initProjectTaskPartnerMarks() {
   if (!cards.length) return;
 
   const marks = [
-    { type: "badge", text: "Корган" },
+    { type: "image", src: "./logo/logo-korgan.png" },
     { type: "image", src: "./logo/logo-Shymbulak Outdoor.svg", alt: "Shymbulak Outdoor" },
     { type: "image", src: "./logo/logo-HTA.png", alt: "High Tech Academy" },
   ];
@@ -556,7 +556,7 @@ function initEntrepreneurProjectYearBlocks() {
         },
         {
           title: "NEXTSTEP",
-          description: "Инициатива: ученики разработали двухнедельный интерактивный летний лагерь для подростков 15–18 лет, который в безопасной среде помогает им подготовиться к самостоятельной жизни, развивая практические навыки, связанные с реальными финансами и бытовыми задачами, через опыт и обучение",
+          description: "Инициатива: ученики разработали двухнедельный интерактивный летний лагерь для подростков 15–18 лет, который в сной среде помогает им подготовиться к самостоятельной жизни, развивая практические навыки, связанные с реальными финансами и бытовыми задачами, через опыт и обучение",
           image: "./images/Курс по предпринимательству/Летний лагерь 2025-2026.png",
         },
       ],
