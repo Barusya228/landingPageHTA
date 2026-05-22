@@ -823,7 +823,7 @@ button {
   border: 0;
   border-radius: 18px;
   background: #111111;
-  object-fit: contain;
+  object-fit: cover;
   object-position: 38% center;
 }
 
@@ -1877,6 +1877,10 @@ main > .instagram-line {
 .section-happy .quote-author {
   color: #ffffff;
   text-shadow: 0 3px 14px rgba(34, 48, 64, 0.34);
+}
+
+.section-happy > .container > .label {
+  color: var(--green);
 }
 
 .quote-row {
