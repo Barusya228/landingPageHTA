@@ -1146,6 +1146,12 @@ main > .instagram-line {
   height: auto;
 }
 
+@media (min-width: 769px) {
+  .slider-image {
+    margin-top: 120px;
+  }
+}
+
 .slider-track {
   position: relative;
   width: 100%;
@@ -3083,6 +3089,10 @@ main > .instagram-line {
     padding: 8px 0;
   }
 
+  .brand {
+    order: 1;
+  }
+
   .brand img {
     height: 48px;
     width: auto;
@@ -3101,10 +3111,34 @@ main > .instagram-line {
 
   .nav-toggle {
     display: block;
+    order: 3;
+    margin-left: 0;
   }
 
   .header-actions {
+    display: flex;
+    order: 2;
+    flex: 0 1 auto;
+    align-items: center;
+    gap: 0;
+    margin-left: auto;
+    min-width: 0;
+  }
+
+  .site-header.is-collapsed .header-actions {
+    display: flex;
+  }
+
+  .header-social-links {
     display: none;
+  }
+
+  .header-korda-logo {
+    display: block;
+    height: 36px;
+    width: auto;
+    max-width: min(36vw, 132px);
+    object-fit: contain;
   }
 
   .nav-list {
@@ -3921,6 +3955,11 @@ main > .instagram-line {
   .brand img {
     height: 42px;
     width: auto;
+  }
+
+  .header-korda-logo {
+    height: 30px;
+    max-width: 116px;
   }
 
   .brand span {
