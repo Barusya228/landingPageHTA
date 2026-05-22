@@ -742,7 +742,7 @@ button {
   width: 28px;
   height: auto;
   object-fit: contain;
-  margin: 4px 12px 2px 0;
+  margin: -2px 12px 2px 0;
 }
 
 .korda-brand {
@@ -1743,12 +1743,33 @@ main > .instagram-line {
 }
 
 .minerva-curriculum {
+  position: relative;
   margin-top: 52px;
 }
 
 .minerva-curriculum__scroller {
   overflow-x: auto;
   padding-bottom: 4px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(101, 181, 42, 0.6) rgba(68, 68, 68, 0.12);
+}
+
+.minerva-curriculum__scroller::-webkit-scrollbar {
+  height: 8px;
+}
+
+.minerva-curriculum__scroller::-webkit-scrollbar-track {
+  border-radius: 999px;
+  background: rgba(68, 68, 68, 0.12);
+}
+
+.minerva-curriculum__scroller::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: rgba(101, 181, 42, 0.7);
+}
+
+.minerva-curriculum__arrow {
+  display: none;
 }
 
 .minerva-curriculum__card {
@@ -2480,6 +2501,22 @@ main > .instagram-line {
   margin: 0;
 }
 
+.community-message__link {
+  display: inline-block;
+  margin-top: 14px;
+  color: var(--green);
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.2;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.community-message__link:hover,
+.community-message__link:focus-visible {
+  opacity: 0.8;
+}
+
 .community-slider {
   width: min(100%, 1120px);
   margin: 0 auto;
@@ -3071,6 +3108,15 @@ main > .instagram-line {
     padding-bottom: 28px;
   }
 
+  .hero-slide:nth-child(1) {
+    object-position: 72% center;
+  }
+
+  .hero-slide:nth-child(2),
+  .hero-slide:nth-child(3) {
+    object-position: 28% center;
+  }
+
   .hero-copy {
     width: 100%;
     max-width: 100%;
@@ -3095,14 +3141,35 @@ main > .instagram-line {
     position: relative;
     inset: auto;
     width: calc(100% - 36px);
+    height: 112px;
     margin: 0 auto;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
+    display: block;
+  }
+
+  .hero-benefits article {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 112px;
+    min-height: 112px;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(10px);
+    transition: opacity 520ms ease, transform 520ms ease;
+  }
+
+  .hero-benefits:not(.is-mobile-carousel) article:first-child,
+  .hero-benefits article.is-active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .hero-benefits article.is-active {
+    pointer-events: auto;
   }
 
   .hero-benefits article {
     width: auto;
-    min-height: 88px;
   }
 
   .cta-button {
@@ -3420,6 +3487,51 @@ main > .instagram-line {
     margin-top: 40px;
   }
 
+  .minerva-curriculum::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 58px;
+    width: 44px;
+    pointer-events: none;
+    border-radius: 0 20px 20px 0;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0), #ffffff 82%);
+  }
+
+  .minerva-curriculum__arrow {
+    position: absolute;
+    top: 50%;
+    z-index: 3;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    transform: translateY(-50%);
+    border: 1px solid rgba(101, 181, 42, 0.45);
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.94);
+    color: var(--green);
+    font-family: var(--font);
+    font-size: 36px;
+    line-height: 1;
+    box-shadow: 0 12px 24px rgba(34, 48, 64, 0.14);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+
+  .minerva-curriculum__arrow--left {
+    left: -6px;
+  }
+
+  .minerva-curriculum__arrow--right {
+    right: -6px;
+  }
+
+  .minerva-curriculum__arrow.is-muted {
+    opacity: 0.32;
+  }
+
   .minerva-video-block {
     width: 100%;
     max-width: 100%;
@@ -3587,11 +3699,26 @@ main > .instagram-line {
 
   .section-experts {
     padding-top: 0;
+    padding-bottom: 8px;
   }
 
   .experts-grid {
     grid-template-columns: 1fr;
-    gap: 24px;
+    gap: 18px;
+  }
+
+  .section-experts .quote-row {
+    margin-bottom: 0;
+    row-gap: 6px;
+  }
+
+  .section-experts blockquote {
+    margin-top: 4px;
+  }
+
+  .section-experts .quote-author {
+    margin-top: 0;
+    line-height: 1.3;
   }
 
   .floating-cta {
@@ -3632,6 +3759,10 @@ main > .instagram-line {
     max-height: 74vh;
   }
 
+  .section-experts + .section-choice {
+    padding-top: 44px;
+  }
+
   .section-choice {
     padding-top: 56px;
     padding-bottom: 64px;
@@ -3645,6 +3776,11 @@ main > .instagram-line {
 
   .community-message {
     margin-top: 32px;
+  }
+
+  .community-message__link {
+    margin-top: 12px;
+    font-size: 20px;
   }
 
   .site-footer {

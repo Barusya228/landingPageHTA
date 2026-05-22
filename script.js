@@ -173,7 +173,92 @@ function initHeroSlider() {
     }, 920);
   };
 
-  window.setInterval(showNextSlide, 5500);
+  window.setInterval(showNextSlide, 5000);
+}
+
+function initMobileHeroBenefits() {
+  const container = document.querySelector(".hero-benefits");
+  if (!(container instanceof HTMLElement)) return;
+
+  const cards = Array.from(container.querySelectorAll("article"));
+  if (cards.length < 2) return;
+
+  const mobileQuery = window.matchMedia("(max-width: 760px)");
+  let activeIndex = 0;
+  let intervalId = 0;
+
+  const render = () => {
+    cards.forEach((card, index) => {
+      card.classList.toggle("is-active", index === activeIndex);
+      card.setAttribute("aria-hidden", String(mobileQuery.matches && index !== activeIndex));
+    });
+  };
+
+  const stop = () => {
+    window.clearInterval(intervalId);
+    intervalId = 0;
+  };
+
+  const start = () => {
+    stop();
+
+    if (!mobileQuery.matches) {
+      container.classList.remove("is-mobile-carousel");
+      cards.forEach((card) => {
+        card.classList.remove("is-active");
+        card.removeAttribute("aria-hidden");
+      });
+      return;
+    }
+
+    container.classList.add("is-mobile-carousel");
+    activeIndex = 0;
+    render();
+    intervalId = window.setInterval(() => {
+      activeIndex = (activeIndex + 1) % cards.length;
+      render();
+    }, 5000);
+  };
+
+  mobileQuery.addEventListener("change", start);
+  start();
+}
+
+function initMinervaCurriculumScrollHint() {
+  const curriculum = document.querySelector(".minerva-curriculum");
+  if (!(curriculum instanceof HTMLElement)) return;
+
+  const scroller = curriculum.querySelector(".minerva-curriculum__scroller");
+  const leftArrow = curriculum.querySelector(".minerva-curriculum__arrow--left");
+  const rightArrow = curriculum.querySelector(".minerva-curriculum__arrow--right");
+
+  if (
+    !(scroller instanceof HTMLElement) ||
+    !(leftArrow instanceof HTMLButtonElement) ||
+    !(rightArrow instanceof HTMLButtonElement)
+  ) {
+    return;
+  }
+
+  const updateArrows = () => {
+    const maxScroll = scroller.scrollWidth - scroller.clientWidth;
+    leftArrow.classList.toggle("is-muted", scroller.scrollLeft <= 4);
+    rightArrow.classList.toggle("is-muted", scroller.scrollLeft >= maxScroll - 4);
+  };
+
+  const scrollTable = (direction) => {
+    scroller.scrollBy({
+      left: direction * Math.round(scroller.clientWidth * 0.72),
+      behavior: "smooth",
+    });
+  };
+
+  leftArrow.addEventListener("click", () => scrollTable(-1));
+  rightArrow.addEventListener("click", () => scrollTable(1));
+  scroller.addEventListener("scroll", updateArrows, { passive: true });
+  window.addEventListener("resize", updateArrows);
+
+  updateArrows();
 }
 
 function initLifeCollage() {
@@ -506,7 +591,7 @@ function initEntrepreneurProjectYearBlocks() {
       startups: [
         {
           title: "Silver Pear",
-          description: "Инициатива: ученики решили проблему пищевых отходов, перерабатывая их в компост и корм для животных, снижая вред для окружающей среды и поддерживая устойчивое сельское хозяйство. Продукт был успешно протестирован в ЖК Dostyk Residence",
+          description: "Инициатива: ученики решали проблему пищевых отходов, перерабатывая их в компост и корм для животных, снижая вред для окружающей среды и поддерживая устойчивое сельское хозяйство. Продукт был успешно протестирован в ЖК Dostyk Residence",
           image: "./images/Курс по предпринимательству/стартап 1.jpg",
           linkLabel: "Ссылка скоро",
         },
@@ -544,19 +629,19 @@ function initEntrepreneurProjectYearBlocks() {
       startups: [
         {
           title: "POMOGI PRIUTU.KZ",
-          description: "Инициатива: ученики решили проблему отсутствия финансирования приютов для животных, разработав приложение, в котором можно выбрать питомца, заботиться о нем и поддерживать его донатами",
+          description: "Инициатива: ученики решали проблему отсутствия финансирования приютов для животных, разработав приложение, в котором можно выбрать питомца, заботиться о нем и поддерживать его донатами",
           image: "./images/Курс по предпринимательству/стартап 1.jpg",
           linkLabel: "Ссылка скоро",
         },
         {
           title: "Food Saving",
-          description: "Инициатива: ученики решили проблему пищевых отходов и финансовых потерь у ресторанов и магазинов, предлагая платформу с акционными продуктами, доступными для студентов",
+          description: "Инициатива: ученики решали проблему пищевых отходов и финансовых потерь у ресторанов и магазинов, предлагая платформу с акционными продуктами, доступными для студентов",
           image: "./images/Курс по предпринимательству/UvU 3.jpg",
           linkLabel: "Ссылка скоро",
         },
         {
           title: "Aina",
-          description: "Инициатива: ученики решили проблему оттока творческой молодежи из Казахстана, предлагая инициативу, которая усиливает интерес к современному искусству и повышает осведомленность о нем внутри страны",
+          description: "Инициатива: ученики решали проблему оттока творческой молодежи из Казахстана, предлагая инициативу, которая усиливает интерес к современному искусству и повышает осведомленность о нем внутри страны",
           image: "./images/Курс по предпринимательству/DSC07286.jpg.jpeg",
           linkLabel: "Ссылка скоро",
         },
@@ -1218,6 +1303,8 @@ function initCommunitySlider() {
 document.addEventListener("DOMContentLoaded", () => {
   initHeader();
   initHeroSlider();
+  initMobileHeroBenefits();
+  initMinervaCurriculumScrollHint();
   initSlider();
   initWhyQuotePlacement();
   initWhyAccents();
