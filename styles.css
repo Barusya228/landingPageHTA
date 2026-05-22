@@ -3120,21 +3120,21 @@ main > .instagram-line {
   .hero-copy {
     width: 100%;
     max-width: 100%;
-    padding: clamp(152px, 38vw, 230px) 18px 28px;
+    padding: clamp(220px, 56vw, 300px) 18px 24px;
   }
 
   .hero-copy h1 {
     margin-bottom: 18px;
     max-width: 100%;
-    font-size: clamp(31px, 8.6vw, 46px);
-    line-height: 1.12;
+    font-size: clamp(27px, 7.8vw, 38px);
+    line-height: 1.1;
   }
 
   .hero-copy p {
     max-width: 100%;
-    font-size: 17px;
+    font-size: 16px;
     font-weight: 700;
-    line-height: 1.45;
+    line-height: 1.4;
   }
 
   .hero-benefits {
@@ -3850,7 +3850,7 @@ main > .instagram-line {
   }
 
   .hero-copy h1 {
-    font-size: 28px;
+    font-size: 26px;
   }
 
   .section-subtitle {
