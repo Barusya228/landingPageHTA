@@ -3866,10 +3866,10 @@ main > .instagram-line {
   .b24-floating-container button,
   .b24-floating-container a,
   .b24-floating-container [role="button"] {
-    min-width: 190px !important;
-    min-height: 58px !important;
-    padding: 0 28px !important;
-    font-size: 18px !important;
+    min-width: 170px !important;
+    min-height: 52px !important;
+    padding: 0 24px !important;
+    font-size: 16px !important;
   }
 
   .video-modal {
@@ -4128,10 +4128,10 @@ main > .instagram-line {
   .b24-floating-container button,
   .b24-floating-container a,
   .b24-floating-container [role="button"] {
-    min-width: 178px !important;
-    min-height: 56px !important;
-    padding: 0 24px !important;
-    font-size: 17px !important;
+    min-width: 158px !important;
+    min-height: 50px !important;
+    padding: 0 22px !important;
+    font-size: 15px !important;
   }
 }
 
