@@ -434,8 +434,8 @@ function initEntrepreneurProjectYearBlocks() {
           image: "./images/Курс по предпринимательству/UvU транспорт.jpg",
           logo: "./logo/logo-uvu.png",
           links: [
-            { label: "Видео 1" },
-            { label: "Видео 2" },
+            { label: "Видео 1", url: "https://www.instagram.com/reel/DPvMWytD2eB/?igsh=MWl1dGM0Z252d3EzdA%3D%3D" },
+            { label: "Видео 2", url: "https://www.instagram.com/p/DOoCyZfDOB3/?igsh=MXRoazliNHl6Y3hqcA%3D%3D" },
           ],
         },
         {
@@ -443,14 +443,18 @@ function initEntrepreneurProjectYearBlocks() {
           description: "Проектная задача: разработать план новой организации, которая значительно улучшить качество воздуха в Алматы",
           image: "./images/Курс по предпринимательству/AIR Solution.jpg",
           logo: "./logo/logo-Almaty-Ait-Initiative.png",
-          linkLabel: "Ссылка скоро",
+          linkLabel: "Видео",
+          linkUrl: "https://www.instagram.com/reel/DQlRIb7j73a/?igsh=N296N3Nram5jMThpm",
         },
         {
           title: "Партнер: Amiran",
           description: "Проектная задача: разработать стратегию для Amiran, чтобы выйти в прибыль за 9 месяцев, сохраняя верность миссии компании. Стратегия должна работать в рамках текущих возможностей компании",
           image: "./images/Курс по предпринимательству/Амиран 2.jpg",
           logo: "./logo/logo-amiran.svg",
-          linkLabel: "Ссылка скоро",
+          links: [
+            { label: "Видео 1", url: "https://www.instagram.com/reel/DSsPZMXjRab/?igsh=MW11bGN4NDF1MndmZQ==" },
+            { label: "Видео 2", url: "https://www.instagram.com/reel/DRRKiOFCK-7/?igsh=anhiaGl5dGNuNDUy" },
+          ],
         },
       ],
       startups: [
@@ -481,7 +485,8 @@ function initEntrepreneurProjectYearBlocks() {
           description: "Проектная задача: разработать план по завоеванию рынка Алматы и Казахстана для Platforma Market",
           image: "./images/Курс по предпринимательству/проекты 2025-2026.webp",
           logo: "./logo/logo-PlatformA.webp",
-          linkLabel: "Ссылка скоро",
+          linkLabel: "Видео",
+          linkUrl: "https://www.instagram.com/reel/DAntohWtorV/?igsh=YnRocHExNjR0a3Ni",
         },
         {
           title: "Партнер: KazBeef",
