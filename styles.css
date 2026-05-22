@@ -2462,10 +2462,14 @@ main > .instagram-line {
 
 .section-choice > .container > h2:not(.section-title-left) {
   margin: 0 0 28px;
-  color: var(--hta-graphite);
-  font-size: var(--type-heading-size);
-  font-weight: var(--type-heading-weight);
-  line-height: var(--type-heading-line);
+}
+
+.section-choice > .container > h2:not(.section-title-left),
+.community-message h2 {
+  color: var(--green);
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1.2;
 }
 
 .community-message {
@@ -2474,10 +2478,6 @@ main > .instagram-line {
 
 .community-message h2 {
   margin: 0;
-  color: var(--green);
-  font-size: 36px;
-  font-weight: 700;
-  line-height: 1.2;
 }
 
 .community-slider {
@@ -2970,9 +2970,69 @@ main > .instagram-line {
   }
 }
 
-@media (max-width: 760px) {
+@media (max-width: 768px) {
   :root {
-    --header-height: 94px;
+    --header-height: 76px;
+  }
+
+  html,
+  body {
+    overflow-x: hidden;
+  }
+
+  .container,
+  .header-inner,
+  .korda-section-grid,
+  .project-examples-section,
+  .minerva-panel {
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .container,
+  .header-inner {
+    width: calc(100% - 36px);
+  }
+
+  .section {
+    padding-top: 56px;
+    padding-bottom: 56px;
+  }
+
+  .label,
+  .section-title-left {
+    margin-bottom: 18px;
+    font-size: 20px;
+  }
+
+  .section-subtitle {
+    font-size: clamp(28px, 7.6vw, 36px);
+    line-height: 1.18;
+  }
+
+  .section-lead {
+    font-size: 17px;
+    line-height: 1.45;
+  }
+
+  .site-header {
+    min-height: var(--header-height);
+  }
+
+  .header-inner {
+    height: var(--header-height);
+    gap: 12px;
+    padding: 8px 0;
+  }
+
+  .brand img {
+    height: 48px;
+    width: auto;
+  }
+
+  .nav-list a {
+    font-size: 16px;
+    line-height: 1.35;
   }
 
   .site-nav {
@@ -2993,8 +3053,9 @@ main > .instagram-line {
     position: fixed;
     inset: var(--header-height) 0 auto auto;
     display: none;
-    width: min(320px, 100%);
-    padding: 24px;
+    width: min(320px, calc(100vw - 18px));
+    max-width: 100%;
+    padding: 22px;
     border-bottom-left-radius: 14px;
     background: #ffffff;
     box-shadow: 0 18px 38px rgba(0, 0, 0, 0.16);
@@ -3006,26 +3067,35 @@ main > .instagram-line {
   }
 
   .hero {
-    min-height: 760px;
+    min-height: 0;
+    padding-bottom: 28px;
   }
 
   .hero-copy {
-    width: calc(100% - 40px);
-    padding: 280px 20px 0;
+    width: 100%;
+    max-width: 100%;
+    padding: clamp(152px, 38vw, 230px) 18px 28px;
   }
 
   .hero-copy h1 {
-    font-size: 35px;
+    margin-bottom: 18px;
+    max-width: 100%;
+    font-size: clamp(31px, 8.6vw, 46px);
+    line-height: 1.12;
   }
 
   .hero-copy p {
-    font-size: 18px;
+    max-width: 100%;
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 1.45;
   }
 
   .hero-benefits {
-    top: 24px;
-    right: 20px;
-    left: 20px;
+    position: relative;
+    inset: auto;
+    width: calc(100% - 36px);
+    margin: 0 auto;
     grid-template-columns: repeat(2, 1fr);
     gap: 12px;
   }
@@ -3046,6 +3116,78 @@ main > .instagram-line {
     grid-template-columns: 1fr;
   }
 
+  .section-why {
+    padding-top: 50px;
+    padding-bottom: 60px;
+  }
+
+  .why-grid {
+    row-gap: 24px;
+  }
+
+  .why-copy,
+  .korda-text-column,
+  .entrepreneur-copy,
+  .minerva-grid > div {
+    min-width: 0;
+  }
+
+  .why-copy h1,
+  .why-copy h2 {
+    margin-bottom: 18px;
+  }
+
+  .why-copy p {
+    max-width: 100%;
+  }
+
+  .why-quote {
+    margin-top: 28px;
+  }
+
+  .question-box {
+    min-height: 0;
+    padding: 30px 22px 28px;
+  }
+
+  .question-box strong {
+    margin-bottom: 20px;
+    font-size: 17px;
+  }
+
+  .why-cards {
+    gap: 18px;
+    margin-top: 8px;
+  }
+
+  .why-cards article {
+    min-height: 0;
+    padding: 26px 22px;
+  }
+
+  .why-cards h3 {
+    min-height: 0;
+    margin-bottom: 18px;
+  }
+
+  .section-learning {
+    padding-top: 52px;
+    padding-bottom: 56px;
+  }
+
+  .learning-grid {
+    gap: 28px;
+  }
+
+  .section-learning h2 {
+    margin-bottom: 20px;
+  }
+
+  .section-learning .video-placeholder {
+    width: 100%;
+    margin-left: 0;
+  }
+
   .entrepreneur-projects-extra {
     padding: 20px 16px 18px;
   }
@@ -3060,15 +3202,27 @@ main > .instagram-line {
   }
 
   .entrepreneur-projects-extra__grid {
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
     gap: 18px;
   }
 
+  .entrepreneur-projects-extra__nav {
+    order: 2;
+    flex-direction: row;
+    gap: 14px;
+    overflow-x: auto;
+    padding-bottom: 8px;
+    scroll-snap-type: x mandatory;
+  }
+
   .entrepreneur-projects-extra__nav-card {
+    flex: 0 0 min(82vw, 290px);
     min-height: 112px;
     grid-template-columns: 60px minmax(0, 1fr) 32px;
     gap: 12px;
     padding: 14px;
+    scroll-snap-align: start;
   }
 
   .entrepreneur-projects-extra__logo {
@@ -3082,6 +3236,7 @@ main > .instagram-line {
   }
 
   .entrepreneur-projects-extra__spotlight {
+    order: 1;
     min-height: 440px;
   }
 
@@ -3118,6 +3273,7 @@ main > .instagram-line {
 
   .project-task-cards {
     grid-template-columns: 1fr;
+    gap: 20px;
   }
 
   .project-task-card {
@@ -3157,11 +3313,102 @@ main > .instagram-line {
 
   .slider-image {
     width: 100%;
+    max-width: 100%;
+  }
+
+  .korda-section {
+    padding-top: 56px;
+    padding-bottom: 24px;
+  }
+
+  .korda-section-grid {
+    width: calc(100% - 36px);
+    gap: 30px;
+  }
+
+  .korda-text-column h1,
+  .korda-text-column h2 {
+    margin-bottom: 20px;
+  }
+
+  .korda-text-column p:not(.label) {
+    max-width: 100%;
+  }
+
+  .korda-video-block {
+    width: min(100%, 340px);
+    margin: 0 auto;
+  }
+
+  .korda-video-caption,
+  .minerva-video-caption {
+    margin-top: 14px;
+  }
+
+  .project-examples-section {
+    width: calc(100% - 36px);
+    padding-bottom: 56px;
+  }
+
+  .project-examples-title {
+    margin-bottom: 20px;
+  }
+
+  .section-entrepreneur {
+    padding-top: 56px;
+    padding-bottom: 32px;
+  }
+
+  .entrepreneur-grid {
+    gap: 28px;
+    justify-items: stretch;
+  }
+
+  .entrepreneur-copy {
+    order: 1;
+    text-align: left;
+  }
+
+  .entrepreneur-copy .label {
+    text-align: left;
+  }
+
+  .entrepreneur-copy h1,
+  .entrepreneur-copy h2 {
+    margin-bottom: 18px;
+  }
+
+  .entrepreneur-copy p:not(.label) {
+    margin-bottom: 18px;
+  }
+
+  .slider-image {
+    order: 2;
+  }
+
+  .slider-track {
+    border-radius: 20px;
+  }
+
+  .section-entrepreneur-projects {
+    padding-top: 18px;
+    padding-bottom: 56px;
+  }
+
+  .section-minerva {
+    padding-top: 0;
+    padding-bottom: 56px;
   }
 
   .minerva-panel {
-    width: calc(100% - 28px);
+    width: calc(100% - 36px);
     padding: 28px 22px;
+    border-radius: 24px;
+  }
+
+  .minerva-panel h1,
+  .minerva-panel h2 {
+    max-width: 100%;
   }
 
   .minerva-mark {
@@ -3171,6 +3418,16 @@ main > .instagram-line {
 
   .minerva-curriculum {
     margin-top: 40px;
+  }
+
+  .minerva-video-block {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .minerva-grid .video-placeholder {
+    min-height: 0;
+    aspect-ratio: 16 / 9;
   }
 
   .minerva-curriculum__card {
@@ -3203,6 +3460,58 @@ main > .instagram-line {
 
   .life-cell--wide {
     grid-column: auto;
+  }
+
+  .section-happy {
+    padding-top: 44px;
+    padding-bottom: 52px;
+    background-position: center;
+  }
+
+  .section-happy::before {
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.78) 0%,
+      rgba(0, 0, 0, 0.58) 48%,
+      rgba(0, 0, 0, 0.36) 100%
+    );
+  }
+
+  .section-happy .happy-quote {
+    max-width: 100%;
+    margin-bottom: 36px;
+    padding: 14px 16px 14px 0;
+  }
+
+  .happy-grid {
+    gap: 18px;
+  }
+
+  .happy-grid article {
+    min-height: 0;
+    gap: 18px;
+    padding: 26px 20px;
+  }
+
+  .happy-grid h3 {
+    min-height: 0;
+  }
+
+  .section-life {
+    padding-top: 56px;
+    padding-bottom: 56px;
+  }
+
+  .section-life .container {
+    width: calc(100% - 36px);
+  }
+
+  .life-quote {
+    margin-bottom: 26px;
+  }
+
+  .life-collage {
+    gap: 14px;
   }
 
   .testimonial-shell {
@@ -3271,6 +3580,15 @@ main > .instagram-line {
     text-align: center;
   }
 
+  .section-voices {
+    padding-top: 56px;
+    padding-bottom: 56px;
+  }
+
+  .section-experts {
+    padding-top: 0;
+  }
+
   .experts-grid {
     grid-template-columns: 1fr;
     gap: 24px;
@@ -3313,6 +3631,66 @@ main > .instagram-line {
   .video-modal.is-portrait .video-modal__body video {
     max-height: 74vh;
   }
+
+  .section-choice {
+    padding-top: 56px;
+    padding-bottom: 64px;
+  }
+
+  .section-choice > .container > h2:not(.section-title-left),
+  .community-message h2 {
+    font-size: clamp(28px, 7.8vw, 36px);
+    line-height: 1.15;
+  }
+
+  .community-message {
+    margin-top: 32px;
+  }
+
+  .site-footer {
+    padding-top: 40px;
+  }
+
+  .site-footer .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 26px;
+  }
+
+  .footer-logo-link img {
+    width: min(180px, 100%);
+  }
+
+  .footer-tagline {
+    font-size: 15px;
+    line-height: 1.4;
+  }
+
+  .footer-nav {
+    gap: 12px;
+  }
+
+  .footer-nav a {
+    font-size: 16px;
+    line-height: 1.35;
+  }
+
+  .footer-contacts {
+    gap: 10px;
+  }
+
+  .footer-contacts a {
+    font-size: 17px;
+    line-height: 1.4;
+  }
+
+  .footer-social-icons {
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+
+  .footer-bottom {
+    margin-top: 28px;
+  }
 }
 
 @media (max-width: 540px) {
@@ -3352,8 +3730,7 @@ main > .instagram-line {
   }
 
   .why-copy h2,
-  .korda-text-column h2,
-  .section-choice > .container > h2:not(.section-title-left) {
+  .korda-text-column h2 {
     font-size: 26px;
   }
 
@@ -3448,6 +3825,28 @@ main > .instagram-line {
     height: 42px;
     padding: 0 20px;
     font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .project-task-card__actions {
+    flex-wrap: wrap;
+    align-items: flex-start;
+  }
+
+  .testimonial-shell {
+    grid-template-columns: 42px minmax(0, 1fr) 42px;
+    gap: 8px;
+  }
+
+  .testimonial-arrow {
+    width: 42px;
+    height: 42px;
+    font-size: 36px;
+  }
+
+  .footer-logo-link img {
+    width: min(156px, 100%);
   }
 }
 
