@@ -608,7 +608,7 @@ function initEntrepreneurProjectYearBlocks() {
         {
           title: "Партнер: Arbuz",
           description: "Проектная задача: разработать стратегию масштабирования компании Arbuz",
-          image: "./images/Курс по предпринимательству/Амиран 2.jpg",
+          image: "./images/Курс по предпринимательству/Арбуз.jpg",
           logo: "./logo/logo-arbuz.png",
         },
         {
