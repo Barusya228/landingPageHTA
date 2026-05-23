@@ -150,7 +150,7 @@ button {
 
 .brand img {
   display: block;
-  height: 58px;
+  height: 64px;
   width: auto;
   object-fit: contain;
 }
@@ -208,7 +208,7 @@ button {
 
 .header-korda-logo {
   display: block;
-  height: 48px;
+  height: 58px;
   width: auto;
   flex: 0 0 auto;
   object-fit: contain;
@@ -2682,36 +2682,31 @@ main > .instagram-line {
   }
 
   .community-slider__arrow {
-    position: absolute;
-    top: 50%;
-    z-index: 2;
-    width: 42px;
-    height: 42px;
-    flex-basis: 42px;
-    transform: translateY(-50%);
-  }
-
-  .community-slider__arrow:hover,
-  .community-slider__arrow:focus-visible {
-    transform: translateY(-50%);
-  }
-
-  .community-slider__arrow--prev {
-    left: 10px;
-  }
-
-  .community-slider__arrow--next {
-    right: 10px;
+    display: none;
   }
 
   .community-slider__dots {
-    margin-top: 14px;
-    gap: 8px;
+    margin-top: 16px;
+    gap: 10px;
   }
 
   .community-slider__dot {
     width: 10px;
     height: 10px;
+    min-width: 36px;
+    min-height: 36px;
+    padding: 0;
+    background: radial-gradient(circle, rgba(68, 68, 68, 0.28) 0%, rgba(68, 68, 68, 0.28) 5px, transparent 5px);
+    transition: background 0.25s ease;
+  }
+
+  .community-slider__dot.is-active {
+    width: 28px;
+    height: 10px;
+    min-width: 44px;
+    min-height: 36px;
+    border-radius: 999px;
+    background: var(--green);
   }
 }
 
@@ -3946,6 +3941,8 @@ main > .instagram-line {
 
   .footer-nav {
     gap: 12px;
+    padding-left: 24px;
+    box-sizing: border-box;
   }
 
   .footer-nav a {
