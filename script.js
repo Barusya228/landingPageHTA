@@ -140,36 +140,31 @@ function initHeroSlider() {
   if (slides.length < 2) return;
 
   let currentIndex = Math.max(0, slides.findIndex((slide) => slide.classList.contains("is-active")));
-  let isAnimating = false;
 
   slides.forEach((slide, index) => {
-    if (index !== currentIndex) {
-      slide.classList.remove("is-active", "is-exiting");
+    if (index === currentIndex) {
+      slide.classList.add("is-active");
+    } else {
+      slide.classList.remove("is-active", "is-exiting", "is-reset");
     }
   });
 
   const showNextSlide = () => {
-    if (isAnimating) return;
-    isAnimating = true;
-
     const currentSlide = slides[currentIndex];
     const nextIndex = (currentIndex + 1) % slides.length;
     const nextSlide = slides[nextIndex];
 
-    nextSlide.classList.remove("is-exiting");
-
-    window.requestAnimationFrame(() => {
-      currentSlide.classList.add("is-exiting");
-      nextSlide.classList.add("is-active");
-    });
+    nextSlide.classList.remove("is-reset");
+    nextSlide.classList.add("is-active");
+    currentSlide.classList.remove("is-active");
+    currentSlide.classList.add("is-exiting");
 
     window.setTimeout(() => {
       currentSlide.classList.add("is-reset");
-      currentSlide.classList.remove("is-active", "is-exiting");
+      currentSlide.classList.remove("is-exiting");
       void currentSlide.offsetWidth;
       currentSlide.classList.remove("is-reset");
       currentIndex = nextIndex;
-      isAnimating = false;
     }, 920);
   };
 
@@ -1307,4 +1302,45 @@ document.addEventListener("DOMContentLoaded", () => {
   initProjectTaskPartnerMarks();
   initProjectTaskVideoModal();
   initTestimonialCarousel();
+
+  window.setTimeout(() => {
+    const hash = window.location.hash;
+    if (!hash) return;
+    if (hash === "#hero") {
+      window.scrollTo(0, 0);
+      return;
+    }
+    const el = document.querySelector(hash);
+    if (el) {
+      el.scrollIntoView({ behavior: "auto", block: "start" });
+    }
+  }, 120);
+});
+
+window.addEventListener("load", () => {
+  const imagesToPreload = [];
+  document.querySelectorAll(".hero-slide").forEach(function(img) {
+    if (img.src) imagesToPreload.push(img.src);
+  });
+  document.querySelectorAll("#entrepreneurship-slider .slider-track img").forEach(function(img) {
+    if (img.src) imagesToPreload.push(img.src);
+  });
+  var communitySlider = document.querySelector("[data-community-slider]");
+  if (communitySlider) {
+    var communitySlides = [
+      "./images/Портрет выпускника/1.png",
+      "./images/Портрет выпускника/2.png",
+      "./images/Портрет выпускника/3.png",
+      "./images/Портрет выпускника/4.png",
+      "./images/Портрет выпускника/5.png",
+      "./images/Портрет выпускника/6.png",
+      "./images/Портрет выпускника/7.png",
+      "./images/Портрет выпускника/8.png"
+    ];
+    communitySlides.forEach(function(src) { imagesToPreload.push(src); });
+  }
+  imagesToPreload.forEach(function(src) {
+    var img = new Image();
+    img.src = src;
+  });
 });

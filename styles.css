@@ -307,7 +307,7 @@ button {
   position: relative;
   min-height: 720px;
   overflow: hidden;
-  background: #7f8588;
+  background: #000;
 }
 
 .hero > .hero-image {
@@ -318,6 +318,7 @@ button {
   position: absolute;
   inset: 0;
   overflow: hidden;
+  background: #000;
 }
 
 .hero-image {
@@ -330,9 +331,9 @@ button {
 }
 
 .hero-slide {
-  transform: translateX(100%);
-  transition: transform 900ms ease;
-  will-change: transform;
+  opacity: 0;
+  transition: opacity 900ms ease;
+  will-change: opacity;
 }
 
 .hero-slide.is-reset {
@@ -340,17 +341,34 @@ button {
 }
 
 .hero-slide.is-active {
-  transform: translateX(0);
+  opacity: 1;
+  z-index: 1;
 }
 
 .hero-slide.is-exiting {
-  transform: translateX(-100%);
+  opacity: 0;
+  z-index: 0;
 }
 
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(41, 45, 48, 0.48);
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.58) 0%,
+    rgba(0, 0, 0, 0.42) 45%,
+    rgba(0, 0, 0, 0.22) 100%
+  );
+}
+
+section[id] {
+  scroll-margin-top: var(--header-height);
+}
+
+#hero {
+  scroll-margin-top: 0;
 }
 
 .hero-copy {
