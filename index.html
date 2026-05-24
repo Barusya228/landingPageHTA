@@ -855,6 +855,7 @@
       let activeIndex = 0;
       let touchStartX = 0;
       let touchCurrentX = 0;
+      let autoplayId = null;
 
       const freshPrevButton = prevButton.cloneNode(true);
       const freshNextButton = nextButton.cloneNode(true);
@@ -889,6 +890,20 @@
         });
       };
 
+      const stopAutoplay = () => {
+        if (autoplayId !== null) {
+          window.clearInterval(autoplayId);
+          autoplayId = null;
+        }
+      };
+
+      const startAutoplay = () => {
+        stopAutoplay();
+        autoplayId = window.setInterval(() => {
+          renderSlide(activeIndex + 1);
+        }, 10000);
+      };
+
       freshPrevButton.addEventListener("click", () => renderSlide(activeIndex - 1));
       freshNextButton.addEventListener("click", () => renderSlide(activeIndex + 1));
 
@@ -908,6 +923,8 @@
       });
 
       renderSlide(0);
+      startAutoplay();
+      window.addEventListener("pagehide", stopAutoplay, { once: true });
     });
   </script>
   <script type="application/ld+json">
