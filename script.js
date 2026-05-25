@@ -24,7 +24,7 @@ function initHeader() {
   };
 
   const updateHeaderLayout = () => {
-    const forceCollapsed = window.innerWidth <= 1120;
+    const forceCollapsed = window.innerWidth <= 1100;
     const collisionGap = 12;
 
     header.classList.remove("is-collapsed");
