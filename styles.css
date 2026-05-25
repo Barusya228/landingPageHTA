@@ -214,6 +214,13 @@ button {
   object-fit: contain;
 }
 
+.header-korda-logo-link {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+}
+
 .header-social-link {
   position: relative;
   display: inline-flex;
