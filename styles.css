@@ -2,6 +2,9 @@
   --white: #ffffff;
   --ink: #444444;
   --color-graphite: #444444;
+  --color-green: #65b52a;
+  --color-orange: #ff7020;
+  --color-white: #ffffff;
   --hta-green: #65b52a;
   --hta-graphite: #444444;
   --hta-text: #444444;
@@ -30,6 +33,10 @@
   --type-description-size: 17px;
   --type-description-weight: 500;
   --type-description-line: 1.42;
+  --radius-card: 24px;
+  --radius-pill: 999px;
+  --shadow-soft: 0 14px 34px rgba(0, 0, 0, 0.12);
+  --transition-base: 0.25s ease;
 }
 
 *,
@@ -50,10 +57,7 @@ body {
   font-family: var(--font);
 }
 
-body.nav-open {
-  overflow: hidden;
-}
-
+body.nav-open,
 body.modal-open {
   overflow: hidden;
 }
@@ -85,15 +89,7 @@ button {
   padding: 72px 0;
 }
 
-.label {
-  margin: 0 0 24px;
-  color: var(--hta-green);
-  font-family: var(--sans);
-  font-size: var(--type-label-size);
-  font-weight: var(--type-label-weight);
-  line-height: var(--type-label-line);
-}
-
+.label,
 .section-title-left {
   margin: 0 0 24px;
   color: var(--hta-green);
@@ -350,7 +346,7 @@ button {
 }
 
 /* Header mobile stage */
-@media (max-width: 1300px) {
+@media (max-width: 1100px) {
   .site-header {
     min-height: var(--header-height);
   }
@@ -917,7 +913,7 @@ section[id] {
   border-radius: 26px;
   background:
     linear-gradient(180deg, rgba(17, 20, 25, 0.12) 0%, rgba(17, 20, 25, 0.52) 100%),
-    url("./images/Видео/Students.webp") center center / cover no-repeat;
+    url("./images/Korda Method School/Дорис.jpg") center center / cover no-repeat;
   box-shadow: 0 18px 38px rgba(35, 48, 64, 0.18);
 }
 
@@ -2744,34 +2740,6 @@ main > .instagram-line {
   transform: translateY(-2px);
 }
 
-.community-slider__dots {
-  margin-top: 18px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-}
-
-.community-slider__dot {
-  width: 12px;
-  height: 12px;
-  padding: 0;
-  border: 0;
-  border-radius: 999px;
-  background: rgba(68, 68, 68, 0.24);
-  cursor: pointer;
-  transition: transform 180ms ease, background-color 180ms ease;
-}
-
-.community-slider__dot:hover,
-.community-slider__dot:focus-visible {
-  transform: scale(1.08);
-}
-
-.community-slider__dot.is-active {
-  background: var(--green);
-}
-
 /* Unified carousel dots across all site sliders */
 .slider-dots,
 .testimonial-dots,
@@ -2875,33 +2843,6 @@ main > .instagram-line {
     display: none;
   }
 
-  .community-slider__dots {
-    margin-top: 18px;
-    gap: 10px;
-  }
-
-  .community-slider__dot {
-    width: 8px;
-    height: 8px;
-    min-width: 8px;
-    min-height: 8px;
-    padding: 0;
-    background: #d2d2d2;
-    border: 0;
-    position: static;
-    transition:
-      width 0.28s ease,
-      background-color 0.28s ease,
-      transform 0.28s ease,
-      opacity 0.28s ease;
-  }
-
-  .community-slider__dot.is-active {
-    width: 28px;
-    height: 8px;
-    border-radius: 999px;
-    background: var(--green);
-  }
 }
 
 .b24-floating-container {
@@ -2961,6 +2902,13 @@ main > .instagram-line {
   filter: brightness(0) invert(1);
 }
 
+.footer-logo-img,
+.site-footer .footer-logo-img {
+  filter: none;
+  opacity: 1;
+  mix-blend-mode: normal;
+}
+
 .footer-logo-link span {
   margin-top: 4px;
   font-size: 18px;
@@ -2970,6 +2918,8 @@ main > .instagram-line {
 
 .footer-tagline {
   margin: 14px 0 0;
+  width: 208px;
+  text-align: center;
   color: #aaa7a8;
   font-size: 14px;
   font-weight: 600;
@@ -4134,6 +4084,7 @@ main > .instagram-line {
   }
 
   .footer-tagline {
+    width: min(180px, 100%);
     font-size: 15px;
     line-height: 1.4;
   }
@@ -4355,6 +4306,10 @@ main > .instagram-line {
   }
 
   .footer-logo-link img {
+    width: min(156px, 100%);
+  }
+
+  .footer-tagline {
     width: min(156px, 100%);
   }
 }
