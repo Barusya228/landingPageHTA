@@ -754,12 +754,17 @@ function initEntrepreneurProjectYearBlocks() {
     `;
   };
 
-  const renderLogo = (item) => {
+  const getBadgeAccentClass = (index = 0) => {
+    const cycleIndex = ((index % 3) + 3) % 3;
+    return `entrepreneur-projects-extra__logo--accent-${cycleIndex + 1}`;
+  };
+
+  const renderLogo = (item, badgeIndex = 0) => {
     if (item.logo) {
       return `<span class="entrepreneur-projects-extra__logo"><img src="${escapeHtml(item.logo)}" alt="${escapeHtml(getShortTitle(item))}" loading="lazy" /></span>`;
     }
 
-    return `<span class="entrepreneur-projects-extra__logo entrepreneur-projects-extra__logo--text">${escapeHtml(getInitials(getShortTitle(item)))}</span>`;
+    return `<span class="entrepreneur-projects-extra__logo entrepreneur-projects-extra__logo--text ${getBadgeAccentClass(badgeIndex)}">${escapeHtml(getInitials(getShortTitle(item)))}</span>`;
   };
 
   const syncTabs = () => {
@@ -802,7 +807,7 @@ function initEntrepreneurProjectYearBlocks() {
       button.setAttribute("aria-pressed", String(index === activeItemIndex));
       button.dataset.itemIndex = String(index);
       button.innerHTML = `
-        ${renderLogo(item)}
+        ${renderLogo(item, index)}
         <span class="entrepreneur-projects-extra__nav-copy">
           <span class="entrepreneur-projects-extra__nav-title">${escapeHtml(getShortTitle(item))}</span>
           <span class="entrepreneur-projects-extra__nav-text">${escapeHtml(getShortDescription(item))}</span>
@@ -826,7 +831,7 @@ function initEntrepreneurProjectYearBlocks() {
         loading="lazy"
       />
       <div class="entrepreneur-projects-extra__spotlight-info">
-        ${renderLogo(activeItem)}
+        ${renderLogo(activeItem, activeItemIndex)}
         <div class="entrepreneur-projects-extra__spotlight-copy">
           <h4 class="entrepreneur-projects-extra__spotlight-title">${escapeHtml(activeItem.title)}</h4>
           <p class="entrepreneur-projects-extra__spotlight-text">${escapeHtml(activeItem.description)}</p>

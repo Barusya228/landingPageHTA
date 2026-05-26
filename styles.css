@@ -1608,12 +1608,28 @@ main > .instagram-line {
 }
 
 .entrepreneur-projects-extra__logo--text {
-  background: var(--green);
   color: #ffffff;
   font-family: var(--sans);
-  font-size: 17px;
-  font-weight: 800;
+  font-size: 30px;
+  font-weight: 900;
+  line-height: 1;
   letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.entrepreneur-projects-extra__logo--text.entrepreneur-projects-extra__logo--accent-1 {
+  background: var(--green);
+  color: #ffffff;
+}
+
+.entrepreneur-projects-extra__logo--text.entrepreneur-projects-extra__logo--accent-2 {
+  background: #f3c948;
+  color: #3f3f3f;
+}
+
+.entrepreneur-projects-extra__logo--text.entrepreneur-projects-extra__logo--accent-3 {
+  background: #f08a32;
+  color: #ffffff;
 }
 
 .entrepreneur-projects-extra__nav-copy {
@@ -3508,6 +3524,10 @@ main > .instagram-line {
     height: 60px;
   }
 
+  .entrepreneur-projects-extra__logo--text {
+    font-size: 24px;
+  }
+
   .entrepreneur-projects-extra__logo img {
     max-width: 50px;
     max-height: 46px;
@@ -3551,6 +3571,10 @@ main > .instagram-line {
   .entrepreneur-projects-extra__spotlight-info .entrepreneur-projects-extra__logo {
     width: 52px;
     height: 52px;
+  }
+
+  .entrepreneur-projects-extra__spotlight-info .entrepreneur-projects-extra__logo--text {
+    font-size: 21px;
   }
 
   .entrepreneur-projects-extra__spotlight-info .entrepreneur-projects-extra__logo img {
