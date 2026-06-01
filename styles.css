@@ -2058,9 +2058,9 @@ main > .instagram-line {
   margin: 0;
   color: var(--hta-green);
   font-family: var(--font);
-  font-size: clamp(40px, 4vw, 62px);
+  font-size: clamp(36px, 3.1vw, 52px);
   font-weight: 800;
-  line-height: 1.15;
+  line-height: 1.12;
   text-align: center;
   text-wrap: balance;
 }
@@ -3984,7 +3984,8 @@ main > .instagram-line {
   }
 
   .mbacc-comparison-title {
-    font-size: 34px;
+    font-size: 30px;
+    line-height: 1.15;
   }
 
   .mbacc-comparison-subtitle {
@@ -4309,6 +4310,12 @@ main > .instagram-line {
 
   .footer-bottom {
     margin-top: 28px;
+  }
+}
+
+@media (max-width: 380px) {
+  .mbacc-comparison-title {
+    font-size: 28px;
   }
 }
 
