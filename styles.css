@@ -2043,6 +2043,113 @@ main > .instagram-line {
   font-weight: 700;
 }
 
+.mbacc-comparison-section {
+  padding: 18px 0 72px;
+  background: var(--white);
+}
+
+.mbacc-comparison-container {
+  width: min(calc(100% - 40px), var(--container));
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.mbacc-comparison-title {
+  margin: 0;
+  color: var(--hta-green);
+  font-family: var(--font);
+  font-size: clamp(40px, 4vw, 62px);
+  font-weight: 800;
+  line-height: 1.15;
+  text-align: center;
+  text-wrap: balance;
+}
+
+.mbacc-comparison-subtitle {
+  width: min(100%, 900px);
+  margin: 28px auto 56px;
+  color: var(--hta-graphite);
+  font-family: var(--font);
+  font-size: clamp(22px, 2vw, 34px);
+  font-weight: 700;
+  line-height: 1.25;
+  text-align: center;
+  text-wrap: balance;
+}
+
+.mbacc-comparison-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  align-items: stretch;
+  grid-auto-rows: 1fr;
+}
+
+.mbacc-comparison-card {
+  width: 100%;
+  min-width: 0;
+  height: 100%;
+  min-height: 620px;
+  padding: 30px 20px 28px;
+  border: 3px solid var(--dark);
+  border-radius: 30px;
+  background: var(--white);
+  color: var(--hta-graphite);
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  align-self: stretch;
+}
+
+.mbacc-comparison-card--highlight {
+  border-color: var(--hta-green);
+}
+
+.mbacc-comparison-status {
+  margin: 0 0 46px;
+  color: #cc7c63;
+  font-family: var(--font);
+  font-size: clamp(20px, 1.55vw, 28px);
+  font-weight: 800;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.mbacc-comparison-card--highlight .mbacc-comparison-status {
+  color: var(--hta-green);
+}
+
+.mbacc-comparison-program {
+  margin: 0 0 42px;
+  color: var(--dark);
+  font-family: var(--font);
+  font-size: clamp(26px, 2.1vw, 36px);
+  font-weight: 700;
+  line-height: 1.22;
+  text-align: center;
+  text-wrap: balance;
+}
+
+.mbacc-comparison-list {
+  margin: 0;
+  padding-left: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 38px;
+}
+
+.mbacc-comparison-list li {
+  color: var(--hta-graphite);
+  font-family: var(--font);
+  font-size: clamp(17px, 1.12vw, 22px);
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+.mbacc-comparison-list li::marker {
+  color: var(--hta-graphite);
+}
+
 .section-happy {
   position: relative;
   overflow: hidden;
@@ -3138,6 +3245,18 @@ main > .instagram-line {
     width: 100%;
   }
 
+  .mbacc-comparison-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .mbacc-comparison-card {
+    min-height: auto;
+  }
+
+  .mbacc-comparison-container {
+    width: calc(100% - 48px);
+  }
+
   .life-collage {
     grid-template-columns: repeat(6, minmax(0, 1fr));
     grid-template-rows: none;
@@ -3854,6 +3973,56 @@ main > .instagram-line {
     min-height: 70px;
     padding: 12px 14px;
     font-size: 13px;
+  }
+
+  .mbacc-comparison-section {
+    padding: 8px 0 56px;
+  }
+
+  .mbacc-comparison-container {
+    width: calc(100% - 36px);
+  }
+
+  .mbacc-comparison-title {
+    font-size: 34px;
+  }
+
+  .mbacc-comparison-subtitle {
+    margin: 18px auto 34px;
+    font-size: 20px;
+    line-height: 1.3;
+  }
+
+  .mbacc-comparison-grid {
+    grid-template-columns: 1fr;
+    gap: 22px;
+    grid-auto-rows: auto;
+  }
+
+  .mbacc-comparison-card {
+    padding: 28px 22px;
+    border-width: 3px;
+    border-radius: 22px;
+  }
+
+  .mbacc-comparison-status {
+    margin-bottom: 28px;
+    font-size: 24px;
+  }
+
+  .mbacc-comparison-program {
+    margin-bottom: 34px;
+    font-size: 30px;
+  }
+
+  .mbacc-comparison-list {
+    gap: 28px;
+    padding-left: 22px;
+  }
+
+  .mbacc-comparison-list li {
+    font-size: 19px;
+    line-height: 1.18;
   }
 
   .life-collage {

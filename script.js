@@ -1095,6 +1095,53 @@ function initLeadButtons() {
   });
 }
 
+function initAutoOpenBitrixFormFromUrl() {
+  const params = new URLSearchParams(window.location.search);
+  const shouldOpenBitrix = params.get("openForm") === "bitrix";
+  if (!shouldOpenBitrix) return;
+
+  let checks = 0;
+  const maxChecks = 60;
+  const intervalMs = 200;
+  let isDone = false;
+
+  const stop = (timerId) => {
+    if (isDone) return;
+    isDone = true;
+    window.clearInterval(timerId);
+  };
+
+  const timerId = window.setInterval(async () => {
+    if (isDone) return;
+    checks += 1;
+
+    if (openB24Form()) {
+      stop(timerId);
+      return;
+    }
+
+    const trigger = document.querySelector(".b24-web-form-popup-btn-32");
+    if (trigger instanceof HTMLElement) {
+      trigger.click();
+      stop(timerId);
+      return;
+    }
+
+    if (checks >= maxChecks) {
+      try {
+        await loadB24Form();
+        if (openB24Form()) {
+          stop(timerId);
+          return;
+        }
+      } catch (error) {
+        console.error("Bitrix24 auto-open failed", error);
+      }
+      stop(timerId);
+    }
+  }, intervalMs);
+}
+
 function initVideoModal() {
   const modal = document.getElementById("video-modal");
   const modalBody = document.getElementById("video-modal-body");
@@ -1296,6 +1343,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initEntrepreneurProjectYearBlocks();
   initLifeCollage();
   initLeadButtons();
+  initAutoOpenBitrixFormFromUrl();
   initCommunitySlider();
   initInlineVideos();
   initVideoModal();
