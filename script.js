@@ -15,6 +15,10 @@ const COMMUNITY_SLIDES = [
   { src: "./images/Портрет выпускника/8.png", alt: "Портрет выпускника HTA — эмоционально-компетентный" },
 ];
 
+function translate(key, fallback = "") {
+  return typeof window.t === "function" ? window.t(key, fallback) : fallback;
+}
+
 function preloadImages(imageSources) {
   [...new Set(imageSources.filter(Boolean))].forEach((src) => {
     const image = new Image();
@@ -423,51 +427,76 @@ function initProjectTaskCards() {
   // Replace videoUrl values here when final vertical videos are ready.
   const projectTasks = [
     {
-      label: "Проектная задача",
+      titleKey: "PROJECT_1_TITLE",
+      descriptionKey: "PROJECT_1_TASK",
+      partnerKey: "PROJECT_1_PARTNER",
       title: "Права детей в Казахстане",
-      description: "Разработать план по снижению насилия над детьми в Казахстане.",
-      partner: 'волонтерская организация "Корган"',
+      description: "Проектная задача: разработать решения по снижению насилия в отношении детей",
+      partner: 'Партнер: волонтерская организация "Корган"',
       videoUrl: "./Видео/Снижение насилия над детьми.mp4",
     },
     {
-      label: "Проектная задача",
+      titleKey: "PROJECT_2_TITLE",
+      descriptionKey: "PROJECT_2_TASK",
+      partnerKey: "PROJECT_2_PARTNER",
       title: "Безопасность в горах Алматы",
-      description: "Разработать план по значительному снижению несчастных случаев в горах Алматы.",
-      partner: "Shymbulak Outdoor",
+      description: "Проектная задача: разработать решения для снижения количества инцидентов в горах",
+      partner: "Партнер: Shymbulak Outdoor",
       videoUrl: "./Видео/Безопасность в горах Алматы.mp4",
     },
     {
-      label: "Проектная задача",
+      titleKey: "PROJECT_3_TITLE",
+      descriptionKey: "PROJECT_3_TASK",
       title: "Новый спортивный комплекс для HTA",
-      description: "Разработать концепцию нового спортивного комплекса, который заменит существующий.",
+      description: "Проектная задача: Разработать концепцию нового спортивного комплекса, который заменит существующий.",
       partner: "High Tech Academy",
       videoUrl: "./Видео/Новый спортивный зал.mp4",
     },
   ];
 
-  container.replaceChildren(
-    ...projectTasks.map((task, index) => {
+  const escapeHtml = (value = "") =>
+    String(value)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
+
+  const stripPrefix = (value = "") => String(value).replace(/^[^:]+:\s*/u, "");
+
+  const renderProjectTaskCards = () => {
+    container.replaceChildren(
+      ...projectTasks.map((task) => {
       const article = document.createElement("article");
       article.className = "project-card project-task-card";
+      const title = translate(task.titleKey, task.title);
+      const description = stripPrefix(translate(task.descriptionKey, task.description));
+      const partner = stripPrefix(task.partnerKey ? translate(task.partnerKey, task.partner) : task.partner);
       article.innerHTML = `
-        <h3>${task.title}</h3>
-        <span class="project-task-card__label">${task.label}</span>
-        <p class="project-task-card__description">${task.description}</p>
+        <h3>${escapeHtml(title)}</h3>
+        <span class="project-task-card__label">${escapeHtml(translate("PROJECT_TASK_LABEL", "Проектная задача"))}</span>
+        <p class="project-task-card__description">${escapeHtml(description)}</p>
         <div class="project-task-card__footer">
-          <p class="project-task-card__partner"><strong>Партнер:</strong> ${task.partner}</p>
+          <p class="project-task-card__partner"><strong>${escapeHtml(translate("PROJECT_PARTNER_LABEL", "Партнер"))}:</strong> ${escapeHtml(partner)}</p>
           <button
             type="button"
             class="project-task-card__button project-task-video-button"
-            data-video-title="${task.title}"
-            data-video-src="${task.videoUrl}"
+            data-video-title="${escapeHtml(title)}"
+            data-video-src="${escapeHtml(task.videoUrl)}"
           >
-            Смотреть видео
+            ${escapeHtml(translate("BUTTON_WATCH_VIDEO", "Смотреть видео"))}
           </button>
         </div>
       `;
       return article;
     })
-  );
+    );
+
+    initProjectTaskPartnerMarks();
+  };
+
+  renderProjectTaskCards();
+  window.addEventListener("languageChanged", renderProjectTaskCards);
 }
 
 function initProjectTaskPartnerMarks() {
@@ -517,9 +546,8 @@ function initProjectTaskVideoModal() {
   const modal = document.getElementById("video-modal");
   const modalBody = document.getElementById("video-modal-body");
   const modalTitle = document.getElementById("video-modal-title");
-  const triggers = Array.from(document.querySelectorAll(".project-task-video-button"));
 
-  if (!(modal instanceof HTMLElement) || !(modalBody instanceof HTMLElement) || !(modalTitle instanceof HTMLElement) || !triggers.length) {
+  if (!(modal instanceof HTMLElement) || !(modalBody instanceof HTMLElement) || !(modalTitle instanceof HTMLElement)) {
     return;
   }
 
@@ -555,11 +583,11 @@ function initProjectTaskVideoModal() {
     document.body.classList.add("modal-open");
   };
 
-  triggers.forEach((trigger) => {
-    trigger.addEventListener("click", () => {
-      if (!(trigger instanceof HTMLElement)) return;
-      openModal(trigger.dataset.videoTitle || "Видео", trigger.dataset.videoSrc || "");
-    });
+  document.addEventListener("click", (event) => {
+    const target = event.target;
+    const trigger = target instanceof HTMLElement ? target.closest(".project-task-video-button") : null;
+    if (!(trigger instanceof HTMLElement)) return;
+    openModal(trigger.dataset.videoTitle || translate("ENTRE_VIDEO_LABEL", "Видео"), trigger.dataset.videoSrc || "");
   });
 
   modal.querySelectorAll("[data-video-close]").forEach((control) => {
@@ -586,6 +614,8 @@ function initEntrepreneurProjectYearBlocks() {
     "2025-2026": {
       projects: [
         {
+          titleKey: "ENTRE_2025_UVU_PARTNER",
+          descriptionKey: "ENTRE_2025_UVU_TASK",
           title: "Партнер: UvU",
           description: "Проектная задача: создать план для UvU, чтобы запустить 1000 эко-шаттлов по городу за 3 года и завоевать рынок Алматы",
           image: "./images/Курс по предпринимательству/Уву проект 2025-2026.png",
@@ -596,6 +626,8 @@ function initEntrepreneurProjectYearBlocks() {
           ],
         },
         {
+          titleKey: "ENTRE_2025_ALMATY_AIR_PARTNER",
+          descriptionKey: "ENTRE_2025_ALMATY_AIR_TASK",
           title: "Партнер: Almaty Air Initiative",
           description: "Проектная задача: разработать план новой организации, которая значительно улучшить качество воздуха в Алматы",
           image: "./images/Курс по предпринимательству/almaty air initiative проект.png",
@@ -605,6 +637,8 @@ function initEntrepreneurProjectYearBlocks() {
           ],
         },
         {
+          titleKey: "ENTRE_2025_AMIRAN_PARTNER",
+          descriptionKey: "ENTRE_2025_AMIRAN_TASK",
           title: "Партнер: Amiran",
           description: "Проектная задача: разработать стратегию для Amiran, чтобы выйти в прибыль за 9 месяцев, сохраняя верность миссии компании. Стратегия должна работать в рамках текущих возможностей компании",
           image: "./images/Курс по предпринимательству/Амиран 2.jpg",
@@ -617,16 +651,22 @@ function initEntrepreneurProjectYearBlocks() {
       ],
       startups: [
         {
+          titleKey: "ENTRE_2025_BARYTAN_TITLE",
+          descriptionKey: "ENTRE_2025_BARYTAN_TEXT",
           title: "BARYTAN AI",
           description: "Инициатива: ученики разработали технологию, которая автоматически преобразует разговор между врачом и пациентом в структурированную медицинскую запись, тем самым экономя время и облегчая процесс записи данных",
           image: "./images/Курс по предпринимательству/Barytan AI 2025 26.png",
         },
         {
+          titleKey: "ENTRE_2025_RAYHEART_TITLE",
+          descriptionKey: "ENTRE_2025_RAYHEART_TEXT",
           title: "RayHeart",
           description: "Инициатива: ученики разработали умный медицинский корсет с встроенными биосенсорами, который постоянно отслеживает показатели работы сердца, помогая предотвращать и заранее предупреждать о повторном сердечном приступе",
           image: "./images/Курс по предпринимательству/RayHeart Стартап 2025-2026.png",
         },
         {
+          titleKey: "ENTRE_2025_NEXTSTEP_TITLE",
+          descriptionKey: "ENTRE_2025_NEXTSTEP_TEXT",
           title: "NEXTSTEP",
           description: "Инициатива: ученики разработали двухнедельный интерактивный летний лагерь для подростков 15–18 лет, который в сной среде помогает им подготовиться к самостоятельной жизни, развивая практические навыки, связанные с реальными финансами и бытовыми задачами, через опыт и обучение",
           image: "./images/Курс по предпринимательству/Летний лагерь 2025-2026.png",
@@ -636,6 +676,8 @@ function initEntrepreneurProjectYearBlocks() {
     "2024-2025": {
       projects: [
       {
+          titleKey: "ENTRE_2024_PLATFORMA_PARTNER",
+          descriptionKey: "ENTRE_2024_PLATFORMA_TASK",
           title: "Партнер: Platform A",
           description: "Проектная задача: разработать план по завоеванию рынка Алматы и Казахстана для Platforma Market",
           image: "./images/Курс по предпринимательству/Проект Платформа 2024-2025.png",
@@ -645,12 +687,16 @@ function initEntrepreneurProjectYearBlocks() {
           ],
         },
         {
+          titleKey: "ENTRE_2024_KAZBEEF_PARTNER",
+          descriptionKey: "ENTRE_2024_KAZBEEF_TASK",
           title: "Партнер: KazBeef",
           description: "Проектная задача: разработать план по созданию новой организации, которая решит проблему опустынивания в Казахстане. Обосновать предложение комплексным анализом существующих и возможных решений этой проблемы",
           image: "./images/Курс по предпринимательству/Казбиф 2024-2025.png",
           logo: "./logo/logo-kazbeef.jpg",
         },
         {
+          titleKey: "ENTRE_2024_SHINLINE_PARTNER",
+          descriptionKey: "ENTRE_2024_SHINLINE_TASK",
           title: "Партнер: Shin-Line",
           description: "Проектная задача: создать стратегию для продукта “Шин-Лайн”, чтобы стать лидером рынка на постсоветском пространстве",
           image: "./images/Курс по предпринимательству/Шин-Лайн проект2024-2025.png",
@@ -659,16 +705,22 @@ function initEntrepreneurProjectYearBlocks() {
       ],
       startups: [
         {
+          titleKey: "ENTRE_2024_SILVER_PEAR_TITLE",
+          descriptionKey: "ENTRE_2024_SILVER_PEAR_TEXT",
           title: "Silver Pear",
           description: "Инициатива: ученики решали проблему пищевых отходов, перерабатывая их в компост и корм для животных, снижая вред для окружающей среды и поддерживая устойчивое сельское хозяйство. Продукт был успешно протестирован в ЖК Dostyk Residence",
           image: "./images/Курс по предпринимательству/Стартап Silver Pear 2024-2025.png",
         },
         {
+          titleKey: "ENTRE_2024_TAN_TITLE",
+          descriptionKey: "ENTRE_2024_TAN_TEXT",
           title: "TAN",
           description: "Инициатива: ученики создали бренд кофейных напитков с концепцией «сам себе бариста», позволяющий пользователям создавать собственные напитки благодаря уникальному трехъярусному дизайну",
           image: "./images/Курс по предпринимательству/Тан стартап 2024-2025.png",
         },
         {
+          titleKey: "ENTRE_2024_PETX_TITLE",
+          descriptionKey: "ENTRE_2024_PETX_TEXT",
           title: "PET X",
           description: "Инициатива: ученики решали проблему переработки пластиковых бутылок, разработав машину для их превращения в филамент для 3D-принтеров",
           image: "./images/Курс по предпринимательству/Приют Стартап 2024-2025.png",
@@ -678,12 +730,16 @@ function initEntrepreneurProjectYearBlocks() {
     "2023-2024": {
       projects: [
         {
+          titleKey: "ENTRE_ARBUZ_PARTNER",
+          descriptionKey: "ENTRE_ARBUZ_TASK",
           title: "Партнер: Arbuz",
           description: "Проектная задача: разработать стратегию масштабирования компании Arbuz",
           image: "./images/Курс по предпринимательству/Арбуз.jpg",
           logo: "./logo/logo-arbuz.png",
         },
         {
+          titleKey: "ENTRE_COMPASS_PARTNER",
+          descriptionKey: "ENTRE_COMPASS_TASK",
           title: "Партнер: Compass",
           description: "Проектная задача: разработать технико-экономическое обоснование по одному из направлений развития компании Compass",
           image: "./images/Курс по предпринимательству/компас проект 2023-2024.png",
@@ -692,16 +748,22 @@ function initEntrepreneurProjectYearBlocks() {
       ],
       startups: [
         {
+          titleKey: "ENTRE_2023_POMOGI_TITLE",
+          descriptionKey: "ENTRE_2023_POMOGI_TEXT",
           title: "POMOGI PRIUTU.KZ",
           description: "Инициатива: ученики решали проблему отсутствия финансирования приютов для животных, разработав приложение, в котором можно выбрать питомца, заботиться о нем и поддерживать его донатами",
           image: "./images/Курс по предпринимательству/помоги приюту стартапы 2023-2024.png",
         },
         {
+          titleKey: "ENTRE_2023_FOOD_SAVING_TITLE",
+          descriptionKey: "ENTRE_2023_FOOD_SAVING_TEXT",
           title: "Food Saving",
           description: "Инициатива: ученики решали проблему пищевых отходов и финансовых потерь у ресторанов и магазинов, предлагая платформу с акционными продуктами, доступными для студентов",
           image: "./images/Курс по предпринимательству/Food saving стартапы 2023-2024.png",
         },
         {
+          titleKey: "ENTRE_2023_AINA_TITLE",
+          descriptionKey: "ENTRE_2023_AINA_TEXT",
           title: "Aina",
           description: "Инициатива: ученики решали проблему оттока творческой молодежи из Казахстана, предлагая инициативу, которая усиливает интерес к современному искусству и повышает осведомленность о нем внутри страны",
           image: "./images/Курс по предпринимательству/aina стартап 2023-2024.png",
@@ -722,8 +784,11 @@ function initEntrepreneurProjectYearBlocks() {
       .replace(/"/g, "&quot;")
       .replace(/'/g, "&#039;");
 
-  const getShortTitle = (item) => item.title.replace(/^Партнер:\s*/i, "");
-  const getShortDescription = (item) => item.description.replace(/^(Проектная задача|Инициатива):\s*/i, "");
+  const getLocalizedTitle = (item) => translate(item.titleKey, item.title);
+  const getLocalizedDescription = (item) => translate(item.descriptionKey, item.description);
+  const stripPrefix = (value = "") => String(value).replace(/^[^:]+:\s*/u, "");
+  const getShortTitle = (item) => stripPrefix(getLocalizedTitle(item));
+  const getShortDescription = (item) => stripPrefix(getLocalizedDescription(item));
   const getInitials = (value) =>
     value
       .split(/\s+/)
@@ -747,7 +812,7 @@ function initEntrepreneurProjectYearBlocks() {
         ${links
           .map(
             (link) =>
-              `<a class="entrepreneur-projects-extra__link" href="${escapeHtml(link.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(link.label)}</a>`
+              `<a class="entrepreneur-projects-extra__link" href="${escapeHtml(link.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(link.label.replace(/^Видео/u, translate("ENTRE_VIDEO_LABEL", "Видео")))}</a>`
           )
           .join("")}
       </div>
@@ -781,12 +846,12 @@ function initEntrepreneurProjectYearBlocks() {
 
     const yearData = entrepreneurshipData[activeYear];
     const currentItems = yearData?.[activeCategory] || [];
-    title.textContent = activeYear.replace("-", "–");
+    title.textContent = translate(`ENTRE_YEAR_${activeYear.replace(/-/g, "_")}`, activeYear.replace("-", "–"));
 
     if (!currentItems.length) {
       const empty = document.createElement("p");
       empty.className = "entrepreneur-projects-extra__empty";
-      empty.textContent = "Информация скоро будет добавлена";
+      empty.textContent = translate("ENTRE_EMPTY_MESSAGE", "Информация скоро будет добавлена");
       grid.replaceChildren(empty);
       syncTabs();
       return;
@@ -797,7 +862,7 @@ function initEntrepreneurProjectYearBlocks() {
     const activeItem = currentItems[activeItemIndex] || currentItems[0];
     const nav = document.createElement("div");
     nav.className = "entrepreneur-projects-extra__nav";
-    nav.setAttribute("aria-label", "Список проектов");
+    nav.setAttribute("aria-label", translate("ENTRE_PROJECT_LIST_LABEL", "Список проектов"));
 
     currentItems.forEach((item, index) => {
       const button = document.createElement("button");
@@ -833,8 +898,8 @@ function initEntrepreneurProjectYearBlocks() {
       <div class="entrepreneur-projects-extra__spotlight-info">
         ${renderLogo(activeItem, activeItemIndex)}
         <div class="entrepreneur-projects-extra__spotlight-copy">
-          <h4 class="entrepreneur-projects-extra__spotlight-title">${escapeHtml(activeItem.title)}</h4>
-          <p class="entrepreneur-projects-extra__spotlight-text">${escapeHtml(activeItem.description)}</p>
+          <h4 class="entrepreneur-projects-extra__spotlight-title">${escapeHtml(getLocalizedTitle(activeItem))}</h4>
+          <p class="entrepreneur-projects-extra__spotlight-text">${escapeHtml(getLocalizedDescription(activeItem))}</p>
           ${renderLinks(activeItem)}
         </div>
       </div>
@@ -897,6 +962,7 @@ function initEntrepreneurProjectYearBlocks() {
   syncYearButtons();
   renderSpotlight();
   openPanel();
+  window.addEventListener("languageChanged", renderSpotlight);
 }
 
 function initTestimonialCarousel() {
@@ -926,11 +992,19 @@ function initTestimonialCarousel() {
     const dot = document.createElement("button");
     dot.type = "button";
     dot.className = "testimonial-dot";
-    dot.setAttribute("aria-label", `Показать отзыв ${index + 1}`);
     dot.addEventListener("click", () => showSlide(index));
     dotsContainer.append(dot);
     return dot;
   });
+
+  const syncDotLabels = () => {
+    dots.forEach((dot, index) => {
+      dot.setAttribute(
+        "aria-label",
+        translate("TESTIMONIAL_DOT_LABEL", "Показать отзыв {number}").replace("{number}", String(index + 1))
+      );
+    });
+  };
 
   const showSlide = (index) => {
     currentIndex = (index + slides.length) % slides.length;
@@ -977,7 +1051,10 @@ function initTestimonialCarousel() {
   }, { passive: true });
 
   showSlide(currentIndex);
+  syncDotLabels();
   startAutoplay();
+
+  window.addEventListener("languageChanged", syncDotLabels);
 
   window.addEventListener("pagehide", stopAutoplay, { once: true });
 }
@@ -1180,8 +1257,11 @@ function initVideoModal() {
   triggers.forEach((trigger) => {
     trigger.addEventListener("click", () => {
       if (!(trigger instanceof HTMLElement)) return;
+      const titleKey = trigger.dataset.videoTitleKey || "";
       openModal(
-        trigger.dataset.videoTitle || "Видео",
+        titleKey
+          ? translate(titleKey, trigger.dataset.videoTitle || translate("ENTRE_VIDEO_LABEL", "Video"))
+          : trigger.dataset.videoTitle || translate("ENTRE_VIDEO_LABEL", "Video"),
         trigger.dataset.videoEmbed || "",
         trigger.dataset.videoOrientation || ""
       );
@@ -1215,7 +1295,7 @@ function initInlineVideos() {
 
       const iframe = document.createElement("iframe");
       iframe.src = embedUrl;
-      iframe.title = trigger.dataset.inlineVideoTitle || "Видео";
+      iframe.title = trigger.dataset.inlineVideoTitle || translate("ENTRE_VIDEO_LABEL", "Video");
       iframe.loading = "lazy";
       iframe.allow = "autoplay; encrypted-media; picture-in-picture; web-share";
       iframe.allowFullscreen = true;
@@ -1262,11 +1342,19 @@ function initCommunitySlider() {
     const dot = document.createElement("button");
     dot.type = "button";
     dot.className = "community-slider__dot";
-    dot.setAttribute("aria-label", `Открыть слайд ${index + 1}`);
     dot.addEventListener("click", () => renderSlide(index));
     dotsHost.append(dot);
     return dot;
   });
+
+  const syncDotLabels = () => {
+    dots.forEach((dot, index) => {
+      dot.setAttribute(
+        "aria-label",
+        translate("COMMUNITY_DOT_LABEL", "Открыть слайд {number}").replace("{number}", String(index + 1))
+      );
+    });
+  };
 
   const renderSlide = (nextIndex) => {
     activeIndex = (nextIndex + communitySlides.length) % communitySlides.length;
@@ -1317,7 +1405,10 @@ function initCommunitySlider() {
   });
 
   renderSlide(0);
+  syncDotLabels();
   startAutoplay();
+
+  window.addEventListener("languageChanged", syncDotLabels);
 
   document.addEventListener("visibilitychange", () => {
     if (document.hidden) {

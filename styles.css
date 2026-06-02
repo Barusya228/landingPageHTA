@@ -3141,6 +3141,42 @@ main > .instagram-line {
   font-weight: 600;
 }
 
+.language-test-switcher {
+  position: fixed;
+  right: 16px;
+  bottom: 140px;
+  z-index: 99999;
+  display: flex;
+  gap: 6px;
+  padding: 8px;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.72);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  pointer-events: auto;
+}
+
+.language-test-switcher button {
+  min-width: 42px;
+  height: 34px;
+  border: 0;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #333333;
+  font-size: 13px;
+  font-weight: 800;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.language-test-switcher button.is-active {
+  background: var(--hta-green);
+  color: #ffffff;
+}
+
+.i18n-preline {
+  white-space: pre-line;
+}
+
 @media (max-width: 980px) {
   .container,
   .header-inner {
@@ -4310,6 +4346,11 @@ main > .instagram-line {
 
   .footer-bottom {
     margin-top: 28px;
+  }
+
+  .language-test-switcher {
+    right: 10px;
+    bottom: 120px;
   }
 }
 

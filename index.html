@@ -51,13 +51,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <header class="site-header">
     <div class="header-inner">
       <a class="brand" href="#hero" aria-label="High Tech Academy">
-        <img src="./logo/logo-HTA.png" alt="High Tech Academy" width="70" height="34" decoding="async" />
+        <img src="./logo/logo-HTA.png" alt="High Tech Academy" width="70" height="34" decoding="async" data-i18n="ALT_HTA_LOGO" data-i18n-attr="alt" />
       </a>
 
       <button
         type="button"
         class="nav-toggle"
         aria-label="Открыть меню"
+        data-i18n="ARIA_OPEN_MENU"
+        data-i18n-attr="aria-label"
         aria-expanded="false"
         aria-controls="nav-list"
       >
@@ -68,12 +70,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
       <nav class="site-nav" aria-label="Основная навигация">
         <ul class="nav-list" id="nav-list">
-          <li><a href="#about">Почему HTA</a></li>
-          <li><a href="#projects">Korda Method</a></li>
-          <li><a href="#entrepreneur">Предпринимательство</a></li>
-          <li><a href="#mbacc">MBacc</a></li>
-          <li><a href="#life">Жизнь в HTA</a></li>
-          <li><a href="#profile">Портрет выпускника</a></li>
+          <li><a href="#about" data-i18n="HEADER_WHY">Почему HTA</a></li>
+          <li><a href="#projects" data-i18n="HEADER_KORDA">Korda Method</a></li>
+          <li><a href="#entrepreneur" data-i18n="HEADER_ENTRE">Предпринимательство</a></li>
+          <li><a href="#mbacc" data-i18n="HEADER_MBACC">MBacc</a></li>
+          <li><a href="#life" data-i18n="HEADER_LIFE">Жизнь в HTA</a></li>
+          <li><a href="#profile" data-i18n="HEADER_PROFILE">Портрет выпускника</a></li>
         </ul>
       </nav>
 
@@ -100,7 +102,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
   <main>
     <section id="hero" class="hero">
-      <img class="hero-image" src="./images/Банер/младшая.jpg" alt="High Tech Academy — международная школа в Алматы" loading="eager" fetchpriority="high" decoding="async" />
+      <img class="hero-image" src="./images/Банер/младшая.jpg" alt="High Tech Academy — международная школа в Алматы" loading="eager" fetchpriority="high" decoding="async" data-i18n="ALT_HERO_IMAGE" data-i18n-attr="alt" />
       <div class="hero-slider" aria-hidden="true">
         <img class="hero-image hero-slide is-active" src="./images/Банер/младшая.jpg" alt="Младшая школа HTA" loading="eager" fetchpriority="high" decoding="async" />
         <img class="hero-image hero-slide" src="./images/Банер/средняя.jpeg" alt="Средняя школа HTA" loading="eager" fetchpriority="high" decoding="async" />
@@ -109,8 +111,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <div class="hero-overlay" aria-hidden="true"></div>
 
       <div class="hero-copy">
-        <h1>Готовим к реальной жизни,<br />а не к тестам из прошлого</h1>
-        <p>
+        <h1 data-i18n="HERO_H1">Готовим к реальной жизни,<br />а не к тестам из прошлого</h1>
+        <p data-i18n="HERO_SUB">
           В мире, где ИИ генерирует ответы за секунды, детям нужны навыки,
           которые не поддаются автоматизации: критическое мышление, смелость,
           эмпатия и умение воплощать идеи в реальность
@@ -118,65 +120,65 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       </div>
 
       <div class="hero-benefits" aria-label="Преимущества HTA">
-        <article>Международная школа<br />с полной аккредитацией CIS и WASC</article>
-        <article>Korda Method School<br />развивает критически<br />важные навыки 21 века</article>
-        <article>Minerva Baccalaureate<br />Инновационная программа повышенной академической сложности<br />10-12 классы</article>
-        <article>Развитие<br />предпринимательского<br />мышления</article>
+        <article data-i18n="HERO_BOX_1">Международная школа<br />с полной аккредитацией CIS и WASC</article>
+        <article data-i18n="HERO_BOX_2">Korda Method School<br />развивает критически<br />важные навыки 21 века</article>
+        <article data-i18n="HERO_BOX_3">Minerva Baccalaureate<br />Инновационная программа повышенной академической сложности<br />10-12 классы</article>
+        <article data-i18n="HERO_BOX_4">Развитие<br />предпринимательского<br />мышления</article>
       </div>
     </section>
 
     <section id="about" class="section section-why">
       <div class="container why-grid">
         <div class="why-copy">
-          <h2 class="section-subtitle">
+          <h2 class="section-subtitle" data-i18n="WHY_H1">
             Мир изменился...<br />
             Школа должна меняться вместе с ним
           </h2>
-          <p class="section-lead">
+          <p class="section-lead" data-i18n="WHY_TEXT_1">
             Десятилетиями успех в школе означал: запомни информацию, 
             выполни инструкцию, дай единственный правильный ответ. Этот подход безнадежно устарел
           </p>
-          <p class="section-lead">
+          <p class="section-lead i18n-preline" data-i18n="WHY_TEXT_2">
             Сегодня ИИ создает тексты, алгоритмы и решения быстрее любого эксперта.
             Главный вопрос для родителя сейчас - не что будет знать мой ребенок, 
             а что он будет уметь делать с этими знаниями
           </p>
           <div class="quote-row why-quote">
             <div class="quote-mark" aria-hidden="true">“</div>
-            <blockquote>Если мы учим детей так, как учили вчера, мы лишаем их будущего</blockquote>
-            <p class="quote-author">Джон Дьюи</p>
+            <blockquote data-i18n="WHY_QUOTE">Если мы учим детей так, как учили вчера, мы лишаем их будущего</blockquote>
+            <p class="quote-author" data-i18n="WHY_QUOTE_AUTHOR">Джон Дьюи</p>
           </div>
-          <p class="label section-title-left">Почему это важно сейчас</p>
+          <p class="label section-title-left" data-i18n="WHY_IMPORTANCE_TITLE">Почему это важно сейчас</p>
         </div>
 
         <div class="question-box">
-          <strong>
+          <strong data-i18n="WHY_BOX_QUESTION">
             Будет ли мой ребенок понимать, что делать, когда ответ не очевиден,
             проблема реальная, а ее решение может изменить жизнь людей?
           </strong>
-          <span>Именно этому<br />учат в HTA</span>
+          <span class="i18n-preline" data-i18n="WHY_BOX_ANSWER">Именно этому<br />учат в HTA</span>
         </div>
 
         <div class="why-cards">
           <article>
-            <h3>ИИ заменяет исполнителей</h3>
-            <p>
+            <h3 data-i18n="CARD_1_TITLE">ИИ заменяет исполнителей</h3>
+            <p data-i18n="CARD_1_TEXT">
               ИИ уже справляется с рутиной. Нам остается то, что алгоритмам недоступно: 
               думать критически, договариваться, сотрудничать и находить выход там, 
               где нет готового ответа
             </p>
           </article>
           <article>
-            <h3>Мир требует творцов, не потребителей</h3>
-            <p>
+            <h3 data-i18n="CARD_2_TITLE">Мир требует творцов, не потребителей</h3>
+            <p data-i18n="CARD_2_TEXT">
               Работодатели больше не нуждаются в тех, кто следует инструкциям. 
               Они ищут людей, которые умеют задавать правильные вопросы и 
               создавать что-то новое
             </p>
           </article>
           <article>
-            <h3>Перемены - новая норма</h3>
-            <p>
+            <h3 data-i18n="CARD_3_TITLE">Перемены - новая норма</h3>
+            <p data-i18n="CARD_3_TEXT">
               Через 10 лет появятся профессии, которые еще не существуют. 
               Школа должна готовить учеников к жизни в мире, который меняет ИИ
             </p>
@@ -188,12 +190,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <section class="section dark-band section-learning">
       <div class="container learning-grid">
         <div>
-          <p class="label section-title-left">ДНК системы обучения в HTA</p>
-          <h2 class="section-subtitle">
+          <p class="label section-title-left" data-i18n="WHY_DNA_TITLE">ДНК системы обучения в HTA</p>
+          <h2 class="section-subtitle" data-i18n="WHY_HTA_TEXT">
             Обучение в HTA не простое накопление знаний, а умение ими пользоваться в реальном мире
           </h2>
           <h3 class="section-lead">
-            HTA — <span class="learning-accent">единственная</span> школа в Казахстане, которая построила систему обучения для профессионального и личного успеха в мире, который неизбежно изменит ИИ
+            <span data-i18n="WHY_HTA_H1_PREFIX">HTA — </span><span class="learning-accent" data-i18n="WHY_HTA_H1_ACCENT">единственная</span><span data-i18n="WHY_HTA_H1_SUFFIX"> школа в Казахстане, которая построила систему обучения для профессионального и личного успеха в мире, который неизбежно изменит ИИ</span>
           </h3>
         </div>
         <button
@@ -201,6 +203,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           class="video-placeholder video-trigger learning-video-preview"
           aria-label="Открыть видео о системе обучения HTA"
           data-video-title="Метод Корда - практический опыт учителей-экспертов HTA"
+          data-video-title-key="LEARNING_VIDEO_TITLE"
           data-video-embed="https://www.youtube.com/embed/yxKj67w_Wh0?autoplay=1&rel=0"
         >
           <span class="play-button" aria-hidden="true"></span>
@@ -211,8 +214,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <section id="projects" class="section korda-section">
       <div class="korda-section-grid">
         <div class="korda-text-column">
-          <p class="label section-title-left">Korda Method</p>
-          <h2 class="section-subtitle">
+          <p class="label section-title-left" data-i18n="KORDA_SECTION">Korda Method</p>
+          <h2 class="section-subtitle" data-i18n="KORDA_H1">
             Навыки развиваются через<br/>
             практику и действие
           </h2>
@@ -228,17 +231,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             />
             <p class="section-lead">
               <span class="korda-brand">Korda Method</span><sup class="korda-tm">TM</sup>
-              — это подход к обучению, в котором главный фокус смещается с того,
-              ЧТО изучают ученики, на то, КАК они учатся.
+              <span data-i18n="KORDA_TEXT_1_TAIL">— это подход к обучению, в котором главный фокус смещается с того,
+              ЧТО изучают ученики, на то, КАК они учатся.</span>
             </p>
           </div>
-          <p class="section-lead">
+          <p class="section-lead" data-i18n="KORDA_TEXT_2">
             Проектное обучение погружает учеников в реальную жизнь. Они учатся
             определять проблему, глубоко исследовать контекст и потребности
             пользователей, тестировать идеи и защищать свое решение перед
             экспертами из этой сферы.
           </p>
-          <p class="section-lead">
+          <p class="section-lead" data-i18n="KORDA_TEXT_3">
             Обратная связь - не оценка, а вопросы и коучинг от экспертов, 
             которые помогают ученикам увидеть сильные и слабые стороны их решений и углубить свое понимание проблемы. 
             Ученики дорабатывают проекты, пробуют снова и учатся не бояться ошибок. 
@@ -251,8 +254,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Узнать подробнее о Korda Institute"
-          >
-            Узнать подробнее
+            >
+            <span data-i18n="BUTTON_LEARN_MORE">Узнать подробнее</span>
           </a>
         </div>
         <div class="korda-video-column">
@@ -269,8 +272,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               </video>
             </div>
             <div class="korda-video-caption">
-              <p class="korda-video-name">Дорис Корда</p>
-              <p class="korda-video-role">основательница Korda Institute for Teaching, Председатель Попечительского Совета HTA</p>
+              <p class="korda-video-name" data-i18n="KORDA_VIDEO_PERSON_NAME">Дорис Корда</p>
+              <p class="korda-video-role" data-i18n="KORDA_VIDEO_PERSON_DESCRIPTION">основательница Korda Institute for Teaching, Председатель Попечительского Совета HTA</p>
             </div>
           </div>
         </div>
@@ -278,7 +281,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </section>
 
     <section class="section project-examples-section" aria-label="Примеры проектов Korda Method School">
-      <h2 class="project-examples-title">Примеры проектов</h2>
+      <h2 class="project-examples-title" data-i18n="PROJECT_EXAMPLES_TITLE">Примеры проектов</h2>
       <div class="project-examples-grid project-task-cards" id="korda-project-tasks" aria-label="Проектные задачи Korda Method School"></div>
     </section>
 
@@ -300,14 +303,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         </div>
 
         <div class="entrepreneur-copy">
-          <p class="label section-title-left">Курс по предпринимательству</p>
-          <h2 class="section-subtitle">Мышление, которое необходимо людям, когда будущее невозможно предсказать</h2>
-          <p class="section-lead">
+          <p class="label section-title-left" data-i18n="ENTRE_SECTION">Курс по предпринимательству</p>
+          <h2 class="section-subtitle" data-i18n="ENTRE_H1">Мышление, которое необходимо людям, когда будущее невозможно предсказать</h2>
+          <p class="section-lead" data-i18n="ENTRE_TEXT_1">
             За год ученики проходят путь от реальных задач казахстанского бизнеса
             до собственного стартапа, развивают предпринимательские навыки и учатся
             справляться с неопределенностью, решая сложные проблемы для реального мира.
           </p>
-          <p class="section-lead">
+          <p class="section-lead" data-i18n="ENTRE_TEXT_2">
             Мы не растим предпринимателей. Мы развиваем предпринимательское мышление:
             способность видеть и определять проблемы, тестировать идеи, принимать
             решения и создавать ценность для общества.
@@ -411,7 +414,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         </div>
 
         <p class="entrepreneur-projects-note">
-          Подробнее о других проектах на странице
+          <span data-i18n="ENTRE_INSTAGRAM_NOTE">Подробнее о других проектах на странице Instagram</span>
           <a href="https://www.instagram.com/hta.kz" target="_blank" rel="noopener noreferrer">Instagram</a>
         </p>
 
@@ -431,7 +434,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               role="tab"
               aria-selected="true"
             >
-              Проекты
+              <span data-i18n="ENTRE_TAB_PROJECTS">Проекты</span>
             </button>
             <button
               type="button"
@@ -440,7 +443,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               role="tab"
               aria-selected="false"
             >
-              Стартапы
+              <span data-i18n="ENTRE_TAB_STARTUPS">Стартапы</span>
             </button>
           </div>
 
@@ -458,8 +461,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <div class="minerva-mark" aria-hidden="true">
           <img src="./logo/MBacc.png" alt="Minerva Baccalaureate" width="140" height="60" loading="lazy" decoding="async" />
         </div>
-        <p class="label section-title-left">Minerva Baccalaureate</p>
-        <h2 class="section-subtitle">
+        <p class="label section-title-left" data-i18n="MBACC_SECTION">Minerva Baccalaureate</p>
+        <h2 class="section-subtitle" data-i18n="MBACC_H1">
           Программа повышенной академической сложности<br/>
           для старшей школы
         </h2>
@@ -467,18 +470,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
         <div class="minerva-grid">
           <div>
-            <p class="section-lead">
+            <p class="section-lead" data-i18n="MBACC_TEXT_1">
               Обучение проходит по модели Flipped Classroom «перевернутый класс», 
               при которой учащиеся самостоятельно изучают новый материал до урока, 
               а время в классе посвящено обсуждениям, практике, решению задач и командной работе. 
               Такой формат помогает развивать критическое мышление, самостоятельность, 
               коммуникацию и умение применять знания на практике.
             </p>
-            <p class="section-lead">
+            <p class="section-lead" data-i18n="MBACC_TEXT_2">
               Результат обучения напрямую зависит от качества самостоятельной подготовки и 
               активного участия учащихся в работе на уроке. Преподавание ведется на английском языке.
             </p>
-            <p class="section-lead">
+            <p class="section-lead" data-i18n="MBACC_TEXT_3">
               Выпускники получают два диплома — казахстанский аттестат государственного образца и 
               американский диплом Minerva Baccalaureate.
             </p>
@@ -488,7 +491,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               target="_blank"
               rel="noopener noreferrer"
             >
-              Узнать подробнее
+              <span data-i18n="BUTTON_LEARN_MORE">Узнать подробнее</span>
             </a>
           </div>
           <div class="minerva-video-block">
@@ -497,13 +500,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               class="video-placeholder video-trigger minerva-video-preview"
               aria-label="Открыть видео Minerva Baccalaureate"
               data-video-title="Minerva Baccalaureate"
+              data-video-title-key="MBACC_VIDEO_TITLE"
               data-video-embed="https://www.youtube.com/embed/N47_mxtsPoo?autoplay=1&rel=0"
             >
               <span class="play-button" aria-hidden="true"></span>
             </button>
             <div class="minerva-video-caption">
-              <p class="minerva-video-name">Бен Нельсон</p>
-              <p class="minerva-video-role">основатель Minerva Project</p>
+              <p class="minerva-video-name" data-i18n="MBACC_VIDEO_PERSON_NAME">Бен Нельсон</p>
+              <p class="minerva-video-role" data-i18n="MBACC_VIDEO_PERSON_DESCRIPTION">основатель Minerva Project</p>
             </div>
           </div>
         </div>
@@ -526,7 +530,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 <div class="minerva-curriculum__heading">Math</div>
                 <div class="minerva-curriculum__heading">Personal Skills</div>
 
-                <div class="minerva-curriculum__label">Первый год</div>
+                <div class="minerva-curriculum__label" data-i18n="MINERVA_YEAR_1">Первый год</div>
                 <div class="minerva-curriculum__cell">
                   <span class="minerva-curriculum__course minerva-curriculum__course--science">Biology</span>
                 </div>
@@ -543,7 +547,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                   <span class="minerva-curriculum__course minerva-curriculum__course--skills">Social &amp; Emotional Learning (SEL)</span>
                 </div>
 
-                <div class="minerva-curriculum__label">Второй год</div>
+                <div class="minerva-curriculum__label" data-i18n="MINERVA_YEAR_2">Второй год</div>
                 <div class="minerva-curriculum__cell">
                   <span class="minerva-curriculum__course minerva-curriculum__course--science">Chemistry</span>
                 </div>
@@ -560,7 +564,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                   <span class="minerva-curriculum__course minerva-curriculum__course--skills">Collaboration &amp; Community</span>
                 </div>
 
-                <div class="minerva-curriculum__label">Третий год</div>
+                <div class="minerva-curriculum__label" data-i18n="MINERVA_YEAR_3">Третий год</div>
                 <div class="minerva-curriculum__cell">
                   <span class="minerva-curriculum__course minerva-curriculum__course--science">Physics</span>
                 </div>
@@ -577,7 +581,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                   <span class="minerva-curriculum__course minerva-curriculum__course--skills">Global Residency</span>
                 </div>
 
-                <div class="minerva-curriculum__label">Четвертый год*</div>
+                <div class="minerva-curriculum__label" data-i18n="MINERVA_YEAR_4">Четвертый год*</div>
                 <div class="minerva-curriculum__cell">
                   <span class="minerva-curriculum__course minerva-curriculum__course--science">Evaluating Evidence</span>
                 </div>
@@ -601,7 +605,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           >
             ›
           </button>
-          <p class="minerva-curriculum__note">
+          <p class="minerva-curriculum__note" data-i18n="MINERVA_OPTIONAL_NOTE">
             <strong>*Опциональный.</strong> Ученики, завершившие 1–3 год обучения, могут записаться на любой из курсов четвертого года в Minerva University.
           </p>
         </div>
@@ -610,48 +614,48 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
     <section class="section mbacc-comparison-section" id="mbacc-comparison" aria-labelledby="mbacc-comparison-title">
       <div class="mbacc-comparison-container">
-        <h2 class="mbacc-comparison-title" id="mbacc-comparison-title">
+        <h2 class="mbacc-comparison-title" id="mbacc-comparison-title" data-i18n="MBACC_COMPARISON_TITLE">
           Большинство программ готовят к экзаменам.<br />
           MBacc готовит к жизни
         </h2>
-        <p class="mbacc-comparison-subtitle">
+        <p class="mbacc-comparison-subtitle" data-i18n="MBACC_COMPARISON_SUBTITLE">
           Сравнение ведущих учебных программ для Старшей Школы
         </p>
 
         <div class="mbacc-comparison-grid">
           <article class="mbacc-comparison-card">
-            <p class="mbacc-comparison-status">Готовит к экзаменам</p>
-            <h3 class="mbacc-comparison-program">IB Diploma</h3>
+            <p class="mbacc-comparison-status" data-i18n="MBACC_COMPARISON_IB_STATUS">Готовит к экзаменам</p>
+            <h3 class="mbacc-comparison-program" data-i18n="MBACC_COMPARISON_IB_TITLE">IB Diploma</h3>
             <ul class="mbacc-comparison-list">
-              <li>Шесть предметов за два года, и в финале - напряженная экзаменационная неделя, результаты которой определяют итоговый балл диплома.</li>
-              <li>Итоговые экзамены составляют большую часть оценки - два года работы оцениваются в ходе одной сессии.</li>
+              <li data-i18n="MBACC_COMPARISON_IB_POINT_1">Шесть предметов за два года, и в финале - напряженная экзаменационная неделя, результаты которой определяют итоговый балл диплома.</li>
+              <li data-i18n="MBACC_COMPARISON_IB_POINT_2">Итоговые экзамены составляют большую часть оценки - два года работы оцениваются в ходе одной сессии.</li>
             </ul>
           </article>
 
           <article class="mbacc-comparison-card">
-            <p class="mbacc-comparison-status">Готовит к экзаменам</p>
-            <h3 class="mbacc-comparison-program">Cambridge<br />A-Levels</h3>
+            <p class="mbacc-comparison-status" data-i18n="MBACC_COMPARISON_CAMBRIDGE_STATUS">Готовит к экзаменам</p>
+            <h3 class="mbacc-comparison-program" data-i18n="MBACC_COMPARISON_CAMBRIDGE_TITLE">Cambridge<br />A-Levels</h3>
             <ul class="mbacc-comparison-list">
-              <li>Студенты углубленно изучают 3-4 предмета и два года готовятся к письменным экзаменам, которые являются главным, а часто и единственным критерием оценки.</li>
-              <li>Практически вся оценка зависит от финальных письменных экзаменов - текущие работы в большинстве предметов минимальны или отсутствуют.</li>
+              <li data-i18n="MBACC_COMPARISON_CAMBRIDGE_POINT_1">Студенты углубленно изучают 3-4 предмета и два года готовятся к письменным экзаменам, которые являются главным, а часто и единственным критерием оценки.</li>
+              <li data-i18n="MBACC_COMPARISON_CAMBRIDGE_POINT_2">Практически вся оценка зависит от финальных письменных экзаменов - текущие работы в большинстве предметов минимальны или отсутствуют.</li>
             </ul>
           </article>
 
           <article class="mbacc-comparison-card">
-            <p class="mbacc-comparison-status">Готовит к экзаменам</p>
-            <h3 class="mbacc-comparison-program">AP<br />(College Board)</h3>
+            <p class="mbacc-comparison-status" data-i18n="MBACC_COMPARISON_AP_STATUS">Готовит к экзаменам</p>
+            <h3 class="mbacc-comparison-program" data-i18n="MBACC_COMPARISON_AP_TITLE">AP<br />(College Board)</h3>
             <ul class="mbacc-comparison-list">
-              <li>Университетские курсы для учеников, выстроенные вокруг одного стандартизованного экзамена по каждому предмету раз в год. Только результат экзамена засчитывается в колледже.</li>
-              <li>Один экзамен, один день, одна оценка - ценность всего курса определяется результатом единственного теста.</li>
+              <li data-i18n="MBACC_COMPARISON_AP_POINT_1">Университетские курсы для учеников, выстроенные вокруг одного стандартизованного экзамена по каждому предмету раз в год. Только результат экзамена засчитывается в колледже.</li>
+              <li data-i18n="MBACC_COMPARISON_AP_POINT_2">Один экзамен, один день, одна оценка - ценность всего курса определяется результатом единственного теста.</li>
             </ul>
           </article>
 
           <article class="mbacc-comparison-card mbacc-comparison-card--highlight">
-            <p class="mbacc-comparison-status">Готовит к реальной жизни</p>
-            <h3 class="mbacc-comparison-program">MBacc</h3>
+            <p class="mbacc-comparison-status" data-i18n="MBACC_COMPARISON_MBACC_STATUS">Готовит к реальной жизни</p>
+            <h3 class="mbacc-comparison-program" data-i18n="MBACC_COMPARISON_MBACC_TITLE">MBacc</h3>
             <ul class="mbacc-comparison-list">
-              <li>Гибридная программа, ориентированная на навыки: ученики учатся мыслить, сотрудничать и решать задачи по любому предмету. Финальных экзаменов нет. Прогресс отслеживается непрерывно.</li>
-              <li>Постоянная обратная связь вместо экзаменов: прогресс оценивается в течение всего обучения, а не в один день.</li>
+              <li data-i18n="MBACC_COMPARISON_MBACC_POINT_1">Гибридная программа, ориентированная на навыки: ученики учатся мыслить, сотрудничать и решать задачи по любому предмету. Финальных экзаменов нет. Прогресс отслеживается непрерывно.</li>
+              <li data-i18n="MBACC_COMPARISON_MBACC_POINT_2">Постоянная обратная связь вместо экзаменов: прогресс оценивается в течение всего обучения, а не в один день.</li>
             </ul>
           </article>
         </div>
@@ -660,25 +664,25 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
     <section class="section section-happy">
       <div class="container">
-        <p class="label section-title-left">Счастливое детство</p>
+        <p class="label section-title-left" data-i18n="CHILDHOOD_SECTION_TITLE">Счастливое детство</p>
         <div class="quote-row happy-quote">
           <div class="quote-mark" aria-hidden="true">“</div>
-          <blockquote>Невозможно заранее предсказать, каким вырастет человек. Можно только создать условия, в которых он начнет развиваться и раскрываться</blockquote>
-          <p class="quote-author">Кен Робинсон</p>
+          <blockquote data-i18n="CHILDHOOD_QUOTE">Невозможно заранее предсказать, каким вырастет человек. Можно только создать условия, в которых он начнет развиваться и раскрываться</blockquote>
+          <p class="quote-author" data-i18n="CHILDHOOD_AUTHOR">Кен Робинсон</p>
         </div>
 
         <div class="happy-grid" aria-label="Счастливое детство">
           <article>
-            <h3>Безопасность — физическая,<br />эмоциональная и социальная</h3>
-            <p>В HTA взрослые замечают ранние сигналы и реагируют до того, как ситуация стала проблемой</p>
+            <h3 class="i18n-preline" data-i18n="CHILD_CARD_2">Безопасность — физическая,<br />эмоциональная и социальная</h3>
+            <p data-i18n="CHILD_CARD_2_TEXT">В HTA взрослые замечают ранние сигналы и реагируют до того, как ситуация стала проблемой</p>
           </article>
           <article>
-            <h3>Чувство принадлежности</h3>
-            <p>Ученики учатся слушать, сотрудничать и строить доверительные отношения каждый день</p>
+            <h3 data-i18n="CHILD_CARD_3">Чувство принадлежности</h3>
+            <p data-i18n="CHILD_CARD_3_TEXT">Ученики учатся слушать, сотрудничать и строить доверительные отношения каждый день</p>
           </article>
           <article>
-            <h3>Рост через рефлексию</h3>
-            <p>Мы помогаем ученикам понимать себя, делать ответственный выбор и расти из ошибок</p>
+            <h3 data-i18n="CHILD_CARD_4">Рост через рефлексию</h3>
+            <p data-i18n="CHILD_CARD_4_TEXT">Мы помогаем ученикам понимать себя, делать ответственный выбор и расти из ошибок</p>
           </article>
         </div>
       </div>
@@ -686,11 +690,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
     <section id="life" class="section section-life">
       <div class="container">
-        <h2 class="section-title-left">Жизнь в HTA</h2>
+        <h2 class="section-title-left" data-i18n="LIFE_SECTION_TITLE">Жизнь в HTA</h2>
         <div class="quote-row life-quote">
           <div class="quote-mark" aria-hidden="true">“</div>
-          <blockquote>Образование — это не подготовка к жизни; образование — это сама жизнь</blockquote>
-          <p class="quote-author">Джон Дьюи</p>
+          <blockquote data-i18n="LIFE_QUOTE">Образование — это не подготовка к жизни; образование — это сама жизнь</blockquote>
+          <p class="quote-author" data-i18n="LIFE_AUTHOR">Джон Дьюи</p>
         </div>
         <div class="life-collage" aria-label="Жизнь в HTA">
           <div class="life-cell life-cell--wide life-cell-1">
@@ -756,51 +760,51 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <div class="container">
         <div class="voices-layout">
           <div class="voices-copy">
-            <div class="voices-stat">92%</div>
-            <h2>учеников HTA говорят, что любят свою школу</h2>
-            <p class="voices-note">Опрос учеников, март 2026</p>
+            <div class="voices-stat" data-i18n="VOICES_STAT_NUMBER">92%</div>
+            <h2 data-i18n="VOICES_STAT_TEXT">учеников HTA говорят, что любят свою школу</h2>
+            <p class="voices-note" data-i18n="VOICES_SOURCE">Опрос учеников, март 2026</p>
           </div>
 
           <div class="voices-carousel-col">
             <div class="testimonial-shell" id="testimonial-carousel" aria-label="Отзывы учеников">
-              <button type="button" class="testimonial-arrow testimonial-arrow--prev" aria-label="Предыдущий отзыв">‹</button>
+              <button type="button" class="testimonial-arrow testimonial-arrow--prev" aria-label="Предыдущий отзыв" data-i18n="TESTIMONIAL_PREV" data-i18n-attr="aria-label">‹</button>
               <div class="testimonial-viewport">
                 <div class="testimonial-track">
                   <article class="testimonial-slide">
-                    <img src="./images/Отзывы учеников/2.png" alt="Отзыв ученика HTA" loading="lazy" decoding="async" />
+                    <img src="./images/Отзывы учеников/2.png" alt="Отзыв ученика HTA" loading="lazy" decoding="async" data-i18n="ALT_TESTIMONIAL_IMAGE" data-i18n-attr="alt" />
                   </article>
                   <article class="testimonial-slide">
-                    <img src="./images/Отзывы учеников/3.png" alt="Отзыв ученика HTA" loading="lazy" decoding="async" />
+                    <img src="./images/Отзывы учеников/3.png" alt="Отзыв ученика HTA" loading="lazy" decoding="async" data-i18n="ALT_TESTIMONIAL_IMAGE" data-i18n-attr="alt" />
                   </article>
                   <article class="testimonial-slide">
-                    <img src="./images/Отзывы учеников/4.png" alt="Отзыв ученика HTA" loading="lazy" decoding="async" />
+                    <img src="./images/Отзывы учеников/4.png" alt="Отзыв ученика HTA" loading="lazy" decoding="async" data-i18n="ALT_TESTIMONIAL_IMAGE" data-i18n-attr="alt" />
                   </article>
                   <article class="testimonial-slide">
-                    <img src="./images/Отзывы учеников/5.png" alt="Отзыв ученика HTA" loading="lazy" decoding="async" />
+                    <img src="./images/Отзывы учеников/5.png" alt="Отзыв ученика HTA" loading="lazy" decoding="async" data-i18n="ALT_TESTIMONIAL_IMAGE" data-i18n-attr="alt" />
                   </article>
                   <article class="testimonial-slide">
-                    <img src="./images/Отзывы учеников/6.png" alt="Отзыв ученика HTA" loading="lazy" decoding="async" />
+                    <img src="./images/Отзывы учеников/6.png" alt="Отзыв ученика HTA" loading="lazy" decoding="async" data-i18n="ALT_TESTIMONIAL_IMAGE" data-i18n-attr="alt" />
                   </article>
                   <article class="testimonial-slide">
-                    <img src="./images/Отзывы учеников/7.png" alt="Отзыв ученика HTA" loading="lazy" decoding="async" />
+                    <img src="./images/Отзывы учеников/7.png" alt="Отзыв ученика HTA" loading="lazy" decoding="async" data-i18n="ALT_TESTIMONIAL_IMAGE" data-i18n-attr="alt" />
                   </article>
                   <article class="testimonial-slide">
-                    <img src="./images/Отзывы учеников/8.png" alt="Отзыв ученика HTA" loading="lazy" decoding="async" />
+                    <img src="./images/Отзывы учеников/8.png" alt="Отзыв ученика HTA" loading="lazy" decoding="async" data-i18n="ALT_TESTIMONIAL_IMAGE" data-i18n-attr="alt" />
                   </article>
                   <article class="testimonial-slide">
-                    <img src="./images/Отзывы учеников/9.png" alt="Отзыв ученика HTA" loading="lazy" decoding="async" />
+                    <img src="./images/Отзывы учеников/9.png" alt="Отзыв ученика HTA" loading="lazy" decoding="async" data-i18n="ALT_TESTIMONIAL_IMAGE" data-i18n-attr="alt" />
                   </article>
                   <article class="testimonial-slide">
-                    <img src="./images/Отзывы учеников/10.png" alt="Отзыв ученика HTA" loading="lazy" decoding="async" />
+                    <img src="./images/Отзывы учеников/10.png" alt="Отзыв ученика HTA" loading="lazy" decoding="async" data-i18n="ALT_TESTIMONIAL_IMAGE" data-i18n-attr="alt" />
                   </article>
                 </div>
               </div>
-              <button type="button" class="testimonial-arrow testimonial-arrow--next" aria-label="Следующий отзыв">›</button>
+              <button type="button" class="testimonial-arrow testimonial-arrow--next" aria-label="Следующий отзыв" data-i18n="TESTIMONIAL_NEXT" data-i18n-attr="aria-label">›</button>
             </div>
 
-            <div class="testimonial-dots" aria-label="Навигация по отзывам"></div>
+            <div class="testimonial-dots" aria-label="Навигация по отзывам" data-i18n="TESTIMONIAL_DOTS_LABEL" data-i18n-attr="aria-label"></div>
 
-            <p class="voices-disclaimer">
+            <p class="voices-disclaimer i18n-preline" data-i18n="VOICES_DISCLAIMER">
               Фотографии подобраны случайно. Все совпадения с авторами цитат случайны.<br />
               Опрос проводился среди учеников анонимно.
             </p>
@@ -814,13 +818,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <div class="experts-grid">
           <div class="quote-row">
             <div class="quote-mark" aria-hidden="true">“</div>
-            <blockquote>В XXI веке мы можем стать свидетелями появления многомиллионного неработающего класса… Этот «бесполезный класс» будет не просто неработающим - он будет неработоспособным</blockquote>
-            <p class="quote-author">Юваль Ной Харари, Homo Deus</p>
+            <blockquote data-i18n="FINAL_QUOTE_1">В XXI веке мы можем стать свидетелями появления многомиллионного неработающего класса… Этот «бесполезный класс» будет не просто неработающим - он будет неработоспособным</blockquote>
+            <p class="quote-author" data-i18n="FINAL_QUOTE_1_AUTHOR_FULL">Юваль Ной Харари, Homo Deus</p>
           </div>
           <div class="quote-row">
             <div class="quote-mark" aria-hidden="true">“</div>
-            <blockquote>Любопытство, смелость, креативность, сострадание и коммуникация становятся особенно важными навыками в эпоху ИИ</blockquote>
-            <p class="quote-author">Райан Рослански, CEO LinkedIn</p>
+            <blockquote data-i18n="FINAL_QUOTE_2">Любопытство, смелость, креативность, сострадание и коммуникация становятся особенно важными навыками в эпоху ИИ</blockquote>
+            <p class="quote-author" data-i18n="FINAL_QUOTE_2_AUTHOR_FULL">Райан Рослански, CEO LinkedIn</p>
           </div>
         </div>
       </div>
@@ -828,11 +832,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
     <section id="profile" class="section section-choice">
       <div class="container">
-        <h2 class="section-title-left">Портрет выпускника</h2>
-        <h2>Станьте частью сообщества HTA</h2>
+        <h2 class="section-title-left" data-i18n="FINAL_LINK">Портрет выпускника</h2>
+        <h2 data-i18n="GRADUATE_COMMUNITY_TITLE">Станьте частью сообщества HTA</h2>
         <div class="community-slider" data-community-slider>
           <div class="community-slider__card">
-            <button class="community-slider__arrow community-slider__arrow--prev" type="button" aria-label="Предыдущий слайд" data-community-prev>
+            <button class="community-slider__arrow community-slider__arrow--prev" type="button" aria-label="Предыдущий слайд" data-community-prev data-i18n="COMMUNITY_PREV" data-i18n-attr="aria-label">
               <span aria-hidden="true">&#8249;</span>
             </button>
             <div class="community-slider__viewport">
@@ -842,17 +846,19 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 alt="Портрет выпускника HTA"
                 loading="eager"
                 data-community-image
+                data-i18n="ALT_PROFILE_IMAGE"
+                data-i18n-attr="alt"
               />
             </div>
-            <button class="community-slider__arrow community-slider__arrow--next" type="button" aria-label="Следующий слайд" data-community-next>
+            <button class="community-slider__arrow community-slider__arrow--next" type="button" aria-label="Следующий слайд" data-community-next data-i18n="COMMUNITY_NEXT" data-i18n-attr="aria-label">
               <span aria-hidden="true">&#8250;</span>
             </button>
           </div>
-          <div class="community-slider__dots" aria-label="Навигация по слайдам" data-community-dots></div>
+          <div class="community-slider__dots" aria-label="Навигация по слайдам" data-community-dots data-i18n="COMMUNITY_DOTS_LABEL" data-i18n-attr="aria-label"></div>
         </div>
         <div class="community-message">
-          <h2>Школа, где учителя верят в тебя</h2>
-          <a class="community-message__link" href="https://hta.kz/" target="_blank" rel="noopener noreferrer">Подробнее о школе</a>
+          <h2 data-i18n="COMMUNITY_MESSAGE_TITLE">Школа, где учителя верят в тебя</h2>
+          <a class="community-message__link" href="https://hta.kz/" target="_blank" rel="noopener noreferrer" data-i18n="COMMUNITY_MESSAGE_LINK">Подробнее о школе</a>
         </div>
       </div>
     </section>
@@ -864,15 +870,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <a href="#hero" class="footer-logo-link">
           <img class="footer-logo-img" src="./logo/logo-HTA.png" alt="HTA" width="52" height="52" loading="lazy" decoding="async" />
         </a>
-        <p class="footer-tagline">Международная школа<br /> в Алматы</p>
+        <p class="footer-tagline i18n-preline" data-i18n="FOOTER_TAGLINE">Международная школа<br /> в Алматы</p>
       </div>
       <nav class="footer-nav" aria-label="Навигация">
-          <li><a href="#about">Почему HTA</a></li>
-          <li><a href="#projects">Korda Method School</a></li>
-          <li><a href="#entrepreneur">Предпринимательство</a></li>
-          <li><a href="#mbacc">Minerva Baccalaureate</a></li>
-          <li><a href="#life">Жизнь в HTA</a></li>
-          <li><a href="#profile">Портрет выпускника</a></li>
+          <li><a href="#about" data-i18n="HEADER_WHY">Почему HTA</a></li>
+          <li><a href="#projects" data-i18n="FOOTER_KORDA">Korda Method School</a></li>
+          <li><a href="#entrepreneur" data-i18n="HEADER_ENTRE">Предпринимательство</a></li>
+          <li><a href="#mbacc" data-i18n="FOOTER_MBACC">Minerva Baccalaureate</a></li>
+          <li><a href="#life" data-i18n="HEADER_LIFE">Жизнь в HTA</a></li>
+          <li><a href="#profile" data-i18n="HEADER_PROFILE">Портрет выпускника</a></li>
       </nav>
       <div class="footer-contacts">
         <a
@@ -901,23 +907,30 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </div>
     <div class="footer-bottom">
       <div class="container footer-bottom-inner">
-        <p>© 2026 Все права защищены ТОО "Школа 21 века"</p>
+        <p data-i18n="FOOTER_COPYRIGHT">© 2026 Все права защищены ТОО "Школа 21 века"</p>
       </div>
     </div>
   </footer>
+
+  <div class="language-test-switcher" aria-label="Language test switcher">
+    <button type="button" data-lang="ru">RU</button>
+    <button type="button" data-lang="en">EN</button>
+    <button type="button" data-lang="kk">KZ</button>
+  </div>
 
   <div class="b24-floating-container">
     <script data-b24-form="click/48/qgzyxa" data-skip-moving="true">(function(w,d,u){var s=d.createElement('script');s.async=true;s.src=u+'?'+(Date.now()/180000|0);var h=d.getElementsByTagName('script')[0];h.parentNode.insertBefore(s,h);})(window,document,'https://cdn-ru.bitrix24.kz/b18109524/crm/form/loader_48.js');</script>  </div>
   <div class="video-modal" id="video-modal" aria-hidden="true">
     <div class="video-modal__backdrop" data-video-close></div>
     <div class="video-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="video-modal-title">
-      <button type="button" class="video-modal__close" aria-label="Закрыть видео" data-video-close>×</button>
-      <p class="video-modal__title" id="video-modal-title">Видео</p>
+      <button type="button" class="video-modal__close" aria-label="Закрыть видео" data-video-close data-i18n="ARIA_CLOSE_VIDEO" data-i18n-attr="aria-label">×</button>
+      <p class="video-modal__title" id="video-modal-title" data-i18n="ENTRE_VIDEO_LABEL">Видео</p>
       <div class="video-modal__body" id="video-modal-body"></div>
     </div>
   </div>
 
   <script src="script.js" defer></script>
+  <script src="./js/i18n.js" defer></script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
