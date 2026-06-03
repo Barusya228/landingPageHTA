@@ -3144,9 +3144,9 @@ main > .instagram-line {
 
 .hero-language-switcher {
   position: absolute;
-  top: 28px;
-  right: 32px;
-  z-index: 10;
+  top: 24px;
+  right: calc(max(60px, calc((100vw - var(--container)) / 2)) + 255px);
+  z-index: 20;
   display: flex;
   align-items: center;
   gap: 6px;
@@ -3195,6 +3195,13 @@ main > .instagram-line {
 
 .mobile-language-switcher {
   display: none;
+}
+
+@media (max-width: 1400px) and (min-width: 1101px) {
+  .hero-language-switcher {
+    top: 22px;
+    right: calc(max(60px, calc((100vw - var(--container)) / 2)) + 248px);
+  }
 }
 
 @media (max-width: 1100px) {
