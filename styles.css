@@ -417,6 +417,7 @@ button {
     display: grid;
     gap: 22px;
   }
+
 }
 
 .hero {
@@ -3141,36 +3142,84 @@ main > .instagram-line {
   font-weight: 600;
 }
 
-.language-test-switcher {
-  position: fixed;
-  right: 16px;
-  bottom: 140px;
-  z-index: 99999;
+.hero-language-switcher {
+  position: absolute;
+  top: 28px;
+  right: 32px;
+  z-index: 10;
   display: flex;
+  align-items: center;
   gap: 6px;
-  padding: 8px;
-  border-radius: 12px;
-  background: rgba(0, 0, 0, 0.72);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-  pointer-events: auto;
+  padding: 7px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.86);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.14);
+  backdrop-filter: blur(10px);
 }
 
-.language-test-switcher button {
+.hero-language-switcher button,
+.mobile-language-switcher button {
   min-width: 42px;
   height: 34px;
+  padding: 0 12px;
   border: 0;
-  border-radius: 8px;
-  background: #ffffff;
-  color: #333333;
-  font-size: 13px;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--color-graphite);
+  font-size: 14px;
   font-weight: 800;
+  line-height: 1;
   cursor: pointer;
-  pointer-events: auto;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
 }
 
-.language-test-switcher button.is-active {
-  background: var(--hta-green);
+.hero-language-switcher button:hover,
+.mobile-language-switcher button:hover {
+  color: var(--color-green);
+}
+
+.hero-language-switcher button.is-active,
+.mobile-language-switcher button.is-active {
+  background: var(--color-green);
   color: #ffffff;
+}
+
+.hero-language-switcher button:active,
+.mobile-language-switcher button:active {
+  transform: scale(0.96);
+}
+
+.mobile-language-switcher {
+  display: none;
+}
+
+@media (max-width: 1100px) {
+  .hero-language-switcher {
+    display: none;
+  }
+
+  .mobile-language-switcher {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0 0 4px;
+  }
+
+  .mobile-language-switcher button {
+    min-width: 46px;
+    height: 36px;
+    padding: 0 12px;
+    border: 1px solid rgba(63, 63, 63, 0.18);
+    background: #ffffff;
+  }
+
+  .mobile-language-switcher button.is-active {
+    border-color: var(--color-green);
+  }
 }
 
 .i18n-preline {
@@ -4348,10 +4397,6 @@ main > .instagram-line {
     margin-top: 28px;
   }
 
-  .language-test-switcher {
-    right: 10px;
-    bottom: 120px;
-  }
 }
 
 @media (max-width: 380px) {
