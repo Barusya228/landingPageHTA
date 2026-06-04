@@ -3145,29 +3145,46 @@ main > .instagram-line {
 .hero-language-switcher {
   position: absolute;
   top: 26px;
-  right: calc(max(60px, calc((100vw - var(--container)) / 2)) + 248px);
-  z-index: 20;
+  right: clamp(24px, 2.2vw, 42px);
+  z-index: 30;
   display: flex;
   align-items: center;
-  gap: 4px;
-  padding: 5px;
+  gap: 3px;
+  padding: 4px;
   border: 1px solid rgba(255, 255, 255, 0.75);
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.92);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
   backdrop-filter: blur(8px);
 }
 
-.hero-language-switcher button,
-.mobile-language-switcher button {
-  min-width: 36px;
+.hero-language-switcher button {
+  min-width: 34px;
   height: 30px;
-  padding: 0 10px;
+  padding: 0 9px;
   border: 0;
   border-radius: 999px;
   background: transparent;
   color: var(--color-graphite);
-  font-size: 13px;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.mobile-language-switcher button {
+  min-width: 42px;
+  height: 34px;
+  padding: 0 12px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--color-graphite);
+  font-size: 14px;
   font-weight: 800;
   line-height: 1;
   cursor: pointer;
@@ -3188,6 +3205,11 @@ main > .instagram-line {
   color: #ffffff;
 }
 
+.hero-language-switcher button.is-active:hover,
+.mobile-language-switcher button.is-active:hover {
+  color: #ffffff;
+}
+
 .hero-language-switcher button:active,
 .mobile-language-switcher button:active {
   transform: scale(0.96);
@@ -3200,7 +3222,7 @@ main > .instagram-line {
 @media (max-width: 1400px) and (min-width: 1101px) {
   .hero-language-switcher {
     top: 24px;
-    right: calc(max(60px, calc((100vw - var(--container)) / 2)) + 244px);
+    right: clamp(22px, 2vw, 34px);
   }
 }
 
