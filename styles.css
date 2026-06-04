@@ -2148,7 +2148,7 @@ main > .instagram-line {
 }
 
 .mbacc-comparison-list li::marker {
-  color: var(--hta-graphite);
+  color: var(--hta-green);
 }
 
 .section-happy {
