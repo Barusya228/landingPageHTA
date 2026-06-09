@@ -12,10 +12,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- End Google Tag Manager -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" type="image/png" href="./icons/favicon.png?v=2" />
-  <link rel="icon" type="image/png" sizes="32x32" href="./icons/favicon-32x32.png?v=2" />
-  <link rel="icon" type="image/png" sizes="16x16" href="./icons/favicon-16x16.png?v=2" />
-  <link rel="apple-touch-icon" sizes="180x180" href="./icons/apple-touch-icon.png?v=2" />
+  <link rel="icon" type="image/png" sizes="16x16" href="./icons/favicon-16x16.png?v=5">
+  <link rel="icon" type="image/png" sizes="32x32" href="./icons/favicon-32x32.png?v=5">
+  <link rel="icon" type="image/png" sizes="48x48" href="./icons/favicon-48x48.png?v=5">
+  <link rel="icon" type="image/png" sizes="64x64" href="./icons/favicon-64x64.png?v=5">
+  <link rel="apple-touch-icon" sizes="180x180" href="./icons/apple-touch-icon.png?v=5">
   <title>High Tech Academy — Международная школа в Алматы | CIS Accredited</title>
   <meta
     name="description"
@@ -110,13 +111,22 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </header>
 
   <main>
-    <section id="hero" class="hero">
+    <section class="hook-banner" aria-label="Intro banner">
+      <div class="hook-banner__overlay"></div>
+
       <div class="hero-language-switcher" aria-label="Language switcher">
         <button type="button" data-lang="ru">RU</button>
         <button type="button" data-lang="en">EN</button>
         <button type="button" data-lang="kk">KZ</button>
       </div>
 
+      <div class="hook-banner__content">
+        <h2 class="hook-banner__title" data-i18n="HOOK_TITLE">Готовим к реальной жизни,
+а не к тестам из прошлого</h2>
+      </div>
+    </section>
+
+    <section id="hero" class="hero">
       <img class="hero-image" src="./images/Банер/младшая.jpg" alt="High Tech Academy — международная школа в Алматы" loading="eager" fetchpriority="high" decoding="async" data-i18n="ALT_HERO_IMAGE" data-i18n-attr="alt" />
       <div class="hero-slider" aria-hidden="true">
         <img class="hero-image hero-slide is-active" src="./images/Банер/младшая.jpg" alt="Младшая школа HTA" loading="eager" fetchpriority="high" decoding="async" />
@@ -126,7 +136,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <div class="hero-overlay" aria-hidden="true"></div>
 
       <div class="hero-copy">
-        <h1 data-i18n="HERO_H1">Готовим к реальной жизни,<br />а не к тестам из прошлого</h1>
+        <h1 data-i18n="HERO_H1">HTA — единственная школа в Казахстане, которая развивает навыки в эпоху ИИ</h1>
         <p data-i18n="HERO_SUB">
           В мире, где ИИ генерирует ответы за секунды, детям нужны навыки,
           которые не поддаются автоматизации: критическое мышление, смелость,
@@ -277,13 +287,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           <div class="korda-video-block">
             <div class="video-placeholder video-placeholder-light video-placeholder-korda video-local-frame">
               <video
+                id="korda-method-video"
                 class="video-local-player"
                 controls
                 playsinline
                 preload="metadata"
                 poster="./images/Korda Method School/Дорис.jpg"
               >
-                <source src="./Видео/Дорис-RU.mp4" type="video/mp4" />
+                <source id="korda-method-video-source" src="./Видео/Дорис-RU.mp4" type="video/mp4" />
               </video>
             </div>
             <div class="korda-video-caption">

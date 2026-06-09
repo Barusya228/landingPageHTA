@@ -19,6 +19,29 @@ function translate(key, fallback = "") {
   return typeof window.t === "function" ? window.t(key, fallback) : fallback;
 }
 
+function updateKordaMethodVideo(language = "ru") {
+  const video = document.getElementById("korda-method-video");
+  const source = document.getElementById("korda-method-video-source");
+
+  if (!(video instanceof HTMLVideoElement) || !(source instanceof HTMLSourceElement)) return;
+
+  const videoSrc = language === "ru"
+    ? "./Видео/Дорис-RU.mp4"
+    : "./Видео/Дорис-EN.mp4";
+
+  if (source.getAttribute("src") === videoSrc) return;
+
+  const wasPlaying = !video.paused;
+
+  video.pause();
+  source.setAttribute("src", videoSrc);
+  video.load();
+
+  if (wasPlaying) {
+    video.play().catch(() => {});
+  }
+}
+
 function preloadImages(imageSources) {
   [...new Set(imageSources.filter(Boolean))].forEach((src) => {
     const image = new Image();
@@ -1426,8 +1449,13 @@ document.addEventListener("DOMContentLoaded", () => {
   initProjectTaskPartnerMarks();
   initProjectTaskVideoModal();
   initTestimonialCarousel();
+  updateKordaMethodVideo(localStorage.getItem("siteLanguage") || "ru");
 
   restoreHashScroll();
   preloadCriticalImages();
 });
 
+window.addEventListener("languageChanged", (event) => {
+  const language = event.detail?.language || "ru";
+  updateKordaMethodVideo(language);
+});

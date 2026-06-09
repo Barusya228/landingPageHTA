@@ -249,6 +249,49 @@ button {
 .header-social-link--tiktok::after { background-image: url("./images/icons/tiktok.png"); }
 .header-social-link--linkedin::after { background-image: url("./images/icons/linkedin.svg"); }
 
+.hook-banner {
+  position: relative;
+  width: calc(100% - 64px);
+  max-width: 1680px;
+  height: clamp(220px, 23vw, 340px);
+  margin: 24px auto 18px;
+  overflow: hidden;
+  border-radius: 20px;
+  background-image: url("./images/Банер/Хук-фон.JPG");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  isolation: isolate;
+}
+
+.hook-banner__overlay {
+  display: none;
+}
+
+.hook-banner__content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: clamp(28px, 4vw, 64px);
+}
+
+.hook-banner__title {
+  width: min(100%, 760px);
+  min-width: 0;
+  max-width: 760px;
+  margin: 0;
+  color: var(--hta-green, #65b52a);
+  font-size: clamp(30px, 3.2vw, 56px);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: 0;
+  overflow-wrap: anywhere;
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.22);
+  white-space: pre-line;
+}
+
 .nav-toggle {
   display: none;
   width: 40px;
@@ -3144,8 +3187,8 @@ main > .instagram-line {
 
 .hero-language-switcher {
   position: absolute;
-  top: 26px;
-  right: clamp(24px, 2.2vw, 42px);
+  top: 22px;
+  right: 24px;
   z-index: 30;
   display: flex;
   align-items: center;
@@ -3221,12 +3264,29 @@ main > .instagram-line {
 
 @media (max-width: 1400px) and (min-width: 1101px) {
   .hero-language-switcher {
-    top: 24px;
-    right: clamp(22px, 2vw, 34px);
+    top: 20px;
+    right: 22px;
   }
 }
 
 @media (max-width: 1100px) {
+  .hook-banner {
+    width: calc(100% - 40px);
+    height: clamp(190px, 34vw, 280px);
+    margin-top: 18px;
+    border-radius: 18px;
+    background-position: center;
+  }
+
+  .hook-banner__content {
+    padding: 32px;
+  }
+
+  .hook-banner__title {
+    max-width: 620px;
+    font-size: clamp(26px, 5vw, 42px);
+  }
+
   .hero-language-switcher {
     display: none;
   }
@@ -3253,6 +3313,30 @@ main > .instagram-line {
 
 .i18n-preline {
   white-space: pre-line;
+}
+
+@media (max-width: 640px) {
+  .hook-banner {
+    width: calc(100% - 28px);
+    height: 210px;
+    margin: 14px auto;
+    border-radius: 16px;
+    background-position: 58% center;
+  }
+
+  .hook-banner__content {
+    align-items: center;
+    padding: 24px;
+  }
+
+  .hook-banner__title {
+    width: min(100%, 300px);
+    max-width: 300px;
+    font-size: clamp(20px, 5.5vw, 24px);
+    line-height: 1.14;
+    white-space: normal;
+    word-break: normal;
+  }
 }
 
 @media (max-width: 980px) {
