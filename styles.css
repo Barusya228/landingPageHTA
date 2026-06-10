@@ -80,6 +80,10 @@ button {
   cursor: pointer;
 }
 
+section:has([data-i18n="FINAL_QUOTE_1"]) {
+  display: none;
+}
+
 .container {
   width: min(calc(100% - 120px), var(--container));
   margin: 0 auto;
@@ -278,17 +282,17 @@ button {
 }
 
 .hook-banner__title {
-  width: min(100%, 760px);
+  width: min(100%, 1200px);
   min-width: 0;
-  max-width: 760px;
+  max-width: 1200px;
   margin: 0;
-  color: var(--hta-green, #65b52a);
-  font-size: clamp(30px, 3.2vw, 56px);
+  color: #ffffff;
+  font-size: clamp(42px, 4vw, 72px);
   font-weight: 800;
   line-height: 1.08;
   letter-spacing: 0;
   overflow-wrap: anywhere;
-  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.22);
+  text-shadow: 0 3px 22px rgba(0, 0, 0, 0.46);
   white-space: pre-line;
 }
 
@@ -2093,7 +2097,7 @@ main > .instagram-line {
 }
 
 .mbacc-comparison-container {
-  width: min(calc(100% - 40px), var(--container));
+  width: min(calc(100% - 48px), var(--container));
   margin: 0 auto;
   box-sizing: border-box;
 }
@@ -2124,17 +2128,24 @@ main > .instagram-line {
 .mbacc-comparison-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 16px;
+  gap: clamp(14px, 1.4vw, 24px);
+  width: 100%;
   align-items: stretch;
   grid-auto-rows: 1fr;
+}
+
+.mbacc-comparison-card,
+.mbacc-comparison-card * {
+  box-sizing: border-box;
 }
 
 .mbacc-comparison-card {
   width: 100%;
   min-width: 0;
+  max-width: 100%;
   height: 100%;
   min-height: 620px;
-  padding: 30px 20px 28px;
+  padding: clamp(24px, 2vw, 36px) clamp(18px, 1.6vw, 28px);
   border: 3px solid var(--dark);
   border-radius: 30px;
   background: var(--white);
@@ -2143,6 +2154,10 @@ main > .instagram-line {
   flex-direction: column;
   box-sizing: border-box;
   align-self: stretch;
+  overflow: hidden;
+  overflow-wrap: break-word;
+  word-break: normal;
+  white-space: normal;
 }
 
 .mbacc-comparison-card--highlight {
@@ -2150,13 +2165,18 @@ main > .instagram-line {
 }
 
 .mbacc-comparison-status {
+  max-width: 100%;
   margin: 0 0 46px;
   color: #cc7c63;
   font-family: var(--font);
-  font-size: clamp(20px, 1.55vw, 28px);
+  font-size: clamp(18px, 1.35vw, 24px);
   font-weight: 800;
-  line-height: 1.2;
+  line-height: 1.15;
   text-align: center;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+  white-space: normal;
 }
 
 .mbacc-comparison-card--highlight .mbacc-comparison-status {
@@ -2164,34 +2184,94 @@ main > .instagram-line {
 }
 
 .mbacc-comparison-program {
+  max-width: 100%;
   margin: 0 0 42px;
   color: var(--dark);
   font-family: var(--font);
-  font-size: clamp(26px, 2.1vw, 36px);
+  font-size: clamp(24px, 1.8vw, 34px);
   font-weight: 700;
-  line-height: 1.22;
+  line-height: 1.15;
   text-align: center;
   text-wrap: balance;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+  white-space: normal;
 }
 
 .mbacc-comparison-list {
+  max-width: 100%;
   margin: 0;
-  padding-left: 28px;
+  padding-left: 1.1em;
+  list-style-position: outside;
   display: flex;
   flex-direction: column;
   gap: 38px;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+  white-space: normal;
 }
 
 .mbacc-comparison-list li {
+  max-width: 100%;
+  padding-left: 0.2em;
   color: var(--hta-graphite);
   font-family: var(--font);
-  font-size: clamp(17px, 1.12vw, 22px);
+  font-size: clamp(15px, 1.05vw, 20px);
   font-weight: 700;
   line-height: 1.15;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+  white-space: normal;
 }
 
 .mbacc-comparison-list li::marker {
   color: var(--hta-green);
+}
+
+.graduate-linkedin-quote {
+  max-width: 980px;
+  margin: clamp(42px, 5vw, 72px) auto 0;
+  padding: 0;
+  background: transparent;
+  box-shadow: none;
+  border-radius: 0;
+  text-align: left;
+
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr);
+  column-gap: 24px;
+  align-items: start;
+}
+
+.graduate-linkedin-quote__mark {
+  color: var(--color-green, #58b52d);
+  font-size: clamp(56px, 5vw, 82px);
+  line-height: 0.85;
+  font-weight: 800;
+  margin: 0;
+  transform: translateY(-4px);
+}
+
+.graduate-linkedin-quote__text {
+  grid-column: 2;
+  margin: 0;
+  max-width: 900px;
+  color: var(--color-graphite, #3f3f3f);
+  font-size: clamp(30px, 2.4vw, 44px);
+  line-height: 1.18;
+  font-weight: 800;
+}
+
+.graduate-linkedin-quote__author {
+  grid-column: 2;
+  margin: 16px 0 0;
+  color: var(--color-graphite, #3f3f3f);
+  font-size: clamp(18px, 1.3vw, 24px);
+  line-height: 1.3;
+  font-weight: 500;
 }
 
 .section-happy {
@@ -3283,8 +3363,8 @@ main > .instagram-line {
   }
 
   .hook-banner__title {
-    max-width: 620px;
-    font-size: clamp(26px, 5vw, 42px);
+    max-width: 860px;
+    font-size: clamp(34px, 5vw, 52px);
   }
 
   .hero-language-switcher {
@@ -3311,6 +3391,16 @@ main > .instagram-line {
   }
 }
 
+@media (max-width: 1280px) {
+  .mbacc-comparison-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .mbacc-comparison-card {
+    min-height: auto;
+  }
+}
+
 .i18n-preline {
   white-space: pre-line;
 }
@@ -3326,15 +3416,15 @@ main > .instagram-line {
 
   .hook-banner__content {
     align-items: center;
-    padding: 24px;
+    padding: 18px;
   }
 
   .hook-banner__title {
-    width: min(100%, 300px);
-    max-width: 300px;
-    font-size: clamp(20px, 5.5vw, 24px);
-    line-height: 1.14;
-    white-space: normal;
+    width: 100%;
+    max-width: 330px;
+    font-size: clamp(22px, 5.6vw, 38px);
+    line-height: 1.12;
+    white-space: pre-line;
     word-break: normal;
   }
 }
@@ -3521,6 +3611,28 @@ main > .instagram-line {
 @media (max-width: 768px) {
   :root {
     --header-height: 76px;
+  }
+
+  .graduate-linkedin-quote {
+    width: calc(100% - 32px);
+    margin: 36px auto 0;
+    grid-template-columns: 42px minmax(0, 1fr);
+    column-gap: 16px;
+  }
+
+  .graduate-linkedin-quote__mark {
+    font-size: 54px;
+    transform: translateY(-2px);
+  }
+
+  .graduate-linkedin-quote__text {
+    font-size: 25px;
+    line-height: 1.22;
+  }
+
+  .graduate-linkedin-quote__author {
+    margin-top: 14px;
+    font-size: 17px;
   }
 
   html,

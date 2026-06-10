@@ -79,6 +79,59 @@ function restoreHashScroll() {
   }, 120);
 }
 
+function renderGraduateLinkedInQuote() {
+  if (!window.__graduateLinkedInQuoteLanguageListener) {
+    window.__graduateLinkedInQuoteLanguageListener = true;
+    window.addEventListener("languageChanged", renderGraduateLinkedInQuote);
+  }
+
+  const graduateTitle = document.querySelector('[data-i18n="COMMUNITY_MESSAGE_TITLE"]');
+  const graduateSection = graduateTitle?.closest("section");
+
+  if (!(graduateSection instanceof HTMLElement)) return;
+
+  let quote = graduateSection.querySelector(".graduate-linkedin-quote");
+
+  if (!quote) {
+    quote = document.createElement("div");
+    quote.className = "graduate-linkedin-quote";
+    quote.innerHTML = `
+      <div class="graduate-linkedin-quote__mark" aria-hidden="true">“</div>
+      <blockquote class="graduate-linkedin-quote__text" data-i18n="GRADUATE_LINKEDIN_QUOTE"></blockquote>
+      <p class="graduate-linkedin-quote__author" data-i18n="GRADUATE_LINKEDIN_AUTHOR"></p>
+    `;
+    
+    const carousel =
+      graduateSection.querySelector(".graduate-carousel") ||
+      graduateSection.querySelector(".graduate-profile-carousel") ||
+      graduateSection.querySelector(".profile-carousel") ||
+      graduateSection.querySelector(".graduate-slider");
+
+    if (carousel) {
+      carousel.insertAdjacentElement("afterend", quote);
+    } else {
+      graduateSection.appendChild(quote);
+    }
+  }
+
+  const text = quote.querySelector('[data-i18n="GRADUATE_LINKEDIN_QUOTE"]');
+  const author = quote.querySelector('[data-i18n="GRADUATE_LINKEDIN_AUTHOR"]');
+
+  if (text instanceof HTMLElement) {
+    text.textContent = translate(
+      "GRADUATE_LINKEDIN_QUOTE",
+      "Любопытство, смелость, креативность, сострадание и коммуникация становятся особенно важными навыками в эпоху ИИ"
+    );
+  }
+
+  if (author instanceof HTMLElement) {
+    author.textContent = translate(
+      "GRADUATE_LINKEDIN_AUTHOR",
+      "Райан Рослански, CEO LinkedIn"
+    );
+  }
+}
+
 function initHeader() {
   const header = document.querySelector(".site-header");
   const headerInner = document.querySelector(".header-inner");
@@ -1439,6 +1492,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initWhyAccents();
   initLearningAccent();
   initEntrepreneurProjectYearBlocks();
+  renderGraduateLinkedInQuote();
   initLifeCollage();
   initLeadButtons();
   initAutoOpenBitrixFormFromUrl();
