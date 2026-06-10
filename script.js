@@ -101,17 +101,7 @@ function renderGraduateLinkedInQuote() {
       <p class="graduate-linkedin-quote__author" data-i18n="GRADUATE_LINKEDIN_AUTHOR"></p>
     `;
     
-    const carousel =
-      graduateSection.querySelector(".graduate-carousel") ||
-      graduateSection.querySelector(".graduate-profile-carousel") ||
-      graduateSection.querySelector(".profile-carousel") ||
-      graduateSection.querySelector(".graduate-slider");
-
-    if (carousel) {
-      carousel.insertAdjacentElement("afterend", quote);
-    } else {
-      graduateSection.appendChild(quote);
-    }
+    graduateSection.appendChild(quote);
   }
 
   const text = quote.querySelector('[data-i18n="GRADUATE_LINKEDIN_QUOTE"]');
